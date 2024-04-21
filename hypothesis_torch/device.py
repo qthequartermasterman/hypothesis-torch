@@ -30,7 +30,8 @@ def device_strategy(
     if devices is None:
         devices = AVAILABLE_PHYSICAL_DEVICES
     if allow_meta_device:
-        devices = devices + AVAILABLE_META_DEVICES
+        devices = list(devices) + AVAILABLE_META_DEVICES
+    assert devices is not None
     return draw(st.sampled_from(devices))
 
 

@@ -24,7 +24,7 @@ BOOL_DTYPES = [torch.bool]
 ALL_DTYPES = INT_DTYPES + FLOAT_DTYPES + BFLOAT_DTYPES + COMPLEX_DTYPES + BOOL_DTYPES
 """All dtypes supported by PyTorch."""
 
-numpy_dtype_map: dict[torch.dtype, np.dtype] = {
+numpy_dtype_map: dict[torch.dtype, np.dtype] = {  # type: ignore
     torch.int8: np.int8,
     torch.int16: np.int16,
     torch.int32: np.int32,
