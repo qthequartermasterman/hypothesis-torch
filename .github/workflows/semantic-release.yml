@@ -7,7 +7,7 @@ on:
       - main
 
 jobs:
-  release:
+  semantic-release:
     runs-on: ubuntu-latest
     concurrency: release
     permissions:
