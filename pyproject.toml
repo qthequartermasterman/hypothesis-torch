@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hypothesis_torch"
+description = "Hypothesis strategies for various Pytorch structures, including tensors and modules."
+
+dynamic = ["version"]
+dependencies = [
+    "hypothesis",
+    "torch",
+]
+requires-python = ">=3.9"
+authors=[{name="Andrew P. Sansom", email="andrew@euleriancircuit.com"}]
+readme="README.md"
+license={file="LICENSE"}
+keywords = ["hypothesis", "torch", "pytorch", "testing", "property-based testing"]
+classifiers = [
+  "Development Status :: 2 - Pre-Alpha",
+
+  # Indicate who your project is intended for
+  "Intended Audience :: Developers",
+  "Framework :: Hypothesis",
+
+  # Pick your license as you wish (see also "license" above)
+  "License :: OSI Approved :: MIT License",
+
+  # Specify the Python versions you support here.
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Testing",
+]
+
+[tool.ruff]
+line-length = 120
