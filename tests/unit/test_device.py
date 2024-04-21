@@ -39,3 +39,9 @@ class TestDevice(unittest.TestCase):
         """Test that using the registered `torch.cuda.device` strategy gives an available CUDA device."""
         self.assertIsInstance(device, torch.device)
         self.assertIn(device, hypothesis_torch.device.AVAILABLE_PHYSICAL_DEVICES)
+
+    @hypothesis.given(device=hypothesis_torch.device.device_strategy(devices=[torch.device("cpu")]))
+    def test_device_strategy_with_specified_devices(self, device: torch.device):
+        """Test that the device strategy when specifying a list of devices only generates devices in that list."""
+        self.assertIsInstance(device, torch.device)
+        self.assertEqual(device, torch.device("cpu"))
