@@ -37,13 +37,13 @@ POSITIVE_INTS = st.integers(min_value=1)
 def signature_to_strategy(draw: st.DrawFn, constructor: type[T], *args, **kwargs) -> T:
     """Strategy for generating instances of a class by drawing values for its constructor.
 
-Args:
-    draw: The draw function provided by `hypothesis`.
-    constructor: The class to generate an instance of.
-    args: Positional arguments to pass to the constructor. If an argument is a strategy, it will be drawn from.
-    kwargs: Keyword arguments to pass to the constructor. If a keyword argument is a strategy, it will be drawn from.
-Returns:
-    An instance of the class.
+    Args:
+        draw: The draw function provided by `hypothesis`.
+        constructor: The class to generate an instance of.
+        args: Positional arguments to pass to the constructor. If an argument is a strategy, it will be drawn from.
+        kwargs: Keyword arguments to pass to the constructor. If a keyword argument is a strategy, it will be drawn from.
+    Returns:
+        An instance of the class.
     """
     args_drawn = [draw(strategy) for strategy in args]
     kwargs_drawn = {k: draw(strategy) for k, strategy in kwargs.items()}
