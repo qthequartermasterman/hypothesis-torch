@@ -3,7 +3,7 @@ requires = ["setuptools >= 61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "hypothesis_torch"
+name = "hypothesis-torch"
 description = "Hypothesis strategies for various Pytorch structures, including tensors and modules."
 
 dynamic = ["version"]
