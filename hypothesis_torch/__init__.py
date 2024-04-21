@@ -1,4 +1,4 @@
-__version__ = "0.1.0"
+__version__ = "0.1.6"
 from hypothesis_torch.tensor import tensor_strategy
 from hypothesis_torch.device import device_strategy
 from hypothesis_torch.dtype import dtype_strategy

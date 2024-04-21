@@ -2,6 +2,13 @@
 
 
 
+## v0.1.6 (2024-04-21)
+
+### Fix
+
+* fix: semantic release reference in pyproject toml ([`7fe09c9`](https://github.com/qthequartermasterman/hypothesis-torch/commit/7fe09c9da9dcdb9d746ad08717870e6b43ecfa88))
+
+
 ## v0.1.5 (2024-04-21)
 
 ### Fix
