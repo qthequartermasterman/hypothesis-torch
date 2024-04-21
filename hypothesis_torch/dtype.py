@@ -44,19 +44,19 @@ assert set(numpy_dtype_map.keys()) == set(ALL_DTYPES)
 
 
 @st.composite
-def dtype_strategy(draw: st.DrawFn, *, elements: Sequence[torch.dtype] | None = None):
+def dtype_strategy(draw: st.DrawFn, *, dtypes: Sequence[torch.dtype] | None = None):
     """Strategy for generating torch dtypes.
 
     Args:
         draw: The draw function provided by `hypothesis`. If `None`, all dtypes are sampled.
-        elements: A strategy for generating elements of the dtype.
+        dtypes: A strategy for generating elements of the dtype.
 
     Returns:
         A strategy for generating torch dtypes.
     """
-    if elements is None:
-        elements = ALL_DTYPES
-    return draw(st.sampled_from(elements))
+    if dtypes is None:
+        dtypes = ALL_DTYPES
+    return draw(st.sampled_from(dtypes))
 
 
 st.register_type_strategy(torch.dtype, dtype_strategy())

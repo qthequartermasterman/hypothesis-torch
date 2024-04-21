@@ -13,13 +13,13 @@ class TestDtype(unittest.TestCase):
         self.assertIsInstance(dtype, torch.dtype)
         self.assertIn(dtype, hypothesis_torch.dtype.ALL_DTYPES)
 
-    @hypothesis.given(dtype=hypothesis_torch.dtype.dtype_strategy(elements=hypothesis_torch.dtype.INT_DTYPES))
+    @hypothesis.given(dtype=hypothesis_torch.dtype.dtype_strategy(dtypes=hypothesis_torch.dtype.INT_DTYPES))
     def test_dtype_strategy_int(self, dtype: torch.dtype):
         """Test that the dtype strategy when specifying a list of dtypes only generates dtypes in that list."""
         self.assertIsInstance(dtype, torch.dtype)
         self.assertIn(dtype, hypothesis_torch.dtype.INT_DTYPES)
 
-    @hypothesis.given(dtype=hypothesis_torch.dtype.dtype_strategy(elements=hypothesis_torch.dtype.FLOAT_DTYPES))
+    @hypothesis.given(dtype=hypothesis_torch.dtype.dtype_strategy(dtypes=hypothesis_torch.dtype.FLOAT_DTYPES))
     def test_dtype_strategy_float(self, dtype: torch.dtype):
         """Test that the dtype strategy when specifying a list of dtypes only generates dtypes in that list."""
         self.assertIsInstance(dtype, torch.dtype)
