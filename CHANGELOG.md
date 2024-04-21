@@ -2,6 +2,13 @@
 
 
 
+## v0.1.5 (2024-04-21)
+
+### Fix
+
+* fix: clean up imports ([`fc93cd5`](https://github.com/qthequartermasterman/hypothesis-torch/commit/fc93cd5b56f605713272085329bbb5fcd1134f3d))
+
+
 ## v0.1.4 (2024-04-21)
 
 ### Fix
