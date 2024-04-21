@@ -2,6 +2,21 @@
 
 
 
+## v0.1.7 (2024-04-21)
+
+### Ci
+
+* ci: use deploy key to bypass branch protection ([`22dd442`](https://github.com/qthequartermasterman/hypothesis-torch/commit/22dd442de7435f78eac1d7b6fddb3ecf8b6d67f6))
+
+* ci: use uv to install requirements ([`a87ef0a`](https://github.com/qthequartermasterman/hypothesis-torch/commit/a87ef0a45fe74478f1a996ed1dd0883d00ab5bc9))
+
+* ci: use uv to install requirements ([`3d4a0b0`](https://github.com/qthequartermasterman/hypothesis-torch/commit/3d4a0b02c31dd04f6f3c9a3bec946c81dab83f01))
+
+### Fix
+
+* fix: :label: typing fixes ([`a03d697`](https://github.com/qthequartermasterman/hypothesis-torch/commit/a03d6979d47f9b2bd5c4a8328e9b1927fdc96339))
+
+
 ## v0.1.6 (2024-04-21)
 
 ### Fix
