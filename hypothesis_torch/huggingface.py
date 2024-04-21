@@ -84,6 +84,7 @@ def transformer_strategy(
     """
     if isinstance(cls, st.SearchStrategy):
         cls = draw(cls)
+    assert issubclass(cls, transformers.PreTrainedModel)
     config = draw(build_from_cls_init(cls.config_class, **kwargs))
 
     if isinstance(instantiate_weights, st.SearchStrategy):
