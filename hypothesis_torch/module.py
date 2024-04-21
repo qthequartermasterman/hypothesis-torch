@@ -11,7 +11,6 @@ from hypothesis_torch import utils
 __all__ = [
     "same_shape_activation_strategy",
     "linear_network_strategy",
-    "convolution_output_shape",
 ]
 
 T = TypeVar("T")
@@ -145,11 +144,11 @@ def same_shape_activation_strategy() -> st.SearchStrategy[nn.Module]:
 @st.composite
 def linear_network_strategy(
     draw: st.DrawFn,
-    input_shape: tuple[int, ...] | torch.Size,
-    output_shape: tuple[int, ...] | torch.Size,
+    input_shape: tuple[int, ...] | torch.Size | st.SearchStrategy[tuple[int, ...]] | st.SearchStrategy[torch.Size],
+    output_shape: tuple[int, ...] | torch.Size | st.SearchStrategy[tuple[int, ...]] | st.SearchStrategy[torch.Size],
     activation_layer: nn.Module | st.SearchStrategy[nn.Module],
-    max_layer_size: int,
-    max_net_depth: int,
+    hidden_layer_size: int | st.SearchStrategy[int],
+    depth: int | st.SearchStrategy[int],
     device: torch.device | st.SearchStrategy[torch.device],
 ) -> nn.Module:
     """Strategy for generating random Torch fully-connected networks (sequential networks of linear layers with
@@ -157,24 +156,26 @@ def linear_network_strategy(
 
     Args:
         draw: The draw function provided by `hypothesis`.
-        input_shape: The shape of the input tensor.
-        output_shape: The shape of the output tensor.
+        input_shape: The shape of the input tensor. If a strategy is provided, it will be drawn from.
+        output_shape: The shape of the output tensor. If a strategy is provided, it will be drawn from.
         activation_layer: Activation layer to use. If a strategy is provided, it will be drawn from.
-        max_layer_size: The maximum size of a layer.
-        max_net_depth: The maximum depth of the network.
+        hidden_layer_size: The size of the hidden layers. If a strategy is provided, it will be drawn from.
+        depth: The maximum depth of the network. If a strategy is provided, it will be drawn from.
         device: The device on which to place the network. If a strategy is provided, it will be drawn from.
 
     Returns:
         A strategy for generating random linear networks.
     """
+    if isinstance(input_shape, st.SearchStrategy):
+        input_shape = draw(input_shape)
     if len(input_shape) not in {1, 2}:
         raise ValueError(f"input_shape must be a 1D or 2D tuple, but got {input_shape}")
-
     *_, input_size = input_shape
 
+    if isinstance(output_shape, st.SearchStrategy):
+        output_shape = draw(output_shape)
     if len(output_shape) not in {1, 2}:
         raise ValueError(f"output_shape must be a 1D or 2D tuple, but got {output_shape}")
-
     *_, output_size = output_shape
 
     if isinstance(device, st.SearchStrategy):
@@ -185,12 +186,17 @@ def linear_network_strategy(
     else:
         activation_layer_strategy = activation_layer
 
+    if not isinstance(hidden_layer_size, st.SearchStrategy):
+        hidden_layer_size = st.just(hidden_layer_size)
+    if isinstance(depth, st.SearchStrategy):
+        depth = draw(depth)
+
     with device:
         interior_layer_sizes = draw(
             st.lists(
-                st.integers(min_value=1, max_value=max_layer_size),
-                min_size=0,
-                max_size=max_net_depth,
+                hidden_layer_size,
+                min_size=depth,
+                max_size=depth,
             )
         )
         layer_sizes = [input_size, *interior_layer_sizes, output_size]
