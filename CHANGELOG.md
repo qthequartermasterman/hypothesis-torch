@@ -2,6 +2,13 @@
 
 
 
+## v0.1.3 (2024-04-21)
+
+### Fix
+
+* fix: allow manually launching release ([`f651484`](https://github.com/qthequartermasterman/hypothesis-torch/commit/f651484d092ce20e4d93c3406309069e5c551af9))
+
+
 ## v0.1.2 (2024-04-21)
 
 ### Fix
