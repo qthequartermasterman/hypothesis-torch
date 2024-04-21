@@ -2,6 +2,13 @@
 
 
 
+## v0.1.4 (2024-04-21)
+
+### Fix
+
+* fix: build command and dynamic version for setuptools ([`cd1889d`](https://github.com/qthequartermasterman/hypothesis-torch/commit/cd1889dd687904b1f8a1a946bdf41f2d17ac6c0f))
+
+
 ## v0.1.3 (2024-04-21)
 
 ### Fix
