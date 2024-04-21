@@ -60,7 +60,7 @@ major_on_zero = false
 version_variables = [
     "hypothesis_torch/__init__.py:__version__",
 ]
-build_command = "python -m build"
+build_command = "python -m pip install build && python -m build"
 
 [tool.setuptools.dynamic]
 version = {attr = "hypothesis_torch.__version__"}
