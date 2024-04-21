@@ -58,6 +58,6 @@ st.register_type_strategy(
     torch.Tensor,
     tensor_strategy(
         dtype=dtype_module.dtype_strategy(),
-        shape=st.integers(min_value=0, max_value=10), # Discourage large tensors
+        shape=st.integers(min_value=0, max_value=10),  # Discourage large tensors
     ),
 )
