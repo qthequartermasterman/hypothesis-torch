@@ -55,7 +55,7 @@ Issues = "https://github.com/qthequartermasterman/hypothesis-torch/issues"
 [tool.ruff]
 line-length = 120
 
-[tool.semantic-release]
+[tool.semantic_release]
 major_on_zero = false
 version_variables = [
     "hypothesis_torch/__init__.py:__version__",
