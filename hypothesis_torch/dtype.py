@@ -58,4 +58,5 @@ def dtype_strategy(draw: st.DrawFn, *, elements: Sequence[torch.dtype] | None = 
         elements = ALL_DTYPES
     return draw(st.sampled_from(elements))
 
+
 st.register_type_strategy(torch.dtype, dtype_strategy())

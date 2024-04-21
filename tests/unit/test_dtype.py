@@ -5,6 +5,7 @@ import torch
 
 import hypothesis_torch.dtype
 
+
 class TestDtype(unittest.TestCase):
     @hypothesis.given(dtype=...)
     def test_dtype_strategy(self, dtype: torch.dtype):
