@@ -2,6 +2,13 @@
 
 
 
+## v0.1.2 (2024-04-21)
+
+### Fix
+
+* fix: upload to pypi using semantic release ([`98ac240`](https://github.com/qthequartermasterman/hypothesis-torch/commit/98ac24014307ca8ac6e14170652fd4448228ccd8))
+
+
 ## v0.1.1 (2024-04-21)
 
 ### Ci
