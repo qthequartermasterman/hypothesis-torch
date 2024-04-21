@@ -46,5 +46,11 @@ dev = [
   "pytest==8.1.1"
 ]
 
+[project.urls]
+Homepage = "https://github.com/qthequartermasterman/hypothesis-torch"
+Documentation = "https://github.com/qthequartermasterman/hypothesis-torch"
+Repository = "https://github.com/qthequartermasterman/hypothesis-torch.git"
+Issues = "https://github.com/qthequartermasterman/hypothesis-torch/issues"
+
 [tool.ruff]
 line-length = 120
