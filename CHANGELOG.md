@@ -2,6 +2,17 @@
 
 
 
+## v0.1.1 (2024-04-21)
+
+### Ci
+
+* ci: publish to pypi ([`6d3bd54`](https://github.com/qthequartermasterman/hypothesis-torch/commit/6d3bd54eaf0dc12ff705e6f3847e25c27bacb8d1))
+
+### Fix
+
+* fix: fix semantic release settings ([`b702e85`](https://github.com/qthequartermasterman/hypothesis-torch/commit/b702e85e319324a2904f73a003121aa7bd6ffd6d))
+
+
 ## v0.1.0 (2024-04-21)
 
 ### Chore
