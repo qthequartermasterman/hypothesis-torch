@@ -17,7 +17,7 @@ def tensor_strategy(
     *,
     elements: st.SearchStrategy[Any] | Mapping[str, Any] | None = None,
     fill: st.SearchStrategy[Any] | None = None,
-    unique: bool = False,
+    unique: bool | st.SearchStrategy[bool] = False,
     device: torch.device | st.SearchStrategy[torch.device] | None = None,
 ) -> torch.Tensor:
     """A strategy for generating PyTorch tensors.
@@ -43,6 +43,9 @@ def tensor_strategy(
     if isinstance(dtype, st.SearchStrategy):
         dtype = draw(dtype)
     numpy_dtype = dtype_module.numpy_dtype_map[dtype]
+
+    if isinstance(unique, st.SearchStrategy):
+        unique = draw(unique)
 
     ndarray_strategy = numpy_st.arrays(numpy_dtype, shape, elements=elements, fill=fill, unique=unique)
     tensor = draw(ndarray_strategy.map(torch.from_numpy))
