@@ -1,8 +1,6 @@
 import inspect
 from typing import Callable, TypeVar
 
-import hypothesis.strategies as st
-import transformers
 
 T = TypeVar("T")
 

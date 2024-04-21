@@ -6,7 +6,7 @@ import hypothesis.extra.numpy as numpy_st
 import torch
 from hypothesis import strategies as st
 
-from hypothesis_torch import dtype as dtype_module, device as device_module
+from hypothesis_torch import dtype as dtype_module
 
 
 @st.composite

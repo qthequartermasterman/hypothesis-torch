@@ -14,7 +14,7 @@ if sys.version_info < (3, 10):
         next(b, None)
         return zip(a, b)
 else:
-    from itertools import pairwise
+    pass
 
 
 def alternate(iterable1: Iterable[T], iterable2: Iterable[T]) -> Generator[T, None, None]:
