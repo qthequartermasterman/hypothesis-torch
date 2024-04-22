@@ -10,8 +10,6 @@ updates:
     schedule:
       interval: "weekly"
     target-branch: "main"
-    rebase-strategy: auto
-    versioning-strategy: auto
     reviewers:
       - "qthequartermasterman"
   - package-ecosystem: github-actions
@@ -19,7 +17,5 @@ updates:
     schedule:
       interval: weekly
     target-branch: main
-    rebase-strategy: auto
-    versioning-strategy: auto
     reviewers:
       - qthequartermasterman
