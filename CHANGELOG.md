@@ -2,6 +2,71 @@
 
 
 
+## v0.1.9 (2024-04-22)
+
+### Chore
+
+* chore(deps): bump stefanzweifel/git-auto-commit-action from 4 to 5
+
+Bumps [stefanzweifel/git-auto-commit-action](https://github.com/stefanzweifel/git-auto-commit-action) from 4 to 5.
+- [Release notes](https://github.com/stefanzweifel/git-auto-commit-action/releases)
+- [Changelog](https://github.com/stefanzweifel/git-auto-commit-action/blob/master/CHANGELOG.md)
+- [Commits](https://github.com/stefanzweifel/git-auto-commit-action/compare/v4...v5)
+
+---
+updated-dependencies:
+- dependency-name: stefanzweifel/git-auto-commit-action
+  dependency-type: direct:production
+  update-type: version-update:semver-major
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`77dcfa5`](https://github.com/qthequartermasterman/hypothesis-torch/commit/77dcfa5cda44125a738f7338338c823e9c708d04))
+
+* chore(deps): bump actions/checkout from 3 to 4
+
+Bumps [actions/checkout](https://github.com/actions/checkout) from 3 to 4.
+- [Release notes](https://github.com/actions/checkout/releases)
+- [Changelog](https://github.com/actions/checkout/blob/main/CHANGELOG.md)
+- [Commits](https://github.com/actions/checkout/compare/v3...v4)
+
+---
+updated-dependencies:
+- dependency-name: actions/checkout
+  dependency-type: direct:production
+  update-type: version-update:semver-major
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`1409079`](https://github.com/qthequartermasterman/hypothesis-torch/commit/140907957ed24f6adf196c9a4a0b01cb3ab9fe5f))
+
+### Ci
+
+* ci: enable dependabot ([`42524ee`](https://github.com/qthequartermasterman/hypothesis-torch/commit/42524eef2f96134d6a8a4103925adc271460a15c))
+
+* ci: enable dependabot ([`1e63f06`](https://github.com/qthequartermasterman/hypothesis-torch/commit/1e63f06f995c1e329aa89ffefe73e09ca37254a7))
+
+### Fix
+
+* fix: only generate sensible floats for Softplus threshold ([`6d81c89`](https://github.com/qthequartermasterman/hypothesis-torch/commit/6d81c89f516688fae34bedcb5a5254db11de92d5))
+
+### Style
+
+* style: ruff ([`7d94775`](https://github.com/qthequartermasterman/hypothesis-torch/commit/7d947759e6655052e39d6753deb881080db0e643))
+
+### Test
+
+* test: :white_check_mark: unit tests for linear strategy ([`5dbfe6e`](https://github.com/qthequartermasterman/hypothesis-torch/commit/5dbfe6e618acc4aea31d2a81419f1736509bfd01))
+
+### Unknown
+
+* Merge pull request #2 from qthequartermasterman/dependabot/github_actions/main/stefanzweifel/git-auto-commit-action-5
+
+chore(deps): bump stefanzweifel/git-auto-commit-action from 4 to 5 ([`37675d3`](https://github.com/qthequartermasterman/hypothesis-torch/commit/37675d39951428c4e83cf70f6c3de0e5461b0a84))
+
+* Merge pull request #1 from qthequartermasterman/dependabot/github_actions/main/actions/checkout-4
+
+chore(deps): bump actions/checkout from 3 to 4 ([`ba59e35`](https://github.com/qthequartermasterman/hypothesis-torch/commit/ba59e3512632d77fd6f1b134d829130552929896))
+
+
 ## v0.1.8 (2024-04-22)
 
 ### Chore

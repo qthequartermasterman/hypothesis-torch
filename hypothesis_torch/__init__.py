@@ -1,6 +1,6 @@
 """Root imports for hypothesis-torch."""
 
-__version__ = "0.1.8"
+__version__ = "0.1.9"
 import importlib.util
 
 from hypothesis_torch.device import device_strategy
