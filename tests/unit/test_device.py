@@ -19,9 +19,7 @@ class TestDevice(unittest.TestCase):
 
     @hypothesis.given(hypothesis_torch.device.device_strategy(allow_meta_device=True))
     def test_device_strategy_with_meta_device(self, device: torch.device):
-        """Test that the device strategy with default arguments (except allow_meta_device overridden to True) can
-        generate either physical, available devices or meta devices.
-        """
+        """Test that the device strategy with allow_meta_device overridden to True can generate meta devices."""
         self.assertIsInstance(device, torch.device)
         self.assertIn(
             device,
