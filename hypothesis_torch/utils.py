@@ -1,8 +1,11 @@
+"""Utility iterable functions."""
+
 from __future__ import annotations
 
 import itertools
 import sys
-from typing import Iterable, TypeVar, Generator
+from collections.abc import Generator, Iterable
+from typing import TypeVar
 
 T = TypeVar("T")
 T_co = TypeVar("T_co", covariant=True)
@@ -20,6 +23,7 @@ if sys.version_info < (3, 10):
 
         Returns:
             An iterable of pairs of consecutive elements.
+
         """
         # pairwise('ABCDEFG') --> AB BC CD DE EF FG
         a, b = itertools.tee(iterable)
@@ -38,6 +42,7 @@ def alternate(iterable1: Iterable[T_co], iterable2: Iterable[T_co]) -> Generator
 
     Yields:
         Elements from the two iterables in alternation.
+
     """
     fill_value = object()
     it1 = iter(iterable1)

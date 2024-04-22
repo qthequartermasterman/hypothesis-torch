@@ -1,6 +1,9 @@
+"""Strategies for generating PyTorch tensors."""
+
 from __future__ import annotations
 
-from typing import Any, Mapping
+from collections.abc import Mapping
+from typing import Any
 
 import hypothesis.extra.numpy as numpy_st
 import torch
@@ -38,6 +41,7 @@ def tensor_strategy(
 
     Returns:
         A strategy for generating PyTorch tensors.
+
     """
     # We will pre-sample the dtype so that we can cast it to a concrete numpy dtype
     if isinstance(dtype, st.SearchStrategy):

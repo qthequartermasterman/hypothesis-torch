@@ -1,14 +1,19 @@
+"""Tests for the tensor strategy."""
+
 import unittest
 from typing import Any
 
 import hypothesis
 import torch
+from hypothesis import strategies as st
+
 import hypothesis_torch
 from tests.unit import utils
-from hypothesis import strategies as st
 
 
 class TestTensor(unittest.TestCase):
+    """Tests for the tensor strategy."""
+
     # TODO: Figure out a way to test passing in strategies into the arguments of the tensor_strategy.
 
     @hypothesis.given(tensor=...)
@@ -22,7 +27,7 @@ class TestTensor(unittest.TestCase):
             dtype=hypothesis_torch.dtype_strategy(),
             shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3),
             device=hypothesis_torch.device_strategy(),
-        )
+        ),
     )
     def test_tensor_strategy_fixed_arguments(self, tensor_and_kwargs: tuple[torch.Tensor, dict[str, Any]]) -> None:
         """Test that the registered tensor strategy generates tensors."""

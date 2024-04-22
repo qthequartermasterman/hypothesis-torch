@@ -66,5 +66,8 @@ build_command = "python -m pip install build && python -m build"
 version = {attr = "hypothesis_torch.__version__"}
 
 [tool.ruff.lint]
-select = ["E", "F"]
-ignore = ["F401"]
+select = ["D", "E", "F", "RUF100"]
+ignore = ["F401", "PT009", "S101"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"

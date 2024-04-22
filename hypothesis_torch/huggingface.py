@@ -1,18 +1,26 @@
+"""Strategies for generating Hugging Face transformers models."""
+
 from __future__ import annotations
 
+import inspect
+from typing import TypeVar
+
+import hypothesis.strategies as st
 import torch
 import transformers
-import hypothesis.strategies as st
-import inspect
+
 from hypothesis_torch import inspection_util
-from typing import TypeVar
 
 T = TypeVar("T")
 TransformerType = TypeVar("TransformerType", bound=transformers.PreTrainedModel)
 
 POSITIVE_INTS = st.integers(min_value=1)
 FLOATS_BETWEEN_ZERO_AND_ONE = st.floats(
-    min_value=0, max_value=1, allow_subnormal=False, allow_nan=False, allow_infinity=False
+    min_value=0,
+    max_value=1,
+    allow_subnormal=False,
+    allow_nan=False,
+    allow_infinity=False,
 )
 FLOATS_GREATER_THAN_ZERO = st.floats(min_value=0, allow_subnormal=False, allow_nan=False, allow_infinity=False)
 FLOATS_GREATER_THAN_ONE = st.floats(min_value=1, allow_subnormal=False, allow_nan=False, allow_infinity=False)
@@ -48,12 +56,12 @@ def build_from_cls_init(draw: st.DrawFn, cls: type[T], **kwargs) -> T:
 
     Returns:
         An instance of the class.
+
     """
     sig = inspection_util.infer_signature_annotations(cls.__init__)
     for param in sig.parameters.values():
-        if param.name in kwargs:
-            if isinstance(kwargs[param.name], st.SearchStrategy):
-                kwargs[param.name] = draw(kwargs[param.name])
+        if param.name in kwargs and isinstance(kwargs[param.name], st.SearchStrategy):
+            kwargs[param.name] = draw(kwargs[param.name])
         if param.annotation is inspect.Parameter.empty:
             continue
         if param.name in TRANSFORMER_CONFIG_KWARG_STRATEGIES:
@@ -82,6 +90,9 @@ def transformer_strategy(
             a forward pass.
         kwargs: Keyword arguments to pass to the transformer constructor. If a keyword argument is a strategy, it will
             be drawn from.
+
+    Returns:
+        A strategy for generating Hugging Face transformers.
     """
     if isinstance(cls, st.SearchStrategy):
         cls = draw(cls)

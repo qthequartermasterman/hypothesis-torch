@@ -1,6 +1,8 @@
+"""Strategies for generating torch devices."""
+
 from __future__ import annotations
 
-from typing import Sequence
+from collections.abc import Sequence
 
 import torch
 from hypothesis import strategies as st
@@ -15,7 +17,10 @@ AVAILABLE_PHYSICAL_DEVICES = AVAILABLE_CPU_DEVICES + AVAILABLE_CUDA_DEVICES + AV
 
 @st.composite
 def device_strategy(
-    draw: st.DrawFn, *, devices: Sequence[torch.device] | None = None, allow_meta_device: bool = False
+    draw: st.DrawFn,
+    *,
+    devices: Sequence[torch.device] | None = None,
+    allow_meta_device: bool = False,
 ) -> torch.device:
     """Strategy for generating torch devices.
 
@@ -26,6 +31,7 @@ def device_strategy(
 
     Returns:
         A strategy for generating torch devices.
+
     """
     if devices is None:
         devices = AVAILABLE_PHYSICAL_DEVICES

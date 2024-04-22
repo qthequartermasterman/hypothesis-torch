@@ -1,9 +1,13 @@
+"""Strategies for generating PyTorch dtypes."""
+
 from __future__ import annotations
 
+from collections.abc import Sequence
+
+import numpy as np
+import numpy.typing as npt
 import torch
 from hypothesis import strategies as st
-from typing import Sequence
-import numpy as np
 
 SIGNED_INT_DTYPES = [torch.int8, torch.int16, torch.int32, torch.int64]
 """All signed integer dtypes supported by PyTorch."""
@@ -24,7 +28,7 @@ BOOL_DTYPES = [torch.bool]
 ALL_DTYPES = INT_DTYPES + FLOAT_DTYPES + BFLOAT_DTYPES + COMPLEX_DTYPES + BOOL_DTYPES
 """All dtypes supported by PyTorch."""
 
-numpy_dtype_map: dict[torch.dtype, np.dtype] = {  # type: ignore
+numpy_dtype_map: dict[torch.dtype, npt.DTypeLike] = {
     torch.int8: np.int8,
     torch.int16: np.int16,
     torch.int32: np.int32,
@@ -38,14 +42,14 @@ numpy_dtype_map: dict[torch.dtype, np.dtype] = {  # type: ignore
     torch.complex128: np.complex128,
     torch.bool: np.bool_,
 }
-"""A mapping from torch dtypes to numpy dtypes. Useful for generating tensors of arbitrary dtypes from the builtin 
+"""A mapping from torch dtypes to numpy dtypes. Useful for generating tensors of arbitrary dtypes from the builtin
 numpy strategies."""
 
 assert set(numpy_dtype_map.keys()) == set(ALL_DTYPES)
 
 
 @st.composite
-def dtype_strategy(draw: st.DrawFn, *, dtypes: Sequence[torch.dtype] | None = None):
+def dtype_strategy(draw: st.DrawFn, *, dtypes: Sequence[torch.dtype] | None = None) -> torch.dtype:
     """Strategy for generating torch dtypes.
 
     Args:
@@ -54,6 +58,7 @@ def dtype_strategy(draw: st.DrawFn, *, dtypes: Sequence[torch.dtype] | None = No
 
     Returns:
         A strategy for generating torch dtypes.
+
     """
     if dtypes is None:
         dtypes = ALL_DTYPES

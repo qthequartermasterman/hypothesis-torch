@@ -1,6 +1,9 @@
+"""Utility functions for inspecting and manipulating callables and classes signatures."""
+
+from __future__ import annotations
+
 import inspect
 from typing import Callable, TypeVar
-
 
 T = TypeVar("T")
 
@@ -12,11 +15,12 @@ class ParameterInferAnnotationsFromDefault(inspect.Parameter):
     """
 
     @property
-    def annotation(self):
+    def annotation(self) -> type | inspect.Parameter.empty:
         """Get the annotation of the parameter, inferring it from the default value if it is not specified.
 
         Returns:
             The annotation (specified or inferred) of the parameter.
+
         """
         super_annotation = super().annotation
         if super_annotation is not inspect.Parameter.empty:
@@ -37,8 +41,7 @@ def infer_signature_annotations(func: Callable) -> inspect.Signature:
             default=param.default,
         )
         new_params.append(new_param)
-    new_sig = sig.replace(parameters=new_params)
-    return new_sig
+    return sig.replace(parameters=new_params)
 
 
 def get_all_subclasses(cls: type[T]) -> list[type[T]]:
@@ -49,6 +52,7 @@ def get_all_subclasses(cls: type[T]) -> list[type[T]]:
 
     Returns:
         A list of all subclasses of the class.
+
     """
     all_subclasses = []
     for subclass in cls.__subclasses__():

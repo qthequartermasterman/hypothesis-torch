@@ -1,10 +1,16 @@
+"""Tests for the device strategy."""
+
 import unittest
+
 import hypothesis
 import torch
+
 import hypothesis_torch.device
 
 
 class TestDevice(unittest.TestCase):
+    """Tests for the device strategy."""
+
     @hypothesis.given(device=hypothesis_torch.device.device_strategy())
     def test_device_strategy(self, device: torch.device):
         """Test that the default arguments of device strategy can only generate physical, available devices."""
@@ -18,12 +24,14 @@ class TestDevice(unittest.TestCase):
         """
         self.assertIsInstance(device, torch.device)
         self.assertIn(
-            device, hypothesis_torch.device.AVAILABLE_PHYSICAL_DEVICES + hypothesis_torch.device.AVAILABLE_META_DEVICES
+            device,
+            hypothesis_torch.device.AVAILABLE_PHYSICAL_DEVICES + hypothesis_torch.device.AVAILABLE_META_DEVICES,
         )
 
     @unittest.skipUnless(torch.cuda.is_available(), "CUDA is not available")
     @hypothesis.given(hypothesis_torch.device.device_strategy(devices=hypothesis_torch.device.AVAILABLE_CUDA_DEVICES))
     def test_device_strategy_with_cuda_devices(self, device: torch.device):
+        """Test the device strategy when specifying a list of CUDA devices only generates available CUDA devices."""
         self.assertIsInstance(device, torch.device)
         assert device in hypothesis_torch.device.AVAILABLE_CUDA_DEVICES
 

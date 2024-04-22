@@ -1,3 +1,5 @@
+"""Tests for the dtype module."""
+
 import unittest
 
 import hypothesis
@@ -7,6 +9,8 @@ import hypothesis_torch.dtype
 
 
 class TestDtype(unittest.TestCase):
+    """Tests for the dtype strategy."""
+
     @hypothesis.given(dtype=...)
     def test_dtype_strategy(self, dtype: torch.dtype):
         """Test that using the registered `torch.dtype` strategy gives a dtype."""

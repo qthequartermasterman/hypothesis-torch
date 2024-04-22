@@ -1,10 +1,16 @@
+"""Tests for the utilities functions."""
+
 import unittest
+
 import hypothesis
 from hypothesis import strategies as st
+
 from hypothesis_torch import utils
 
 
 class TestPairwise(unittest.TestCase):
+    """Tests for the `pairwise` utility function."""
+
     @hypothesis.given(iterable=st.lists(st.integers()))
     def test_pairwise(self, iterable: list[int]):
         """Test that the pairwise strategy generates pairs of integers."""
@@ -24,6 +30,8 @@ class TestPairwise(unittest.TestCase):
 
 
 class TestAlternate(unittest.TestCase):
+    """Tests for the `alternate` utility function."""
+
     @hypothesis.given(iterable1=st.lists(st.integers()), iterable2=st.lists(st.integers()))
     def test_alternate(self, iterable1: list[int], iterable2: list[int]):
         """Test that the alternate strategy generates alternating integers."""
@@ -49,8 +57,7 @@ class TestAlternate(unittest.TestCase):
                 else:
                     self.assertIsInstance(alternate, int)
                     self.assertEqual(alternate, iterable2[i // 2])
+            elif len(iterable1) > len(iterable2):
+                self.assertEqual(alternate, iterable1[i - shorter_iterable_length])
             else:
-                if len(iterable1) > len(iterable2):
-                    self.assertEqual(alternate, iterable1[i - shorter_iterable_length])
-                else:
-                    self.assertEqual(alternate, iterable2[i - shorter_iterable_length])
+                self.assertEqual(alternate, iterable2[i - shorter_iterable_length])
