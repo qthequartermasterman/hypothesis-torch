@@ -127,7 +127,7 @@ def same_shape_activation_strategy() -> st.SearchStrategy[nn.Module]:
         signature_to_strategy(nn.Sigmoid),
         signature_to_strategy(nn.SiLU, inplace=st.booleans()),
         signature_to_strategy(nn.Mish, inplace=st.booleans()),
-        signature_to_strategy(nn.Softplus, beta=SENSIBLE_FLOATS, threshold=POSITIVE_INTS),
+        signature_to_strategy(nn.Softplus, beta=SENSIBLE_FLOATS, threshold=SENSIBLE_POSITIVE_FLOATS),
         signature_to_strategy(nn.Softshrink, lambd=SENSIBLE_POSITIVE_FLOATS),
         signature_to_strategy(nn.Softsign),
         signature_to_strategy(nn.Tanh),
