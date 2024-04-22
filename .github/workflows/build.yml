@@ -32,11 +32,11 @@ jobs:
     - name: Lint with ruff
       if: ${{ matrix.python-version == '3.9' }}
       run: |
-        uv ruff check
+        ruff check
     - name: Format with ruff
       if: ${{ matrix.python-version == '3.9' }}
       run: |
-        uv ruff format
+        ruff format
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: 'style fixes by ruff'
