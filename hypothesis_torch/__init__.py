@@ -6,5 +6,6 @@ from hypothesis_torch.module import same_shape_activation_strategy, linear_netwo
 
 # Import Hugging Face strategies if transformers is installed
 import importlib.util
+
 if importlib.util.find_spec("transformers") is not None:
     from hypothesis_torch.huggingface import transformer_strategy

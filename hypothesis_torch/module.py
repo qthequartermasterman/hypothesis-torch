@@ -209,10 +209,10 @@ def linear_network_strategy(
 
 def convolution_output_shape(
     input_shape: tuple[int, ...] | torch.Tensor,
-    kernel_size: tuple[int, ...]| torch.Tensor,
-    stride: tuple[int, ...]| torch.Tensor,
-    padding: tuple[int, ...]| torch.Tensor,
-    dilation: tuple[int, ...]| torch.Tensor,
+    kernel_size: tuple[int, ...] | torch.Tensor,
+    stride: tuple[int, ...] | torch.Tensor,
+    padding: tuple[int, ...] | torch.Tensor,
+    dilation: tuple[int, ...] | torch.Tensor,
 ) -> tuple[int, ...]:
     """Calculate the output shape of a convolutional layer."""
     input_shape = torch.tensor(input_shape, dtype=torch.uint8)

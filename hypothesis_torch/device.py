@@ -5,9 +5,9 @@ from typing import Sequence
 import torch
 from hypothesis import strategies as st
 
-AVAILABLE_CPU_DEVICES = [torch.device("cpu", i) for i in range(torch.cpu.device_count())]
+AVAILABLE_CPU_DEVICES = [torch.device("cpu")]
 AVAILABLE_CUDA_DEVICES = [torch.device("cuda", i) for i in range(torch.cuda.device_count())]
-AVAILABLE_MPS_DEVICES = [torch.device("mps", i) for i in range(torch.backends.mps.is_available())]
+AVAILABLE_MPS_DEVICES = [torch.device("mps")]
 AVAILABLE_META_DEVICES = [torch.device("meta")]
 
 AVAILABLE_PHYSICAL_DEVICES = AVAILABLE_CPU_DEVICES + AVAILABLE_CUDA_DEVICES + AVAILABLE_MPS_DEVICES
