@@ -11,7 +11,7 @@ jobs:
   build:
     strategy:
       matrix:
-        python-version: [3.9, 3.10, 3.11, 3.12]
+        python-version: ['3.9', '3.10', '3.11', '3.12']
     runs-on: ubuntu-latest
 
     steps:
@@ -28,7 +28,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade uv
-        uv pip install --system .[dev, huggingface]
+        uv pip install --system ".[dev,huggingface]"
     - name: Lint with ruff
       if: ${{ matrix.python-version == '3.9' }}
       run: |
