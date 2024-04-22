@@ -110,7 +110,7 @@ size of 10, an output size of 5, and 3 hidden layers with sizes between 5 and 10
 ```python
 import hypothesis_torch
 from hypothesis import strategies as st
-hypothesis_torch.linear_network_strategy(input_shape=(1,10), output_shape=(1,5), hidden_layer_size=st.integers(5, 10), depth=3)
+hypothesis_torch.linear_network_strategy(input_shape=(1,10), output_shape=(1,5), hidden_layer_size=st.integers(5, 10), num_hidden_layers=3)
 ```
 
 #### Hugging Face Transformer Models

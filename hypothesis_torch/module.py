@@ -35,11 +35,33 @@ POSITIVE_INTS = st.integers(min_value=1)
 
 
 @st.composite
+def lower_upper_strategy(draw: st.DrawFn) -> tuple[float, float]:
+    """Strategy for generating a pair of floats where the first is less than the second.
+
+    Args:
+        draw: The draw function provided by `hypothesis`.
+
+    Returns:
+        A pair of floats where the first is less than the second.
+
+    """
+    lower = draw(SENSIBLE_FLOATS)
+    upper = draw(SENSIBLE_FLOATS.filter(lambda x: x > lower))
+    return lower, upper
+
+
+@st.composite
+def rrelu_strategy(draw: st.DrawFn) -> nn.RReLU:
+    lower, upper = draw(lower_upper_strategy())
+    inplace = draw(st.booleans())
+    return nn.RReLU(lower, upper, inplace)
+
+
+@st.composite
 def signature_to_strategy(draw: st.DrawFn, constructor: type[T], *args, **kwargs) -> T:
     """Strategy for generating instances of a class by drawing values for its constructor.
 
     Args:
-    ----
         draw: The draw function provided by `hypothesis`.
         constructor: The class to generate an instance of.
         args: Positional arguments to pass to the constructor. If an argument is a strategy, it will be drawn from.
@@ -47,7 +69,6 @@ def signature_to_strategy(draw: st.DrawFn, constructor: type[T], *args, **kwargs
             from.
 
     Returns:
-    -------
         An instance of the class.
 
     """
@@ -99,14 +120,9 @@ def same_shape_activation_strategy() -> st.SearchStrategy[nn.Module]:
         signature_to_strategy(nn.PReLU, num_parameters=st.just(1), init=SENSIBLE_FLOATS),
         signature_to_strategy(nn.ReLU, inplace=st.booleans()),
         signature_to_strategy(nn.ReLU6, inplace=st.booleans()),
-        signature_to_strategy(
-            nn.RReLU,
-            lower=SENSIBLE_FLOATS,
-            upper=SENSIBLE_FLOATS,
-            inplace=st.booleans(),
-        ),
+        rrelu_strategy(),
         signature_to_strategy(nn.SELU, inplace=st.booleans()),
-        signature_to_strategy(nn.CELU, alpha=SENSIBLE_FLOATS, inplace=st.booleans()),
+        signature_to_strategy(nn.CELU, alpha=SENSIBLE_FLOATS.filter(lambda x: abs(x) > 1e-5), inplace=st.booleans()),
         signature_to_strategy(nn.GELU, approximate=st.sampled_from(["none", "tanh"])),
         signature_to_strategy(nn.Sigmoid),
         signature_to_strategy(nn.SiLU, inplace=st.booleans()),
@@ -133,7 +149,7 @@ def linear_network_strategy(
     output_shape: tuple[int, ...] | torch.Size | st.SearchStrategy[tuple[int, ...]] | st.SearchStrategy[torch.Size],
     activation_layer: nn.Module | st.SearchStrategy[nn.Module],
     hidden_layer_size: int | st.SearchStrategy[int],
-    depth: int | st.SearchStrategy[int],
+    num_hidden_layers: int | st.SearchStrategy[int],
     device: torch.device | st.SearchStrategy[torch.device],
 ) -> nn.Module:
     """Strategy for generating random Torch sequential networks of linear layers with activation functions.
@@ -144,7 +160,7 @@ def linear_network_strategy(
         output_shape: The shape of the output tensor. If a strategy is provided, it will be drawn from.
         activation_layer: Activation layer to use. If a strategy is provided, it will be drawn from.
         hidden_layer_size: The size of the hidden layers. If a strategy is provided, it will be drawn from.
-        depth: The maximum depth of the network. If a strategy is provided, it will be drawn from.
+        num_hidden_layers: The maximum depth of the network. If a strategy is provided, it will be drawn from.
         device: The device on which to place the network. If a strategy is provided, it will be drawn from.
 
     Returns:
@@ -171,25 +187,33 @@ def linear_network_strategy(
     else:
         activation_layer_strategy = activation_layer
 
+    # Several activation functions are not supported on MPS devices
+    if device.type == "mps":
+        unsupported_mps_activations = [nn.Hardshrink, nn.RReLU]
+
+        activation_layer_strategy = activation_layer_strategy.filter(
+            lambda x: not isinstance(x, tuple(unsupported_mps_activations))
+        )
+
     if not isinstance(hidden_layer_size, st.SearchStrategy):
         hidden_layer_size = st.just(hidden_layer_size)
-    if isinstance(depth, st.SearchStrategy):
-        depth = draw(depth)
+    if isinstance(num_hidden_layers, st.SearchStrategy):
+        num_hidden_layers = draw(num_hidden_layers)
 
     with device:
         interior_layer_sizes = draw(
             st.lists(
                 hidden_layer_size,
-                min_size=depth,
-                max_size=depth,
-            ),
+                min_size=num_hidden_layers,
+                max_size=num_hidden_layers,
+            )
         )
         layer_sizes = [input_size, *interior_layer_sizes, output_size]
         layers: list[nn.Module] = [nn.Linear(a, b) for a, b in utils.pairwise(layer_sizes)]
         activations: list[nn.Module] = draw(
             st.lists(activation_layer_strategy, min_size=len(layers), max_size=len(layers)),
         )
-        return nn.Sequential(*utils.alternate(layers, activations))
+        return nn.Sequential(*utils.alternate(layers, activations)).to(device)
 
 
 def convolution_output_shape(

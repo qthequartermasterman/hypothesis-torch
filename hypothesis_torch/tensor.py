@@ -8,6 +8,7 @@ from typing import Any
 import hypothesis.extra.numpy as numpy_st
 import torch
 from hypothesis import strategies as st
+import hypothesis
 
 from hypothesis_torch import dtype as dtype_module
 
@@ -48,15 +49,18 @@ def tensor_strategy(
         dtype = draw(dtype)
     numpy_dtype = dtype_module.numpy_dtype_map[dtype]
 
+    # We will pre-sample the device so that we can cast it to a concrete torch device
+    if isinstance(device, st.SearchStrategy):
+        device = draw(device)
+
+    # MPS devices do not support tensors with dtype torch.float64 and bfloat16
+    hypothesis.assume(not (device is not None and device.type == "mps" and dtype in (torch.float64, torch.bfloat16)))
+
     if isinstance(unique, st.SearchStrategy):
         unique = draw(unique)
 
     ndarray_strategy = numpy_st.arrays(numpy_dtype, shape, elements=elements, fill=fill, unique=unique)
     tensor = draw(ndarray_strategy.map(torch.from_numpy))
-
-    # We will pre-sample the device so that we can cast it to a concrete torch device
-    if isinstance(device, st.SearchStrategy):
-        device = draw(device)
 
     return tensor.to(dtype=dtype, device=device)  # Final casting to the desired dtype and device
 
