@@ -2,6 +2,39 @@
 
 
 
+## v0.1.8 (2024-04-22)
+
+### Chore
+
+* chore: pre-commit configuration ([`2c8efaa`](https://github.com/qthequartermasterman/hypothesis-torch/commit/2c8efaa03c87a56cb3483fc1f07ca080b598ddd5))
+
+### Ci
+
+* ci: fix github actions ([`1b6d8b2`](https://github.com/qthequartermasterman/hypothesis-torch/commit/1b6d8b29b460579730954210fbb221db200a53d7))
+
+* ci: fix github actions ([`a3abe85`](https://github.com/qthequartermasterman/hypothesis-torch/commit/a3abe8564863bf5818fecc900b538d647051d528))
+
+* ci: add PR build ([`3284a11`](https://github.com/qthequartermasterman/hypothesis-torch/commit/3284a1168e75bb33f95a119406d1c73a85c28d26))
+
+### Fix
+
+* fix: only mark MPS devices as available if MPS itself is available ([`d277350`](https://github.com/qthequartermasterman/hypothesis-torch/commit/d277350ff3de4d359011a8b234aef5beff227880))
+
+### Style
+
+* style: :rotating_light: ruff ([`8912c96`](https://github.com/qthequartermasterman/hypothesis-torch/commit/8912c96eaa5e96e8b5d117989030e7c763ee4702))
+
+* style: :rotating_light: ruff ([`6599c7d`](https://github.com/qthequartermasterman/hypothesis-torch/commit/6599c7d062c6eeaa09fcab5b5cdd64f8f1fe29c0))
+
+* style: :rotating_light: ruff format ([`97f6e6e`](https://github.com/qthequartermasterman/hypothesis-torch/commit/97f6e6e31f564442b9384b60717e0c1dc030fcc2))
+
+### Test
+
+* test: :white_check_mark: unit tests for tensors ([`50da775`](https://github.com/qthequartermasterman/hypothesis-torch/commit/50da77539f9d4d30165d6f136d46518b7991b00d))
+
+* test: :white_check_mark: unit tests for iterable utils ([`f262c89`](https://github.com/qthequartermasterman/hypothesis-torch/commit/f262c8936ac1dfc7b2d4b082d5478ad5111a3bf2))
+
+
 ## v0.1.7 (2024-04-21)
 
 ### Ci
