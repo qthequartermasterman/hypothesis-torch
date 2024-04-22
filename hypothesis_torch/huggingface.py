@@ -43,7 +43,8 @@ def build_from_cls_init(draw: st.DrawFn, cls: type[T], **kwargs) -> T:
     Args:
         draw: The draw function provided by `hypothesis`.
         cls: The class to generate an instance of.
-        kwargs: Keyword arguments to pass to the constructor. If a keyword argument is a strategy, it will be drawn from.
+        kwargs: Keyword arguments to pass to the constructor. If a keyword argument is a strategy, it will be drawn
+            from.
 
     Returns:
         An instance of the class.

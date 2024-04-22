@@ -38,7 +38,8 @@ numpy_dtype_map: dict[torch.dtype, np.dtype] = {  # type: ignore
     torch.complex128: np.complex128,
     torch.bool: np.bool_,
 }
-"""A mapping from torch dtypes to numpy dtypes. Useful for generating tensors of arbitrary dtypes from the builtin numpy strategies."""
+"""A mapping from torch dtypes to numpy dtypes. Useful for generating tensors of arbitrary dtypes from the builtin 
+numpy strategies."""
 
 assert set(numpy_dtype_map.keys()) == set(ALL_DTYPES)
 

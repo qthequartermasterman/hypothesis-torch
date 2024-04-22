@@ -12,7 +12,7 @@ class TestTensor(unittest.TestCase):
     # TODO: Figure out a way to test passing in strategies into the arguments of the tensor_strategy.
 
     @hypothesis.given(tensor=...)
-    def test_tensor_strategy(self, tensor: torch.Tensor) -> None:
+    def test_tensor_strategy_registered(self, tensor: torch.Tensor) -> None:
         """Test that the registered tensor strategy generates tensors."""
         self.assertIsInstance(tensor, torch.Tensor)
 
@@ -24,7 +24,7 @@ class TestTensor(unittest.TestCase):
             device=hypothesis_torch.device_strategy(),
         )
     )
-    def test_tensor_strategy(self, tensor_and_kwargs: tuple[torch.Tensor, dict[str, Any]]) -> None:
+    def test_tensor_strategy_fixed_arguments(self, tensor_and_kwargs: tuple[torch.Tensor, dict[str, Any]]) -> None:
         """Test that the registered tensor strategy generates tensors."""
         tensor, kwargs = tensor_and_kwargs
         self.assertIsInstance(tensor, torch.Tensor)

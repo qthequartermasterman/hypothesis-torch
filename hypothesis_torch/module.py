@@ -40,7 +40,8 @@ def signature_to_strategy(draw: st.DrawFn, constructor: type[T], *args, **kwargs
         draw: The draw function provided by `hypothesis`.
         constructor: The class to generate an instance of.
         args: Positional arguments to pass to the constructor. If an argument is a strategy, it will be drawn from.
-        kwargs: Keyword arguments to pass to the constructor. If a keyword argument is a strategy, it will be drawn from.
+        kwargs: Keyword arguments to pass to the constructor. If a keyword argument is a strategy, it will be drawn
+            from.
     Returns:
         An instance of the class.
     """
@@ -91,10 +92,12 @@ def same_shape_activation_strategy() -> st.SearchStrategy[nn.Module]:
         signature_to_strategy(nn.LeakyReLU, negative_slope=SENSIBLE_FLOATS, inplace=st.booleans()),
         # nn.LogSigmoid
         signature_to_strategy(nn.LogSigmoid),
-        # TODO: nn.MultiheadAttention, although in the `Non-linear activations` section, does not have the same shape inside and outside
+        # TODO: nn.MultiheadAttention, although in the `Non-linear activations` section, does not have the same shape
+        #  inside and outside
         # nn.PReLU(num_parameters=1, init=0.25, device=None, dtype=None)
         # TODO: PReLU might depend on the input shape
-        # TODO: num_parameters (int) – number of a to learn. Although it takes an int as input, there is only two values are legitimate: 1, or the number of channels at input. Default: 1
+        # TODO: num_parameters (int) – number of a to learn. Although it takes an int as input, there is only two
+        #  values are legitimate: 1, or the number of channels at input. Default: 1
         signature_to_strategy(nn.PReLU, num_parameters=st.just(1), init=SENSIBLE_FLOATS),
         # nn.ReLU
         signature_to_strategy(nn.ReLU, inplace=st.booleans()),
