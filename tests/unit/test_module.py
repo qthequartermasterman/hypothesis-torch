@@ -11,6 +11,23 @@ from hypothesis import strategies as st
 from tests.unit import utils
 
 
+class TestActivationStrategy(unittest.TestCase):
+    """Tests for the activation strategy."""
+
+    @hypothesis.given(
+        activation_layer=hypothesis_torch.same_shape_activation_strategy(),
+    )
+    def test_activation_strategy(self, activation_layer: torch.nn.Module) -> None:
+        """Test that the activation strategy generates an activation layer."""
+        batch_size = 3
+        input_shape = (batch_size, 5)
+        input_tensor = torch.ones(input_shape)
+        output_tensor = activation_layer(input_tensor)
+
+        self.assertIsInstance(activation_layer, torch.nn.Module)
+        self.assertEqual(output_tensor.shape, input_shape)
+
+
 class TestLinearStrategy(unittest.TestCase):
     """Tests for the linear strategy."""
 
