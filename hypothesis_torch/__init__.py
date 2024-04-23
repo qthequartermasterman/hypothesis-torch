@@ -7,8 +7,25 @@ lacks built-in support for Pytorch tensors and modules, so this library provides
 __version__ = "0.1.10"
 import importlib.util
 
-from hypothesis_torch.device import device_strategy
-from hypothesis_torch.dtype import dtype_strategy
+from hypothesis_torch.device import (
+    device_strategy,
+    AVAILABLE_CPU_DEVICES,
+    AVAILABLE_CUDA_DEVICES,
+    AVAILABLE_MPS_DEVICES,
+    AVAILABLE_META_DEVICES,
+    AVAILABLE_PHYSICAL_DEVICES,
+)
+from hypothesis_torch.dtype import (
+    dtype_strategy,
+    FLOAT_DTYPES,
+    INT_DTYPES,
+    SIGNED_INT_DTYPES,
+    UNSIGNED_INT_DTYPES,
+    BFLOAT_DTYPES,
+    COMPLEX_DTYPES,
+    BOOL_DTYPES,
+    ALL_DTYPES,
+)
 from hypothesis_torch.module import linear_network_strategy, same_shape_activation_strategy
 from hypothesis_torch.tensor import tensor_strategy
 
