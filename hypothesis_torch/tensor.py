@@ -23,6 +23,7 @@ def tensor_strategy(
     fill: st.SearchStrategy[Any] | None = None,
     unique: bool | st.SearchStrategy[bool] = False,
     device: torch.device | st.SearchStrategy[torch.device] | None = None,
+    layout: torch.layout | st.SearchStrategy[torch.layout] | None = None,
 ) -> torch.Tensor:
     """A strategy for generating PyTorch tensors.
 
@@ -39,6 +40,8 @@ def tensor_strategy(
         unique: Whether the tensor's elements should all be distinct from one another. Note that multiple NaN values
             may still be allowed.
         device: The device on which to place the tensor. If None, the default device is used.
+        layout: The memory layout of the tensor. If None, a suitable default will be inferred based on the other
+            arguments. Note that sparse layouts are not supported on MPS devices.
 
     Returns:
         A strategy for generating PyTorch tensors.
@@ -53,9 +56,16 @@ def tensor_strategy(
     if isinstance(device, st.SearchStrategy):
         device = draw(device)
 
+    if layout is None:
+        layout = st.from_type(torch.layout)
+    if isinstance(layout, st.SearchStrategy):
+        layout = draw(layout)
+
     # INCOMPATIBILITY HANDLING
     # MPS devices do not support tensors with dtype torch.float64 and bfloat16
     hypothesis.assume(not (device is not None and device.type == "mps" and dtype in (torch.float64, torch.bfloat16)))
+    # MPS devices do not support sparse tensors
+    hypothesis.assume(not (device is not None and device.type == "mps" and layout == torch.sparse_coo))
     # If the dtype is an integer, we need to make sure that the elements are integers within the dtype's range
     if dtype in dtype_module.INT_DTYPES and isinstance(elements, st.SearchStrategy):
         info = torch.iinfo(dtype)
@@ -67,7 +77,17 @@ def tensor_strategy(
     ndarray_strategy = numpy_st.arrays(numpy_dtype, shape, elements=elements, fill=fill, unique=unique)
     tensor = draw(ndarray_strategy.map(torch.from_numpy))
 
-    return tensor.to(dtype=dtype, device=device)  # Final casting to the desired dtype and device
+    tensor = tensor.to(device=device, dtype=dtype)
+
+    if layout == torch.strided:
+        tensor = tensor.contiguous()
+    elif layout == torch.sparse_coo:
+        # TODO: Implement coalesced handling
+        tensor = tensor.to_sparse_coo()
+    else:
+        raise ValueError(f"Unsupported layout: {layout}")
+
+    return tensor
 
 
 st.register_type_strategy(
