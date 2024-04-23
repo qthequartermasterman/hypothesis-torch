@@ -48,9 +48,9 @@ class TestTensor(unittest.TestCase):
 
     @hypothesis.given(
         tensor_and_kwargs=utils.meta_strategy_constraints(
-            strategy_func=hypothesis_torch.tensor.tensor_strategy,
+            strategy_func=hypothesis_torch.tensor_strategy,
             dtype=hypothesis_torch.dtype_strategy(),
-            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3),
+            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3).map(tuple),
             device=hypothesis_torch.device_strategy(),
         ),
     )
@@ -72,7 +72,7 @@ class TestTensor(unittest.TestCase):
     @hypothesis.given(
         tensor=hypothesis_torch.tensor_strategy(
             dtype=torch.float32,
-            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3),
+            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3).map(tuple),
             unique=st.booleans(),
             device=st.just(torch.device("cpu")),
             elements=st.floats(min_value=-10, max_value=10),
@@ -87,7 +87,7 @@ class TestTensor(unittest.TestCase):
     @hypothesis.given(
         tensor=hypothesis_torch.tensor_strategy(
             dtype=torch.float16,
-            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3),
+            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3).map(tuple),
             unique=st.booleans(),
             device=st.just(torch.device("cpu")),
             elements=st.floats(min_value=-10, max_value=10),
@@ -102,7 +102,7 @@ class TestTensor(unittest.TestCase):
     @hypothesis.given(
         tensor=hypothesis_torch.tensor_strategy(
             dtype=torch.bfloat16,
-            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3),
+            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3).map(tuple),
             unique=st.booleans(),
             device=st.just(torch.device("cpu")),
             elements=st.floats(min_value=-10, max_value=10),
@@ -117,7 +117,7 @@ class TestTensor(unittest.TestCase):
     @hypothesis.given(
         tensor=hypothesis_torch.tensor_strategy(
             dtype=torch.complex64,
-            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3),
+            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3).map(tuple),
             unique=st.booleans(),
             device=st.just(torch.device("cpu")),
             elements=st.complex_numbers(),
@@ -132,7 +132,7 @@ class TestTensor(unittest.TestCase):
     @hypothesis.given(
         tensor=hypothesis_torch.tensor_strategy(
             dtype=torch.int8,
-            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3),
+            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3).map(tuple),
             device=st.just(torch.device("cpu")),
             elements=st.integers(**INT8_RANGE),
         )
@@ -144,7 +144,7 @@ class TestTensor(unittest.TestCase):
     @hypothesis.given(
         tensor=hypothesis_torch.tensor_strategy(
             dtype=torch.int8,
-            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3),
+            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3).map(tuple),
             device=st.just(torch.device("cpu")),
             elements=st.integers(),
         )
@@ -156,7 +156,7 @@ class TestTensor(unittest.TestCase):
     @hypothesis.given(
         tensor=hypothesis_torch.tensor_strategy(
             dtype=torch.int16,
-            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3),
+            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3).map(tuple),
             device=st.just(torch.device("cpu")),
             elements=st.integers(**INT16_RANGE),
         )
@@ -168,7 +168,7 @@ class TestTensor(unittest.TestCase):
     @hypothesis.given(
         tensor=hypothesis_torch.tensor_strategy(
             dtype=torch.int16,
-            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3),
+            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3).map(tuple),
             device=st.just(torch.device("cpu")),
             elements=st.integers(),
         )
@@ -180,7 +180,7 @@ class TestTensor(unittest.TestCase):
     @hypothesis.given(
         tensor=hypothesis_torch.tensor_strategy(
             dtype=torch.int32,
-            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3),
+            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3).map(tuple),
             device=st.just(torch.device("cpu")),
             elements=st.integers(**INT32_RANGE),
         )
@@ -192,7 +192,7 @@ class TestTensor(unittest.TestCase):
     @hypothesis.given(
         tensor=hypothesis_torch.tensor_strategy(
             dtype=torch.int32,
-            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3),
+            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3).map(tuple),
             device=st.just(torch.device("cpu")),
             elements=st.integers(),
         )
@@ -204,7 +204,7 @@ class TestTensor(unittest.TestCase):
     @hypothesis.given(
         tensor=hypothesis_torch.tensor_strategy(
             dtype=torch.int64,
-            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3),
+            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3).map(tuple),
             device=st.just(torch.device("cpu")),
             elements=st.integers(**INT64_RANGE),
         )
@@ -216,7 +216,7 @@ class TestTensor(unittest.TestCase):
     @hypothesis.given(
         tensor=hypothesis_torch.tensor_strategy(
             dtype=torch.int64,
-            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3),
+            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3).map(tuple),
             device=st.just(torch.device("cpu")),
             elements=st.integers(),
         )
@@ -228,7 +228,7 @@ class TestTensor(unittest.TestCase):
     @hypothesis.given(
         tensor=hypothesis_torch.tensor_strategy(
             dtype=torch.uint8,
-            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3),
+            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3).map(tuple),
             device=st.just(torch.device("cpu")),
             elements=st.integers(**UINT8_RANGE),
         )
@@ -240,7 +240,7 @@ class TestTensor(unittest.TestCase):
     @hypothesis.given(
         tensor=hypothesis_torch.tensor_strategy(
             dtype=torch.uint8,
-            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3),
+            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3).map(tuple),
             device=st.just(torch.device("cpu")),
             elements=st.integers(),
         )
