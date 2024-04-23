@@ -15,17 +15,14 @@ AVAILABLE_META_DEVICES = [torch.device("meta")]
 AVAILABLE_PHYSICAL_DEVICES = AVAILABLE_CPU_DEVICES + AVAILABLE_CUDA_DEVICES + AVAILABLE_MPS_DEVICES
 
 
-@st.composite
 def device_strategy(
-    draw: st.DrawFn,
     *,
     devices: Sequence[torch.device] | None = None,
     allow_meta_device: bool = False,
-) -> torch.device:
+) -> st.SearchStrategy[torch.device]:
     """Strategy for generating torch devices.
 
     Args:
-        draw: The draw function provided by `hypothesis`.
         devices: A sequence of devices to sample from. If None, all available devices are sampled.
         allow_meta_device: Whether to allow the meta device.
 
@@ -38,8 +35,9 @@ def device_strategy(
     if allow_meta_device:
         devices = list(devices) + AVAILABLE_META_DEVICES
     assert devices is not None
-    return draw(st.sampled_from(devices))
+    return st.sampled_from(devices)
 
 
 st.register_type_strategy(torch.device, device_strategy())
-st.register_type_strategy(torch.cuda.device, device_strategy(devices=AVAILABLE_CUDA_DEVICES))
+if torch.cuda.is_available():
+    st.register_type_strategy(torch.cuda.device, device_strategy(devices=AVAILABLE_CUDA_DEVICES))
