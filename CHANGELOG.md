@@ -2,9 +2,41 @@
 
 
 
+## v0.1.10 (2024-04-23)
+
+### Ci
+
+* ci: set hypothesis profile ([`c2aae43`](https://github.com/qthequartermasterman/hypothesis-torch/commit/c2aae43546887810aca3b64965d99f93857f2887))
+
+### Fix
+
+* fix: only generate sensible floats and integer values for the given dtype ([`8175a73`](https://github.com/qthequartermasterman/hypothesis-torch/commit/8175a73bce4888a546215517145c0b85d5b4624d))
+
+### Unknown
+
+* Merge pull request #3 from qthequartermasterman/dependabot/github_actions/main/actions/setup-python-5
+
+chore(deps): bump actions/setup-python from 2 to 5 ([`68e0892`](https://github.com/qthequartermasterman/hypothesis-torch/commit/68e08926025565124d3bf5e58883656b9bec9a89))
+
+
 ## v0.1.9 (2024-04-22)
 
 ### Chore
+
+* chore(deps): bump actions/setup-python from 2 to 5
+
+Bumps [actions/setup-python](https://github.com/actions/setup-python) from 2 to 5.
+- [Release notes](https://github.com/actions/setup-python/releases)
+- [Commits](https://github.com/actions/setup-python/compare/v2...v5)
+
+---
+updated-dependencies:
+- dependency-name: actions/setup-python
+  dependency-type: direct:production
+  update-type: version-update:semver-major
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`ad754e1`](https://github.com/qthequartermasterman/hypothesis-torch/commit/ad754e1d75f802ef21fbec3ab4e0e74f9fc043cf))
 
 * chore(deps): bump stefanzweifel/git-auto-commit-action from 4 to 5
 
