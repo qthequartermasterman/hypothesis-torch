@@ -2,18 +2,13 @@
 
 from __future__ import annotations
 
-from typing import TypeVar
+from typing import TypeVar, Sequence, Mapping
 
 import torch
 from hypothesis import strategies as st
 from torch import nn
 
 from hypothesis_torch import utils
-
-__all__ = [
-    "same_shape_activation_strategy",
-    "linear_network_strategy",
-]
 
 T = TypeVar("T")
 
@@ -52,6 +47,14 @@ def lower_upper_strategy(draw: st.DrawFn) -> tuple[float, float]:
 
 @st.composite
 def rrelu_strategy(draw: st.DrawFn) -> nn.RReLU:
+    """Strategy for generating instances of `nn.RReLU` by drawing values for its constructor.
+
+    Args:
+        draw: The draw function provided by `hypothesis`.
+
+    Returns:
+        An instance of `nn.RReLU`.
+    """
     lower, upper = draw(lower_upper_strategy())
     inplace = draw(st.booleans())
     return nn.RReLU(lower, upper, inplace)
@@ -82,11 +85,9 @@ def hard_tanh_strategy(draw: st.DrawFn) -> nn.Hardtanh:
     """Strategy for generating instances of `nn.Hardtanh` by drawing values for its constructor.
 
     Args:
-    ----
         draw: The draw function provided by `hypothesis`.
 
     Returns:
-    -------
         An instance of `nn.Hardtanh`.
 
     """
@@ -96,50 +97,73 @@ def hard_tanh_strategy(draw: st.DrawFn) -> nn.Hardtanh:
     return nn.Hardtanh(min_value, max_value, inplace)
 
 
-def same_shape_activation_strategy() -> st.SearchStrategy[nn.Module]:
+activation_strategies: dict[type[nn.Module], st.SearchStrategy[nn.Module]] = {
+    nn.Identity: signature_to_strategy(nn.Identity),
+    nn.ELU: signature_to_strategy(nn.ELU, alpha=SENSIBLE_FLOATS, inplace=st.booleans()),
+    nn.Hardshrink: signature_to_strategy(nn.Hardshrink, lambd=SENSIBLE_FLOATS),
+    nn.Hardsigmoid: signature_to_strategy(nn.Hardsigmoid, inplace=st.booleans()),
+    nn.Hardtanh: hard_tanh_strategy(),
+    nn.Hardswish: signature_to_strategy(nn.Hardswish, inplace=st.booleans()),
+    nn.LeakyReLU: signature_to_strategy(nn.LeakyReLU, negative_slope=SENSIBLE_FLOATS, inplace=st.booleans()),
+    nn.LogSigmoid: signature_to_strategy(nn.LogSigmoid),
+    # TODO: nn.MultiheadAttention, although in the `Non-linear activations` section, does not have the same shape
+    #  inside and outside
+    # TODO: nn.PReLU(num_parameters=1, init=0.25, device=None, dtype=None)
+    # TODO: PReLU might depend on the input shape
+    # TODO: num_parameters (int) – number of a to learn. Although it takes an int as input, there is only two
+    #  values are legitimate: 1, or the number of channels at input. Default: 1
+    nn.PReLU: signature_to_strategy(nn.PReLU, num_parameters=st.just(1), init=SENSIBLE_FLOATS),
+    nn.ReLU: signature_to_strategy(nn.ReLU, inplace=st.booleans()),
+    nn.ReLU6: signature_to_strategy(nn.ReLU6, inplace=st.booleans()),
+    nn.RReLU: rrelu_strategy(),
+    nn.SELU: signature_to_strategy(nn.SELU, inplace=st.booleans()),
+    nn.CELU: signature_to_strategy(
+        nn.CELU, alpha=SENSIBLE_FLOATS.filter(lambda x: abs(x) > 1e-5), inplace=st.booleans()
+    ),
+    nn.GELU: signature_to_strategy(nn.GELU, approximate=st.sampled_from(["none", "tanh"])),
+    nn.Sigmoid: signature_to_strategy(nn.Sigmoid),
+    nn.SiLU: signature_to_strategy(nn.SiLU, inplace=st.booleans()),
+    nn.Mish: signature_to_strategy(nn.Mish, inplace=st.booleans()),
+    nn.Softplus: signature_to_strategy(nn.Softplus, beta=SENSIBLE_FLOATS, threshold=SENSIBLE_POSITIVE_FLOATS),
+    nn.Softshrink: signature_to_strategy(nn.Softshrink, lambd=SENSIBLE_POSITIVE_FLOATS),
+    nn.Softsign: signature_to_strategy(nn.Softsign),
+    nn.Tanh: signature_to_strategy(nn.Tanh),
+    nn.Tanhshrink: signature_to_strategy(nn.Tanhshrink),
+    nn.Threshold: signature_to_strategy(
+        nn.Threshold, threshold=SENSIBLE_FLOATS, value=SENSIBLE_FLOATS, inplace=st.booleans()
+    ),
+    # TODO: nn.GLU depends on the input shape
+}
+
+
+def same_shape_activation_strategy(
+    allowed_activation_functions: Sequence[type[nn.Module]] | Sequence[st.SearchStrategy[nn.Module]] | None = None,
+) -> st.SearchStrategy[nn.Module]:
     """Strategy for generating activation functions that have the same shape input and output shape.
+
+    Args:
+        allowed_activation_functions: Activation functions to sample from.
+            - If a sequence of strategies is provided, only these strategies are sampled from.
+            - If a sequence of module types is provided, the elements are the activation functions to sample from.
+            - If `None`, all supported activation functions are sampled.
+            - For `None` or sequence of module type inputs, see complete list of supported activation functions in
+            `activation_strategies`.
 
     Returns:
         A strategy for generating activation functions that have the same shape input and output shape.
     """
-    return st.one_of(
-        signature_to_strategy(nn.Identity),
-        signature_to_strategy(nn.ELU, alpha=SENSIBLE_FLOATS, inplace=st.booleans()),
-        signature_to_strategy(nn.Hardshrink, lambd=SENSIBLE_FLOATS),
-        signature_to_strategy(nn.Hardsigmoid, inplace=st.booleans()),
-        hard_tanh_strategy(),
-        signature_to_strategy(nn.Hardswish, inplace=st.booleans()),
-        signature_to_strategy(nn.LeakyReLU, negative_slope=SENSIBLE_FLOATS, inplace=st.booleans()),
-        signature_to_strategy(nn.LogSigmoid),
-        # TODO: nn.MultiheadAttention, although in the `Non-linear activations` section, does not have the same shape
-        #  inside and outside
-        # TODO: nn.PReLU(num_parameters=1, init=0.25, device=None, dtype=None)
-        # TODO: PReLU might depend on the input shape
-        # TODO: num_parameters (int) – number of a to learn. Although it takes an int as input, there is only two
-        #  values are legitimate: 1, or the number of channels at input. Default: 1
-        signature_to_strategy(nn.PReLU, num_parameters=st.just(1), init=SENSIBLE_FLOATS),
-        signature_to_strategy(nn.ReLU, inplace=st.booleans()),
-        signature_to_strategy(nn.ReLU6, inplace=st.booleans()),
-        rrelu_strategy(),
-        signature_to_strategy(nn.SELU, inplace=st.booleans()),
-        signature_to_strategy(nn.CELU, alpha=SENSIBLE_FLOATS.filter(lambda x: abs(x) > 1e-5), inplace=st.booleans()),
-        signature_to_strategy(nn.GELU, approximate=st.sampled_from(["none", "tanh"])),
-        signature_to_strategy(nn.Sigmoid),
-        signature_to_strategy(nn.SiLU, inplace=st.booleans()),
-        signature_to_strategy(nn.Mish, inplace=st.booleans()),
-        signature_to_strategy(nn.Softplus, beta=SENSIBLE_FLOATS, threshold=SENSIBLE_POSITIVE_FLOATS),
-        signature_to_strategy(nn.Softshrink, lambd=SENSIBLE_POSITIVE_FLOATS),
-        signature_to_strategy(nn.Softsign),
-        signature_to_strategy(nn.Tanh),
-        signature_to_strategy(nn.Tanhshrink),
-        signature_to_strategy(
-            nn.Threshold,
-            threshold=SENSIBLE_FLOATS,
-            value=SENSIBLE_FLOATS,
-            inplace=st.booleans(),
-        ),
-        # TODO: nn.GLU depends on the input shape
-    )
+    if allowed_activation_functions is None:
+        allowed_activation_functions = list(activation_strategies.keys())
+    assert allowed_activation_functions is not None
+    strategies: list[st.SearchStrategy[nn.Module]] = []
+    for activation_function in allowed_activation_functions:
+        if isinstance(activation_function, st.SearchStrategy):
+            strategies.append(activation_function)
+        elif activation_function in activation_strategies:
+            strategies.append(activation_strategies[activation_function])
+        else:
+            raise ValueError(f"Unsupported activation function: {activation_function}")
+    return st.one_of(strategies)
 
 
 @st.composite
