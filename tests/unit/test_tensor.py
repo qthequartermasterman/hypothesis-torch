@@ -10,6 +10,31 @@ from hypothesis import strategies as st
 import hypothesis_torch
 from tests.unit import utils
 
+INT8_RANGE = {
+    "min_value": -128,
+    "max_value": 127,
+}
+
+INT16_RANGE = {
+    "min_value": -32768,
+    "max_value": 32767,
+}
+
+INT32_RANGE = {
+    "min_value": -2147483648,
+    "max_value": 2147483647,
+}
+
+INT64_RANGE = {
+    "min_value": -9223372036854775808,
+    "max_value": 9223372036854775807,
+}
+
+UINT8_RANGE = {
+    "min_value": 0,
+    "max_value": 255,
+}
+
 
 class TestTensor(unittest.TestCase):
     """Tests for the tensor strategy."""
@@ -43,3 +68,183 @@ class TestTensor(unittest.TestCase):
             assert kwargs["device"].index in (0, None)
         else:
             self.assertEqual(tensor.device.index, kwargs["device"].index)
+
+    @hypothesis.given(
+        tensor=hypothesis_torch.tensor_strategy(
+            dtype=torch.float32,
+            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3),
+            unique=st.booleans(),
+            device=st.just(torch.device("cpu")),
+            elements=st.floats(min_value=-10, max_value=10),
+        )
+    )
+    def test_single_precision_tensor_with_double_precision_elements(self, tensor: torch.Tensor) -> None:
+        """Test that the giving a single precision dtype and double precision elements successfully coerces the tensor
+        to single precision without throwing an error.
+        """
+        self.assertEqual(tensor.dtype, torch.float32)
+
+    @hypothesis.given(
+        tensor=hypothesis_torch.tensor_strategy(
+            dtype=torch.float16,
+            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3),
+            unique=st.booleans(),
+            device=st.just(torch.device("cpu")),
+            elements=st.floats(min_value=-10, max_value=10),
+        )
+    )
+    def test_half_precision_tensor_with_double_precision_elements(self, tensor: torch.Tensor) -> None:
+        """Test that the giving a half precision dtype and double precision elements successfully coerces the tensor
+        to half precision without throwing an error.
+        """
+        self.assertEqual(tensor.dtype, torch.float16)
+
+    @hypothesis.given(
+        tensor=hypothesis_torch.tensor_strategy(
+            dtype=torch.bfloat16,
+            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3),
+            unique=st.booleans(),
+            device=st.just(torch.device("cpu")),
+            elements=st.floats(min_value=-10, max_value=10),
+        )
+    )
+    def test_bfloat16_tensor_with_double_precision_elements(self, tensor: torch.Tensor) -> None:
+        """Test that the giving a bfloat16 dtype and double precision elements successfully coerces the tensor
+        to bfloat16 precision without throwing an error.
+        """
+        self.assertEqual(tensor.dtype, torch.bfloat16)
+
+    @hypothesis.given(
+        tensor=hypothesis_torch.tensor_strategy(
+            dtype=torch.complex64,
+            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3),
+            unique=st.booleans(),
+            device=st.just(torch.device("cpu")),
+            elements=st.complex_numbers(),
+        )
+    )
+    def test_single_precision_complex_tensor_with_double_precision_elements(self, tensor: torch.Tensor) -> None:
+        """Test that the giving a single precision complex dtype and double precision elements successfully coerces
+        the tensor to single precision complex without throwing an error.
+        """
+        self.assertEqual(tensor.dtype, torch.complex64)
+
+    @hypothesis.given(
+        tensor=hypothesis_torch.tensor_strategy(
+            dtype=torch.int8,
+            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3),
+            device=st.just(torch.device("cpu")),
+            elements=st.integers(**INT8_RANGE),
+        )
+    )
+    def test_int8_tensor_with_ranged_integer_elements(self, tensor: torch.Tensor) -> None:
+        """Test that specifying integer elements within the range of an int8 tensor is of the correct dtype."""
+        self.assertEqual(tensor.dtype, torch.int8)
+
+    @hypothesis.given(
+        tensor=hypothesis_torch.tensor_strategy(
+            dtype=torch.int8,
+            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3),
+            device=st.just(torch.device("cpu")),
+            elements=st.integers(),
+        )
+    )
+    def test_int8_tensor_with_unranged_integer_elements(self, tensor: torch.Tensor) -> None:
+        """Test that specifying integer elements without a range of an int16 tensor is of the correct dtype."""
+        self.assertEqual(tensor.dtype, torch.int8)
+
+    @hypothesis.given(
+        tensor=hypothesis_torch.tensor_strategy(
+            dtype=torch.int16,
+            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3),
+            device=st.just(torch.device("cpu")),
+            elements=st.integers(**INT16_RANGE),
+        )
+    )
+    def test_int16_tensor_with_ranged_integer_elements(self, tensor: torch.Tensor) -> None:
+        """Test that specifying integer elements within the range of an int16 tensor is of the correct dtype."""
+        self.assertEqual(tensor.dtype, torch.int16)
+
+    @hypothesis.given(
+        tensor=hypothesis_torch.tensor_strategy(
+            dtype=torch.int16,
+            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3),
+            device=st.just(torch.device("cpu")),
+            elements=st.integers(),
+        )
+    )
+    def test_int16_tensor_with_unranged_integer_elements(self, tensor: torch.Tensor) -> None:
+        """Test that specifying integer elements without a range of an int32 tensor is of the correct dtype."""
+        self.assertEqual(tensor.dtype, torch.int16)
+
+    @hypothesis.given(
+        tensor=hypothesis_torch.tensor_strategy(
+            dtype=torch.int32,
+            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3),
+            device=st.just(torch.device("cpu")),
+            elements=st.integers(**INT32_RANGE),
+        )
+    )
+    def test_int32_tensor_with_ranged_integer_elements(self, tensor: torch.Tensor) -> None:
+        """Test that specifying integer elements within the range of an int32 tensor is of the correct dtype."""
+        self.assertEqual(tensor.dtype, torch.int32)
+
+    @hypothesis.given(
+        tensor=hypothesis_torch.tensor_strategy(
+            dtype=torch.int32,
+            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3),
+            device=st.just(torch.device("cpu")),
+            elements=st.integers(),
+        )
+    )
+    def test_int32_tensor_with_unranged_integer_elements(self, tensor: torch.Tensor) -> None:
+        """Test that specifying integer elements without a range of an int32 tensor is of the correct dtype."""
+        self.assertEqual(tensor.dtype, torch.int32)
+
+    @hypothesis.given(
+        tensor=hypothesis_torch.tensor_strategy(
+            dtype=torch.int64,
+            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3),
+            device=st.just(torch.device("cpu")),
+            elements=st.integers(**INT64_RANGE),
+        )
+    )
+    def test_int64_tensor_with_ranged_integer_elements(self, tensor: torch.Tensor) -> None:
+        """Test that specifying integer elements within the range of an int64 tensor is of the correct dtype."""
+        self.assertEqual(tensor.dtype, torch.int64)
+
+    @hypothesis.given(
+        tensor=hypothesis_torch.tensor_strategy(
+            dtype=torch.int64,
+            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3),
+            device=st.just(torch.device("cpu")),
+            elements=st.integers(),
+        )
+    )
+    def test_int64_tensor_with_unranged_integer_elements(self, tensor: torch.Tensor) -> None:
+        """Test that specifying integer elements without a range of an int64 tensor is of the correct dtype."""
+        self.assertEqual(tensor.dtype, torch.int64)
+
+    @hypothesis.given(
+        tensor=hypothesis_torch.tensor_strategy(
+            dtype=torch.uint8,
+            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3),
+            device=st.just(torch.device("cpu")),
+            elements=st.integers(**UINT8_RANGE),
+        )
+    )
+    def test_uint8_tensor_with_ranged_integer_elements(self, tensor: torch.Tensor) -> None:
+        """Test that specifying integer elements within the range of an uint8 tensor is of the correct dtype."""
+        self.assertEqual(tensor.dtype, torch.uint8)
+
+    @hypothesis.given(
+        tensor=hypothesis_torch.tensor_strategy(
+            dtype=torch.uint8,
+            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3),
+            device=st.just(torch.device("cpu")),
+            elements=st.integers(),
+        )
+    )
+    def test_uint8_tensor_with_unranged_integer_elements(self, tensor: torch.Tensor) -> None:
+        """Test that specifying integer elements without a range of an uint8 tensor is of the correct dtype."""
+        self.assertEqual(tensor.dtype, torch.uint8)

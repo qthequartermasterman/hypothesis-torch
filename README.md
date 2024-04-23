@@ -138,4 +138,4 @@ hypothesis_torch.transformer_strategy(transformers.LlamaForCausalLM, hidden_size
 
 [! Note]
     Currently, the `transformer_strategy` only accepts `kwargs` that can be passed to the constructor of the model's 
-    config class. Thus, it cannot currently replicate all of the behavior of calling `from_pretrained` on a model class.
+    config class. Thus, it cannot currently replicate all the behavior of calling `from_pretrained` on a model class.

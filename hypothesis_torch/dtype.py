@@ -34,12 +34,12 @@ numpy_dtype_map: dict[torch.dtype, npt.DTypeLike] = {
     torch.int32: np.int32,
     torch.int64: np.int64,
     torch.uint8: np.uint8,
-    torch.float16: np.float16,
-    torch.float32: np.float32,
-    torch.float64: np.float64,
-    torch.bfloat16: np.float32,  # bfloat16 is not supported by numpy
-    torch.complex64: np.complex64,
-    torch.complex128: np.complex128,
+    torch.float16: float,
+    torch.float32: float,
+    torch.float64: float,
+    torch.bfloat16: float,
+    torch.complex64: complex,
+    torch.complex128: complex,
     torch.bool: np.bool_,
 }
 """A mapping from torch dtypes to numpy dtypes. Useful for generating tensors of arbitrary dtypes from the builtin

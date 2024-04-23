@@ -53,8 +53,13 @@ def tensor_strategy(
     if isinstance(device, st.SearchStrategy):
         device = draw(device)
 
+    # INCOMPATIBILITY HANDLING
     # MPS devices do not support tensors with dtype torch.float64 and bfloat16
     hypothesis.assume(not (device is not None and device.type == "mps" and dtype in (torch.float64, torch.bfloat16)))
+    # If the dtype is an integer, we need to make sure that the elements are integers within the dtype's range
+    if dtype in dtype_module.INT_DTYPES and isinstance(elements, st.SearchStrategy):
+        info = torch.iinfo(dtype)
+        elements = elements.filter(lambda x: info.min <= x <= info.max)
 
     if isinstance(unique, st.SearchStrategy):
         unique = draw(unique)
