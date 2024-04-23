@@ -2,6 +2,37 @@
 
 
 
+## v0.2.0 (2024-04-23)
+
+### Ci
+
+* ci: set hypothesis profile ([`bfecac5`](https://github.com/qthequartermasterman/hypothesis-torch/commit/bfecac520ad961687a258626a1b61d3220e6e150))
+
+### Documentation
+
+* docs: :label: improve typing ([`0bd9170`](https://github.com/qthequartermasterman/hypothesis-torch/commit/0bd917036cd11d09fc4da21fd18fc857cc950dca))
+
+* docs: update root docstring ([`2f9395f`](https://github.com/qthequartermasterman/hypothesis-torch/commit/2f9395f7749a2914dc586471e8fe3d86fd3904f5))
+
+### Feature
+
+* feat: :recycle: :sparkles: allow overriding examples of activation functions ([`3746915`](https://github.com/qthequartermasterman/hypothesis-torch/commit/3746915c9068da28ce6893dd8b2c1f407bd2db42))
+
+* feat: add available dtypes and device sets to root imports ([`91f8ea3`](https://github.com/qthequartermasterman/hypothesis-torch/commit/91f8ea3df5de2e1a16dc5571fc8ee0d5630ff40b))
+
+### Refactor
+
+* refactor: :zap: :recycle: do not define dtype_strategy as as composite strategy to avoid overhead ([`e47ea82`](https://github.com/qthequartermasterman/hypothesis-torch/commit/e47ea82aabba12f4a7e16865829e6b2ec3b59a2f))
+
+* refactor: :zap: :recycle: do not define device_strategy as as composite strategy to avoid overhead ([`221d72a`](https://github.com/qthequartermasterman/hypothesis-torch/commit/221d72a99dc3ca40a6cec3800a12833026dc46d2))
+
+### Test
+
+* test: :fire: remove redundant type hints ([`bcf95c4`](https://github.com/qthequartermasterman/hypothesis-torch/commit/bcf95c4b21f11cccc38fa9e593fa391ad47bd645))
+
+* test: :white_check_mark: unit tests for activation strategy ([`dfa900e`](https://github.com/qthequartermasterman/hypothesis-torch/commit/dfa900e47bf90d4cdfa4e278d6bd9ae928307aa2))
+
+
 ## v0.1.10 (2024-04-23)
 
 ### Ci
