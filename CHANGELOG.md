@@ -2,6 +2,43 @@
 
 
 
+## v0.3.0 (2024-04-24)
+
+### Ci
+
+* ci: coverage report ([`3f80154`](https://github.com/qthequartermasterman/hypothesis-torch/commit/3f8015442c1244f4b127d7bf98b6e8d07eae77d3))
+
+* ci: use faster ci settings ([`e36cca7`](https://github.com/qthequartermasterman/hypothesis-torch/commit/e36cca712d76ed5583424868e9b0cb04f5855794))
+
+### Feature
+
+* feat: :sparkles: add pin_memory to tensor generation ([`dc42447`](https://github.com/qthequartermasterman/hypothesis-torch/commit/dc42447ec057ac7bc1939c1491fdd53c9e9bece2))
+
+* feat: :sparkles: add requires_grad to tensor generation ([`51bda34`](https://github.com/qthequartermasterman/hypothesis-torch/commit/51bda34b0e33f71708e43279969908dbe656be87))
+
+* feat: :sparkles: allow tensor strategy to sample over layout and memory format ([`af02d54`](https://github.com/qthequartermasterman/hypothesis-torch/commit/af02d542d84049c9ece7c738799c9472b8332c44))
+
+* feat: :sparkles: add layout argument to tensor strategy ([`a77069c`](https://github.com/qthequartermasterman/hypothesis-torch/commit/a77069cc8502f15c69b46fd16a92926645b4e9b5))
+
+* feat: :sparkles: add strategies for layout and memory format ([`153fa0b`](https://github.com/qthequartermasterman/hypothesis-torch/commit/153fa0bd49c51c04c31784cbb83dd42e1f41dbe9))
+
+### Refactor
+
+* refactor: :recycle: rename global private constant ([`3fcfac6`](https://github.com/qthequartermasterman/hypothesis-torch/commit/3fcfac64d9ccbe4cda70d1fc1ad2caa8af539bf0))
+
+* refactor: :recycle: improve typing to enforce global constants ([`c46f53c`](https://github.com/qthequartermasterman/hypothesis-torch/commit/c46f53c86e3b9cfffb609a18a9d21e744002e91b))
+
+### Test
+
+* test: :white_check_mark: unit tests for scalar tensors ([`9f543d6`](https://github.com/qthequartermasterman/hypothesis-torch/commit/9f543d63b09def247bc1ca56b7089d977a1c79f1))
+
+### Unknown
+
+* Merge pull request #4 from qthequartermasterman/more-tensor-attributes
+
+feat: :sparkles: More tensor attributes ([`c421dae`](https://github.com/qthequartermasterman/hypothesis-torch/commit/c421daec6758123395582b999a338fccf21b8685))
+
+
 ## v0.2.0 (2024-04-23)
 
 ### Ci
