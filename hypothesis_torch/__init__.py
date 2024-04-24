@@ -21,7 +21,6 @@ from hypothesis_torch.dtype import (
     INT_DTYPES,
     SIGNED_INT_DTYPES,
     UNSIGNED_INT_DTYPES,
-    BFLOAT_DTYPES,
     COMPLEX_DTYPES,
     BOOL_DTYPES,
     ALL_DTYPES,

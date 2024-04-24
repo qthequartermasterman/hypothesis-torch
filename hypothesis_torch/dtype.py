@@ -23,15 +23,13 @@ UNSIGNED_INT_DTYPES: Final[tuple[torch.dtype, ...]] = (torch.uint8,)
 """All unsigned integer dtypes supported by PyTorch."""
 INT_DTYPES: Final[tuple[torch.dtype, ...]] = SIGNED_INT_DTYPES + UNSIGNED_INT_DTYPES
 """All integer (both signed and unsigned) dtypes supported by PyTorch."""
-
 FLOAT_DTYPES: Final[tuple[torch.dtype, ...]] = (
+    torch.bfloat16,
     torch.float16,
     torch.float32,
     torch.float64,
 )
 """All floating point dtypes supported by PyTorch."""
-BFLOAT_DTYPES: Final[tuple[torch.dtype, ...]] = (torch.bfloat16,)
-"""All brain-float dtypes supported by PyTorch."""
 COMPLEX_DTYPES: Final[tuple[torch.dtype, ...]] = (
     torch.complex64,
     torch.complex128,
@@ -40,7 +38,7 @@ COMPLEX_DTYPES: Final[tuple[torch.dtype, ...]] = (
 BOOL_DTYPES: Final[tuple[torch.dtype, ...]] = (torch.bool,)
 """All boolean dtypes supported by PyTorch."""
 
-ALL_DTYPES: Final[tuple[torch.dtype, ...]] = INT_DTYPES + FLOAT_DTYPES + BFLOAT_DTYPES + COMPLEX_DTYPES + BOOL_DTYPES
+ALL_DTYPES: Final[tuple[torch.dtype, ...]] = INT_DTYPES + FLOAT_DTYPES + COMPLEX_DTYPES + BOOL_DTYPES
 """All dtypes supported by PyTorch."""
 
 numpy_dtype_map: Final[Mapping[torch.dtype, npt.DTypeLike]] = {
