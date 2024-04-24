@@ -2,9 +2,28 @@
 
 
 
+## v0.3.1 (2024-04-24)
+
+### Fix
+
+* fix: :truck: move test to test folder ([`e7460f7`](https://github.com/qthequartermasterman/hypothesis-torch/commit/e7460f7d11a84cc0a4791b90c02932505399bd5d))
+
+### Test
+
+* test: ignore coverage on pairwise. ([`0cec9ba`](https://github.com/qthequartermasterman/hypothesis-torch/commit/0cec9baf36cfcb2fbd9d8f10abd5663237887b2e))
+
+### Unknown
+
+* Merge pull request #5 from qthequartermasterman/more-tensor-attributes
+
+ci: coverage report ([`e04916e`](https://github.com/qthequartermasterman/hypothesis-torch/commit/e04916edd7f5c4a8c48bcdbf93fa0d5bdf789bfc))
+
+
 ## v0.3.0 (2024-04-24)
 
 ### Ci
+
+* ci: coverage report ([`36b8eb9`](https://github.com/qthequartermasterman/hypothesis-torch/commit/36b8eb909fdd266b8469ccd3a2c162ebf1310af1))
 
 * ci: coverage report ([`3f80154`](https://github.com/qthequartermasterman/hypothesis-torch/commit/3f8015442c1244f4b127d7bf98b6e8d07eae77d3))
 
