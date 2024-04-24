@@ -3,14 +3,36 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any
+from typing import Any, Sequence
+from typing_extensions import Final
 
 import hypothesis.extra.numpy as numpy_st
 import torch
 from hypothesis import strategies as st
 import hypothesis
 
+import hypothesis_torch
 from hypothesis_torch import dtype as dtype_module
+
+_NOT_MPS_DEVICES: Final[Sequence[torch.device]] = (
+    hypothesis_torch.AVAILABLE_CPU_DEVICES + hypothesis_torch.AVAILABLE_CUDA_DEVICES
+)
+
+_ALLOWED_DTYPES: Final[Mapping[torch.dtype, Sequence[torch.device]]] = {
+    torch.bool: hypothesis_torch.AVAILABLE_PHYSICAL_DEVICES,
+    torch.uint8: hypothesis_torch.AVAILABLE_PHYSICAL_DEVICES,
+    torch.int8: hypothesis_torch.AVAILABLE_PHYSICAL_DEVICES,
+    torch.int16: hypothesis_torch.AVAILABLE_PHYSICAL_DEVICES,
+    torch.int32: hypothesis_torch.AVAILABLE_PHYSICAL_DEVICES,
+    torch.int64: hypothesis_torch.AVAILABLE_PHYSICAL_DEVICES,
+    torch.float16: hypothesis_torch.AVAILABLE_PHYSICAL_DEVICES,
+    torch.float32: hypothesis_torch.AVAILABLE_PHYSICAL_DEVICES,
+    # MPS devices do not support tensors with dtype torch.float64 and bfloat16
+    torch.float64: _NOT_MPS_DEVICES,
+    torch.bfloat16: _NOT_MPS_DEVICES,
+    torch.complex64: hypothesis_torch.AVAILABLE_PHYSICAL_DEVICES,
+    torch.complex128: hypothesis_torch.AVAILABLE_PHYSICAL_DEVICES,
+}
 
 
 @st.composite
@@ -24,6 +46,7 @@ def tensor_strategy(
     unique: bool | st.SearchStrategy[bool] = False,
     device: torch.device | st.SearchStrategy[torch.device] | None = None,
     layout: torch.layout | st.SearchStrategy[torch.layout] | None = None,
+    memory_format: torch.memory_format | st.SearchStrategy[torch.memory_format] | None = None,
 ) -> torch.Tensor:
     """A strategy for generating PyTorch tensors.
 
@@ -42,6 +65,9 @@ def tensor_strategy(
         device: The device on which to place the tensor. If None, the default device is used.
         layout: The memory layout of the tensor. If None, a suitable default will be inferred based on the other
             arguments. Note that sparse layouts are not supported on MPS devices.
+        memory_format: The memory format of the tensor. If None, a suitable default will be inferred based on the other
+            arguments. Note that channel_last memory formats are only supported for 4D tensors and channel_last_3d
+            memory formats are only supported for 5D tensors.
 
     Returns:
         A strategy for generating PyTorch tensors.
@@ -53,19 +79,20 @@ def tensor_strategy(
     numpy_dtype = dtype_module.numpy_dtype_map[dtype]
 
     # We will pre-sample the device so that we can cast it to a concrete torch device
+    if device is None:
+        device = st.sampled_from(_ALLOWED_DTYPES[dtype])
     if isinstance(device, st.SearchStrategy):
         device = draw(device)
+    # MPS devices do not support tensors with dtype torch.float64 and bfloat16
+    hypothesis.assume(not (device is not None and device.type == "mps" and dtype in (torch.float64, torch.bfloat16)))
 
     if layout is None:
         layout = st.from_type(torch.layout)
     if isinstance(layout, st.SearchStrategy):
         layout = draw(layout)
-
-    # INCOMPATIBILITY HANDLING
-    # MPS devices do not support tensors with dtype torch.float64 and bfloat16
-    hypothesis.assume(not (device is not None and device.type == "mps" and dtype in (torch.float64, torch.bfloat16)))
     # MPS devices do not support sparse tensors
     hypothesis.assume(not (device is not None and device.type == "mps" and layout == torch.sparse_coo))
+
     # If the dtype is an integer, we need to make sure that the elements are integers within the dtype's range
     if dtype in dtype_module.INT_DTYPES and isinstance(elements, st.SearchStrategy):
         info = torch.iinfo(dtype)
@@ -86,6 +113,23 @@ def tensor_strategy(
         tensor = tensor.to_sparse_coo()
     else:
         raise ValueError(f"Unsupported layout: {layout}")
+
+    # MEMORY FORMAT HANDLING
+    if memory_format is None:
+        permitted_memory_formats = [torch.contiguous_format]
+        if len(tensor.shape) == 4:
+            permitted_memory_formats.append(torch.channels_last)
+        if len(tensor.shape) == 5:
+            permitted_memory_formats.append(torch.channels_last_3d)
+        memory_format = st.sampled_from(permitted_memory_formats)
+    if isinstance(memory_format, st.SearchStrategy):
+        memory_format = draw(memory_format)
+    # Filter out memory formats that are not supported by the tensor's shape, in case a user-specified strategy is used.
+    # channel_last memory format is only supported for 4D tensors
+    hypothesis.assume(memory_format != torch.channels_last or len(tensor.shape) == 4)
+    # channel_last_3d memory format is only supported for 5D tensors
+    hypothesis.assume(memory_format != torch.channels_last_3d or len(tensor.shape) == 5)
+    tensor = tensor.to(memory_format=memory_format)
 
     return tensor
 
