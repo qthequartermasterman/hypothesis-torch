@@ -244,3 +244,13 @@ class TestTensor(unittest.TestCase):
         """Test that if no elements are specified, the tensor is filled with integers."""
         tensor, kwargs = tensor_and_kwargs
         self.assertEqual(tensor.dtype, kwargs["dtype"])
+
+    @hypothesis.given(
+        tensor=hypothesis_torch.tensor_strategy(
+            dtype=hypothesis_torch.dtype_strategy(),
+            shape=tuple(),
+        )
+    )
+    def empty_tuple_shape_yields_scalar_tensor(self, tensor: torch.Tensor) -> None:
+        """Test that an empty tuple shape yields a scalar tensor."""
+        self.assertEqual(tensor.shape, torch.Size([]))

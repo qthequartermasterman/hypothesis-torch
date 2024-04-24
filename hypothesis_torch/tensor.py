@@ -17,6 +17,7 @@ from hypothesis_torch import dtype as dtype_module
 _NOT_MPS_DEVICES: Final[Sequence[torch.device]] = (
     hypothesis_torch.AVAILABLE_CPU_DEVICES + hypothesis_torch.AVAILABLE_CUDA_DEVICES
 )
+"""All devices that are not MPS devices (since MPS devices do not yet have full torch support)."""
 
 _ALLOWED_DEVICES_FROM_DTYPE: Final[Mapping[torch.dtype, Sequence[torch.device]]] = {
     torch.bool: hypothesis_torch.AVAILABLE_PHYSICAL_DEVICES,
@@ -33,6 +34,7 @@ _ALLOWED_DEVICES_FROM_DTYPE: Final[Mapping[torch.dtype, Sequence[torch.device]]]
     torch.complex64: hypothesis_torch.AVAILABLE_PHYSICAL_DEVICES,
     torch.complex128: hypothesis_torch.AVAILABLE_PHYSICAL_DEVICES,
 }
+"""A mapping from dtype to the devices that support that dtype."""
 
 
 @st.composite
