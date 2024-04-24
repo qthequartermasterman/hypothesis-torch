@@ -18,7 +18,7 @@ _NOT_MPS_DEVICES: Final[Sequence[torch.device]] = (
     hypothesis_torch.AVAILABLE_CPU_DEVICES + hypothesis_torch.AVAILABLE_CUDA_DEVICES
 )
 
-_ALLOWED_DTYPES: Final[Mapping[torch.dtype, Sequence[torch.device]]] = {
+_ALLOWED_DEVICES_FROM_DTYPE: Final[Mapping[torch.dtype, Sequence[torch.device]]] = {
     torch.bool: hypothesis_torch.AVAILABLE_PHYSICAL_DEVICES,
     torch.uint8: hypothesis_torch.AVAILABLE_PHYSICAL_DEVICES,
     torch.int8: hypothesis_torch.AVAILABLE_PHYSICAL_DEVICES,
@@ -80,7 +80,7 @@ def tensor_strategy(
 
     # We will pre-sample the device so that we can cast it to a concrete torch device
     if device is None:
-        device = st.sampled_from(_ALLOWED_DTYPES[dtype])
+        device = st.sampled_from(_ALLOWED_DEVICES_FROM_DTYPE[dtype])
     if isinstance(device, st.SearchStrategy):
         device = draw(device)
     # MPS devices do not support tensors with dtype torch.float64 and bfloat16
