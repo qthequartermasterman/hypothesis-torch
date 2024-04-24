@@ -12,7 +12,7 @@ T_co = TypeVar("T_co", covariant=True)
 
 if sys.version_info < (3, 10):
 
-    def pairwise(iterable: Iterable[T]) -> Iterable[tuple[T, T]]:
+    def pairwise(iterable: Iterable[T]) -> Iterable[tuple[T, T]]:  # pragma: no cover
         """Iterate over pairs of consecutive elements in an iterable.
 
         Note:
