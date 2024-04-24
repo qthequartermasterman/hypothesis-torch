@@ -2,6 +2,23 @@
 
 
 
+## v0.4.0 (2024-04-24)
+
+### Feature
+
+* feat: register random torch state as a hypothesis entry point (so that torch state is always registered, even if hypothesis-torch is never imported). ([`eada00a`](https://github.com/qthequartermasterman/hypothesis-torch/commit/eada00a8beb3632799a83256a2b24c3a4faa070b))
+
+* feat: register random torch state with hypothesis ([`633bf82`](https://github.com/qthequartermasterman/hypothesis-torch/commit/633bf82aa3873452dbb674f7f0b18b8a378a3027))
+
+### Unknown
+
+* Merge pull request #16 from qthequartermasterman/register-random-state
+
+feat: Register PyTorch&#39;s random state with Hypothesis so that torch random is deterministic during testing ([`4d957a1`](https://github.com/qthequartermasterman/hypothesis-torch/commit/4d957a1a0ca51c92bb997265b53b94b0124aa005))
+
+* Update issue templates ([`c7648bf`](https://github.com/qthequartermasterman/hypothesis-torch/commit/c7648bf89b6bdb299f9191becfc47d2d998e56dd))
+
+
 ## v0.3.1 (2024-04-24)
 
 ### Fix
