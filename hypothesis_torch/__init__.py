@@ -29,7 +29,9 @@ from hypothesis_torch.dtype import (
 from hypothesis_torch.layout import layout_strategy
 from hypothesis_torch.memory_format import memory_format_strategy
 from hypothesis_torch.module import linear_network_strategy, same_shape_activation_strategy
+from hypothesis_torch.register_random_torch_state import TORCH_RANDOM_WRAPPER
 from hypothesis_torch.tensor import tensor_strategy
+
 
 if importlib.util.find_spec("transformers") is not None:
     # Import Hugging Face strategies if transformers is installed
