@@ -251,6 +251,20 @@ class TestTensor(unittest.TestCase):
             shape=tuple(),
         )
     )
-    def empty_tuple_shape_yields_scalar_tensor(self, tensor: torch.Tensor) -> None:
+    def test_empty_tuple_shape_yields_scalar_tensor(self, tensor: torch.Tensor) -> None:
         """Test that an empty tuple shape yields a scalar tensor."""
         self.assertEqual(tensor.shape, torch.Size([]))
+
+    @hypothesis.given(
+        tensor_and_kwargs=utils.meta_strategy_constraints(
+            strategy_func=hypothesis_torch.tensor_strategy,
+            dtype=hypothesis_torch.dtype_strategy(dtypes=hypothesis_torch.FLOAT_DTYPES),
+            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3).map(tuple),
+            elements=st.just(st.floats(min_value=-10, max_value=10)),
+            requires_grad=st.booleans(),
+        )
+    )
+    def test_requires_grad(self, tensor_and_kwargs: tuple[torch.Tensor, dict[str, Any]]) -> None:
+        """Test that the requires_grad argument is correctly handled."""
+        tensor, kwargs = tensor_and_kwargs
+        self.assertEqual(tensor.requires_grad, kwargs["requires_grad"])

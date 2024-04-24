@@ -47,6 +47,7 @@ def tensor_strategy(
     fill: st.SearchStrategy[Any] | None = None,
     unique: bool | st.SearchStrategy[bool] = False,
     device: torch.device | st.SearchStrategy[torch.device] | None = None,
+    requires_grad: bool | st.SearchStrategy[bool] | None = None,
     layout: torch.layout | st.SearchStrategy[torch.layout] | None = None,
     memory_format: torch.memory_format | st.SearchStrategy[torch.memory_format] | None = None,
 ) -> torch.Tensor:
@@ -65,6 +66,8 @@ def tensor_strategy(
         unique: Whether the tensor's elements should all be distinct from one another. Note that multiple NaN values
             may still be allowed.
         device: The device on which to place the tensor. If None, the default device is used.
+        requires_grad: Whether the tensor requires gradients. If None, a suitable default will be inferred based on
+            the other arguments.
         layout: The memory layout of the tensor. If None, a suitable default will be inferred based on the other
             arguments. Note that sparse layouts are not supported on MPS devices.
         memory_format: The memory format of the tensor. If None, a suitable default will be inferred based on the other
@@ -107,6 +110,12 @@ def tensor_strategy(
     tensor = draw(ndarray_strategy.map(torch.from_numpy))
 
     tensor = tensor.to(device=device, dtype=dtype)
+
+    if requires_grad is None:
+        requires_grad = st.booleans() if dtype in dtype_module.FLOAT_DTYPES else False
+    if isinstance(requires_grad, st.SearchStrategy):
+        requires_grad = draw(requires_grad)
+    tensor.requires_grad_(requires_grad)
 
     if layout == torch.strided:
         tensor = tensor.contiguous()
