@@ -2,6 +2,19 @@
 
 
 
+## v0.4.1 (2024-04-24)
+
+### Fix
+
+* fix: mark bfloat16 as a floating dtype ([`38b4ed3`](https://github.com/qthequartermasterman/hypothesis-torch/commit/38b4ed3425439525848375a5bd200786d3dfd236))
+
+### Unknown
+
+* Merge pull request #17 from qthequartermasterman/register-random-state
+
+fix: mark bfloat16 as a floating dtype ([`57c0a5b`](https://github.com/qthequartermasterman/hypothesis-torch/commit/57c0a5b1c0904c65f6deca1855b2708ea7f94944))
+
+
 ## v0.4.0 (2024-04-24)
 
 ### Feature
