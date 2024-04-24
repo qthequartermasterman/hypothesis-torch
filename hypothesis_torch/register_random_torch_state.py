@@ -2,6 +2,7 @@
 
 import hypothesis
 import torch
+import hypothesis.internal.entropy
 
 
 class TorchRandomWrapper:
@@ -19,4 +20,8 @@ class TorchRandomWrapper:
 
 TORCH_RANDOM_WRAPPER = TorchRandomWrapper()
 
-hypothesis.register_random(TORCH_RANDOM_WRAPPER)
+
+def _register_random_torch_state() -> None:
+    """Register the random torch state with Hypothesis."""
+    if TORCH_RANDOM_WRAPPER not in hypothesis.internal.entropy.RANDOMS_TO_MANAGE.values():
+        hypothesis.register_random(TORCH_RANDOM_WRAPPER)

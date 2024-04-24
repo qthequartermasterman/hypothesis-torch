@@ -5,7 +5,6 @@ import unittest
 import hypothesis.internal.entropy
 
 import hypothesis_torch
-import torch
 
 
 class TestRegisterRandomTorchState(unittest.TestCase):
