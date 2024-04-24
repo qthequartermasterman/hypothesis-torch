@@ -26,6 +26,8 @@ from hypothesis_torch.dtype import (
     BOOL_DTYPES,
     ALL_DTYPES,
 )
+from hypothesis_torch.layout import layout_strategy
+from hypothesis_torch.memory_format import memory_format_strategy
 from hypothesis_torch.module import linear_network_strategy, same_shape_activation_strategy
 from hypothesis_torch.tensor import tensor_strategy
 
