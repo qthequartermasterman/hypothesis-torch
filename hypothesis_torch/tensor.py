@@ -48,6 +48,7 @@ def tensor_strategy(
     unique: bool | st.SearchStrategy[bool] = False,
     device: torch.device | st.SearchStrategy[torch.device] | None = None,
     requires_grad: bool | st.SearchStrategy[bool] | None = None,
+    pin_memory: bool | st.SearchStrategy[bool] | None = None,
     layout: torch.layout | st.SearchStrategy[torch.layout] | None = None,
     memory_format: torch.memory_format | st.SearchStrategy[torch.memory_format] | None = None,
 ) -> torch.Tensor:
@@ -68,6 +69,8 @@ def tensor_strategy(
         device: The device on which to place the tensor. If None, the default device is used.
         requires_grad: Whether the tensor requires gradients. If None, a suitable default will be inferred based on
             the other arguments.
+        pin_memory: Whether the tensor should be pinned in memory. If None, a suitable default will be inferred based
+            on the other arguments.
         layout: The memory layout of the tensor. If None, a suitable default will be inferred based on the other
             arguments. Note that sparse layouts are not supported on MPS devices.
         memory_format: The memory format of the tensor. If None, a suitable default will be inferred based on the other
@@ -108,6 +111,13 @@ def tensor_strategy(
 
     ndarray_strategy = numpy_st.arrays(numpy_dtype, shape, elements=elements, fill=fill, unique=unique)
     tensor = draw(ndarray_strategy.map(torch.from_numpy))
+
+    if pin_memory is None:
+        pin_memory = st.booleans() if device.type == "cuda" else False
+    if isinstance(pin_memory, st.SearchStrategy):
+        pin_memory = draw(pin_memory)
+    if pin_memory and device.type == "cuda":
+        tensor = tensor.pin_memory()
 
     tensor = tensor.to(device=device, dtype=dtype)
 

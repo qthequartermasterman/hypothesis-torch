@@ -268,3 +268,21 @@ class TestTensor(unittest.TestCase):
         """Test that the requires_grad argument is correctly handled."""
         tensor, kwargs = tensor_and_kwargs
         self.assertEqual(tensor.requires_grad, kwargs["requires_grad"])
+
+    @hypothesis.given(
+        tensor_and_kwargs=utils.meta_strategy_constraints(
+            strategy_func=hypothesis_torch.tensor_strategy,
+            dtype=hypothesis_torch.dtype_strategy(dtypes=hypothesis_torch.FLOAT_DTYPES),
+            shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3).map(tuple),
+            elements=st.just(st.floats(min_value=-10, max_value=10)),
+            pin_memory=st.booleans(),
+        )
+    )
+    def test_pin_memory(self, tensor_and_kwargs: tuple[torch.Tensor, dict[str, Any]]) -> None:
+        """Test that the pin_memory argument is correctly handled."""
+        tensor, kwargs = tensor_and_kwargs
+        if tensor.device == torch.device("cuda"):
+            # NOTE: This branch only runs when CUDA is available
+            self.assertEqual(tensor.is_pinned(), kwargs["pin_memory"])
+        else:
+            self.assertFalse(tensor.is_pinned())
