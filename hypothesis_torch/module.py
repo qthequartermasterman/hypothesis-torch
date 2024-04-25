@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import TypeVar, Sequence, Mapping
 
+from hypothesis_torch import inspection_util
 import torch
 from hypothesis import strategies as st
 from torch import nn
@@ -61,26 +62,6 @@ def rrelu_strategy(draw: st.DrawFn) -> nn.RReLU:
 
 
 @st.composite
-def signature_to_strategy(draw: st.DrawFn, constructor: type[T], *args, **kwargs) -> T:
-    """Strategy for generating instances of a class by drawing values for its constructor.
-
-    Args:
-        draw: The draw function provided by `hypothesis`.
-        constructor: The class to generate an instance of.
-        args: Positional arguments to pass to the constructor. If an argument is a strategy, it will be drawn from.
-        kwargs: Keyword arguments to pass to the constructor. If a keyword argument is a strategy, it will be drawn
-            from.
-
-    Returns:
-        An instance of the class.
-
-    """
-    args_drawn = [draw(strategy) for strategy in args]
-    kwargs_drawn = {k: draw(strategy) for k, strategy in kwargs.items()}
-    return constructor(*args_drawn, **kwargs_drawn)
-
-
-@st.composite
 def hard_tanh_strategy(draw: st.DrawFn) -> nn.Hardtanh:
     """Strategy for generating instances of `nn.Hardtanh` by drawing values for its constructor.
 
@@ -98,38 +79,42 @@ def hard_tanh_strategy(draw: st.DrawFn) -> nn.Hardtanh:
 
 
 activation_strategies: dict[type[nn.Module], st.SearchStrategy[nn.Module]] = {
-    nn.Identity: signature_to_strategy(nn.Identity),
-    nn.ELU: signature_to_strategy(nn.ELU, alpha=SENSIBLE_FLOATS, inplace=st.booleans()),
-    nn.Hardshrink: signature_to_strategy(nn.Hardshrink, lambd=SENSIBLE_FLOATS),
-    nn.Hardsigmoid: signature_to_strategy(nn.Hardsigmoid, inplace=st.booleans()),
+    nn.Identity: inspection_util.signature_to_strategy(nn.Identity),
+    nn.ELU: inspection_util.signature_to_strategy(nn.ELU, alpha=SENSIBLE_FLOATS, inplace=st.booleans()),
+    nn.Hardshrink: inspection_util.signature_to_strategy(nn.Hardshrink, lambd=SENSIBLE_FLOATS),
+    nn.Hardsigmoid: inspection_util.signature_to_strategy(nn.Hardsigmoid, inplace=st.booleans()),
     nn.Hardtanh: hard_tanh_strategy(),
-    nn.Hardswish: signature_to_strategy(nn.Hardswish, inplace=st.booleans()),
-    nn.LeakyReLU: signature_to_strategy(nn.LeakyReLU, negative_slope=SENSIBLE_FLOATS, inplace=st.booleans()),
-    nn.LogSigmoid: signature_to_strategy(nn.LogSigmoid),
+    nn.Hardswish: inspection_util.signature_to_strategy(nn.Hardswish, inplace=st.booleans()),
+    nn.LeakyReLU: inspection_util.signature_to_strategy(
+        nn.LeakyReLU, negative_slope=SENSIBLE_FLOATS, inplace=st.booleans()
+    ),
+    nn.LogSigmoid: inspection_util.signature_to_strategy(nn.LogSigmoid),
     # TODO: nn.MultiheadAttention, although in the `Non-linear activations` section, does not have the same shape
     #  inside and outside
     # TODO: nn.PReLU(num_parameters=1, init=0.25, device=None, dtype=None)
     # TODO: PReLU might depend on the input shape
     # TODO: num_parameters (int) – number of a to learn. Although it takes an int as input, there is only two
     #  values are legitimate: 1, or the number of channels at input. Default: 1
-    nn.PReLU: signature_to_strategy(nn.PReLU, num_parameters=st.just(1), init=SENSIBLE_FLOATS),
-    nn.ReLU: signature_to_strategy(nn.ReLU, inplace=st.booleans()),
-    nn.ReLU6: signature_to_strategy(nn.ReLU6, inplace=st.booleans()),
+    nn.PReLU: inspection_util.signature_to_strategy(nn.PReLU, num_parameters=st.just(1), init=SENSIBLE_FLOATS),
+    nn.ReLU: inspection_util.signature_to_strategy(nn.ReLU, inplace=st.booleans()),
+    nn.ReLU6: inspection_util.signature_to_strategy(nn.ReLU6, inplace=st.booleans()),
     nn.RReLU: rrelu_strategy(),
-    nn.SELU: signature_to_strategy(nn.SELU, inplace=st.booleans()),
-    nn.CELU: signature_to_strategy(
+    nn.SELU: inspection_util.signature_to_strategy(nn.SELU, inplace=st.booleans()),
+    nn.CELU: inspection_util.signature_to_strategy(
         nn.CELU, alpha=SENSIBLE_FLOATS.filter(lambda x: abs(x) > 1e-5), inplace=st.booleans()
     ),
-    nn.GELU: signature_to_strategy(nn.GELU, approximate=st.sampled_from(["none", "tanh"])),
-    nn.Sigmoid: signature_to_strategy(nn.Sigmoid),
-    nn.SiLU: signature_to_strategy(nn.SiLU, inplace=st.booleans()),
-    nn.Mish: signature_to_strategy(nn.Mish, inplace=st.booleans()),
-    nn.Softplus: signature_to_strategy(nn.Softplus, beta=SENSIBLE_FLOATS, threshold=SENSIBLE_POSITIVE_FLOATS),
-    nn.Softshrink: signature_to_strategy(nn.Softshrink, lambd=SENSIBLE_POSITIVE_FLOATS),
-    nn.Softsign: signature_to_strategy(nn.Softsign),
-    nn.Tanh: signature_to_strategy(nn.Tanh),
-    nn.Tanhshrink: signature_to_strategy(nn.Tanhshrink),
-    nn.Threshold: signature_to_strategy(
+    nn.GELU: inspection_util.signature_to_strategy(nn.GELU, approximate=st.sampled_from(["none", "tanh"])),
+    nn.Sigmoid: inspection_util.signature_to_strategy(nn.Sigmoid),
+    nn.SiLU: inspection_util.signature_to_strategy(nn.SiLU, inplace=st.booleans()),
+    nn.Mish: inspection_util.signature_to_strategy(nn.Mish, inplace=st.booleans()),
+    nn.Softplus: inspection_util.signature_to_strategy(
+        nn.Softplus, beta=SENSIBLE_FLOATS, threshold=SENSIBLE_POSITIVE_FLOATS
+    ),
+    nn.Softshrink: inspection_util.signature_to_strategy(nn.Softshrink, lambd=SENSIBLE_POSITIVE_FLOATS),
+    nn.Softsign: inspection_util.signature_to_strategy(nn.Softsign),
+    nn.Tanh: inspection_util.signature_to_strategy(nn.Tanh),
+    nn.Tanhshrink: inspection_util.signature_to_strategy(nn.Tanhshrink),
+    nn.Threshold: inspection_util.signature_to_strategy(
         nn.Threshold, threshold=SENSIBLE_FLOATS, value=SENSIBLE_FLOATS, inplace=st.booleans()
     ),
     # TODO: nn.GLU depends on the input shape
@@ -206,7 +191,7 @@ def linear_network_strategy(
     if isinstance(device, st.SearchStrategy):
         device = draw(device)
 
-    if isinstance(activation_layer, nn.Module):
+    if not isinstance(activation_layer, st.SearchStrategy):
         activation_layer_strategy = st.just(activation_layer)
     else:
         activation_layer_strategy = activation_layer
