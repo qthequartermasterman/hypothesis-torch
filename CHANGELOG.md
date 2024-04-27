@@ -2,6 +2,15 @@
 
 
 
+## v0.4.2 (2024-04-27)
+
+### Fix
+
+* fix: :bug: do not generate inf values if elements has infinity disabled for float16 and float32 tensors.
+
+This fix does not work for all bfloat16 tensors. ([`8e9eb5d`](https://github.com/qthequartermasterman/hypothesis-torch/commit/8e9eb5daf6f94e121ad6554bb1a41fcd73ac8da0))
+
+
 ## v0.4.1 (2024-04-24)
 
 ### Fix
