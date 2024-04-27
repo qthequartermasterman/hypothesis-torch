@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from collections.abc import Sequence
-from typing import Mapping
+from typing import Mapping, Literal
 
 from typing_extensions import Final
 
@@ -47,10 +47,10 @@ numpy_dtype_map: Final[Mapping[torch.dtype, npt.DTypeLike]] = {
     torch.int32: np.int32,
     torch.int64: np.int64,
     torch.uint8: np.uint8,
-    torch.float16: float,
-    torch.float32: float,
-    torch.float64: float,
-    torch.bfloat16: float,
+    torch.float16: np.float16,
+    torch.float32: np.float32,
+    torch.float64: np.float64,
+    torch.bfloat16: np.float32,  # Numpy does not have a bf16, but it has the same dynamic range as f32
     torch.complex64: complex,
     torch.complex128: complex,
     torch.bool: np.bool_,
@@ -58,7 +58,15 @@ numpy_dtype_map: Final[Mapping[torch.dtype, npt.DTypeLike]] = {
 """A mapping from torch dtypes to numpy dtypes. Useful for generating tensors of arbitrary dtypes from the builtin
 numpy strategies."""
 
+float_width_map: Final[Mapping[torch.dtype, Literal[16, 32, 64]]] = {
+    torch.float16: 16,
+    torch.bfloat16: 32,  # Numpy does not have a bf16, but it has the same dynamic range as f32
+    torch.float32: 32,
+    torch.float64: 64,
+}
+
 assert set(numpy_dtype_map.keys()) == set(ALL_DTYPES)
+assert set(float_width_map.keys()) == set(FLOAT_DTYPES)
 
 
 def dtype_strategy(dtypes: Sequence[torch.dtype] | None = None) -> st.SearchStrategy[torch.dtype]:

@@ -4,11 +4,14 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 from typing import Any, Sequence
+
+from hypothesis.internal.floats import float_of
 from typing_extensions import Final
 
 import hypothesis.extra.numpy as numpy_st
 import torch
-from hypothesis import strategies as st
+from hypothesis import strategies as st, reject
+from hypothesis.strategies._internal import numbers as st_numbers
 import hypothesis
 
 import hypothesis_torch
@@ -105,6 +108,32 @@ def tensor_strategy(
     if dtype in dtype_module.INT_DTYPES and isinstance(elements, st.SearchStrategy):
         info = torch.iinfo(dtype)
         elements = elements.filter(lambda x: info.min <= x <= info.max)
+
+    # If the dtype is a float, then we need to make sure that only elements that can be represented exactly are
+    # generated
+    if dtype in dtype_module.FLOAT_DTYPES and elements is not None:
+        width = dtype_module.float_width_map[dtype]
+        if width < 64:
+
+            def downcast(x: float) -> float:
+                """Downcast a float to a smaller width.
+
+                This function is used to ensure that only floats that can be represented exactly are generated.
+
+                Adapted from `hypothesis.strategies.numbers.floats`.
+
+                Args:
+                    x: The float to downcast.
+
+                Returns:
+                    The downcasted float.
+                """
+                try:
+                    return float_of(x, width)
+                except OverflowError:  # pragma: no cover
+                    reject()
+
+            elements = elements.map(downcast)
 
     if isinstance(unique, st.SearchStrategy):
         unique = draw(unique)
