@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
+import struct
 from collections.abc import Mapping
-from typing import Any, Sequence
+from typing import Any, Sequence, Literal
 
 from hypothesis.internal.floats import float_of
 from typing_extensions import Final
@@ -11,7 +12,6 @@ from typing_extensions import Final
 import hypothesis.extra.numpy as numpy_st
 import torch
 from hypothesis import strategies as st, reject
-from hypothesis.strategies._internal import numbers as st_numbers
 import hypothesis
 
 import hypothesis_torch
@@ -38,6 +38,59 @@ _ALLOWED_DEVICES_FROM_DTYPE: Final[Mapping[torch.dtype, Sequence[torch.device]]]
     torch.complex128: hypothesis_torch.AVAILABLE_PHYSICAL_DEVICES,
 }
 """A mapping from dtype to the devices that support that dtype."""
+
+
+def _reinterpret_bits(
+    x: float, from_: Literal["!f", "!e"], to: Literal["!f", "!e"], truncate_bytes: int | None = None
+) -> float:
+    """Reinterpret the bits of a float.
+
+    This function is used to ensure that only floats that can be represented exactly by a certain dtype are generated.
+
+    Adapted from `hypothesis.internal.floats.reinterpret_bits`.
+
+    Args:
+        x: The float to reinterpret.
+        from_: The format of the input float.
+        to: The format of the output float.
+        truncate_bytes: The number of bytes to truncate from the end of the float.
+
+    Returns:
+        The re-interpreted float.
+    """
+    if truncate_bytes is None:
+        return struct.unpack(to, struct.pack(from_, x))[0]
+    return struct.unpack(to, struct.pack(from_, x)[:-truncate_bytes] + b"\x00" * truncate_bytes)[0]
+
+
+def downcast(x: float, dtype: torch.dtype) -> float:
+    """Downcast a float to a smaller width.
+
+    This function is used to ensure that only floats that can be represented exactly are generated.
+
+    Adapted from `hypothesis.strategies.numbers.floats`.
+
+    Args:
+        x: The float to downcast.
+        dtype: The dtype to downcast to.
+
+    Returns:
+        The downcasted float.
+    """
+    try:
+        assert dtype in (torch.float64, torch.float32, torch.float16, torch.bfloat16)
+        if dtype == torch.float64:
+            return x
+        elif dtype == torch.float32:
+            return _reinterpret_bits(x, "!f", "!f")
+        elif dtype == torch.bfloat16:
+            return _reinterpret_bits(x, "!f", "!f", truncate_bytes=2)
+        elif dtype == torch.float16:
+            return _reinterpret_bits(x, "!e", "!e")
+        else:
+            raise ValueError(f"Unsupported dtype: {dtype}")
+    except OverflowError:
+        hypothesis.reject()
 
 
 @st.composite
@@ -111,37 +164,8 @@ def tensor_strategy(
 
     # If the dtype is a float, then we need to make sure that only elements that can be represented exactly are
     # generated
-    if dtype in dtype_module.FLOAT_DTYPES and elements is not None:
-        if dtype == torch.bfloat16:
-            # Since we do not directly support bfloat16 in numpy, we will generate float32.
-            # This still means that we will occasionally generate values that exceed the max/min of bfloat16.
-            # All other values (within the range) will be simply truncated below when casting the numpy array to
-            # a bfloat16 tensor.
-            bfloat16_info = torch.finfo(torch.bfloat16)
-            elements = elements.filter(lambda x: bfloat16_info.min <= x <= bfloat16_info.max)
-
-        width = dtype_module.float_width_map[dtype]
-        if width < 64:
-
-            def downcast(x: float) -> float:
-                """Downcast a float to a smaller width.
-
-                This function is used to ensure that only floats that can be represented exactly are generated.
-
-                Adapted from `hypothesis.strategies.numbers.floats`.
-
-                Args:
-                    x: The float to downcast.
-
-                Returns:
-                    The downcasted float.
-                """
-                try:
-                    return hypothesis.internal.floats.float_of(x, width)
-                except OverflowError:  # pragma: no cover
-                    hypothesis.reject()
-
-            elements = elements.map(downcast)
+    if dtype in {torch.bfloat16, torch.float32, torch.float16} and elements is not None:
+        elements = elements.map(lambda x: downcast(x, dtype))
 
     if isinstance(unique, st.SearchStrategy):
         unique = draw(unique)

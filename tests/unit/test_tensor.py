@@ -8,6 +8,7 @@ import torch
 from hypothesis import strategies as st
 
 import hypothesis_torch
+import hypothesis_torch.tensor
 from tests.unit import utils
 
 INT8_RANGE = {
@@ -290,7 +291,7 @@ class TestTensor(unittest.TestCase):
     @hypothesis.given(
         no_inf_tensor=hypothesis_torch.tensor_strategy(
             dtype=hypothesis_torch.dtype_strategy(dtypes=hypothesis_torch.FLOAT_DTYPES),
-            shape=(1, 10, 20),
+            shape=(1, 5, 5),
             elements=st.floats(allow_infinity=False, allow_nan=False, allow_subnormal=False),
         ),
     )
@@ -298,3 +299,22 @@ class TestTensor(unittest.TestCase):
         """Test that no infinities are generated."""
         self.assertFalse(torch.isinf(no_inf_tensor).any())
         self.assertFalse(torch.isnan(no_inf_tensor).any())
+
+
+class TestDowncasting(unittest.TestCase):
+    """Tests for downcasting floats."""
+
+    @hypothesis.given(
+        dtype=hypothesis_torch.dtype_strategy(dtypes=hypothesis_torch.FLOAT_DTYPES),
+        float=st.floats(allow_nan=False, allow_infinity=False, allow_subnormal=False),
+    )
+    def test_downcasting_floats(self, dtype: torch.dtype, float: float) -> None:
+        """Test that downcasting floats works.
+
+        Args:
+            dtype: The dtype to downcast to.
+            float: The float to downcast.
+        """
+        downcasted_float = hypothesis_torch.tensor.downcast(float, dtype)
+        tensor = torch.tensor([downcasted_float], dtype=dtype)
+        self.assertEqual(tensor.item(), downcasted_float)

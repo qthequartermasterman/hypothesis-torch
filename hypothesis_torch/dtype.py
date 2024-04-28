@@ -60,7 +60,7 @@ numpy strategies."""
 
 float_width_map: Final[Mapping[torch.dtype, Literal[16, 32, 64]]] = {
     torch.float16: 16,
-    torch.bfloat16: 32,  # Numpy does not have a bf16, but it is a strict subset of f32
+    torch.bfloat16: "bfloat16",  # Numpy does not have a bf16, but it is a strict subset of f32
     torch.float32: 32,
     torch.float64: 64,
 }
