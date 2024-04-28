@@ -50,7 +50,7 @@ numpy_dtype_map: Final[Mapping[torch.dtype, npt.DTypeLike]] = {
     torch.float16: np.float16,
     torch.float32: np.float32,
     torch.float64: np.float64,
-    torch.bfloat16: np.float32,  # Numpy does not have a bf16, but it has the same dynamic range as f32
+    torch.bfloat16: np.float32,  # Numpy does not have a bf16, but it is a strict subset of fp32
     torch.complex64: complex,
     torch.complex128: complex,
     torch.bool: np.bool_,
@@ -60,7 +60,7 @@ numpy strategies."""
 
 float_width_map: Final[Mapping[torch.dtype, Literal[16, 32, 64]]] = {
     torch.float16: 16,
-    torch.bfloat16: 32,  # Numpy does not have a bf16, but it has the same dynamic range as f32
+    torch.bfloat16: 32,  # Numpy does not have a bf16, but it is a strict subset of f32
     torch.float32: 32,
     torch.float64: 64,
 }
