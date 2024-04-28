@@ -2,6 +2,21 @@
 
 
 
+## v0.4.3 (2024-04-28)
+
+### Fix
+
+* fix: :bug: do not generate inf values if elements has infinity disabled for bfloat16 tensors.
+
+Before, if a float strategy that prevented infinities was provided to as `elements` to `tensor_strategy`, the resultant tensor could still occasionally have infinities because the strategy would generate float32 values that exceeded the maximium/minimum values for bfloat16. ([`cda8577`](https://github.com/qthequartermasterman/hypothesis-torch/commit/cda8577aebf2bed7d8c86a8e5ac1c1d19d5cd57c))
+
+### Unknown
+
+* Merge pull request #21 from qthequartermasterman/fix-bfloat16-infinities
+
+fix: :bug: do not generate inf values if elements has infinity disabled for bfloat16 tensors. ([`8398018`](https://github.com/qthequartermasterman/hypothesis-torch/commit/8398018f7c5bd18307eafb7b8f30ffff044d6e64))
+
+
 ## v0.4.2 (2024-04-27)
 
 ### Fix
