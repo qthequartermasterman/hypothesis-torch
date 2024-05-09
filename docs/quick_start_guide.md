@@ -41,7 +41,6 @@ In the sample below, the two tensors will be in single precision (`torch.float32
 import torch
 import hypothesis_torch
 from hypothesis import given
-from hypothesis import strategies as st
 
 def project(tensor1: torch.Tensor, tensor2: torch.Tensor) -> torch.Tensor:
     """Project tensor2 onto tensor1."""
