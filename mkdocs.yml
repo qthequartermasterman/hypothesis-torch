@@ -63,3 +63,4 @@ markdown_extensions:
 plugins:
   - search
   - autolinks
+  - mkdocstrings
