@@ -2,6 +2,17 @@
 
 
 
+## v0.6.0 (2024-05-09)
+
+### Unknown
+
+* Merge pull request #18 from qthequartermasterman/optimizers
+
+feat: :sparkles: add strategies for torch optimizers ([`fbefa06`](https://github.com/qthequartermasterman/hypothesis-torch/commit/fbefa069ceea8ce997306239ae9fff43cfbffa4b))
+
+* Merge branch &#39;main&#39; into optimizers ([`4eb2f4d`](https://github.com/qthequartermasterman/hypothesis-torch/commit/4eb2f4dd9017aca36895efd51fbf22b3e75bea30))
+
+
 ## v0.5.0 (2024-05-09)
 
 ### Build
@@ -97,6 +108,10 @@ fix: :bug: do not generate inf values if elements has infinity disabled for bflo
 ### Feature
 
 * feat: :sparkles: add support for more transformers strategies ([`7ac7508`](https://github.com/qthequartermasterman/hypothesis-torch/commit/7ac75088956adf3ec5b06b9352d6ed7c0492ad59))
+
+* feat: :sparkles: add strategies for torch optimizer types and torch optimizer instances
+
+NOTE: The strategy for torch optimizers actually generates an &#34;alternate constructor&#34; for a torch optimizer that takes in only a torch module&#39;s parameters. The strategy will &#34;pre-fill&#34; all of the hyperparameters. If these hyparameters should be overridden, they can be specified as kwargs in the strategy. ([`5cf6181`](https://github.com/qthequartermasterman/hypothesis-torch/commit/5cf6181ef6617eda19eb0b51658f835280421c63))
 
 ### Fix
 
