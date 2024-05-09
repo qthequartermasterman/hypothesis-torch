@@ -9,8 +9,8 @@ nav:
   - quick_start_guide.md
   - strategies.md
   - compatability.md
-  - changelog.md
   - contributing.md
+  - changelog.md
   - license.md
 
 theme:
