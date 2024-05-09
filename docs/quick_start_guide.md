@@ -83,7 +83,6 @@ This should be expected, however, because the projection of any vector onto the 
 import torch
 import hypothesis_torch
 from hypothesis import given, assume
-from hypothesis import strategies as st
 
 def project(tensor1: torch.Tensor, tensor2: torch.Tensor) -> torch.Tensor:
     """Project tensor2 onto tensor1."""
