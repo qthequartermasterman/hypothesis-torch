@@ -2,9 +2,11 @@
 
 from __future__ import annotations
 
+
 import transformers.activations
 import inspect
 from typing import TypeVar
+from typing_extensions import Final
 
 import hypothesis
 import hypothesis.strategies as st
@@ -15,6 +17,18 @@ from hypothesis_torch import inspection_util
 
 T = TypeVar("T")
 TransformerType = TypeVar("TransformerType", bound=transformers.PreTrainedModel)
+
+_PLEASE_REPORT_ERROR: Final[str] = """\
+Transformer {cls} is not officially supported. 
+
+If you encounter issues, please report them at https://github.com/qthequartermasterman/hypothesis-torch/issues."""
+
+OFFICIALLY_SUPPORTED_TRANSFORMERS: Final[tuple[type[transformers.PreTrainedModel], ...]] = (
+    transformers.LlamaPreTrainedModel,
+    transformers.LlamaForCausalLM,
+    transformers.MistralPreTrainedModel,
+    transformers.MistralForCausalLM,
+)
 
 POSITIVE_INTS = st.integers(min_value=1, max_value=4)  # We intentionally limit positive ints for speed
 FLOATS_BETWEEN_ZERO_AND_ONE = st.floats(
@@ -41,6 +55,7 @@ TRANSFORMER_CONFIG_KWARG_STRATEGIES = {
     "activation_function": st.sampled_from(list(transformers.activations.ACT2FN.keys())),
     "projection_hidden_act": st.sampled_from(list(transformers.activations.ACT2FN.keys())),
     "hidden_size": POSITIVE_INTS,
+    "initializer_factor": FLOATS_STRICTLY_GREATER_THAN_ZERO,
     "initializer_range": FLOATS_STRICTLY_GREATER_THAN_ZERO,
     "intermediate_size": POSITIVE_INTS,
     "max_position_embeddings": POSITIVE_INTS,
@@ -78,17 +93,20 @@ TRANSFORMER_CONFIG_KWARG_STRATEGIES = {
 }
 
 
-def ignore_import_errors(func):
+def ignore_errors(*errors_to_ignore: type[Exception]):
     """Decorator to ignore import errors."""
 
-    def wrapper(*args, **kwargs):
-        try:
-            return func(*args, **kwargs)
-        except ImportError as e:
-            hypothesis.note(f"Ignoring import error: {e}")
-            hypothesis.assume(False)
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            try:
+                return func(*args, **kwargs)
+            except errors_to_ignore as e:
+                hypothesis.note(f"Ignoring error: {e}")
+                hypothesis.reject()
 
-    return wrapper
+        return wrapper
+
+    return decorator
 
 
 @st.composite
@@ -156,10 +174,45 @@ def build_from_cls_init(draw: st.DrawFn, cls: type[T], **kwargs) -> T:
     if "Levit" in cls.__name__:
         kwargs["num_attention_heads"] = (draw(st.tuples(POSITIVE_INTS, POSITIVE_INTS, POSITIVE_INTS).map(list)),)
 
+    # Many models expect embed_dim to be divisible by num_heads
+    classes_expecting_num_heads_and_embed_dim = [
+        "Bark",
+        "Blenderbot",
+        "Bart",
+        "BigBird",
+    ]
+    for class_name in classes_expecting_num_heads_and_embed_dim:
+        if class_name in cls.__name__:
+            if "num_heads" not in kwargs:
+                kwargs["num_heads"] = draw(POSITIVE_INTS)
+            if "embed_dim" not in kwargs:
+                kwargs["embed_dim"] = draw(POSITIVE_INTS)
+    if "embed_dim" in kwargs and "num_heads" in kwargs:
+        kwargs["embed_dim"] = kwargs["embed_dim"] * kwargs["num_heads"]
+    if "Bark" in cls.__name__ or "Bloom" in cls.__name__:
+        if "hidden_size" not in kwargs:
+            kwargs["hidden_size"] = draw(POSITIVE_INTS)
+        kwargs["hidden_size"] = kwargs["hidden_size"] * kwargs["num_heads"]
+
+    if "Camembert" in cls.__name__:
+        kwargs["padding_idx"] = draw(st.integers(min_value=0, max_value=kwargs["num_embeddings"] - 1))
+
+    if "BigBird" in cls.__name__:
+        kwargs["attention_type"] = draw(st.sampled_from(["block_sparse", "original_full"]))
+
+    # BitModel requires num_channels be divisible by num_groups
+    if "Bit" in cls.__name__:
+        kwargs["num_channels"] = kwargs["num_channels"] * kwargs["num_groups"]
+
+    # Some models such as "CodeGen" have multiple Dropout probability parameters, each with "pdrop" in the name
+    for key in kwargs:
+        if "pdrop" in key:
+            kwargs[key] = draw(FLOATS_BETWEEN_ZERO_AND_ONE)
+
     return cls(**kwargs)
 
 
-@ignore_import_errors
+@ignore_errors(ImportError, NotImplementedError)
 @st.composite
 def transformer_strategy(
     draw: st.DrawFn,
@@ -184,6 +237,10 @@ def transformer_strategy(
     """
     if isinstance(cls, st.SearchStrategy):
         cls = draw(cls)
+
+    if cls not in OFFICIALLY_SUPPORTED_TRANSFORMERS:
+        hypothesis.note(_PLEASE_REPORT_ERROR.format(cls=cls))
+
     assert issubclass(cls, transformers.PreTrainedModel)
     hypothesis.note(f"Building transformer from {cls.__name__}")
     config = draw(build_from_cls_init(cls.config_class, **kwargs))

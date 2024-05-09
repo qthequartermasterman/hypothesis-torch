@@ -1,8 +1,10 @@
 """Tests for the transformers strategies."""
 
+import os
 import unittest
 from types import ModuleType
-from typing import Any
+from typing import Any, Final
+import pytest
 
 import hypothesis
 import transformers
@@ -10,8 +12,30 @@ from hypothesis import strategies as st
 
 import hypothesis_torch
 from hypothesis_torch import inspection_util
-from tests.unit import utils as test_utils
 
+_TEST_UNSUPPORTED_TRANSFORMERS_SKIP_REASON: Final[str] = """\
+Skipping unsupported transformers. To test unsupported transformers, please set the environment variable \
+HYPOTHESIS_TORCH_TEST_UNSUPPORTED_TRANSFORMERS to `True`."""
+
+TEST_UNSUPPORTED_TRANSFORMERS: Final[bool] = (
+    os.getenv("HYPOTHESIS_TORCH_TEST_UNSUPPORTED_TRANSFORMERS", "False").lower() == "true"
+)
+
+
+@pytest.mark.parametrize("instantiate_weights", [True, False])
+@pytest.mark.parametrize("transformer_type", hypothesis_torch.OFFICIALLY_SUPPORTED_TRANSFORMERS)
+@hypothesis.given(data=st.data())
+def test_officially_supported_transformers(
+    instantiate_weights: bool, transformer_type: type[transformers.PreTrainedModel], data: st.DataObject
+) -> None:
+    """Test that the transformer strategy only generates valid items."""
+    transformer = data.draw(
+        hypothesis_torch.transformer_strategy(transformer_type, instantiate_weights=instantiate_weights)
+    )
+    assert isinstance(transformer, transformer_type)
+
+
+# We will dynamically test all available transformers models.
 for module in transformers.models.__dict__.values():
     if type(module) is transformers.utils.import_utils._LazyModule:
         for attr in module._modules:
@@ -20,73 +44,46 @@ for module in transformers.models.__dict__.values():
     elif type(module) is ModuleType:
         print(module.__name__, module.__dict__)
 
-
-TRANSFORMERS_TO_TEST: list[type[transformers.PreTrainedModel]] = inspection_util.get_all_subclasses(
+AVAILABLE_TRANSFORMERS: list[type[transformers.PreTrainedModel]] = inspection_util.get_all_subclasses(
     transformers.PreTrainedModel
 )
 # BridgeTower seems to be broken. It requires a `contrastive_hidden_size` parameter not included in its config.
 # TODO: Support BridgeTower
 # Align models, especially AlignVisionModel seem to keep crashing my tests due to memory.
 # TODO: Support Align
-_UNSUPPORTED_CLASSES = ["BridgeTower", "Align"]
-TRANSFORMERS_TO_TEST = [m for m in TRANSFORMERS_TO_TEST if all(u not in m.__name__ for u in _UNSUPPORTED_CLASSES)]
+# "Alt" models seem to have issues I haven't diagnosed yet.
+# TODO: Support Alt
+# "Autoformer" models require specifying "prediction_length" in their config.
+# TODO: Support Autoformer
+# "Beit" models are giving me issues with "NotImplementedErrors" on meta devices.
+# TODO: Support Beit
+# Some "Clap" models are giving NotImplementedErrors and some others are giving:
+#   |   File "/.../site-packages/transformers/models/clap/modeling_clap.py", line 826, in __init__
+#   |     self.freq_ratio = config.spec_size // config.num_mel_bins
+#   | TypeError: unsupported operand type(s) for //: 'tuple' and 'int'
+# TODO: Support Clap
+# "Clvp" is giving errors about "vocab_size" not being an attribute
+# TODO: Support Clvp
+# "ConditionalDetr" is giving errors about pretrained backbone weights
+_UNSUPPORTED_CLASSES = ["BridgeTower", "Align", "Alt", "Autoformer", "Beit", "Clap", "Clvp", "ConditionalDetr"]
+POTENTIALLY_SUPPORTED_TRANSFORMERS = [
+    m for m in AVAILABLE_TRANSFORMERS if all(u not in m.__name__ for u in _UNSUPPORTED_CLASSES)
+]
 
 
-class TestTransformers(unittest.TestCase):
-    """Tests for transformers strategies."""
-
-    @hypothesis.given(
-        transformer_and_kwargs=test_utils.meta_strategy_constraints(
-            strategy_func=hypothesis_torch.transformer_strategy,
-            cls=st.sampled_from(TRANSFORMERS_TO_TEST),
-        )
+# Because there are A LOT of these models, and we need to test them all, we will reduce the time needed to test them by
+# not instantiating the weights.
+@pytest.mark.parametrize("instantiate_weights", [False])
+@pytest.mark.parametrize("transformer_type", POTENTIALLY_SUPPORTED_TRANSFORMERS)
+@hypothesis.given(data=st.data())
+def test_unofficially_supported_transformers(
+    instantiate_weights: bool, transformer_type: type[transformers.PreTrainedModel], data: st.DataObject
+) -> None:
+    """Test that the transformer strategy only generates valid items."""
+    # For some reason, using a skipif decorator doesn't work here.
+    if not TEST_UNSUPPORTED_TRANSFORMERS:
+        pytest.skip(_TEST_UNSUPPORTED_TRANSFORMERS_SKIP_REASON)
+    transformer = data.draw(
+        hypothesis_torch.transformer_strategy(transformer_type, instantiate_weights=instantiate_weights)
     )
-    def test_transformers(self, transformer_and_kwargs: tuple[transformers.PreTrainedModel, dict[str, Any]]) -> None:
-        """Test that the transformer is a LlamaForCausalLM."""
-        transformer, kwargs = transformer_and_kwargs
-        cls: type[transformers.PreTrainedModel] = kwargs["cls"]
-        self.assertIsInstance(transformer, cls)
-        # Should default to instantiated weights
-        self.assertFalse(any(p.is_meta for p in transformer.parameters()))
-
-    @hypothesis.given(
-        transformer_and_kwargs=test_utils.meta_strategy_constraints(
-            strategy_func=hypothesis_torch.transformer_strategy,
-            cls=st.sampled_from(TRANSFORMERS_TO_TEST),
-            instantiate_weights=False,
-        )
-    )
-    def test_transformers_meta_device(
-        self, transformer_and_kwargs: tuple[transformers.PreTrainedModel, dict[str, Any]]
-    ) -> None:
-        """Test that the transformer is a LlamaForCausalLM."""
-        transformer, kwargs = transformer_and_kwargs
-
-        cls: type[transformers.PreTrainedModel] = kwargs["cls"]
-        self.assertIsInstance(transformer, cls)
-        self.assertTrue(all(p.is_meta for p in transformer.parameters()))
-
-    @hypothesis.given(transformer=hypothesis_torch.transformer_strategy(transformers.LlamaForCausalLM))
-    def test_transformers_llama(self, transformer: transformers.LlamaForCausalLM) -> None:
-        """Test that the transformer is a LlamaForCausalLM."""
-        self.assertIsInstance(transformer, transformers.LlamaForCausalLM)
-        # Should default to instantiated weights
-        self.assertFalse(any(p.is_meta for p in transformer.parameters()))
-
-    @hypothesis.given(
-        transformer=hypothesis_torch.transformer_strategy(transformers.LlamaForCausalLM, instantiate_weights=False)
-    )
-    def test_transformers_meta_device_llama(self, transformer: transformers.LlamaForCausalLM) -> None:
-        """Test that the transformer is a LlamaForCausalLM, with meta weights if instantiate weights is disabled."""
-        self.assertIsInstance(transformer, transformers.LlamaForCausalLM)
-        self.assertTrue(all(p.is_meta for p in transformer.parameters()))
-
-
-# @pytest.mark.parametrize('transformer_type', TRANSFORMERS_TO_TEST)
-# @hypothesis.given(
-#     data=st.data()
-# )
-# def test_transformers(transformer_type:type[transformers.PreTrainedModel], data:st.DataObject) -> None:
-#     """Test that the transformer strategy only generates valid items."""
-#     transformer=data.draw(hypothesis_torch.transformer_strategy(transformer_type))
-#     assert isinstance(transformer, transformer_type)
+    assert isinstance(transformer, transformer_type)

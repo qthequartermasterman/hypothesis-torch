@@ -34,4 +34,4 @@ from hypothesis_torch.tensor import tensor_strategy
 
 if importlib.util.find_spec("transformers") is not None:
     # Import Hugging Face strategies if transformers is installed
-    from hypothesis_torch.huggingface import transformer_strategy
+    from hypothesis_torch.huggingface import transformer_strategy, OFFICIALLY_SUPPORTED_TRANSFORMERS
