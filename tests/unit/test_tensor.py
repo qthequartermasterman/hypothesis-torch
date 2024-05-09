@@ -287,6 +287,7 @@ class TestTensor(unittest.TestCase):
         else:
             self.assertFalse(tensor.is_pinned())
 
+    @hypothesis.settings(deadline=None)  # This can be slow, especially for float16/bfloat16.
     @hypothesis.given(
         no_inf_tensor=hypothesis_torch.tensor_strategy(
             dtype=hypothesis_torch.dtype_strategy(dtypes=hypothesis_torch.FLOAT_DTYPES),

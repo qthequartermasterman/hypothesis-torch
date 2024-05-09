@@ -31,6 +31,7 @@ class TestActivationStrategy(unittest.TestCase):
 class TestLinearStrategy(unittest.TestCase):
     """Tests for the linear strategy."""
 
+    @hypothesis.settings(deadline=None)  # This can be slow.
     @hypothesis.given(
         module_and_kwargs=utils.meta_strategy_constraints(
             strategy_func=hypothesis_torch.linear_network_strategy,
