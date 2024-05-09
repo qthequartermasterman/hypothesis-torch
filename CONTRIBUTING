@@ -1,0 +1,59 @@
+# Contributing to `hypothesis-torch`
+
+We love your input! We want to make contributing to this project as easy and transparent as possible, whether it's:
+
+- Reporting a bug
+- Discussing the current state of the code
+- Submitting a fix
+- Proposing new features
+- Becoming a maintainer
+
+## We Develop with Github
+We use github to host code, to track issues and feature requests, as well as accept pull requests.
+
+## We Use [Trunk-based Development](https://trunkbaseddevelopment.com/), So All Code Changes Happen Through Pull Requests
+Pull requests are the best way to propose changes to the codebase (we use [Trunk-based Development](https://trunkbaseddevelopment.com/)). We actively welcome your pull requests:
+
+1. Fork the repo and create your branch from `main`.
+2. If you've added code that should be tested (i.e any changes to the `hypothesis-torch` package source code), add tests.
+3. If you've changed APIs, update the documentation.
+    - Include examples, using doctest format!
+    - We use [Google-style docstrings](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html), so please follow that format.
+4. Ensure the test suite passes.
+5. Make sure your code lints.
+    - Linters are run in Github Actions on every PR, so you can check the status of your PR to see if it passes.
+    - To reproduce locally, run
+        ```bash
+        ruff check
+        ruff format
+        ```
+    - `ruff` can also automatically fix many linting errors with the `--fix` flag.
+    - Optionally, you can use the pre-commit hooks by running `pre-commit install` in the root of the repository, which will run the linters on every commit.
+6. Please use thorough, clear commit messages, with a target audience of end users. These commit messages will be automatically used to generate the changelog.
+    - Consequently, using [Atomic Git Commits](https://dev.to/samuelfaure/how-atomic-git-commits-dramatically-increased-my-productivity-and-will-increase-yours-too-4a84) is a good practice to keep the changelog clean.
+7. Submit that pull request!
+
+## Any contributions you make will be under the MIT Software License
+In short, when you submit code changes, your submissions are understood to be under the same [MIT License](http://choosealicense.com/licenses/mit/) that covers the project. Feel free to contact the maintainers if that's a concern.
+
+## Report bugs using Github's [issues](https://github.com/qthequartermasterman/hypothesis-torch/issues)
+We use GitHub issues to track public bugs. Report a bug by [opening a new issue](https://github.com/qthequartermasterman/hypothesis-torch/issues/new/choose); it's that easy!
+
+If a bug has a serious security concern, please reach out directly to the maintainers.
+
+## Write bug reports with detail, background, and sample code
+
+**Great Bug Reports** tend to have:
+
+- A quick summary and/or background
+- Steps to reproduce
+  - Be specific!
+  - Give sample code if you can. Preferably, this is a minimal reproducible example.
+- What you expected would happen
+- What actually happens
+- Notes (possibly including why you think this might be happening, or stuff you tried that didn't work)
+
+People *love* thorough bug reports. I'm not even kidding.
+
+## References
+This document was adapted from [`briandk/CONTRIBUTING.md` gist](https://gist.github.com/briandk/3d2e8b3ec8daf5a27a62) and the open-source contribution guidelines for [Facebook's Draft](https://github.com/facebook/draft-js/blob/a9316a723f9e918afde44dea68b5f9f39b7d9b00/CONTRIBUTING.md)
