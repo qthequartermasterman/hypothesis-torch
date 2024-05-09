@@ -1,12 +1,12 @@
 """Tests for the transformers strategies."""
 
+import contextlib
 import os
-import unittest
 from types import ModuleType
-from typing import Any, Final
-import pytest
+from typing import Final
 
 import hypothesis
+import pytest
 import transformers
 from hypothesis import strategies as st
 
@@ -37,12 +37,13 @@ def test_officially_supported_transformers(
 
 # We will dynamically test all available transformers models.
 for module in transformers.models.__dict__.values():
-    if type(module) is transformers.utils.import_utils._LazyModule:
-        for attr in module._modules:
-            if "modeling" in attr:
-                getattr(module, attr)
-    elif type(module) is ModuleType:
-        print(module.__name__, module.__dict__)
+    with contextlib.suppress(ImportError):
+        if type(module) is transformers.utils.import_utils._LazyModule:
+            for attr in module._modules:
+                if "modeling" in attr:
+                    getattr(module, attr)
+        elif type(module) is ModuleType:
+            print(module.__name__, module.__dict__)
 
 AVAILABLE_TRANSFORMERS: list[type[transformers.PreTrainedModel]] = inspection_util.get_all_subclasses(
     transformers.PreTrainedModel
