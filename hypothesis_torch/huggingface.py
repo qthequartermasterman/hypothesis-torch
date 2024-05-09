@@ -5,8 +5,8 @@ from __future__ import annotations
 
 import transformers.activations
 import inspect
-from typing import TypeVar
-from typing_extensions import Final
+from typing import TypeVar, Callable
+from typing_extensions import Final, ParamSpec
 
 import hypothesis
 import hypothesis.strategies as st
@@ -15,6 +15,7 @@ import transformers
 
 from hypothesis_torch import inspection_util
 
+P = ParamSpec("P")
 T = TypeVar("T")
 TransformerType = TypeVar("TransformerType", bound=transformers.PreTrainedModel)
 
@@ -96,8 +97,8 @@ TRANSFORMER_CONFIG_KWARG_STRATEGIES = {
 def ignore_errors(*errors_to_ignore: type[Exception]):
     """Decorator to ignore import errors."""
 
-    def decorator(func):
-        def wrapper(*args, **kwargs):
+    def decorator(func: Callable[P, T]) -> Callable[P, T]:
+        def wrapper(*args: P.args, **kwargs: P.kwargs) -> T:
             try:
                 return func(*args, **kwargs)
             except errors_to_ignore as e:
