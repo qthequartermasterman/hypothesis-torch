@@ -44,8 +44,8 @@ huggingface = [
   "transformers",
 ]
 dev = [
-  "ruff==0.4.1",
-  "pytest==8.1.1",
+  "ruff==0.4.3",
+  "pytest==8.2.0",
   "pytest-cov==5.0.0"
 ]
 

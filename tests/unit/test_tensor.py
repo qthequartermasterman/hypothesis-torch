@@ -286,3 +286,15 @@ class TestTensor(unittest.TestCase):
             self.assertEqual(tensor.is_pinned(), kwargs["pin_memory"])
         else:
             self.assertFalse(tensor.is_pinned())
+
+    @hypothesis.given(
+        no_inf_tensor=hypothesis_torch.tensor_strategy(
+            dtype=hypothesis_torch.dtype_strategy(dtypes=hypothesis_torch.FLOAT_DTYPES),
+            shape=(1, 10, 20),
+            elements=st.floats(allow_infinity=False, allow_nan=False, allow_subnormal=False),
+        ),
+    )
+    def test_no_infinities_generated(self, no_inf_tensor: torch.Tensor) -> None:
+        """Test that no infinities are generated."""
+        self.assertFalse(torch.isinf(no_inf_tensor).any())
+        self.assertFalse(torch.isnan(no_inf_tensor).any())
