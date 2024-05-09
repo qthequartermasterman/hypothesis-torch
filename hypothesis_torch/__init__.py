@@ -4,7 +4,7 @@
 lacks built-in support for Pytorch tensors and modules, so this library provides strategies for generating them.
 """
 
-__version__ = "0.4.1"
+__version__ = "0.5.0"
 import importlib.util
 
 from hypothesis_torch.device import (
@@ -35,4 +35,4 @@ from hypothesis_torch.tensor import tensor_strategy
 
 if importlib.util.find_spec("transformers") is not None:
     # Import Hugging Face strategies if transformers is installed
-    from hypothesis_torch.huggingface import transformer_strategy
+    from hypothesis_torch.huggingface import transformer_strategy, OFFICIALLY_SUPPORTED_TRANSFORMERS

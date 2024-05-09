@@ -2,6 +2,109 @@
 
 
 
+## v0.5.0 (2024-05-09)
+
+### Build
+
+* build: 🔧 add py.typed ([`bef3985`](https://github.com/qthequartermasterman/hypothesis-torch/commit/bef3985b6747e29f18ed45e7984945a6767190a9))
+
+### Chore
+
+* chore(deps): bump pytest from 8.1.1 to 8.2.0
+
+Bumps [pytest](https://github.com/pytest-dev/pytest) from 8.1.1 to 8.2.0.
+- [Release notes](https://github.com/pytest-dev/pytest/releases)
+- [Changelog](https://github.com/pytest-dev/pytest/blob/main/CHANGELOG.rst)
+- [Commits](https://github.com/pytest-dev/pytest/compare/8.1.1...8.2.0)
+
+---
+updated-dependencies:
+- dependency-name: pytest
+  dependency-type: direct:production
+  update-type: version-update:semver-minor
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`75fd127`](https://github.com/qthequartermasterman/hypothesis-torch/commit/75fd127ec1fcbb64a95eb82dc0ae03e7faeee3fc))
+
+* chore(deps): bump ruff from 0.4.1 to 0.4.3
+
+Bumps [ruff](https://github.com/astral-sh/ruff) from 0.4.1 to 0.4.3.
+- [Release notes](https://github.com/astral-sh/ruff/releases)
+- [Changelog](https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md)
+- [Commits](https://github.com/astral-sh/ruff/compare/v0.4.1...v0.4.3)
+
+---
+updated-dependencies:
+- dependency-name: ruff
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`c7e5d8d`](https://github.com/qthequartermasterman/hypothesis-torch/commit/c7e5d8d0c611a03dd03a8cc6373e4992e709919b))
+
+### Fix
+
+* fix: :label: fix incorrect decorator typing ([`3e80d6a`](https://github.com/qthequartermasterman/hypothesis-torch/commit/3e80d6a0f71b6cde8f539150bffffe9ee338253b))
+
+* fix: :white_check_mark: designate officially supported versus unofficially supported transformers.
+
+By default, only officially supported transformer types are tested in CI, but unofficially supported transformers MAY or MAY NOT be compatible with the `transformer_strategy`. A test fully parametrized over ALL of the model types in `transformers` is available, and can be enabled when setting the environment variable `HYPOTHESIS_TORCH_TEST_UNSUPPORTED_TRANSFORMERS=True`. ([`7d22190`](https://github.com/qthequartermasterman/hypothesis-torch/commit/7d22190766613db31a220b0cda54bb79d73cc6b1))
+
+### Test
+
+* test: ignore import errors while inferring available transformers in tests. ([`84185cb`](https://github.com/qthequartermasterman/hypothesis-torch/commit/84185cb66fcec5f50aad09e38b0026624ca5862a))
+
+* test:  disable deadline for occasionally slow tests ([`34ae9db`](https://github.com/qthequartermasterman/hypothesis-torch/commit/34ae9db1d2ef05433c87a25a4d17aa224c67b4ff))
+
+### Unknown
+
+* Merge pull request #19 from qthequartermasterman/transformers-tests
+
+feat: :sparkles: add support for more transformers strategies ([`964a70f`](https://github.com/qthequartermasterman/hypothesis-torch/commit/964a70f0ea027286cc614cf963e764e3bcbdbffa))
+
+* Merge branch &#39;main&#39; into transformers-tests ([`aa6f06e`](https://github.com/qthequartermasterman/hypothesis-torch/commit/aa6f06e242fbe5008c6e070b48099524eead0919))
+
+* Merge pull request #23 from qthequartermasterman/dependabot/pip/main/pytest-8.2.0
+
+chore(deps): bump pytest from 8.1.1 to 8.2.0 ([`a55308b`](https://github.com/qthequartermasterman/hypothesis-torch/commit/a55308be3956fe9de7aa39a48deacecc0121bc2a))
+
+* Merge pull request #26 from qthequartermasterman/dependabot/pip/main/ruff-0.4.3
+
+chore(deps): bump ruff from 0.4.1 to 0.4.3 ([`2ae1ae5`](https://github.com/qthequartermasterman/hypothesis-torch/commit/2ae1ae54a369912845a76b2cc7dfb3e94c769539))
+
+* Merge pull request #25 from ringohoffman/py.typed
+
+build: 🔧 add py.typed ([`b2e8557`](https://github.com/qthequartermasterman/hypothesis-torch/commit/b2e8557d8b8b0f0263ba19a68409fbd719830136))
+
+
+## v0.4.3 (2024-04-28)
+
+### Fix
+
+* fix: :bug: do not generate inf values if elements has infinity disabled for bfloat16 tensors.
+
+Before, if a float strategy that prevented infinities was provided to as `elements` to `tensor_strategy`, the resultant tensor could still occasionally have infinities because the strategy would generate float32 values that exceeded the maximium/minimum values for bfloat16. ([`cda8577`](https://github.com/qthequartermasterman/hypothesis-torch/commit/cda8577aebf2bed7d8c86a8e5ac1c1d19d5cd57c))
+
+### Unknown
+
+* Merge pull request #21 from qthequartermasterman/fix-bfloat16-infinities
+
+fix: :bug: do not generate inf values if elements has infinity disabled for bfloat16 tensors. ([`8398018`](https://github.com/qthequartermasterman/hypothesis-torch/commit/8398018f7c5bd18307eafb7b8f30ffff044d6e64))
+
+
+## v0.4.2 (2024-04-27)
+
+### Feature
+
+* feat: :sparkles: add support for more transformers strategies ([`7ac7508`](https://github.com/qthequartermasterman/hypothesis-torch/commit/7ac75088956adf3ec5b06b9352d6ed7c0492ad59))
+
+### Fix
+
+* fix: :bug: do not generate inf values if elements has infinity disabled for float16 and float32 tensors.
+
+This fix does not work for all bfloat16 tensors. ([`8e9eb5d`](https://github.com/qthequartermasterman/hypothesis-torch/commit/8e9eb5daf6f94e121ad6554bb1a41fcd73ac8da0))
+
+
 ## v0.4.1 (2024-04-24)
 
 ### Fix

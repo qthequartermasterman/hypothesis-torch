@@ -4,11 +4,14 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 from typing import Any, Sequence
+
+from hypothesis.internal.floats import float_of
 from typing_extensions import Final
 
 import hypothesis.extra.numpy as numpy_st
 import torch
-from hypothesis import strategies as st
+from hypothesis import strategies as st, reject
+from hypothesis.strategies._internal import numbers as st_numbers
 import hypothesis
 
 import hypothesis_torch
@@ -92,19 +95,53 @@ def tensor_strategy(
     if isinstance(device, st.SearchStrategy):
         device = draw(device)
     # MPS devices do not support tensors with dtype torch.float64 and bfloat16
-    hypothesis.assume(not (device is not None and device.type == "mps" and dtype in (torch.float64, torch.bfloat16)))
+    hypothesis.assume(device is None or device.type != "mps" or dtype not in (torch.float64, torch.bfloat16))
 
     if layout is None:
         layout = st.from_type(torch.layout)
     if isinstance(layout, st.SearchStrategy):
         layout = draw(layout)
     # MPS devices do not support sparse tensors
-    hypothesis.assume(not (device is not None and device.type == "mps" and layout == torch.sparse_coo))
+    hypothesis.assume(device is None or device.type != "mps" or layout != torch.sparse_coo)
 
     # If the dtype is an integer, we need to make sure that the elements are integers within the dtype's range
     if dtype in dtype_module.INT_DTYPES and isinstance(elements, st.SearchStrategy):
         info = torch.iinfo(dtype)
         elements = elements.filter(lambda x: info.min <= x <= info.max)
+
+    # If the dtype is a float, then we need to make sure that only elements that can be represented exactly are
+    # generated
+    if dtype in dtype_module.FLOAT_DTYPES and elements is not None:
+        if dtype == torch.bfloat16:
+            # Since we do not directly support bfloat16 in numpy, we will generate float32.
+            # This still means that we will occasionally generate values that exceed the max/min of bfloat16.
+            # All other values (within the range) will be simply truncated below when casting the numpy array to
+            # a bfloat16 tensor.
+            bfloat16_info = torch.finfo(torch.bfloat16)
+            elements = elements.filter(lambda x: bfloat16_info.min <= x <= bfloat16_info.max)
+
+        width = dtype_module.float_width_map[dtype]
+        if width < 64:
+
+            def downcast(x: float) -> float:
+                """Downcast a float to a smaller width.
+
+                This function is used to ensure that only floats that can be represented exactly are generated.
+
+                Adapted from `hypothesis.strategies.numbers.floats`.
+
+                Args:
+                    x: The float to downcast.
+
+                Returns:
+                    The downcasted float.
+                """
+                try:
+                    return hypothesis.internal.floats.float_of(x, width)
+                except OverflowError:  # pragma: no cover
+                    hypothesis.reject()
+
+            elements = elements.map(downcast)
 
     if isinstance(unique, st.SearchStrategy):
         unique = draw(unique)
