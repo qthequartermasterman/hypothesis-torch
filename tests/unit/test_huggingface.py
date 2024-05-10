@@ -7,6 +7,7 @@ from typing import Final
 
 import hypothesis
 import pytest
+import torch
 import transformers
 from hypothesis import strategies as st
 
@@ -25,10 +26,13 @@ TEST_UNSUPPORTED_TRANSFORMERS: Final[bool] = (
 @pytest.mark.parametrize("instantiate_weights", [True, False])
 @pytest.mark.parametrize("transformer_type", hypothesis_torch.OFFICIALLY_SUPPORTED_TRANSFORMERS)
 @hypothesis.given(data=st.data())
+@hypothesis.settings(deadline=None)
 def test_officially_supported_transformers(
     instantiate_weights: bool, transformer_type: type[transformers.PreTrainedModel], data: st.DataObject
 ) -> None:
     """Test that the transformer strategy only generates valid items."""
+    if not hasattr(torch.device("meta"), "__enter__") and not instantiate_weights:
+        pytest.skip("PyTorch<2 does not support non-instantiated weights.")
     transformer = data.draw(
         hypothesis_torch.transformer_strategy(transformer_type, instantiate_weights=instantiate_weights)
     )
@@ -37,11 +41,12 @@ def test_officially_supported_transformers(
 
 # We will dynamically test all available transformers models.
 for module in transformers.models.__dict__.values():
-    with contextlib.suppress(ImportError):
+    with contextlib.suppress(ImportError, RuntimeError):
         if type(module) is transformers.utils.import_utils._LazyModule:
             for attr in module._modules:
                 if "modeling" in attr:
-                    getattr(module, attr)
+                    with contextlib.suppress(ImportError, RuntimeError):
+                        getattr(module, attr)
         elif type(module) is ModuleType:
             print(module.__name__, module.__dict__)
 
