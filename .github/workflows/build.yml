@@ -9,6 +9,7 @@ on:
 
 env:
   HYPOTHESIS_PROFILE: "ci"
+  UV_SYSTEM_PYTHON: "true"
 
 permissions:
   contents: write
@@ -20,44 +21,7 @@ jobs:
     strategy:
       matrix:
         python-version: ['3.9', '3.10', '3.11', '3.12']
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v4
-    - uses: actions/cache@v4
-      id: cache-uv
-      with:
-        path: ~/.cache/uv
-        key: ${{ runner.os }}-python-${{ matrix.python-version }}-uv
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v5
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade uv
-        uv pip install --system ".[dev,huggingface]"
-    - name: Lint with ruff
-      if: ${{ matrix.python-version == '3.9' }}
-      run: |
-        ruff check
-    - name: Format with ruff
-      if: ${{ matrix.python-version == '3.9' }}
-      run: |
-        ruff format
-    - uses: stefanzweifel/git-auto-commit-action@v5
-      with:
-        commit_message: 'style fixes by ruff'
-    - name: Run tests
-      run: |
-        python -m pytest \
-        --junitxml=pytest.xml \
-        --cov-report=term-missing:skip-covered \
-        --cov=hypothesis_torch \
-        tests \
-        | tee pytest-coverage.txt
-    - name: Pytest coverage comment
-      uses: MishaKav/pytest-coverage-comment@main
-      with:
-        pytest-coverage-path: ./pytest-coverage.txt
-        junitxml-path: ./pytest.xml
+    uses: .github/workflows/build-reusable.yml
+    with:
+      python-version: ${{ matrix.python-version }}
+      lint: ${{ matrix.python-version == '3.9' }}
