@@ -6,6 +6,7 @@ repo_url: https://github.com/qthequartermasterman/hypothesis-torch
 edit_uri: edit/main/docs/
 
 nav:
+  - index.md
   - quick_start_guide.md
   - strategies.md
   - compatability.md
