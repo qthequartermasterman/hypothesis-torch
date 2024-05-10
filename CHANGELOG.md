@@ -1,5 +1,72 @@
-# Changelog
+# CHANGELOG
 
+
+
+## v0.6.1 (2024-05-10)
+
+### Build
+
+* build: :zap: remove unnecessary tee to avoid supressing error code ([`8716033`](https://github.com/qthequartermasterman/hypothesis-torch/commit/87160333a8ba121b710fedde3f29066e711e6c19))
+
+* build: fix incorrect reusable workflow path ([`ec36fc6`](https://github.com/qthequartermasterman/hypothesis-torch/commit/ec36fc68b1a0acf62902623ca67983c1fc699914))
+
+* build: test pytorch 1.13 in CI ([`6aff502`](https://github.com/qthequartermasterman/hypothesis-torch/commit/6aff502b464bb3c5a43ca19acc4ff4854b104056))
+
+* build: convert workflow to reusable workflow for simplicity ([`b1aa17a`](https://github.com/qthequartermasterman/hypothesis-torch/commit/b1aa17a70bd93c51f8c9f9f297741f53c90fcb00))
+
+* build: :sparkles: :memo: Add readthedocs configuration. ([`95ffac5`](https://github.com/qthequartermasterman/hypothesis-torch/commit/95ffac52292a6290ad5a2f418c0e11d40c9c1af3))
+
+### Documentation
+
+* docs: :sparkles: :memo: Add index page ([`510e3df`](https://github.com/qthequartermasterman/hypothesis-torch/commit/510e3dfedd2af3afae3b569183574ee223eb31f1))
+
+* docs: :sparkles: :memo: Add strategies reference to docs. ([`8fc0d95`](https://github.com/qthequartermasterman/hypothesis-torch/commit/8fc0d95d89b06191e5aaa9bf8214f9e92f3caca5))
+
+* docs: :sparkles: :memo: Add compatability guide to docs. ([`ca3bada`](https://github.com/qthequartermasterman/hypothesis-torch/commit/ca3badae4a2096f2ab84373c7118452cd4626e20))
+
+* docs: :sparkles: :memo: Disable top tabs on docs. ([`53164a2`](https://github.com/qthequartermasterman/hypothesis-torch/commit/53164a2febb25f86630e2b26e27f01a941bfa8e1))
+
+* docs: :sparkles: :memo: Add quick start guide to docs. ([`2710504`](https://github.com/qthequartermasterman/hypothesis-torch/commit/27105049976e83a024af4cb5d1c6d8314005cf7f))
+
+* docs: :sparkles: :memo: Add quick start guide to docs. ([`a59871c`](https://github.com/qthequartermasterman/hypothesis-torch/commit/a59871c2755088c9954384bdca7e395a51f71868))
+
+* docs: :sparkles: :memo: Add contribuging guidelines to docs. ([`3f30767`](https://github.com/qthequartermasterman/hypothesis-torch/commit/3f3076763b50de5a4c663faed4113490cb8d5ad2))
+
+* docs: :sparkles: :memo: Add changelog to docs. ([`05dc054`](https://github.com/qthequartermasterman/hypothesis-torch/commit/05dc05400bcf4c7b8d0da34822bd67b8150e67e6))
+
+* docs: :sparkles: :memo: Add changelog to docs. ([`ddb9598`](https://github.com/qthequartermasterman/hypothesis-torch/commit/ddb95980bb5e9fda47af72977fcd33b1954be122))
+
+* docs: :sparkles: :memo: Add license file to docs. ([`06adb42`](https://github.com/qthequartermasterman/hypothesis-torch/commit/06adb42eaf466688b97878daf2395cb957536fee))
+
+* docs: :sparkles: Initial docsite set up. ([`274bb65`](https://github.com/qthequartermasterman/hypothesis-torch/commit/274bb6512912fab817c71f394a3ccfad124de625))
+
+### Fix
+
+* fix: :bug: do not try to use the device as a context manager in torch&lt;2. ([`3114162`](https://github.com/qthequartermasterman/hypothesis-torch/commit/3114162fb77ed48ecb5d980b4e2b41c6184bc3ae))
+
+* fix: :bug: do not try to use the meta device as a context manager in torch&lt;2. ([`ef0e47c`](https://github.com/qthequartermasterman/hypothesis-torch/commit/ef0e47c20a65606400b1335902417db0c88f0f79))
+
+* fix: :zap: remove overly-restrictive hypothesis deadline for transformers tests ([`d1c89f2`](https://github.com/qthequartermasterman/hypothesis-torch/commit/d1c89f2dceed4132dc363b63b1b27a75bd191d87))
+
+### Test
+
+* test: :bug: ignore runtime errors during module import ([`882f515`](https://github.com/qthequartermasterman/hypothesis-torch/commit/882f5156d4ceb9b7533dd8d10b2a854c0af2e472))
+
+* test: :bug: ignore runtime errors during module import ([`5c89c79`](https://github.com/qthequartermasterman/hypothesis-torch/commit/5c89c79ffedb88a5b9dce24a4cdbbf4354b7a82d))
+
+### Unknown
+
+* Merge pull request #31 from qthequartermasterman/test-multiple-torch-versions
+
+build: Test multiple torch versions ([`4ecabd9`](https://github.com/qthequartermasterman/hypothesis-torch/commit/4ecabd99dd5c3c1cdcd8df1b1199b6e89a2bf0f4))
+
+* Merge pull request #29 from qthequartermasterman/docsite
+
+docs: :sparkles: :memo: Add index page ([`46e3516`](https://github.com/qthequartermasterman/hypothesis-torch/commit/46e35169566eb5c8143edeed9f8169be39b751d2))
+
+* Merge pull request #28 from qthequartermasterman/docsite
+
+docs: Add support for docs rendered by `readthedocs`, powered by `mkdocs`. ([`e8de564`](https://github.com/qthequartermasterman/hypothesis-torch/commit/e8de564122265d25686bd7504d4b1b2069b54ac5))
 
 
 ## v0.6.0 (2024-05-09)
