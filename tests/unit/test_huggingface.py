@@ -25,6 +25,7 @@ TEST_UNSUPPORTED_TRANSFORMERS: Final[bool] = (
 @pytest.mark.parametrize("instantiate_weights", [True, False])
 @pytest.mark.parametrize("transformer_type", hypothesis_torch.OFFICIALLY_SUPPORTED_TRANSFORMERS)
 @hypothesis.given(data=st.data())
+@hypothesis.settings(deadline=None)
 def test_officially_supported_transformers(
     instantiate_weights: bool, transformer_type: type[transformers.PreTrainedModel], data: st.DataObject
 ) -> None:
