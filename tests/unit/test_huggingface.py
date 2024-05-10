@@ -45,7 +45,8 @@ for module in transformers.models.__dict__.values():
         if type(module) is transformers.utils.import_utils._LazyModule:
             for attr in module._modules:
                 if "modeling" in attr:
-                    getattr(module, attr)
+                    with contextlib.suppress(ImportError, RuntimeError):
+                        getattr(module, attr)
         elif type(module) is ModuleType:
             print(module.__name__, module.__dict__)
 
