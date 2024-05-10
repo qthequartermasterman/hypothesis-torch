@@ -233,9 +233,23 @@ def transformer_strategy(
         kwargs: Keyword arguments to pass to the transformer constructor. If a keyword argument is a strategy, it will
             be drawn from.
 
+    Raises:
+        ValueError: If `instantiate_weights==False` on PyTorch<2, because the torch meta device cannot be used as a
+            context manager.
+
     Returns:
         A strategy for generating Hugging Face transformers.
     """
+    # TODO: Find a way to instantiate weights on the meta device in PyTorch<2.
+    if not hasattr(torch.device("meta"), "__enter__"):  # pragma: no cover
+        if instantiate_weights is False:
+            raise ValueError(
+                "Cannot instantiate weights on the meta device if the meta device context manager is not available.\n"
+                "Please upgrade to PyTorch 2.0.0 or later."
+            )
+        if isinstance(instantiate_weights, st.SearchStrategy):
+            instantiate_weights = instantiate_weights.filter(lambda x: x is True)
+
     if isinstance(cls, st.SearchStrategy):
         cls = draw(cls)
 

@@ -7,6 +7,7 @@ from typing import Final
 
 import hypothesis
 import pytest
+import torch
 import transformers
 from hypothesis import strategies as st
 
@@ -30,6 +31,8 @@ def test_officially_supported_transformers(
     instantiate_weights: bool, transformer_type: type[transformers.PreTrainedModel], data: st.DataObject
 ) -> None:
     """Test that the transformer strategy only generates valid items."""
+    if not hasattr(torch.device("meta"), "__enter__") and not instantiate_weights:
+        pytest.skip("PyTorch<2 does not support non-instantiated weights.")
     transformer = data.draw(
         hypothesis_torch.transformer_strategy(transformer_type, instantiate_weights=instantiate_weights)
     )
