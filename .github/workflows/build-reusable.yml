@@ -70,8 +70,7 @@ jobs:
         --junitxml=pytest.xml \
         --cov-report=term-missing:skip-covered \
         --cov=hypothesis_torch \
-        tests \
-        | tee pytest-coverage.txt
+        tests
     - name: Pytest coverage comment
       uses: MishaKav/pytest-coverage-comment@main
       with:
