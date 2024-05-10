@@ -1,0 +1,66 @@
+site_name: "hypothesis-torch"
+site_author: Andrew P. Sansom
+site_description: "Hypothesis strategies for various Pytorch structures (including tensors and modules)."
+
+repo_url: https://github.com/qthequartermasterman/hypothesis-torch
+edit_uri: edit/main/docs/
+
+nav:
+  - quick_start_guide.md
+  - strategies.md
+  - compatability.md
+  - contributing.md
+  - changelog.md
+  - license.md
+
+theme:
+  name: material
+  features:
+    - content.action.edit
+#    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.prune
+    - navigation.indexes
+    - navigation.top
+    - search.suggest
+  icon:
+    repo: fontawesome/brands/github
+    edit: material/pencil
+    view: material/eye
+  palette:
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      primary: black
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      primary: black
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+markdown_extensions:
+  - toc:
+      permalink: true
+  - admonition
+  - pymdownx.details
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: "!!python/name:pymdownx.superfences.fence_code_format"
+
+
+plugins:
+  - search
+  - autolinks
+  - mkdocstrings
