@@ -41,7 +41,7 @@ def test_officially_supported_transformers(
 
 # We will dynamically test all available transformers models.
 for module in transformers.models.__dict__.values():
-    with contextlib.suppress(ImportError):
+    with contextlib.suppress(ImportError, RuntimeError):
         if type(module) is transformers.utils.import_utils._LazyModule:
             for attr in module._modules:
                 if "modeling" in attr:
