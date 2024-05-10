@@ -25,3 +25,10 @@ jobs:
     with:
       python-version: ${{ matrix.python-version }}
       lint: ${{ matrix.python-version == '3.9' }}
+
+  build-pytorch-1-13:
+    uses: .github/workflows/build-reusable.yml
+    with:
+      python-version: '3.9'
+      lint: false
+      torch-version: '1.13.1'
