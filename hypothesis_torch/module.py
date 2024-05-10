@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import contextlib
 from typing import TypeVar, Sequence, Mapping
 
 from hypothesis_torch import inspection_util
@@ -28,6 +29,22 @@ SENSIBLE_POSITIVE_FLOATS = st.floats(
     allow_subnormal=False,
 )
 POSITIVE_INTS = st.integers(min_value=1)
+
+
+def _context_manager(device: torch.device) -> torch.device | contextlib.nullcontext:
+    """Return a context manager for the device.
+
+    For torch>=2, this is a no-op. The default device will bet set to the `device` inside the returned context.
+    For torch<2, however, this returns an empty context manager. No default device will be set. Consequently, manual
+    casting will be necessary at the end of the context.
+
+    Args:
+        device: The device to use.
+
+    Returns:
+        A context manager for the device.
+    """
+    return device if hasattr(device, "__enter__") else contextlib.nullcontext()
 
 
 @st.composite
@@ -209,7 +226,7 @@ def linear_network_strategy(
     if isinstance(num_hidden_layers, st.SearchStrategy):
         num_hidden_layers = draw(num_hidden_layers)
 
-    with device:
+    with _context_manager(device):
         interior_layer_sizes = draw(
             st.lists(
                 hidden_layer_size,
