@@ -8,8 +8,8 @@ description = "Hypothesis strategies for various Pytorch structures, including t
 
 dynamic = ["version"]
 dependencies = [
-    "hypothesis",
-    "torch",
+    "hypothesis>=6.0.0,<=6.98.8",
+    "torch>=1.13.0,<=2.3.0",
 ]
 requires-python = ">=3.9"
 authors=[{name="Andrew P. Sansom", email="andrew@euleriancircuit.com"}]
@@ -41,7 +41,7 @@ _ = "hypothesis_torch.register_random_torch_state:_register_random_torch_state"
 
 [project.optional-dependencies]
 huggingface = [
-  "transformers",
+  "transformers<=4.40.0,>=4.0.0",
 ]
 dev = [
   "ruff==0.4.3",
@@ -59,7 +59,7 @@ docs = [
 
 [project.urls]
 Homepage = "https://github.com/qthequartermasterman/hypothesis-torch"
-Documentation = "https://github.com/qthequartermasterman/hypothesis-torch"
+Documentation = "https://hypothesis-torch.readthedocs.io/en/latest/"
 Repository = "https://github.com/qthequartermasterman/hypothesis-torch.git"
 Issues = "https://github.com/qthequartermasterman/hypothesis-torch/issues"
 
@@ -72,6 +72,22 @@ version_variables = [
     "hypothesis_torch/__init__.py:__version__",
 ]
 build_command = "python -m pip install build && python -m build"
+
+[tool.semantic_release.commit_parser_options]
+allowed_tags = [
+    "build",
+    "chore",
+    "ci",
+    "docs",
+    "feat",
+    "fix",
+    "perf",
+    "style",
+    "refactor",
+    "test",
+]
+minor_tags = ["feat"]
+patch_tags = ["fix", "perf", "build"]
 
 [tool.setuptools.dynamic]
 version = {attr = "hypothesis_torch.__version__"}
