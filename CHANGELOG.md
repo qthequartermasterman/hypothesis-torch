@@ -2,6 +2,19 @@
 
 
 
+## v0.6.2 (2024-05-10)
+
+### Build
+
+* build: :bug: set dependency ranges for optimal compatability ([`4a25c1d`](https://github.com/qthequartermasterman/hypothesis-torch/commit/4a25c1dcd5e189df62ff8fe7fede4351447d415f))
+
+### Unknown
+
+* Merge pull request #32 from qthequartermasterman/set-dependencies-ranges
+
+build: :bug: set dependency ranges for optimal compatibility ([`71c52b7`](https://github.com/qthequartermasterman/hypothesis-torch/commit/71c52b79a1e58ff7ff2dfa9b388f74577112ee79))
+
+
 ## v0.6.1 (2024-05-10)
 
 ### Build
