@@ -1,3 +1,5 @@
+[![PyPI version](https://img.shields.io/pypi/v/hypothesis-torch.svg)](https://pypi.org/project/hypothesis-torch) ![PyPI - Downloads](https://img.shields.io/pypi/dm/hypothesis-torch)
+
 # hypothesis-torch
 Hypothesis strategies for various Pytorch structures (including tensors and modules).
 
