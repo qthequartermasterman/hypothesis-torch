@@ -2,6 +2,35 @@
 
 
 
+## v0.6.3 (2024-05-12)
+
+### Documentation
+
+* docs: update pyproject toml classifiers, keywords, and urls. ([`e6d4a7c`](https://github.com/qthequartermasterman/hypothesis-torch/commit/e6d4a7c63921a097a8fc419c06c5483d4baa092c))
+
+* docs(badges): :memo: Add pypi badges for downloads and version to readme ([`00563e6`](https://github.com/qthequartermasterman/hypothesis-torch/commit/00563e65d7e652bc5bcc51ca185f8b05d908c352))
+
+* docs(version): :memo: remove reference to python 3.8 in classifiers ([`03322e1`](https://github.com/qthequartermasterman/hypothesis-torch/commit/03322e156f3c118ef10ea2d2395076088e5960d8))
+
+### Fix
+
+* fix: :bug: fix incompatible parameters when generating Adam optimizers on Torch 1.13.
+
+Fix incompatible parameters:
+- fused is only available if cuda is available
+- fused is incompatible with differentiable ([`d0ef6bb`](https://github.com/qthequartermasterman/hypothesis-torch/commit/d0ef6bb44b935879864915c15496986afafc9375))
+
+### Unknown
+
+* Merge pull request #35 from qthequartermasterman/update-pyproject-toml
+
+docs: update pyproject toml classifiers, keywords, and urls. ([`0d3a3ab`](https://github.com/qthequartermasterman/hypothesis-torch/commit/0d3a3abcae3bef2bd7b8d7873a74867cbe6b2060))
+
+* Merge pull request #34 from CandiedCode/badges ([`f166a9e`](https://github.com/qthequartermasterman/hypothesis-torch/commit/f166a9eebb26cbd76d75f973f98e940acf02785c))
+
+* Merge pull request #33 from CandiedCode/version ([`f9ff580`](https://github.com/qthequartermasterman/hypothesis-torch/commit/f9ff580bfe14369951a8fe93b3bb289338e1a3bc))
+
+
 ## v0.6.2 (2024-05-10)
 
 ### Build
