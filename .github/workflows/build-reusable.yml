@@ -64,6 +64,14 @@ jobs:
       if: ${{ inputs.lint }}
       with:
         commit_message: 'style fixes by ruff'
+    - name: Download example database
+      uses: dawidd6/action-download-artifact@v2.24.3
+      with:
+        name: hypothesis-example-db
+        path: .hypothesis/examples
+        if_no_artifact_found: warn
+        workflow_conclusion: completed
+
     - name: Run tests
       run: |
         python -m pytest \
@@ -71,6 +79,14 @@ jobs:
         --cov-report=term-missing:skip-covered \
         --cov=hypothesis_torch \
         tests
+
+    - name: Upload example database
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: hypothesis-example-db
+        path: .hypothesis/examples
+
     - name: Pytest coverage comment
       uses: MishaKav/pytest-coverage-comment@main
       with:
