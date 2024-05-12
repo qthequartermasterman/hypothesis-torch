@@ -74,11 +74,12 @@ jobs:
 
     - name: Run tests
       run: |
+        set -o pipefail
         python -m pytest \
         --junitxml=pytest.xml \
         --cov-report=term-missing:skip-covered \
         --cov=hypothesis_torch \
-        tests
+        tests | tee pytest-coverage.txt
 
     - name: Upload example database
       uses: actions/upload-artifact@v3
