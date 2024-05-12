@@ -15,25 +15,29 @@ requires-python = ">=3.9"
 authors=[{name="Andrew P. Sansom", email="andrew@euleriancircuit.com"}]
 readme="README.md"
 license={file="LICENSE"}
-keywords = ["hypothesis", "torch", "pytorch", "testing", "property-based testing"]
+keywords = ["hypothesis", "torch", "pytorch", "testing", "property-based testing", "deep learning", "tensor", "neural network", "artificial intelligence", "machine learning"]
 classifiers = [
-  "Development Status :: 2 - Pre-Alpha",
+    "Development Status :: 2 - Pre-Alpha",
 
-  # Indicate who your project is intended for
-  "Intended Audience :: Developers",
-  "Framework :: Hypothesis",
+    "Intended Audience :: Developers",
+    "Framework :: Hypothesis",
 
-  # Pick your license as you wish (see also "license" above)
-  "License :: OSI Approved :: MIT License",
+    "License :: OSI Approved :: MIT License",
 
-  # Specify the Python versions you support here.
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+
     "Topic :: Software Development :: Testing",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Mathematics",
+    "Topic :: Software Development",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 [project.entry-points."hypothesis"]
 _ = "hypothesis_torch.register_random_torch_state:_register_random_torch_state"
@@ -58,7 +62,7 @@ docs = [
 
 [project.urls]
 Homepage = "https://github.com/qthequartermasterman/hypothesis-torch"
-Documentation = "https://hypothesis-torch.readthedocs.io/en/latest/"
+Documentation = "https://hypothesis-torch.readthedocs.io/en/stable/"
 Repository = "https://github.com/qthequartermasterman/hypothesis-torch.git"
 Issues = "https://github.com/qthequartermasterman/hypothesis-torch/issues"
 
