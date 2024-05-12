@@ -57,6 +57,7 @@ HYPERPARAM_OVERRIDE_STRATEGIES: Final[dict[str, st.SearchStrategy]] = {
     "dampening": _ZERO_TO_ONE_FLOATS,
     "nesterov": st.booleans(),
     "initial_accumulator_value": _ZERO_TO_ONE_FLOATS,
+    "fused": st.booleans() if torch.cuda.is_available() else st.just(False),
 }
 
 
@@ -111,6 +112,10 @@ def optimizer_strategy(
         kwargs["dampening"] = 0
     kwargs.pop("self", None)  # Remove self if a type was inferred
     kwargs.pop("params", None)  # Remove params if a type was inferred
+
+    # Adam cannot be both fused and differentiable simultaneously
+    if "differentiable" in kwargs and kwargs["differentiable"] and "fused" in kwargs and kwargs["fused"]:
+        kwargs.pop("differentiable")
 
     hypothesis.note(f"Chosen optimizer type: {optimizer_type}")
     hypothesis.note(f"Chosen optimizer hyperparameters: {kwargs}")
