@@ -8,8 +8,8 @@ description = "Hypothesis strategies for various Pytorch structures, including t
 
 dynamic = ["version"]
 dependencies = [
-    "hypothesis>=6.0.0,<=6.98.8",
-    "torch>=1.13.0,<=2.3.0",
+    "hypothesis>=6.0.0",
+    "torch>=1.13.0",
 ]
 requires-python = ">=3.9"
 authors=[{name="Andrew P. Sansom", email="andrew@euleriancircuit.com"}]
