@@ -2,6 +2,118 @@
 
 
 
+## v0.6.4 (2024-05-13)
+
+### Build
+
+* build: remove upper pin on hypothesis and torch range ([`bfe6953`](https://github.com/qthequartermasterman/hypothesis-torch/commit/bfe695331d870897bacb5e692ba54f2eb532801c))
+
+### Chore
+
+* chore(deps): bump ruff from 0.4.3 to 0.4.4
+
+Bumps [ruff](https://github.com/astral-sh/ruff) from 0.4.3 to 0.4.4.
+- [Release notes](https://github.com/astral-sh/ruff/releases)
+- [Changelog](https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md)
+- [Commits](https://github.com/astral-sh/ruff/compare/v0.4.3...v0.4.4)
+
+---
+updated-dependencies:
+- dependency-name: ruff
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`aa33cf8`](https://github.com/qthequartermasterman/hypothesis-torch/commit/aa33cf872497398e30ae176e5f4e7633cba1ebe4))
+
+* chore(deps): bump mkdocs-material from 9.4.6 to 9.5.22
+
+Bumps [mkdocs-material](https://github.com/squidfunk/mkdocs-material) from 9.4.6 to 9.5.22.
+- [Release notes](https://github.com/squidfunk/mkdocs-material/releases)
+- [Changelog](https://github.com/squidfunk/mkdocs-material/blob/master/CHANGELOG)
+- [Commits](https://github.com/squidfunk/mkdocs-material/compare/9.4.6...9.5.22)
+
+---
+updated-dependencies:
+- dependency-name: mkdocs-material
+  dependency-type: direct:production
+  update-type: version-update:semver-minor
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`34558be`](https://github.com/qthequartermasterman/hypothesis-torch/commit/34558be28f578d76887fa362c01827215b7bbcfd))
+
+* chore(deps): update transformers requirement
+
+Updates the requirements on [transformers](https://github.com/huggingface/transformers) to permit the latest version.
+- [Release notes](https://github.com/huggingface/transformers/releases)
+- [Commits](https://github.com/huggingface/transformers/compare/v4.0.0...v4.40.2)
+
+---
+updated-dependencies:
+- dependency-name: transformers
+  dependency-type: direct:production
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`06102ea`](https://github.com/qthequartermasterman/hypothesis-torch/commit/06102ea4bd0afddcd843ff72d5f76d321bb6eaad))
+
+* chore(deps): bump dawidd6/action-download-artifact from 2.24.3 to 3.1.4
+
+Bumps [dawidd6/action-download-artifact](https://github.com/dawidd6/action-download-artifact) from 2.24.3 to 3.1.4.
+- [Release notes](https://github.com/dawidd6/action-download-artifact/releases)
+- [Commits](https://github.com/dawidd6/action-download-artifact/compare/v2.24.3...v3.1.4)
+
+---
+updated-dependencies:
+- dependency-name: dawidd6/action-download-artifact
+  dependency-type: direct:production
+  update-type: version-update:semver-major
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`48bc9e3`](https://github.com/qthequartermasterman/hypothesis-torch/commit/48bc9e314b0d356eafd0dd14c31a5e1976f6a946))
+
+### Ci
+
+* ci: increase dependabot frequency ([`e44cd5f`](https://github.com/qthequartermasterman/hypothesis-torch/commit/e44cd5f45133d1d0915e4b1c12ccf8aa1cf8b000))
+
+* ci: fix missing coverage comment by creating pytest-coverage.txt file during build ([`a8772c9`](https://github.com/qthequartermasterman/hypothesis-torch/commit/a8772c9abc14ab2a53aed3eb9c3c2c6beab97e52))
+
+* ci: store hypothesis database in GitHub Actions to allow reproducing locally ([`fd62aca`](https://github.com/qthequartermasterman/hypothesis-torch/commit/fd62acad596925d0ae58187767452df1bd6b9350))
+
+### Unknown
+
+* Merge pull request #39 from qthequartermasterman/dependabot/github_actions/main/dawidd6/action-download-artifact-3.1.4
+
+chore(deps): bump dawidd6/action-download-artifact from 2.24.3 to 3.1.4 ([`a83b029`](https://github.com/qthequartermasterman/hypothesis-torch/commit/a83b02982708af8abd9140fcca6e4a8b44a0d026))
+
+* Merge pull request #43 from qthequartermasterman/dependabot/pip/main/mkdocs-material-9.5.22
+
+chore(deps): bump mkdocs-material from 9.4.6 to 9.5.22 ([`2f10d4c`](https://github.com/qthequartermasterman/hypothesis-torch/commit/2f10d4cc86cf14a68ac0ecdaa03675234aa0dd06))
+
+* Merge pull request #45 from qthequartermasterman/remove-upper-dependency-pin
+
+build: remove upper pin on hypothesis and torch range ([`0d0d472`](https://github.com/qthequartermasterman/hypothesis-torch/commit/0d0d472322f3c6e95eb0aa0bee51ff36c0856dbb))
+
+* Merge pull request #44 from qthequartermasterman/dependabot/pip/main/ruff-0.4.4
+
+chore(deps): bump ruff from 0.4.3 to 0.4.4 ([`8513f17`](https://github.com/qthequartermasterman/hypothesis-torch/commit/8513f17d96af15b29dbb4dd841033a1fefee5d36))
+
+* Merge pull request #41 from qthequartermasterman/dependabot/pip/main/transformers-gte-4.0.0-and-lte-4.40.2
+
+chore(deps): update transformers requirement from &lt;=4.40.0,&gt;=4.0.0 to &gt;=4.0.0,&lt;=4.40.2 ([`7e9a01a`](https://github.com/qthequartermasterman/hypothesis-torch/commit/7e9a01a328c0bef7dd358aeb73404c9839276dca))
+
+* Merge pull request #38 from qthequartermasterman/dependabot-update
+
+ci: increase dependabot frequency ([`229887c`](https://github.com/qthequartermasterman/hypothesis-torch/commit/229887c488c17d42a974d3b2b3856ee8f7175f2f))
+
+* Merge pull request #37 from qthequartermasterman/fix-coverage-txt
+
+ci: fix missing coverage comment by creating pytest-coverage.txt file during build ([`56eb109`](https://github.com/qthequartermasterman/hypothesis-torch/commit/56eb109a2648bd791db5501245d9e528b86043c2))
+
+* Merge pull request #36 from qthequartermasterman/github-actions-database
+
+ci: store hypothesis database in GitHub Actions to allow reproducing failures locally ([`0a2eb72`](https://github.com/qthequartermasterman/hypothesis-torch/commit/0a2eb729015492d22369475cddafa55a5fe6cfc8))
+
+
 ## v0.6.3 (2024-05-12)
 
 ### Documentation
