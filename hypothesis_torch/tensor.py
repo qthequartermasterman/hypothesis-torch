@@ -44,7 +44,7 @@ def tensor_strategy(
     dtype: torch.dtype | st.SearchStrategy[torch.dtype],
     shape: int | st.SearchStrategy[int] | tuple[int, ...] | st.SearchStrategy[tuple[int, ...]],
     *,
-    elements: st.SearchStrategy[Any] | Mapping[str, Any] | None = None,
+    elements: st.SearchStrategy[Any] | None = None,
     fill: st.SearchStrategy[Any] | None = None,
     unique: bool | st.SearchStrategy[bool] = False,
     device: torch.device | st.SearchStrategy[torch.device] | None = None,
