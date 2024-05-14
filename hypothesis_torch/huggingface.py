@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import inspect
-from typing import Callable, TypeVar
+from typing import Callable, TypeVar, cast
 
 import hypothesis
 import hypothesis.strategies as st
@@ -17,7 +17,7 @@ from hypothesis_torch import inspection_util
 
 P = ParamSpec("P")
 T = TypeVar("T")
-TransformerType = TypeVar("TransformerType", bound=transformers.PreTrainedModel)
+TransformerT = TypeVar("TransformerT", bound=transformers.PreTrainedModel)
 
 _PLEASE_REPORT_ERROR: Final[str] = """\
 Transformer {cls} is not officially supported. 
@@ -217,11 +217,11 @@ def build_from_cls_init(draw: st.DrawFn, cls: type[T], **kwargs) -> T:
 @st.composite
 def transformer_strategy(
     draw: st.DrawFn,
-    cls: type[TransformerType] | st.SearchStrategy[type[TransformerType]],
+    cls: type[TransformerT] | st.SearchStrategy[type[TransformerT]],
     *,
     instantiate_weights: bool | st.SearchStrategy[bool] = True,
     **kwargs,
-) -> TransformerType:
+) -> TransformerT:
     """Strategy for generating Hugging Face transformers.
 
     Args:
@@ -258,6 +258,7 @@ def transformer_strategy(
 
     assert issubclass(cls, transformers.PreTrainedModel)
     hypothesis.note(f"Building transformer from {cls.__name__}")
+    assert cls.config_class is not None
     config = draw(build_from_cls_init(cls.config_class, **kwargs))
     hypothesis.note(f"Building transformer ({cls.__name__}) with config {config}")
 
@@ -266,6 +267,6 @@ def transformer_strategy(
     hypothesis.note(f"Instantiating weights: {instantiate_weights}")
 
     if instantiate_weights:
-        return cls(config)
+        return cast(TransformerT, cls(config))
     with torch.device("meta"):
-        return cls(config)
+        return cast(TransformerT, cls(config))
