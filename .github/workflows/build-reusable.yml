@@ -64,6 +64,10 @@ jobs:
       if: ${{ inputs.lint }}
       run: |
         pyright hypothesis_torch
+    - name: Type check with Mypy
+      if: ${{ inputs.lint }}
+      run: |
+        mypy hypothesis_torch
     - uses: stefanzweifel/git-auto-commit-action@v5
       if: ${{ inputs.lint }}
       with:
