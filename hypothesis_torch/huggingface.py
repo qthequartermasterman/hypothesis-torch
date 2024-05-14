@@ -10,6 +10,7 @@ import hypothesis.strategies as st
 import torch
 import transformers
 import transformers.activations
+import transformers.models
 from typing_extensions import Final, ParamSpec
 
 from hypothesis_torch import inspection_util
