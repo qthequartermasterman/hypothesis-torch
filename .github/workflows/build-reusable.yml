@@ -61,6 +61,7 @@ jobs:
       run: |
         ruff format
     - name: Type check with Pyright
+      if: ${{ inputs.lint }}
       run: |
         pyright hypothesis_torch
     - uses: stefanzweifel/git-auto-commit-action@v5
