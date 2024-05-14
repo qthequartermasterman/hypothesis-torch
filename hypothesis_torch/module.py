@@ -3,7 +3,8 @@
 from __future__ import annotations
 
 import contextlib
-from typing import Mapping, Sequence, TypeVar
+from itertools import starmap
+from typing import Sequence, TypeVar
 
 import torch
 from hypothesis import strategies as st
@@ -234,7 +235,7 @@ def linear_network_strategy(
             )
         )
         layer_sizes = [input_size, *interior_layer_sizes, output_size]
-        layers: list[nn.Module] = [nn.Linear(a, b) for a, b in utils.pairwise(layer_sizes)]
+        layers: list[nn.Module] = list(starmap(nn.Linear, utils.pairwise(layer_sizes)))
         activations: list[nn.Module] = draw(
             st.lists(activation_layer_strategy, min_size=len(layers), max_size=len(layers)),
         )
