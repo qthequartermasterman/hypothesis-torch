@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import inspect
-from typing import Callable, TypeVar, cast
+from typing import Callable, Final, TypeVar, cast
 
 import hypothesis
 import hypothesis.strategies as st
@@ -11,7 +11,7 @@ import torch
 import transformers
 import transformers.activations
 import transformers.models
-from typing_extensions import Final, ParamSpec
+from typing_extensions import ParamSpec
 
 from hypothesis_torch import inspection_util
 

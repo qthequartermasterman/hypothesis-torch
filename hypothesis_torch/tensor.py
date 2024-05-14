@@ -2,15 +2,14 @@
 
 from __future__ import annotations
 
-from collections.abc import Mapping
-from typing import Any, Sequence
+from collections.abc import Mapping, Sequence
+from typing import Any, Final
 
 import hypothesis
 import hypothesis.extra.numpy as numpy_st
 import hypothesis.internal.floats
 import torch
 from hypothesis import strategies as st
-from typing_extensions import Final
 
 import hypothesis_torch
 from hypothesis_torch import dtype as dtype_module

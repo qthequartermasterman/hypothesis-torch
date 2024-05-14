@@ -3,7 +3,8 @@
 from __future__ import annotations
 
 import inspect
-from typing import Callable, Final, Iterable, Sequence
+from collections.abc import Iterable, Sequence
+from typing import Callable, Final
 
 import hypothesis
 import torch.optim

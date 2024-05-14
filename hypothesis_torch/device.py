@@ -3,10 +3,10 @@
 from __future__ import annotations
 
 from collections.abc import Sequence
+from typing import Final
 
 import torch
 from hypothesis import strategies as st
-from typing_extensions import Final
 
 AVAILABLE_CPU_DEVICES: Final = [torch.device("cpu")]
 AVAILABLE_CUDA_DEVICES: Final = [torch.device("cuda", i) for i in range(torch.cuda.device_count())]

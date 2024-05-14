@@ -3,8 +3,9 @@
 from __future__ import annotations
 
 import contextlib
+from collections.abc import Sequence
 from itertools import starmap
-from typing import Sequence, TypeVar
+from typing import TypeVar
 
 import torch
 from hypothesis import strategies as st
