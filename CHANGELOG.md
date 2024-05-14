@@ -2,6 +2,69 @@
 
 
 
+## v0.7.0 (2024-05-14)
+
+### Breaking
+
+* fix: :bug: :label: improve type hints that mypy complained about
+
+BREAKING-CHANGE: hypothesis will no longer (incorrectly) generate a arbitrary CUDA torch.devices when using builds on `torch.cuda.device`. ([`b62c0f7`](https://github.com/qthequartermasterman/hypothesis-torch/commit/b62c0f766f7e82631cfe53ce1a362fd6ef6026c3))
+
+* fix: :bug: :label: remove support for `Mapping[str, Any]` as `elements` argument to `tensor_strategy`.
+
+Passing in a mapping, although supported by the `numpy` strategy used internally, is rarely used for generating tensors, and overly complicates the error handling for bfloat16 tensors.
+
+BREAKING-CHANGE: Removed support for `Mapping[str, Any]` as `elements` argument to `tensor_strategy`. ([`015abc0`](https://github.com/qthequartermasterman/hypothesis-torch/commit/015abc0d77dfe0479e89e44bc74fe46ac0d77d7d))
+
+### Ci
+
+* ci: enable mypy in ci ([`e43a139`](https://github.com/qthequartermasterman/hypothesis-torch/commit/e43a13969f3e00bb30f1a16a2cfecf750af5a831))
+
+* ci: enable mypy in pre-commit and use local ruff ([`5751de7`](https://github.com/qthequartermasterman/hypothesis-torch/commit/5751de7a37647806323c3fe5959c94701e10881e))
+
+* ci: enable pyright in pre-commit ([`57b7a44`](https://github.com/qthequartermasterman/hypothesis-torch/commit/57b7a441532ab2ba33cd16457433db29a0574443))
+
+* ci: enable pyright in CI ([`c7508c6`](https://github.com/qthequartermasterman/hypothesis-torch/commit/c7508c65d7a79291fd9ca513d52e4f1a35c4a9d3))
+
+* ci: enable pyright in CI ([`ae70427`](https://github.com/qthequartermasterman/hypothesis-torch/commit/ae70427883312ade461ccaa03fbcd8731df956be))
+
+### Documentation
+
+* docs: :label: improve type hints for `transformer_strategy` by fixing missing `None` Type and incorrect return type. ([`c435e3c`](https://github.com/qthequartermasterman/hypothesis-torch/commit/c435e3c16e5016ab634a0b9c1d020c7e1dc02c1d))
+
+* docs: :label: improve type hints for `optimizer_strategy` by fixing missing `None` Type and incorrect return type. ([`4001a0c`](https://github.com/qthequartermasterman/hypothesis-torch/commit/4001a0c4fb0e8b94bd167baf3d1c2e76fe7c15af))
+
+* docs: :label: improve type hints for internal implementation details of `alternate` iterable util function. ([`3f85472`](https://github.com/qthequartermasterman/hypothesis-torch/commit/3f85472baf44b121b31078024efc0537b39c3c71))
+
+* docs: :label: improve type hints for internal implementation by making some imports explicit. ([`e6ac523`](https://github.com/qthequartermasterman/hypothesis-torch/commit/e6ac5233e6b669e6e3d414df9a01eb7e4c609820))
+
+* docs: :label: improve type hints for internal TorchRandomWrapper object. ([`af953ce`](https://github.com/qthequartermasterman/hypothesis-torch/commit/af953ced15294b8023078436e2b304f3eef55c46))
+
+### Style
+
+* style: enable ruff style rules. ([`680bacf`](https://github.com/qthequartermasterman/hypothesis-torch/commit/680bacfb1f99c3504635b0967f5725e249ffb670))
+
+* style: enable flake9-use-pathlib annotation via ruff. ([`fb60e9c`](https://github.com/qthequartermasterman/hypothesis-torch/commit/fb60e9ca073f62e8121553d3268f9eab9c86c2a0))
+
+* style: enable pyflakes annotation via ruff. ([`829bbf7`](https://github.com/qthequartermasterman/hypothesis-torch/commit/829bbf7a4e82ad852ec10c9a72cc3ac230e8a9ee))
+
+* style: upgrade internal references to deprecated/moved python typing constructs to be compatible with python 3.9 ([`04b15c1`](https://github.com/qthequartermasterman/hypothesis-torch/commit/04b15c1f9cd17a7e85f9f8449fdf354739798591))
+
+* style: enable pycodestyle warning via ruff. ([`7b4d0c7`](https://github.com/qthequartermasterman/hypothesis-torch/commit/7b4d0c78ffac8fb62fccd7c03eac5747ad2dcf7c))
+
+* style: adopt perflint via ruff for internal code. ([`12ec834`](https://github.com/qthequartermasterman/hypothesis-torch/commit/12ec834f36e1d72f65708baf27c0f5e32335ea0a))
+
+* style: adopt refurb via ruff for internal code. ([`0fe5f13`](https://github.com/qthequartermasterman/hypothesis-torch/commit/0fe5f13a8728aa6f58deb4a8b95088258775164a))
+
+* style: adopt isort via ruff for internal code. ([`2dc520d`](https://github.com/qthequartermasterman/hypothesis-torch/commit/2dc520d839d4f00080581bf3c4f7955e5db67b5b))
+
+### Unknown
+
+* Merge pull request #46 from qthequartermasterman/more-linting
+
+fix: :rotating_light: :bug: :label: :memo: Increase linting ([`c290e12`](https://github.com/qthequartermasterman/hypothesis-torch/commit/c290e1269a92f87b68c1d226676beb488eba513b))
+
+
 ## v0.6.4 (2024-05-13)
 
 ### Build
