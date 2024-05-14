@@ -17,8 +17,9 @@ class ParameterInferAnnotationsFromDefault(inspect.Parameter):
     This is useful for inferring annotations for parameters that are missing annotations but have default values.
     """
 
+    # mypy does like like the fact that `inspect.Parameter.empty` is a variable pointing to a class.
     @property
-    def annotation(self) -> type | inspect.Parameter.empty:
+    def annotation(self) -> type | inspect.Parameter.empty:  # type: ignore[valid-type]
         """Get the annotation of the parameter, inferring it from the default value if it is not specified.
 
         Returns:
