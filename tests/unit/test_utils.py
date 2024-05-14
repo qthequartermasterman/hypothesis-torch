@@ -12,7 +12,7 @@ class TestPairwise(unittest.TestCase):
     """Tests for the `pairwise` utility function."""
 
     @hypothesis.given(iterable=st.lists(st.integers()))
-    def test_pairwise(self, iterable: list[int]):
+    def test_pairwise(self, iterable: list[int]) -> None:
         """Test that the pairwise strategy generates pairs of integers."""
         pairs = list(utils.pairwise(iterable))
         if len(iterable) == 0 or len(iterable) == 1:
@@ -33,7 +33,7 @@ class TestAlternate(unittest.TestCase):
     """Tests for the `alternate` utility function."""
 
     @hypothesis.given(iterable1=st.lists(st.integers()), iterable2=st.lists(st.integers()))
-    def test_alternate(self, iterable1: list[int], iterable2: list[int]):
+    def test_alternate(self, iterable1: list[int], iterable2: list[int]) -> None:
         """Test that the alternate strategy generates alternating integers."""
         alternates = list(utils.alternate(iterable1, iterable2))
         self.assertEqual(len(alternates), len(iterable1) + len(iterable2))

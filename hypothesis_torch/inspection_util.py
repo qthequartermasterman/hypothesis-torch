@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import inspect
-from typing import Callable, TypeVar
+from typing import Any, Callable, TypeVar
 
 import torch
 from hypothesis import strategies as st
@@ -66,7 +66,12 @@ def get_all_subclasses(cls: type[T]) -> list[type[T]]:
 
 
 @st.composite
-def signature_to_strategy(draw: st.DrawFn, constructor: type[T], *args, **kwargs) -> T:
+def signature_to_strategy(
+    draw: st.DrawFn,
+    constructor: type[T],
+    *args: Any,  # noqa: ANN401
+    **kwargs: Any,  # noqa: ANN401
+) -> T:
     """Strategy for generating instances of a class by drawing values for its constructor.
 
     Args:

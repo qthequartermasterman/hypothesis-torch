@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import inspect
-from typing import Callable, Final, TypeVar, cast
+from typing import Any, Callable, Final, TypeVar, cast
 
 import hypothesis
 import hypothesis.strategies as st
@@ -94,7 +94,7 @@ TRANSFORMER_CONFIG_KWARG_STRATEGIES = {
 }
 
 
-def ignore_errors(*errors_to_ignore: type[Exception]):
+def ignore_errors(*errors_to_ignore: type[Exception]) -> Callable[[Callable[P, T]], Callable[P, T]]:
     """Decorator to ignore import errors."""
 
     def decorator(func: Callable[P, T]) -> Callable[P, T]:
@@ -111,7 +111,11 @@ def ignore_errors(*errors_to_ignore: type[Exception]):
 
 
 @st.composite
-def build_from_cls_init(draw: st.DrawFn, cls: type[T], **kwargs) -> T:
+def build_from_cls_init(
+    draw: st.DrawFn,
+    cls: type[T],
+    **kwargs: Any,  # noqa: ANN401
+) -> T:
     """Strategy for generating instances of a class by drawing values for its constructor.
 
     Args:
@@ -220,7 +224,7 @@ def transformer_strategy(
     cls: type[TransformerT] | st.SearchStrategy[type[TransformerT]],
     *,
     instantiate_weights: bool | st.SearchStrategy[bool] = True,
-    **kwargs,
+    **kwargs: Any,  # noqa: ANN401
 ) -> TransformerT:
     """Strategy for generating Hugging Face transformers.
 

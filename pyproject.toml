@@ -100,12 +100,12 @@ version = {attr = "hypothesis_torch.__version__"}
 
 
 [tool.ruff.lint]
-select = ["D", "E", "F", "FURB", "I", "N", "PERF", "RUF100", "UP", "W"]
+select = ["ANN", "D", "E", "F", "FURB", "I", "N", "PERF", "RUF100", "YTT", "UP", "W"]
 ignore = ["D205", "F401", "PT009", "S101"]
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"
 
 [[tool.mypy.overrides]]
-module = ["transformers", "transformers.activations", "transformers.models"]
+module = ["transformers", "transformers.activations", "transformers.models", "annotated_types"]
 ignore_missing_imports = true

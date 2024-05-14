@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import inspect
 from collections.abc import Iterable, Sequence
-from typing import Callable, Final
+from typing import Any, Callable, Final
 
 import hypothesis
 import torch.optim
@@ -82,7 +82,7 @@ def optimizer_type_strategy(
 def optimizer_strategy(
     draw: st.DrawFn,
     optimizer_type: type[torch.optim.Optimizer] | st.SearchStrategy[type[torch.optim.Optimizer]] | None = None,
-    **kwargs,
+    **kwargs: Any,  # noqa: ANN401
 ) -> OptimizerConstructorWithOnlyParameters:
     """Strategy for generating torch optimizers.
 
