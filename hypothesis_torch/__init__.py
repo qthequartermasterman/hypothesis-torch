@@ -33,33 +33,33 @@ from hypothesis_torch.register_random_torch_state import TORCH_RANDOM_WRAPPER
 from hypothesis_torch.tensor import tensor_strategy
 
 __all__ = [
-    "device_strategy",
-    "dtype_strategy",
-    "layout_strategy",
-    "memory_format_strategy",
-    "linear_network_strategy",
-    "same_shape_activation_strategy",
-    "optimizer_strategy",
-    "optimizer_type_strategy",
-    "OptimizerConstructorWithOnlyParameters",
-    "tensor_strategy",
-    "TORCH_RANDOM_WRAPPER",
+    "ALL_DTYPES",
     "AVAILABLE_CPU_DEVICES",
     "AVAILABLE_CUDA_DEVICES",
-    "AVAILABLE_MPS_DEVICES",
     "AVAILABLE_META_DEVICES",
+    "AVAILABLE_MPS_DEVICES",
     "AVAILABLE_PHYSICAL_DEVICES",
+    "BOOL_DTYPES",
+    "COMPLEX_DTYPES",
     "FLOAT_DTYPES",
     "INT_DTYPES",
     "SIGNED_INT_DTYPES",
+    "TORCH_RANDOM_WRAPPER",
     "UNSIGNED_INT_DTYPES",
-    "COMPLEX_DTYPES",
-    "BOOL_DTYPES",
-    "ALL_DTYPES",
+    "OptimizerConstructorWithOnlyParameters",
+    "device_strategy",
+    "dtype_strategy",
+    "layout_strategy",
+    "linear_network_strategy",
+    "memory_format_strategy",
+    "optimizer_strategy",
+    "optimizer_type_strategy",
+    "same_shape_activation_strategy",
+    "tensor_strategy",
 ]
 
 if importlib.util.find_spec("transformers") is not None:
     # Import Hugging Face strategies if transformers is installed
     from hypothesis_torch.huggingface import OFFICIALLY_SUPPORTED_TRANSFORMERS, transformer_strategy
 
-    __all__ += ["transformer_strategy", "OFFICIALLY_SUPPORTED_TRANSFORMERS"]
+    __all__ += ["OFFICIALLY_SUPPORTED_TRANSFORMERS", "transformer_strategy"]

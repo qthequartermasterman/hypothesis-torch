@@ -111,7 +111,7 @@ activation_strategies: dict[type[nn.Module], st.SearchStrategy[nn.Module]] = {
     #  inside and outside
     # TODO: nn.PReLU(num_parameters=1, init=0.25, device=None, dtype=None)
     # TODO: PReLU might depend on the input shape
-    # TODO: num_parameters (int) – number of a to learn. Although it takes an int as input, there is only two
+    # TODO: num_parameters (int) -- number of a to learn. Although it takes an int as input, there is only two
     #  values are legitimate: 1, or the number of channels at input. Default: 1
     nn.PReLU: inspection_util.signature_to_strategy(nn.PReLU, num_parameters=st.just(1), init=SENSIBLE_FLOATS),
     nn.ReLU: inspection_util.signature_to_strategy(nn.ReLU, inplace=st.booleans()),
