@@ -2,17 +2,18 @@
 
 from __future__ import annotations
 
-from typing import Sequence, Final, Callable, Iterator
-from typing_extensions import TypeAlias
+import inspect
+from collections.abc import Iterable, Sequence
+from typing import Any, Callable, Final
 
 import hypothesis
 import torch.optim
-import inspect
-
 from hypothesis import strategies as st
+from typing_extensions import TypeAlias
+
 from hypothesis_torch import inspection_util
 
-OptimizerConstructorWithOnlyParameters: TypeAlias = Callable[[Iterator[torch.nn.Parameter]], torch.optim.Optimizer]
+OptimizerConstructorWithOnlyParameters: TypeAlias = Callable[[Iterable[torch.nn.Parameter]], torch.optim.Optimizer]
 
 OPTIMIZERS: Final[tuple[type[torch.optim.Optimizer], ...]] = tuple(
     optimizer
@@ -80,9 +81,9 @@ def optimizer_type_strategy(
 @st.composite
 def optimizer_strategy(
     draw: st.DrawFn,
-    optimizer_type: type[torch.optim.Optimizer] | st.SearchStrategy[type[torch.optim.Optimizer]] = None,
-    **kwargs,
-) -> st.SearchStrategy[OptimizerConstructorWithOnlyParameters]:
+    optimizer_type: type[torch.optim.Optimizer] | st.SearchStrategy[type[torch.optim.Optimizer]] | None = None,
+    **kwargs: Any,  # noqa: ANN401
+) -> OptimizerConstructorWithOnlyParameters:
     """Strategy for generating torch optimizers.
 
     Args:
@@ -120,7 +121,7 @@ def optimizer_strategy(
     hypothesis.note(f"Chosen optimizer type: {optimizer_type}")
     hypothesis.note(f"Chosen optimizer hyperparameters: {kwargs}")
 
-    def optimizer_factory(params: Sequence[torch.nn.Parameter]) -> torch.optim.Optimizer:
+    def optimizer_factory(params: Iterable[torch.nn.Parameter]) -> torch.optim.Optimizer:
         return optimizer_type(params, **kwargs)
 
     return optimizer_factory

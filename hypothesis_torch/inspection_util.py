@@ -3,10 +3,10 @@
 from __future__ import annotations
 
 import inspect
-from typing import Callable, TypeVar
-from hypothesis import strategies as st
+from typing import Any, Callable, TypeVar
 
 import torch
+from hypothesis import strategies as st
 
 T = TypeVar("T")
 
@@ -17,8 +17,9 @@ class ParameterInferAnnotationsFromDefault(inspect.Parameter):
     This is useful for inferring annotations for parameters that are missing annotations but have default values.
     """
 
+    # mypy does like like the fact that `inspect.Parameter.empty` is a variable pointing to a class.
     @property
-    def annotation(self) -> type | inspect.Parameter.empty:
+    def annotation(self) -> type | inspect.Parameter.empty:  # type: ignore[valid-type]
         """Get the annotation of the parameter, inferring it from the default value if it is not specified.
 
         Returns:
@@ -65,7 +66,12 @@ def get_all_subclasses(cls: type[T]) -> list[type[T]]:
 
 
 @st.composite
-def signature_to_strategy(draw: st.DrawFn, constructor: type[T], *args, **kwargs) -> T:
+def signature_to_strategy(
+    draw: st.DrawFn,
+    constructor: type[T],
+    *args: Any,  # noqa: ANN401
+    **kwargs: Any,  # noqa: ANN401
+) -> T:
     """Strategy for generating instances of a class by drawing values for its constructor.
 
     Args:

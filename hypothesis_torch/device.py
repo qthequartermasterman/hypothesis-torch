@@ -3,16 +3,17 @@
 from __future__ import annotations
 
 from collections.abc import Sequence
+from typing import Final
 
 import torch
 from hypothesis import strategies as st
 
-AVAILABLE_CPU_DEVICES = [torch.device("cpu")]
-AVAILABLE_CUDA_DEVICES = [torch.device("cuda", i) for i in range(torch.cuda.device_count())]
-AVAILABLE_MPS_DEVICES = [torch.device("mps")] if torch.backends.mps.is_available() else []
-AVAILABLE_META_DEVICES = [torch.device("meta")]
+AVAILABLE_CPU_DEVICES: Final = [torch.device("cpu")]
+AVAILABLE_CUDA_DEVICES: Final = [torch.device("cuda", i) for i in range(torch.cuda.device_count())]
+AVAILABLE_MPS_DEVICES: Final = [torch.device("mps")] if torch.backends.mps.is_available() else []
+AVAILABLE_META_DEVICES: Final = [torch.device("meta")]
 
-AVAILABLE_PHYSICAL_DEVICES = AVAILABLE_CPU_DEVICES + AVAILABLE_CUDA_DEVICES + AVAILABLE_MPS_DEVICES
+AVAILABLE_PHYSICAL_DEVICES: Final = AVAILABLE_CPU_DEVICES + AVAILABLE_CUDA_DEVICES + AVAILABLE_MPS_DEVICES
 
 
 def device_strategy(
@@ -39,5 +40,3 @@ def device_strategy(
 
 
 st.register_type_strategy(torch.device, device_strategy())
-if torch.cuda.is_available():
-    st.register_type_strategy(torch.cuda.device, device_strategy(devices=AVAILABLE_CUDA_DEVICES))

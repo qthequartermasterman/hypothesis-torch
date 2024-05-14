@@ -2,10 +2,8 @@
 
 from __future__ import annotations
 
-from collections.abc import Sequence
-from typing import Mapping, Literal
-
-from typing_extensions import Final
+from collections.abc import Mapping, Sequence
+from typing import Final, Literal
 
 import numpy as np
 import numpy.typing as npt

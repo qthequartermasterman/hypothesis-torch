@@ -3,14 +3,15 @@
 from __future__ import annotations
 
 import contextlib
-from typing import TypeVar, Sequence, Mapping
+from collections.abc import Sequence
+from itertools import starmap
+from typing import TypeVar
 
-from hypothesis_torch import inspection_util
 import torch
 from hypothesis import strategies as st
 from torch import nn
 
-from hypothesis_torch import utils
+from hypothesis_torch import inspection_util, utils
 
 T = TypeVar("T")
 
@@ -110,7 +111,7 @@ activation_strategies: dict[type[nn.Module], st.SearchStrategy[nn.Module]] = {
     #  inside and outside
     # TODO: nn.PReLU(num_parameters=1, init=0.25, device=None, dtype=None)
     # TODO: PReLU might depend on the input shape
-    # TODO: num_parameters (int) – number of a to learn. Although it takes an int as input, there is only two
+    # TODO: num_parameters (int) -- number of a to learn. Although it takes an int as input, there is only two
     #  values are legitimate: 1, or the number of channels at input. Default: 1
     nn.PReLU: inspection_util.signature_to_strategy(nn.PReLU, num_parameters=st.just(1), init=SENSIBLE_FLOATS),
     nn.ReLU: inspection_util.signature_to_strategy(nn.ReLU, inplace=st.booleans()),
@@ -235,7 +236,7 @@ def linear_network_strategy(
             )
         )
         layer_sizes = [input_size, *interior_layer_sizes, output_size]
-        layers: list[nn.Module] = [nn.Linear(a, b) for a, b in utils.pairwise(layer_sizes)]
+        layers: list[nn.Module] = list(starmap(nn.Linear, utils.pairwise(layer_sizes)))
         activations: list[nn.Module] = draw(
             st.lists(activation_layer_strategy, min_size=len(layers), max_size=len(layers)),
         )

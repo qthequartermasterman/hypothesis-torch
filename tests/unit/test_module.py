@@ -3,11 +3,11 @@
 import unittest
 from typing import Any
 
-import hypothesis_torch
-import torch
 import hypothesis
+import torch
 from hypothesis import strategies as st
 
+import hypothesis_torch
 from tests.unit import utils
 
 

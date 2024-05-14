@@ -5,7 +5,7 @@ from __future__ import annotations
 import itertools
 import sys
 from collections.abc import Generator, Iterable
-from typing import TypeVar
+from typing import TypeVar, cast
 
 T = TypeVar("T")
 T_co = TypeVar("T_co", covariant=True)
@@ -50,4 +50,4 @@ def alternate(iterable1: Iterable[T_co], iterable2: Iterable[T_co]) -> Generator
     for pair in itertools.zip_longest(it1, it2, fillvalue=fill_value):
         for element in pair:
             if element is not fill_value:
-                yield element
+                yield cast(T_co, element)

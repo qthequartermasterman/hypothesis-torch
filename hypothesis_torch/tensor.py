@@ -2,17 +2,14 @@
 
 from __future__ import annotations
 
-from collections.abc import Mapping
-from typing import Any, Sequence
+from collections.abc import Mapping, Sequence
+from typing import Any, Final
 
-from hypothesis.internal.floats import float_of
-from typing_extensions import Final
-
-import hypothesis.extra.numpy as numpy_st
-import torch
-from hypothesis import strategies as st, reject
-from hypothesis.strategies._internal import numbers as st_numbers
 import hypothesis
+import hypothesis.extra.numpy as numpy_st
+import hypothesis.internal.floats
+import torch
+from hypothesis import strategies as st
 
 import hypothesis_torch
 from hypothesis_torch import dtype as dtype_module
@@ -46,7 +43,7 @@ def tensor_strategy(
     dtype: torch.dtype | st.SearchStrategy[torch.dtype],
     shape: int | st.SearchStrategy[int] | tuple[int, ...] | st.SearchStrategy[tuple[int, ...]],
     *,
-    elements: st.SearchStrategy[Any] | Mapping[str, Any] | None = None,
+    elements: st.SearchStrategy[Any] | None = None,
     fill: st.SearchStrategy[Any] | None = None,
     unique: bool | st.SearchStrategy[bool] = False,
     device: torch.device | st.SearchStrategy[torch.device] | None = None,

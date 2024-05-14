@@ -1,8 +1,10 @@
 """Register a random.Random-compatible shim for `torch.random` with Hypothesis."""
 
+from typing import Any, Callable
+
 import hypothesis
-import torch
 import hypothesis.internal.entropy
+import torch
 
 
 class TorchRandomWrapper:
@@ -10,6 +12,10 @@ class TorchRandomWrapper:
 
     Hypothesis's random state manager requires a random.Random-compatible object.
     """
+
+    seed: Callable[..., Any]
+    getstate: Callable[[], Any]
+    setstate: Callable[..., Any]
 
     def __init__(self) -> None:
         """Initialize the TorchRandomWrapper."""

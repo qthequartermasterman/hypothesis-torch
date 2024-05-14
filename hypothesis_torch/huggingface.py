@@ -2,25 +2,25 @@
 
 from __future__ import annotations
 
-
-import transformers.activations
 import inspect
-from typing import TypeVar, Callable
-from typing_extensions import Final, ParamSpec
+from typing import Any, Callable, Final, TypeVar, cast
 
 import hypothesis
 import hypothesis.strategies as st
 import torch
 import transformers
+import transformers.activations
+import transformers.models
+from typing_extensions import ParamSpec
 
 from hypothesis_torch import inspection_util
 
 P = ParamSpec("P")
 T = TypeVar("T")
-TransformerType = TypeVar("TransformerType", bound=transformers.PreTrainedModel)
+TransformerT = TypeVar("TransformerT", bound=transformers.PreTrainedModel)
 
 _PLEASE_REPORT_ERROR: Final[str] = """\
-Transformer {cls} is not officially supported. 
+Transformer {cls} is not officially supported.
 
 If you encounter issues, please report them at https://github.com/qthequartermasterman/hypothesis-torch/issues."""
 
@@ -94,7 +94,7 @@ TRANSFORMER_CONFIG_KWARG_STRATEGIES = {
 }
 
 
-def ignore_errors(*errors_to_ignore: type[Exception]):
+def ignore_errors(*errors_to_ignore: type[Exception]) -> Callable[[Callable[P, T]], Callable[P, T]]:
     """Decorator to ignore import errors."""
 
     def decorator(func: Callable[P, T]) -> Callable[P, T]:
@@ -111,7 +111,11 @@ def ignore_errors(*errors_to_ignore: type[Exception]):
 
 
 @st.composite
-def build_from_cls_init(draw: st.DrawFn, cls: type[T], **kwargs) -> T:
+def build_from_cls_init(
+    draw: st.DrawFn,
+    cls: type[T],
+    **kwargs: Any,  # noqa: ANN401
+) -> T:
     """Strategy for generating instances of a class by drawing values for its constructor.
 
     Args:
@@ -217,11 +221,11 @@ def build_from_cls_init(draw: st.DrawFn, cls: type[T], **kwargs) -> T:
 @st.composite
 def transformer_strategy(
     draw: st.DrawFn,
-    cls: type[TransformerType] | st.SearchStrategy[type[TransformerType]],
+    cls: type[TransformerT] | st.SearchStrategy[type[TransformerT]],
     *,
     instantiate_weights: bool | st.SearchStrategy[bool] = True,
-    **kwargs,
-) -> TransformerType:
+    **kwargs: Any,  # noqa: ANN401
+) -> TransformerT:
     """Strategy for generating Hugging Face transformers.
 
     Args:
@@ -258,6 +262,7 @@ def transformer_strategy(
 
     assert issubclass(cls, transformers.PreTrainedModel)
     hypothesis.note(f"Building transformer from {cls.__name__}")
+    assert cls.config_class is not None
     config = draw(build_from_cls_init(cls.config_class, **kwargs))
     hypothesis.note(f"Building transformer ({cls.__name__}) with config {config}")
 
@@ -266,6 +271,6 @@ def transformer_strategy(
     hypothesis.note(f"Instantiating weights: {instantiate_weights}")
 
     if instantiate_weights:
-        return cls(config)
+        return cast(TransformerT, cls(config))
     with torch.device("meta"):
-        return cls(config)
+        return cast(TransformerT, cls(config))

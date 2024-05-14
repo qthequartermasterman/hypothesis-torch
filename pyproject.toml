@@ -47,7 +47,9 @@ huggingface = [
   "transformers>=4.0.0,<=4.40.2",
 ]
 dev = [
+  "mypy==1.10.0",
   "ruff==0.4.4",
+  "pyright==1.1.359",
   "pytest==8.2.0",
   "pytest-cov==5.0.0"
 ]
@@ -68,6 +70,7 @@ Issues = "https://github.com/qthequartermasterman/hypothesis-torch/issues"
 
 [tool.ruff]
 line-length = 120
+preview = true
 
 [tool.semantic_release]
 major_on_zero = false
@@ -95,9 +98,14 @@ patch_tags = ["fix", "perf", "build"]
 [tool.setuptools.dynamic]
 version = {attr = "hypothesis_torch.__version__"}
 
+
 [tool.ruff.lint]
-select = ["D", "E", "F", "RUF100"]
+select = ["ANN", "D", "E", "F", "FURB", "I", "N", "PERF", "PTH", "RUF", "YTT", "UP", "W"]
 ignore = ["D205", "F401", "PT009", "S101"]
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"
+
+[[tool.mypy.overrides]]
+module = ["transformers", "transformers.activations", "transformers.models", "annotated_types"]
+ignore_missing_imports = true

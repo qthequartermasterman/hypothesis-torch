@@ -2,10 +2,9 @@
 
 from __future__ import annotations
 
-from typing import Sequence
+from collections.abc import Sequence
 
 import torch
-
 from hypothesis import strategies as st
 
 SUPPORTED_LAYOUTS: list[torch.layout] = [
