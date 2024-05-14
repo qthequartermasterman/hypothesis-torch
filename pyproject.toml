@@ -98,7 +98,7 @@ version = {attr = "hypothesis_torch.__version__"}
 
 
 [tool.ruff.lint]
-select = ["D", "E", "F", "FURB", "I", "RUF100"]
+select = ["D", "E", "F", "FURB", "I", "PERF", "RUF100"]
 ignore = ["D205", "F401", "PT009", "S101"]
 
 [tool.ruff.lint.pydocstyle]
