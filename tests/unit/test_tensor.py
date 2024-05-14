@@ -299,3 +299,72 @@ class TestTensor(unittest.TestCase):
         """Test that no infinities are generated."""
         self.assertFalse(torch.isinf(no_inf_tensor).any())
         self.assertFalse(torch.isnan(no_inf_tensor).any())
+
+    @hypothesis.settings(deadline=None)
+    @hypothesis.given(st.data())
+    def test_tensor_strategy_with_unique_strategy(self, data: st.DataObject) -> None:
+        """Test that the tensor strategy works when specifying a strategy for `unique`."""
+        unique_strategy = st.booleans()
+        _ = data.draw(
+            hypothesis_torch.tensor_strategy(
+                dtype=torch.float32,
+                shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3).map(tuple),
+                unique=unique_strategy,
+            )
+        )
+
+    @hypothesis.settings(deadline=None)
+    @hypothesis.given(st.data())
+    def test_tensor_strategy_with_pin_memory_strategy(self, data: st.DataObject) -> None:
+        """Test that the tensor strategy works when specifying a strategy for `pin_memory`."""
+        pin_memory_strategy = st.booleans()
+        _ = data.draw(
+            hypothesis_torch.tensor_strategy(
+                dtype=torch.float32,
+                shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3).map(tuple),
+                pin_memory=pin_memory_strategy,
+            )
+        )
+
+    @hypothesis.settings(deadline=None)
+    @hypothesis.given(st.data())
+    def test_memory_format_channels_last_inferred_if_tensor_has_4_dims(self, data: st.DataObject) -> None:
+        """Test that the memory format channels_last is available if the tensor has 4 dimensions."""
+        tensor = data.draw(
+            hypothesis_torch.tensor_strategy(
+                dtype=torch.float32,
+                shape=(1, 2, 3, 4),
+                memory_format=None,
+            )
+        )
+        # TODO: assert that the memory format is channels_last
+
+    @hypothesis.settings(deadline=None)
+    @hypothesis.given(st.data())
+    def test_memory_format_channels3d_last_inferred_if_tensor_has_5_dims(self, data: st.DataObject) -> None:
+        """Test that the memory format channels_last is available if the tensor has 4 dimensions."""
+        tensor = data.draw(
+            hypothesis_torch.tensor_strategy(
+                dtype=torch.float32,
+                shape=(1, 2, 3, 4, 5),
+                memory_format=None,
+            )
+        )
+        # TODO: assert that the memory format is channels_last_3d
+
+    @hypothesis.settings(deadline=None)
+    @hypothesis.given(st.data())
+    def test_memory_format_strategy_filtered_for_non_4d_or_5d_tensors(self, data: st.DataObject) -> None:
+        """Test that the memory format strategy is filtered for non 4D or 5D tensors.
+
+        If the strategy is too wide, we want to prevent generating tensors with memory formats that are not supported.
+        """
+        tensor = data.draw(
+            hypothesis_torch.tensor_strategy(
+                dtype=torch.float32,
+                shape=(1, 2, 3),
+                memory_format=st.sampled_from([torch.contiguous_format, torch.channels_last, torch.channels_last_3d]),
+            )
+        )
+
+        # TODO: assert that the memory format is contiguous
