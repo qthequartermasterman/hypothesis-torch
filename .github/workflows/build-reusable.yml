@@ -60,6 +60,9 @@ jobs:
       if: ${{ inputs.lint }}
       run: |
         ruff format
+    - name: Type check with Pyright
+      run: |
+        pyright hypothesis_torch
     - uses: stefanzweifel/git-auto-commit-action@v5
       if: ${{ inputs.lint }}
       with:
