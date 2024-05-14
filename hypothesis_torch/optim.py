@@ -2,14 +2,14 @@
 
 from __future__ import annotations
 
-from typing import Sequence, Final, Callable, Iterator
-from typing_extensions import TypeAlias
+import inspect
+from typing import Callable, Final, Iterator, Sequence
 
 import hypothesis
 import torch.optim
-import inspect
-
 from hypothesis import strategies as st
+from typing_extensions import TypeAlias
+
 from hypothesis_torch import inspection_util
 
 OptimizerConstructorWithOnlyParameters: TypeAlias = Callable[[Iterator[torch.nn.Parameter]], torch.optim.Optimizer]

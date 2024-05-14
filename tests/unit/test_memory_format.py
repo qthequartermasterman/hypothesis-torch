@@ -4,6 +4,7 @@ import unittest
 
 import hypothesis
 import torch
+
 import hypothesis_torch
 
 LIMITED_MEMORY_FORMATS = [torch.contiguous_format, torch.channels_last]

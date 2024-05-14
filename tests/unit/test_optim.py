@@ -2,11 +2,11 @@
 
 import unittest
 
-import hypothesis_torch
 import hypothesis
+import torch
 from hypothesis import strategies as st
 
-import torch
+import hypothesis_torch
 
 
 class TestOptimizerTypeStrategy(unittest.TestCase):

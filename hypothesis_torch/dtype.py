@@ -3,14 +3,13 @@
 from __future__ import annotations
 
 from collections.abc import Sequence
-from typing import Mapping, Literal
-
-from typing_extensions import Final
+from typing import Literal, Mapping
 
 import numpy as np
 import numpy.typing as npt
 import torch
 from hypothesis import strategies as st
+from typing_extensions import Final
 
 SIGNED_INT_DTYPES: Final[tuple[torch.dtype, ...]] = (
     torch.int8,

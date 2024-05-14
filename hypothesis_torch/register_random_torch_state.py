@@ -1,8 +1,8 @@
 """Register a random.Random-compatible shim for `torch.random` with Hypothesis."""
 
 import hypothesis
-import torch
 import hypothesis.internal.entropy
+import torch
 
 
 class TorchRandomWrapper:

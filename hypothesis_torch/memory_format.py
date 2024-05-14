@@ -5,7 +5,6 @@ from __future__ import annotations
 from typing import Sequence
 
 import torch
-
 from hypothesis import strategies as st
 
 SUPPORTED_MEMORY_FORMATS: list[torch.memory_format] = [

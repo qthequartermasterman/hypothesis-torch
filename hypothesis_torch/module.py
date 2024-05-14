@@ -3,14 +3,13 @@
 from __future__ import annotations
 
 import contextlib
-from typing import TypeVar, Sequence, Mapping
+from typing import Mapping, Sequence, TypeVar
 
-from hypothesis_torch import inspection_util
 import torch
 from hypothesis import strategies as st
 from torch import nn
 
-from hypothesis_torch import utils
+from hypothesis_torch import inspection_util, utils
 
 T = TypeVar("T")
 

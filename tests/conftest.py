@@ -1,11 +1,10 @@
 """Global test configuration."""
 
 import datetime
+import os
 
 import hypothesis
-import os
 from hypothesis import database
-
 
 local = database.DirectoryBasedExampleDatabase(".hypothesis/examples")
 shared = database.ReadOnlyDatabase(

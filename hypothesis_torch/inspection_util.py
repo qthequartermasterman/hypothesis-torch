@@ -4,9 +4,9 @@ from __future__ import annotations
 
 import inspect
 from typing import Callable, TypeVar
-from hypothesis import strategies as st
 
 import torch
+from hypothesis import strategies as st
 
 T = TypeVar("T")
 

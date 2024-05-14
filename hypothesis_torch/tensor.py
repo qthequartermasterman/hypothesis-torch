@@ -5,14 +5,14 @@ from __future__ import annotations
 from collections.abc import Mapping
 from typing import Any, Sequence
 
-from hypothesis.internal.floats import float_of
-from typing_extensions import Final
-
+import hypothesis
 import hypothesis.extra.numpy as numpy_st
 import torch
-from hypothesis import strategies as st, reject
+from hypothesis import reject
+from hypothesis import strategies as st
+from hypothesis.internal.floats import float_of
 from hypothesis.strategies._internal import numbers as st_numbers
-import hypothesis
+from typing_extensions import Final
 
 import hypothesis_torch
 from hypothesis_torch import dtype as dtype_module

@@ -2,16 +2,15 @@
 
 from __future__ import annotations
 
-
-import transformers.activations
 import inspect
-from typing import TypeVar, Callable
-from typing_extensions import Final, ParamSpec
+from typing import Callable, TypeVar
 
 import hypothesis
 import hypothesis.strategies as st
 import torch
 import transformers
+import transformers.activations
+from typing_extensions import Final, ParamSpec
 
 from hypothesis_torch import inspection_util
 

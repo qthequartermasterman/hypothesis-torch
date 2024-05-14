@@ -96,7 +96,7 @@ patch_tags = ["fix", "perf", "build"]
 version = {attr = "hypothesis_torch.__version__"}
 
 [tool.ruff.lint]
-select = ["D", "E", "F", "RUF100"]
+select = ["D", "E", "F", "I", "RUF100"]
 ignore = ["D205", "F401", "PT009", "S101"]
 
 [tool.ruff.lint.pydocstyle]
