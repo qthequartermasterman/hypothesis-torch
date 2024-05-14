@@ -4,20 +4,31 @@ repos:
   hooks:
     - id: check-yaml
     - id: end-of-file-fixer
-- repo: https://github.com/astral-sh/ruff-pre-commit
-  # Ruff version.
-  rev: v0.4.1
-  hooks:
-    # Run the linter.
-    - id: ruff
-      args: [ --fix ]
-    # Run the formatter.
-    - id: ruff-format
 - repo: local
   hooks:
+    - id: ruff-fix
+      name: ruff
+      entry: ruff
+      language: system
+      types: [python]
+      files: \.py$
+      args: [check, --fix]
+    - id: ruff-format
+      name: ruff-format
+      entry: ruff
+      language: system
+      types: [python]
+      files: \.py$
+      args: [format]
     - id: pyright
       name: pyright
       entry: pyright
+      language: system
+      types: [python]
+      files: \.py$
+    - id: mypy
+      name: mypy
+      entry: mypy
       language: system
       types: [python]
       files: \.py$
