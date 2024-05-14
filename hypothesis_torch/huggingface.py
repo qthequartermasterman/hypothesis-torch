@@ -20,7 +20,7 @@ T = TypeVar("T")
 TransformerT = TypeVar("TransformerT", bound=transformers.PreTrainedModel)
 
 _PLEASE_REPORT_ERROR: Final[str] = """\
-Transformer {cls} is not officially supported. 
+Transformer {cls} is not officially supported.
 
 If you encounter issues, please report them at https://github.com/qthequartermasterman/hypothesis-torch/issues."""
 
