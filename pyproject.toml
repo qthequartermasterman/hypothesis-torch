@@ -44,7 +44,7 @@ _ = "hypothesis_torch.register_random_torch_state:_register_random_torch_state"
 
 [project.optional-dependencies]
 huggingface = [
-  "transformers>=4.0.0,<=4.41.0",
+  "transformers>=4.0.0,<=4.41.1",
 ]
 dev = [
   "mypy==1.10.0",
