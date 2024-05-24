@@ -2,6 +2,165 @@
 
 
 
+## v0.7.1 (2024-05-24)
+
+### Build
+
+* build(deps): update transformers requirement
+
+Updates the requirements on [transformers](https://github.com/huggingface/transformers) to permit the latest version.
+- [Release notes](https://github.com/huggingface/transformers/releases)
+- [Commits](https://github.com/huggingface/transformers/compare/v4.0.0...v4.41.1)
+
+---
+updated-dependencies:
+- dependency-name: transformers
+  dependency-type: direct:production
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`a3167a4`](https://github.com/qthequartermasterman/hypothesis-torch/commit/a3167a421bb5e94b66b27c27964596f4cae8a98b))
+
+* build(deps): bump ruff from 0.4.4 to 0.4.5
+
+Bumps [ruff](https://github.com/astral-sh/ruff) from 0.4.4 to 0.4.5.
+- [Release notes](https://github.com/astral-sh/ruff/releases)
+- [Changelog](https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md)
+- [Commits](https://github.com/astral-sh/ruff/compare/v0.4.4...v0.4.5)
+
+---
+updated-dependencies:
+- dependency-name: ruff
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`102bd96`](https://github.com/qthequartermasterman/hypothesis-torch/commit/102bd96f354ef73d7b848183af21ffb02fb6c96b))
+
+### Chore
+
+* chore(deps): bump mkdocs-material from 9.5.23 to 9.5.24
+
+Bumps [mkdocs-material](https://github.com/squidfunk/mkdocs-material) from 9.5.23 to 9.5.24.
+- [Release notes](https://github.com/squidfunk/mkdocs-material/releases)
+- [Changelog](https://github.com/squidfunk/mkdocs-material/blob/master/CHANGELOG)
+- [Commits](https://github.com/squidfunk/mkdocs-material/compare/9.5.23...9.5.24)
+
+---
+updated-dependencies:
+- dependency-name: mkdocs-material
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`e3b5bf9`](https://github.com/qthequartermasterman/hypothesis-torch/commit/e3b5bf9a0cc23769aecb336bf38c02d10e70c250))
+
+* chore(deps): bump pytest from 8.2.0 to 8.2.1
+
+Bumps [pytest](https://github.com/pytest-dev/pytest) from 8.2.0 to 8.2.1.
+- [Release notes](https://github.com/pytest-dev/pytest/releases)
+- [Changelog](https://github.com/pytest-dev/pytest/blob/main/CHANGELOG.rst)
+- [Commits](https://github.com/pytest-dev/pytest/compare/8.2.0...8.2.1)
+
+---
+updated-dependencies:
+- dependency-name: pytest
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`cf6fb67`](https://github.com/qthequartermasterman/hypothesis-torch/commit/cf6fb673d4eeb551694808a118d96e7b57950d66))
+
+* chore(deps): update transformers requirement
+
+Updates the requirements on [transformers](https://github.com/huggingface/transformers) to permit the latest version.
+- [Release notes](https://github.com/huggingface/transformers/releases)
+- [Commits](https://github.com/huggingface/transformers/compare/v4.0.0...v4.41.0)
+
+---
+updated-dependencies:
+- dependency-name: transformers
+  dependency-type: direct:production
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`ca6f76a`](https://github.com/qthequartermasterman/hypothesis-torch/commit/ca6f76a4d96f4fb60bb7ec4a56010ef247a54cb3))
+
+* chore(deps): bump mkdocs-material from 9.5.22 to 9.5.23
+
+Bumps [mkdocs-material](https://github.com/squidfunk/mkdocs-material) from 9.5.22 to 9.5.23.
+- [Release notes](https://github.com/squidfunk/mkdocs-material/releases)
+- [Changelog](https://github.com/squidfunk/mkdocs-material/blob/master/CHANGELOG)
+- [Commits](https://github.com/squidfunk/mkdocs-material/compare/9.5.22...9.5.23)
+
+---
+updated-dependencies:
+- dependency-name: mkdocs-material
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`b5ef3b8`](https://github.com/qthequartermasterman/hypothesis-torch/commit/b5ef3b84d2e948f2bf7ee341850a02b52c168704))
+
+* chore(deps): bump pyright from 1.1.359 to 1.1.363
+
+Bumps [pyright](https://github.com/RobertCraigie/pyright-python) from 1.1.359 to 1.1.363.
+- [Release notes](https://github.com/RobertCraigie/pyright-python/releases)
+- [Commits](https://github.com/RobertCraigie/pyright-python/compare/v1.1.359...v1.1.363)
+
+---
+updated-dependencies:
+- dependency-name: pyright
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`45416ce`](https://github.com/qthequartermasterman/hypothesis-torch/commit/45416ceafa8788ef279828a84887682a5ccc63a1))
+
+### Unknown
+
+* Merge pull request #56 from qthequartermasterman/dependabot/pip/main/transformers-gte-4.0.0-and-lte-4.41.1
+
+build(deps): update transformers requirement from &lt;=4.41.0,&gt;=4.0.0 to &gt;=4.0.0,&lt;=4.41.1 ([`89ffd7b`](https://github.com/qthequartermasterman/hypothesis-torch/commit/89ffd7b74a8e6f807060a256cf976cf555c3a3a7))
+
+* Merge pull request #55 from qthequartermasterman/dependabot/pip/main/ruff-0.4.5
+
+build(deps): bump ruff from 0.4.4 to 0.4.5 ([`5a661d2`](https://github.com/qthequartermasterman/hypothesis-torch/commit/5a661d24ed7de9b3073b7fca6c193b8b58e7e4a6))
+
+* Merge pull request #54 from qthequartermasterman/dependabot/pip/main/pyright-1.1.364
+
+chore(deps): bump pyright from 1.1.363 to 1.1.364 ([`d4f125c`](https://github.com/qthequartermasterman/hypothesis-torch/commit/d4f125ce3881ad4db8370191e8b4368b81f36cdb))
+
+* 
+
+---
+updated-dependencies:
+- dependency-name: pyright
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`b0aa00e`](https://github.com/qthequartermasterman/hypothesis-torch/commit/b0aa00e4562510927b0ab9fd32668688c7764d3d))
+
+* Merge pull request #50 from qthequartermasterman/dependabot/pip/main/transformers-gte-4.0.0-and-lte-4.41.0
+
+chore(deps): update transformers requirement from &lt;=4.40.2,&gt;=4.0.0 to &gt;=4.0.0,&lt;=4.41.0 ([`1c44fc7`](https://github.com/qthequartermasterman/hypothesis-torch/commit/1c44fc787cdf2e87cac5a4839caff8f241cd8708))
+
+* Merge pull request #52 from qthequartermasterman/dependabot/pip/main/mkdocs-material-9.5.24
+
+chore(deps): bump mkdocs-material from 9.5.23 to 9.5.24 ([`9a06a13`](https://github.com/qthequartermasterman/hypothesis-torch/commit/9a06a13d6ecc8de7e3ee1909050646d69657ddbc))
+
+* Merge pull request #51 from qthequartermasterman/dependabot/pip/main/pytest-8.2.1
+
+chore(deps): bump pytest from 8.2.0 to 8.2.1 ([`027ad58`](https://github.com/qthequartermasterman/hypothesis-torch/commit/027ad584dc3791dafe28a9aa2d80c453c33b7aba))
+
+* Merge pull request #48 from qthequartermasterman/dependabot/pip/main/pyright-1.1.363
+
+chore(deps): bump pyright from 1.1.359 to 1.1.363 ([`d5b6a30`](https://github.com/qthequartermasterman/hypothesis-torch/commit/d5b6a30e8807b108ed67261e6ad9c5e278dae3f6))
+
+* Merge pull request #49 from qthequartermasterman/dependabot/pip/main/mkdocs-material-9.5.23
+
+chore(deps): bump mkdocs-material from 9.5.22 to 9.5.23 ([`6a59c8c`](https://github.com/qthequartermasterman/hypothesis-torch/commit/6a59c8c34a9650a5612661fe05290e98358143f8))
+
+
 ## v0.7.0 (2024-05-14)
 
 ### Breaking
