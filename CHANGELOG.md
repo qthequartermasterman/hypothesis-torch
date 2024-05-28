@@ -2,6 +2,33 @@
 
 
 
+## v0.7.2 (2024-05-28)
+
+### Build
+
+* build(deps): bump mkdocs-material from 9.5.24 to 9.5.25
+
+Bumps [mkdocs-material](https://github.com/squidfunk/mkdocs-material) from 9.5.24 to 9.5.25.
+- [Release notes](https://github.com/squidfunk/mkdocs-material/releases)
+- [Changelog](https://github.com/squidfunk/mkdocs-material/blob/master/CHANGELOG)
+- [Commits](https://github.com/squidfunk/mkdocs-material/compare/9.5.24...9.5.25)
+
+---
+updated-dependencies:
+- dependency-name: mkdocs-material
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`55eb6fd`](https://github.com/qthequartermasterman/hypothesis-torch/commit/55eb6fd2ed7b28ab256d8e427b06c0e1e21bf930))
+
+### Unknown
+
+* Merge pull request #57 from qthequartermasterman/dependabot/pip/main/mkdocs-material-9.5.25
+
+build(deps): bump mkdocs-material from 9.5.24 to 9.5.25 ([`5f73285`](https://github.com/qthequartermasterman/hypothesis-torch/commit/5f73285f878b708ab1d5cb15d74f251f91af93c1))
+
+
 ## v0.7.1 (2024-05-24)
 
 ### Build
