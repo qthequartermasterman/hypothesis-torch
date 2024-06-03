@@ -2,6 +2,51 @@
 
 
 
+## v0.7.3 (2024-06-03)
+
+### Build
+
+* build(deps): bump ruff from 0.4.5 to 0.4.7
+
+Bumps [ruff](https://github.com/astral-sh/ruff) from 0.4.5 to 0.4.7.
+- [Release notes](https://github.com/astral-sh/ruff/releases)
+- [Changelog](https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md)
+- [Commits](https://github.com/astral-sh/ruff/compare/v0.4.5...v0.4.7)
+
+---
+updated-dependencies:
+- dependency-name: ruff
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`7709d1e`](https://github.com/qthequartermasterman/hypothesis-torch/commit/7709d1e480624c9cb0421215d063b45855f3c43b))
+
+* build(deps): update transformers requirement
+
+Updates the requirements on [transformers](https://github.com/huggingface/transformers) to permit the latest version.
+- [Release notes](https://github.com/huggingface/transformers/releases)
+- [Commits](https://github.com/huggingface/transformers/compare/v4.0.0...v4.41.2)
+
+---
+updated-dependencies:
+- dependency-name: transformers
+  dependency-type: direct:production
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`803d9fb`](https://github.com/qthequartermasterman/hypothesis-torch/commit/803d9fb626113e7d0800bee72ac401b40cfe9a2c))
+
+### Unknown
+
+* Merge pull request #60 from qthequartermasterman/dependabot/pip/main/transformers-gte-4.0.0-and-lte-4.41.2
+
+build(deps): update transformers requirement from &lt;=4.41.1,&gt;=4.0.0 to &gt;=4.0.0,&lt;=4.41.2 ([`bc03956`](https://github.com/qthequartermasterman/hypothesis-torch/commit/bc03956cfb48745d2a027a729d00ef40c6ad0f7d))
+
+* Merge pull request #61 from qthequartermasterman/dependabot/pip/main/ruff-0.4.7
+
+build(deps): bump ruff from 0.4.5 to 0.4.7 ([`019dfc5`](https://github.com/qthequartermasterman/hypothesis-torch/commit/019dfc5976325e26d37b275bd7036661f7569de6))
+
+
 ## v0.7.2 (2024-05-28)
 
 ### Build
