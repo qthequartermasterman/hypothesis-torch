@@ -2,9 +2,33 @@
 
 
 
+## v0.7.4 (2024-06-04)
+
+### Unknown
+
+* Merge pull request #59 from qthequartermasterman/dependabot/pip/main/pyright-1.1.365
+
+build(deps): bump pyright from 1.1.364 to 1.1.365 ([`93f95cb`](https://github.com/qthequartermasterman/hypothesis-torch/commit/93f95cb458d262630d8bac2ff172089f20da1aa3))
+
+
 ## v0.7.3 (2024-06-03)
 
 ### Build
+
+* build(deps): bump pyright from 1.1.364 to 1.1.365
+
+Bumps [pyright](https://github.com/RobertCraigie/pyright-python) from 1.1.364 to 1.1.365.
+- [Release notes](https://github.com/RobertCraigie/pyright-python/releases)
+- [Commits](https://github.com/RobertCraigie/pyright-python/compare/v1.1.364...v1.1.365)
+
+---
+updated-dependencies:
+- dependency-name: pyright
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`80ac03d`](https://github.com/qthequartermasterman/hypothesis-torch/commit/80ac03de59d7d9c10824ddf611661366cab57463))
 
 * build(deps): bump ruff from 0.4.5 to 0.4.7
 
