@@ -2,6 +2,33 @@
 
 
 
+## v0.7.5 (2024-06-07)
+
+### Fix
+
+* fix: Only generate `mps:0` devices.
+
+Because `torch.device(&#39;mps&#39;) != torch.device(&#39;mps:0&#39;)`, and tensors sent to either device will end up on `mps:0`, it feels fitting to only include `mps:0` in the device strategy, similar to how we only generate indexed `cuda` devices.
+
+```python
+import torch
+
+mps_device = torch.device(&#34;mps&#34;)
+mps_0_device = torch.device(&#34;mps:0&#34;)
+print(mps_device, mps_0_device, mps_device == mps_0_device)  # mps mps:0 False  # I expect these to be equal, because tensors on the mps device get placed on the mps:0 device
+
+mps_tensor = torch.randn(2, 3, device=mps_device)
+mps_0_tensor = torch.randn(2, 3, device=mps_0_device)
+print(mps_tensor.device, mps_0_tensor.device, mps_tensor.device == mps_0_tensor.device)  # mps:0 mps:0 True  # This matches what I expect
+``` ([`bafcdd3`](https://github.com/qthequartermasterman/hypothesis-torch/commit/bafcdd34ebf26474890684dfb1d126d288533781))
+
+### Unknown
+
+* Merge pull request #66 from qthequartermasterman/mps-0-device
+
+fix: Only generate `mps:0` devices. ([`7dc8bb3`](https://github.com/qthequartermasterman/hypothesis-torch/commit/7dc8bb3b53a85febc24756667c6706c14a5b1232))
+
+
 ## v0.7.4 (2024-06-04)
 
 ### Unknown
