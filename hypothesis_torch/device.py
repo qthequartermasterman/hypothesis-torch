@@ -10,7 +10,7 @@ from hypothesis import strategies as st
 
 AVAILABLE_CPU_DEVICES: Final = [torch.device("cpu")]
 AVAILABLE_CUDA_DEVICES: Final = [torch.device("cuda", i) for i in range(torch.cuda.device_count())]
-AVAILABLE_MPS_DEVICES: Final = [torch.device("mps")] if torch.backends.mps.is_available() else []
+AVAILABLE_MPS_DEVICES: Final = [torch.device("mps:0")] if torch.backends.mps.is_available() else []
 AVAILABLE_META_DEVICES: Final = [torch.device("meta")]
 
 AVAILABLE_PHYSICAL_DEVICES: Final = AVAILABLE_CPU_DEVICES + AVAILABLE_CUDA_DEVICES + AVAILABLE_MPS_DEVICES
