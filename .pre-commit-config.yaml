@@ -25,10 +25,10 @@ repos:
       entry: pyright
       language: system
       types: [python]
-      files: \.py$
+      args: [hypothesis_torch/]
     - id: mypy
       name: mypy
       entry: mypy
       language: system
       types: [python]
-      files: \.py$
+      args: [hypothesis_torch/]
