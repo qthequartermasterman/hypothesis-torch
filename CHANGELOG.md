@@ -2,9 +2,42 @@
 
 
 
+## v0.7.7 (2024-06-14)
+
+### Ci
+
+* ci: merge all dependabot PRs into one using dependabot groups. ([`2352a54`](https://github.com/qthequartermasterman/hypothesis-torch/commit/2352a540015d7d1ef32fb5302ecc50537a7ab1e1))
+
+### Unknown
+
+* Merge pull request #70 from qthequartermasterman/dependabot/pip/main/ruff-0.4.9
+
+build(deps): bump ruff from 0.4.7 to 0.4.9 ([`9910c27`](https://github.com/qthequartermasterman/hypothesis-torch/commit/9910c2733630d108fea85c0b11bee4e3ebbb5f9c))
+
+* Merge pull request #71 from qthequartermasterman/grouped-dependabot
+
+ci: merge all dependabot PRs into one using dependabot groups. ([`4eb1ec1`](https://github.com/qthequartermasterman/hypothesis-torch/commit/4eb1ec1dc5d5f1fae19c7159d1b8c15833206911))
+
+
 ## v0.7.6 (2024-06-14)
 
 ### Build
+
+* build(deps): bump ruff from 0.4.7 to 0.4.9
+
+Bumps [ruff](https://github.com/astral-sh/ruff) from 0.4.7 to 0.4.9.
+- [Release notes](https://github.com/astral-sh/ruff/releases)
+- [Changelog](https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md)
+- [Commits](https://github.com/astral-sh/ruff/compare/v0.4.7...v0.4.9)
+
+---
+updated-dependencies:
+- dependency-name: ruff
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`f39bef8`](https://github.com/qthequartermasterman/hypothesis-torch/commit/f39bef82626eba4df6b99060e529e61a13e19502))
 
 * build(deps): bump dawidd6/action-download-artifact from 3.1.4 to 5
 
