@@ -2,7 +2,46 @@
 
 
 
+## v0.7.9 (2024-06-14)
+
+### Unknown
+
+* Merge pull request #74 from qthequartermasterman/dependabot/pip/main/lint-and-dev-54db406bcd
+
+build(deps): bump the lint-and-dev group across 1 directory with 2 updates ([`ec9d014`](https://github.com/qthequartermasterman/hypothesis-torch/commit/ec9d0141447c1f0bfeb3fb5318bd747ede85f1cf))
+
+
 ## v0.7.8 (2024-06-14)
+
+### Build
+
+* build(deps): bump the lint-and-dev group across 1 directory with 2 updates
+
+Bumps the lint-and-dev group with 2 updates in the / directory: [pyright](https://github.com/RobertCraigie/pyright-python) and [mkdocs-material](https://github.com/squidfunk/mkdocs-material).
+
+
+Updates `pyright` from 1.1.365 to 1.1.367
+- [Release notes](https://github.com/RobertCraigie/pyright-python/releases)
+- [Commits](https://github.com/RobertCraigie/pyright-python/compare/v1.1.365...v1.1.367)
+
+Updates `mkdocs-material` from 9.5.25 to 9.5.26
+- [Release notes](https://github.com/squidfunk/mkdocs-material/releases)
+- [Changelog](https://github.com/squidfunk/mkdocs-material/blob/master/CHANGELOG)
+- [Commits](https://github.com/squidfunk/mkdocs-material/compare/9.5.25...9.5.26)
+
+---
+updated-dependencies:
+- dependency-name: pyright
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+  dependency-group: lint-and-dev
+- dependency-name: mkdocs-material
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+  dependency-group: lint-and-dev
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`c6351ed`](https://github.com/qthequartermasterman/hypothesis-torch/commit/c6351edc732dbdfe25b43b60b7409320508f04ad))
 
 ### Unknown
 
