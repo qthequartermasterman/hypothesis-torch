@@ -2,6 +2,36 @@
 
 
 
+## v0.7.6 (2024-06-14)
+
+### Build
+
+* build(deps): bump dawidd6/action-download-artifact from 3.1.4 to 5
+
+Bumps [dawidd6/action-download-artifact](https://github.com/dawidd6/action-download-artifact) from 3.1.4 to 5.
+- [Release notes](https://github.com/dawidd6/action-download-artifact/releases)
+- [Commits](https://github.com/dawidd6/action-download-artifact/compare/v3.1.4...v5)
+
+---
+updated-dependencies:
+- dependency-name: dawidd6/action-download-artifact
+  dependency-type: direct:production
+  update-type: version-update:semver-major
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`380fee0`](https://github.com/qthequartermasterman/hypothesis-torch/commit/380fee0f731bcf480443f399b26b73227e86400a))
+
+### Unknown
+
+* Merge pull request #62 from qthequartermasterman/dependabot/pip/main/pytest-8.2.2
+
+build(deps): bump pytest from 8.2.1 to 8.2.2 ([`721e435`](https://github.com/qthequartermasterman/hypothesis-torch/commit/721e435e7c78805488985f55b9e44eb3c089ade3))
+
+* Merge pull request #68 from qthequartermasterman/dependabot/github_actions/main/dawidd6/action-download-artifact-5
+
+build(deps): bump dawidd6/action-download-artifact from 3.1.4 to 5 ([`0c48d89`](https://github.com/qthequartermasterman/hypothesis-torch/commit/0c48d89ac77c7f494989bc9b8218a25f7f2a8ec4))
+
+
 ## v0.7.5 (2024-06-07)
 
 ### Fix
@@ -30,6 +60,24 @@ fix: Only generate `mps:0` devices. ([`7dc8bb3`](https://github.com/qthequarterm
 
 
 ## v0.7.4 (2024-06-04)
+
+### Build
+
+* build(deps): bump pytest from 8.2.1 to 8.2.2
+
+Bumps [pytest](https://github.com/pytest-dev/pytest) from 8.2.1 to 8.2.2.
+- [Release notes](https://github.com/pytest-dev/pytest/releases)
+- [Changelog](https://github.com/pytest-dev/pytest/blob/main/CHANGELOG.rst)
+- [Commits](https://github.com/pytest-dev/pytest/compare/8.2.1...8.2.2)
+
+---
+updated-dependencies:
+- dependency-name: pytest
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`9787eb1`](https://github.com/qthequartermasterman/hypothesis-torch/commit/9787eb1acac51f4acc02a5317983b778696ced49))
 
 ### Unknown
 
