@@ -73,7 +73,7 @@ jobs:
       with:
         commit_message: 'style fixes by ruff'
     - name: Download example database
-      uses: dawidd6/action-download-artifact@v5
+      uses: dawidd6/action-download-artifact@v6
       with:
         name: hypothesis-example-db
         path: .hypothesis/examples
