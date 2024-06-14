@@ -2,7 +2,33 @@
 
 
 
+## v0.7.8 (2024-06-14)
+
+### Unknown
+
+* Merge pull request #72 from qthequartermasterman/dependabot/github_actions/main/dawidd6/action-download-artifact-6
+
+build(deps): bump dawidd6/action-download-artifact from 5 to 6 ([`31bfc45`](https://github.com/qthequartermasterman/hypothesis-torch/commit/31bfc45ae0bec5846db3cffc698aa3965b2d08fc))
+
+
 ## v0.7.7 (2024-06-14)
+
+### Build
+
+* build(deps): bump dawidd6/action-download-artifact from 5 to 6
+
+Bumps [dawidd6/action-download-artifact](https://github.com/dawidd6/action-download-artifact) from 5 to 6.
+- [Release notes](https://github.com/dawidd6/action-download-artifact/releases)
+- [Commits](https://github.com/dawidd6/action-download-artifact/compare/v5...v6)
+
+---
+updated-dependencies:
+- dependency-name: dawidd6/action-download-artifact
+  dependency-type: direct:production
+  update-type: version-update:semver-major
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`1564e20`](https://github.com/qthequartermasterman/hypothesis-torch/commit/1564e20d570cb4651d720935306ca77e9cde1f63))
 
 ### Ci
 
