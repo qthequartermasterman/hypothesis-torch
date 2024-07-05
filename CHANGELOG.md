@@ -1,6 +1,65 @@
 # CHANGELOG
 
+## v0.7.10 (2024-07-05)
 
+### Build
+
+* build(deps): bump the lint-and-dev group across 1 directory with 5 updates
+
+Updates the requirements on [transformers](https://github.com/huggingface/transformers), [mypy](https://github.com/python/mypy), [ruff](https://github.com/astral-sh/ruff), [pyright](https://github.com/RobertCraigie/pyright-python) and [mkdocs-material](https://github.com/squidfunk/mkdocs-material) to permit the latest version.
+
+Updates `transformers` to 4.42.3
+- [Release notes](https://github.com/huggingface/transformers/releases)
+- [Commits](https://github.com/huggingface/transformers/compare/v4.0.0...v4.42.3)
+
+Updates `mypy` from 1.10.0 to 1.10.1
+- [Changelog](https://github.com/python/mypy/blob/master/CHANGELOG.md)
+- [Commits](https://github.com/python/mypy/compare/v1.10.0...v1.10.1)
+
+Updates `ruff` from 0.4.9 to 0.5.0
+- [Release notes](https://github.com/astral-sh/ruff/releases)
+- [Changelog](https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md)
+- [Commits](https://github.com/astral-sh/ruff/compare/v0.4.9...0.5.0)
+
+Updates `pyright` from 1.1.367 to 1.1.370
+- [Release notes](https://github.com/RobertCraigie/pyright-python/releases)
+- [Commits](https://github.com/RobertCraigie/pyright-python/compare/v1.1.367...v1.1.370)
+
+Updates `mkdocs-material` from 9.5.26 to 9.5.28
+- [Release notes](https://github.com/squidfunk/mkdocs-material/releases)
+- [Changelog](https://github.com/squidfunk/mkdocs-material/blob/master/CHANGELOG)
+- [Commits](https://github.com/squidfunk/mkdocs-material/compare/9.5.26...9.5.28)
+
+---
+updated-dependencies:
+- dependency-name: transformers
+  dependency-type: direct:production
+  dependency-group: lint-and-dev
+- dependency-name: mypy
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+  dependency-group: lint-and-dev
+- dependency-name: ruff
+  dependency-type: direct:production
+  update-type: version-update:semver-minor
+  dependency-group: lint-and-dev
+- dependency-name: pyright
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+  dependency-group: lint-and-dev
+- dependency-name: mkdocs-material
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+  dependency-group: lint-and-dev
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`6e39b50`](https://github.com/qthequartermasterman/hypothesis-torch/commit/6e39b50a117d25a1b88f25248f939b7f8ce966ab))
+
+### Unknown
+
+* Merge pull request #83 from qthequartermasterman/dependabot/pip/main/lint-and-dev-f8472f5032
+
+build(deps): bump the lint-and-dev group across 1 directory with 5 updates ([`4c37ef8`](https://github.com/qthequartermasterman/hypothesis-torch/commit/4c37ef8490a90e43d80351adaaa11e1cd3d3aa05))
 
 ## v0.7.9 (2024-06-14)
 
@@ -9,7 +68,6 @@
 * Merge pull request #74 from qthequartermasterman/dependabot/pip/main/lint-and-dev-54db406bcd
 
 build(deps): bump the lint-and-dev group across 1 directory with 2 updates ([`ec9d014`](https://github.com/qthequartermasterman/hypothesis-torch/commit/ec9d0141447c1f0bfeb3fb5318bd747ede85f1cf))
-
 
 ## v0.7.8 (2024-06-14)
 
@@ -49,7 +107,6 @@ Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`c6351ed`](https://g
 
 build(deps): bump dawidd6/action-download-artifact from 5 to 6 ([`31bfc45`](https://github.com/qthequartermasterman/hypothesis-torch/commit/31bfc45ae0bec5846db3cffc698aa3965b2d08fc))
 
-
 ## v0.7.7 (2024-06-14)
 
 ### Build
@@ -82,7 +139,6 @@ build(deps): bump ruff from 0.4.7 to 0.4.9 ([`9910c27`](https://github.com/qtheq
 * Merge pull request #71 from qthequartermasterman/grouped-dependabot
 
 ci: merge all dependabot PRs into one using dependabot groups. ([`4eb1ec1`](https://github.com/qthequartermasterman/hypothesis-torch/commit/4eb1ec1dc5d5f1fae19c7159d1b8c15833206911))
-
 
 ## v0.7.6 (2024-06-14)
 
@@ -129,7 +185,6 @@ build(deps): bump pytest from 8.2.1 to 8.2.2 ([`721e435`](https://github.com/qth
 
 build(deps): bump dawidd6/action-download-artifact from 3.1.4 to 5 ([`0c48d89`](https://github.com/qthequartermasterman/hypothesis-torch/commit/0c48d89ac77c7f494989bc9b8218a25f7f2a8ec4))
 
-
 ## v0.7.5 (2024-06-07)
 
 ### Fix
@@ -156,7 +211,6 @@ print(mps_tensor.device, mps_0_tensor.device, mps_tensor.device == mps_0_tensor.
 
 fix: Only generate `mps:0` devices. ([`7dc8bb3`](https://github.com/qthequartermasterman/hypothesis-torch/commit/7dc8bb3b53a85febc24756667c6706c14a5b1232))
 
-
 ## v0.7.4 (2024-06-04)
 
 ### Build
@@ -182,7 +236,6 @@ Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`9787eb1`](https://g
 * Merge pull request #59 from qthequartermasterman/dependabot/pip/main/pyright-1.1.365
 
 build(deps): bump pyright from 1.1.364 to 1.1.365 ([`93f95cb`](https://github.com/qthequartermasterman/hypothesis-torch/commit/93f95cb458d262630d8bac2ff172089f20da1aa3))
-
 
 ## v0.7.3 (2024-06-03)
 
@@ -243,7 +296,6 @@ build(deps): update transformers requirement from &lt;=4.41.1,&gt;=4.0.0 to &gt;
 
 build(deps): bump ruff from 0.4.5 to 0.4.7 ([`019dfc5`](https://github.com/qthequartermasterman/hypothesis-torch/commit/019dfc5976325e26d37b275bd7036661f7569de6))
 
-
 ## v0.7.2 (2024-05-28)
 
 ### Build
@@ -269,7 +321,6 @@ Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`55eb6fd`](https://g
 * Merge pull request #57 from qthequartermasterman/dependabot/pip/main/mkdocs-material-9.5.25
 
 build(deps): bump mkdocs-material from 9.5.24 to 9.5.25 ([`5f73285`](https://github.com/qthequartermasterman/hypothesis-torch/commit/5f73285f878b708ab1d5cb15d74f251f91af93c1))
-
 
 ## v0.7.1 (2024-05-24)
 
@@ -429,7 +480,6 @@ chore(deps): bump pyright from 1.1.359 to 1.1.363 ([`d5b6a30`](https://github.co
 
 chore(deps): bump mkdocs-material from 9.5.22 to 9.5.23 ([`6a59c8c`](https://github.com/qthequartermasterman/hypothesis-torch/commit/6a59c8c34a9650a5612661fe05290e98358143f8))
 
-
 ## v0.7.0 (2024-05-14)
 
 ### Breaking
@@ -491,7 +541,6 @@ BREAKING-CHANGE: Removed support for `Mapping[str, Any]` as `elements` argument 
 * Merge pull request #46 from qthequartermasterman/more-linting
 
 fix: :rotating_light: :bug: :label: :memo: Increase linting ([`c290e12`](https://github.com/qthequartermasterman/hypothesis-torch/commit/c290e1269a92f87b68c1d226676beb488eba513b))
-
 
 ## v0.6.4 (2024-05-13)
 
@@ -604,7 +653,6 @@ ci: fix missing coverage comment by creating pytest-coverage.txt file during bui
 
 ci: store hypothesis database in GitHub Actions to allow reproducing failures locally ([`0a2eb72`](https://github.com/qthequartermasterman/hypothesis-torch/commit/0a2eb729015492d22369475cddafa55a5fe6cfc8))
 
-
 ## v0.6.3 (2024-05-12)
 
 ### Documentation
@@ -633,7 +681,6 @@ docs: update pyproject toml classifiers, keywords, and urls. ([`0d3a3ab`](https:
 
 * Merge pull request #33 from CandiedCode/version ([`f9ff580`](https://github.com/qthequartermasterman/hypothesis-torch/commit/f9ff580bfe14369951a8fe93b3bb289338e1a3bc))
 
-
 ## v0.6.2 (2024-05-10)
 
 ### Build
@@ -645,7 +692,6 @@ docs: update pyproject toml classifiers, keywords, and urls. ([`0d3a3ab`](https:
 * Merge pull request #32 from qthequartermasterman/set-dependencies-ranges
 
 build: :bug: set dependency ranges for optimal compatibility ([`71c52b7`](https://github.com/qthequartermasterman/hypothesis-torch/commit/71c52b79a1e58ff7ff2dfa9b388f74577112ee79))
-
 
 ## v0.6.1 (2024-05-10)
 
@@ -713,7 +759,6 @@ docs: :sparkles: :memo: Add index page ([`46e3516`](https://github.com/qthequart
 
 docs: Add support for docs rendered by `readthedocs`, powered by `mkdocs`. ([`e8de564`](https://github.com/qthequartermasterman/hypothesis-torch/commit/e8de564122265d25686bd7504d4b1b2069b54ac5))
 
-
 ## v0.6.0 (2024-05-09)
 
 ### Unknown
@@ -723,7 +768,6 @@ docs: Add support for docs rendered by `readthedocs`, powered by `mkdocs`. ([`e8
 feat: :sparkles: add strategies for torch optimizers ([`fbefa06`](https://github.com/qthequartermasterman/hypothesis-torch/commit/fbefa069ceea8ce997306239ae9fff43cfbffa4b))
 
 * Merge branch &#39;main&#39; into optimizers ([`4eb2f4d`](https://github.com/qthequartermasterman/hypothesis-torch/commit/4eb2f4dd9017aca36895efd51fbf22b3e75bea30))
-
 
 ## v0.5.0 (2024-05-09)
 
@@ -799,7 +843,6 @@ chore(deps): bump ruff from 0.4.1 to 0.4.3 ([`2ae1ae5`](https://github.com/qtheq
 
 build: 🔧 add py.typed ([`b2e8557`](https://github.com/qthequartermasterman/hypothesis-torch/commit/b2e8557d8b8b0f0263ba19a68409fbd719830136))
 
-
 ## v0.4.3 (2024-04-28)
 
 ### Fix
@@ -813,7 +856,6 @@ Before, if a float strategy that prevented infinities was provided to as `elemen
 * Merge pull request #21 from qthequartermasterman/fix-bfloat16-infinities
 
 fix: :bug: do not generate inf values if elements has infinity disabled for bfloat16 tensors. ([`8398018`](https://github.com/qthequartermasterman/hypothesis-torch/commit/8398018f7c5bd18307eafb7b8f30ffff044d6e64))
-
 
 ## v0.4.2 (2024-04-27)
 
@@ -831,7 +873,6 @@ NOTE: The strategy for torch optimizers actually generates an &#34;alternate con
 
 This fix does not work for all bfloat16 tensors. ([`8e9eb5d`](https://github.com/qthequartermasterman/hypothesis-torch/commit/8e9eb5daf6f94e121ad6554bb1a41fcd73ac8da0))
 
-
 ## v0.4.1 (2024-04-24)
 
 ### Fix
@@ -843,7 +884,6 @@ This fix does not work for all bfloat16 tensors. ([`8e9eb5d`](https://github.com
 * Merge pull request #17 from qthequartermasterman/register-random-state
 
 fix: mark bfloat16 as a floating dtype ([`57c0a5b`](https://github.com/qthequartermasterman/hypothesis-torch/commit/57c0a5b1c0904c65f6deca1855b2708ea7f94944))
-
 
 ## v0.4.0 (2024-04-24)
 
@@ -861,7 +901,6 @@ feat: Register PyTorch&#39;s random state with Hypothesis so that torch random i
 
 * Update issue templates ([`c7648bf`](https://github.com/qthequartermasterman/hypothesis-torch/commit/c7648bf89b6bdb299f9191becfc47d2d998e56dd))
 
-
 ## v0.3.1 (2024-04-24)
 
 ### Fix
@@ -877,7 +916,6 @@ feat: Register PyTorch&#39;s random state with Hypothesis so that torch random i
 * Merge pull request #5 from qthequartermasterman/more-tensor-attributes
 
 ci: coverage report ([`e04916e`](https://github.com/qthequartermasterman/hypothesis-torch/commit/e04916edd7f5c4a8c48bcdbf93fa0d5bdf789bfc))
-
 
 ## v0.3.0 (2024-04-24)
 
@@ -917,7 +955,6 @@ ci: coverage report ([`e04916e`](https://github.com/qthequartermasterman/hypothe
 
 feat: :sparkles: More tensor attributes ([`c421dae`](https://github.com/qthequartermasterman/hypothesis-torch/commit/c421daec6758123395582b999a338fccf21b8685))
 
-
 ## v0.2.0 (2024-04-23)
 
 ### Ci
@@ -948,7 +985,6 @@ feat: :sparkles: More tensor attributes ([`c421dae`](https://github.com/qthequar
 
 * test: :white_check_mark: unit tests for activation strategy ([`dfa900e`](https://github.com/qthequartermasterman/hypothesis-torch/commit/dfa900e47bf90d4cdfa4e278d6bd9ae928307aa2))
 
-
 ## v0.1.10 (2024-04-23)
 
 ### Ci
@@ -964,7 +1000,6 @@ feat: :sparkles: More tensor attributes ([`c421dae`](https://github.com/qthequar
 * Merge pull request #3 from qthequartermasterman/dependabot/github_actions/main/actions/setup-python-5
 
 chore(deps): bump actions/setup-python from 2 to 5 ([`68e0892`](https://github.com/qthequartermasterman/hypothesis-torch/commit/68e08926025565124d3bf5e58883656b9bec9a89))
-
 
 ## v0.1.9 (2024-04-22)
 
@@ -1045,7 +1080,6 @@ chore(deps): bump stefanzweifel/git-auto-commit-action from 4 to 5 ([`37675d3`](
 
 chore(deps): bump actions/checkout from 3 to 4 ([`ba59e35`](https://github.com/qthequartermasterman/hypothesis-torch/commit/ba59e3512632d77fd6f1b134d829130552929896))
 
-
 ## v0.1.8 (2024-04-22)
 
 ### Chore
@@ -1078,7 +1112,6 @@ chore(deps): bump actions/checkout from 3 to 4 ([`ba59e35`](https://github.com/q
 
 * test: :white_check_mark: unit tests for iterable utils ([`f262c89`](https://github.com/qthequartermasterman/hypothesis-torch/commit/f262c8936ac1dfc7b2d4b082d5478ad5111a3bf2))
 
-
 ## v0.1.7 (2024-04-21)
 
 ### Ci
@@ -1093,13 +1126,11 @@ chore(deps): bump actions/checkout from 3 to 4 ([`ba59e35`](https://github.com/q
 
 * fix: :label: typing fixes ([`a03d697`](https://github.com/qthequartermasterman/hypothesis-torch/commit/a03d6979d47f9b2bd5c4a8328e9b1927fdc96339))
 
-
 ## v0.1.6 (2024-04-21)
 
 ### Fix
 
 * fix: semantic release reference in pyproject toml ([`7fe09c9`](https://github.com/qthequartermasterman/hypothesis-torch/commit/7fe09c9da9dcdb9d746ad08717870e6b43ecfa88))
-
 
 ## v0.1.5 (2024-04-21)
 
@@ -1107,13 +1138,11 @@ chore(deps): bump actions/checkout from 3 to 4 ([`ba59e35`](https://github.com/q
 
 * fix: clean up imports ([`fc93cd5`](https://github.com/qthequartermasterman/hypothesis-torch/commit/fc93cd5b56f605713272085329bbb5fcd1134f3d))
 
-
 ## v0.1.4 (2024-04-21)
 
 ### Fix
 
 * fix: build command and dynamic version for setuptools ([`cd1889d`](https://github.com/qthequartermasterman/hypothesis-torch/commit/cd1889dd687904b1f8a1a946bdf41f2d17ac6c0f))
-
 
 ## v0.1.3 (2024-04-21)
 
@@ -1121,13 +1150,11 @@ chore(deps): bump actions/checkout from 3 to 4 ([`ba59e35`](https://github.com/q
 
 * fix: allow manually launching release ([`f651484`](https://github.com/qthequartermasterman/hypothesis-torch/commit/f651484d092ce20e4d93c3406309069e5c551af9))
 
-
 ## v0.1.2 (2024-04-21)
 
 ### Fix
 
 * fix: upload to pypi using semantic release ([`98ac240`](https://github.com/qthequartermasterman/hypothesis-torch/commit/98ac24014307ca8ac6e14170652fd4448228ccd8))
-
 
 ## v0.1.1 (2024-04-21)
 
@@ -1138,7 +1165,6 @@ chore(deps): bump actions/checkout from 3 to 4 ([`ba59e35`](https://github.com/q
 ### Fix
 
 * fix: fix semantic release settings ([`b702e85`](https://github.com/qthequartermasterman/hypothesis-torch/commit/b702e85e319324a2904f73a003121aa7bd6ffd6d))
-
 
 ## v0.1.0 (2024-04-21)
 
