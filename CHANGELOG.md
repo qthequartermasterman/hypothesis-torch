@@ -1,5 +1,35 @@
 # CHANGELOG
 
+## v0.7.11 (2024-07-06)
+
+### Build
+
+* build(deps): bump ruff from 0.5.0 to 0.5.1 in the lint-and-dev group
+
+Bumps the lint-and-dev group with 1 update: [ruff](https://github.com/astral-sh/ruff).
+
+
+Updates `ruff` from 0.5.0 to 0.5.1
+- [Release notes](https://github.com/astral-sh/ruff/releases)
+- [Changelog](https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md)
+- [Commits](https://github.com/astral-sh/ruff/compare/0.5.0...0.5.1)
+
+---
+updated-dependencies:
+- dependency-name: ruff
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+  dependency-group: lint-and-dev
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`88cd5e8`](https://github.com/qthequartermasterman/hypothesis-torch/commit/88cd5e80189b511ad659a49067da5889b9f2ea60))
+
+### Unknown
+
+* Merge pull request #84 from qthequartermasterman/dependabot/pip/main/lint-and-dev-bc3aaa0dd1
+
+build(deps): bump ruff from 0.5.0 to 0.5.1 in the lint-and-dev group ([`f129167`](https://github.com/qthequartermasterman/hypothesis-torch/commit/f129167f2cfeb94ec3cd8bb4d847525d0e77df48))
+
 ## v0.7.10 (2024-07-05)
 
 ### Build
