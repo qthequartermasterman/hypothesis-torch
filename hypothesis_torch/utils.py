@@ -29,6 +29,7 @@ if sys.version_info < (3, 10):
         a, b = itertools.tee(iterable)
         next(b, None)
         return zip(a, b)
+
 else:
     pairwise = itertools.pairwise
 
