@@ -1,5 +1,77 @@
 # CHANGELOG
 
+## v0.7.12 (2024-07-22)
+
+### Build
+
+* build(deps): bump the lint-and-dev group across 1 directory with 6 updates
+
+Updates the requirements on [transformers](https://github.com/huggingface/transformers), [mypy](https://github.com/python/mypy), [ruff](https://github.com/astral-sh/ruff), [pyright](https://github.com/RobertCraigie/pyright-python), [pytest](https://github.com/pytest-dev/pytest) and [mkdocs-material](https://github.com/squidfunk/mkdocs-material) to permit the latest version.
+
+Updates `transformers` to 4.42.4
+- [Release notes](https://github.com/huggingface/transformers/releases)
+- [Commits](https://github.com/huggingface/transformers/compare/v4.42.3...v4.42.4)
+
+Updates `mypy` from 1.10.1 to 1.11.0
+- [Changelog](https://github.com/python/mypy/blob/master/CHANGELOG.md)
+- [Commits](https://github.com/python/mypy/compare/v1.10.1...v1.11)
+
+Updates `ruff` from 0.5.1 to 0.5.4
+- [Release notes](https://github.com/astral-sh/ruff/releases)
+- [Changelog](https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md)
+- [Commits](https://github.com/astral-sh/ruff/compare/0.5.1...0.5.4)
+
+Updates `pyright` from 1.1.370 to 1.1.372
+- [Release notes](https://github.com/RobertCraigie/pyright-python/releases)
+- [Commits](https://github.com/RobertCraigie/pyright-python/compare/v1.1.370...v1.1.372)
+
+Updates `pytest` from 8.2.2 to 8.3.1
+- [Release notes](https://github.com/pytest-dev/pytest/releases)
+- [Changelog](https://github.com/pytest-dev/pytest/blob/main/CHANGELOG.rst)
+- [Commits](https://github.com/pytest-dev/pytest/compare/8.2.2...8.3.1)
+
+Updates `mkdocs-material` from 9.5.28 to 9.5.29
+- [Release notes](https://github.com/squidfunk/mkdocs-material/releases)
+- [Changelog](https://github.com/squidfunk/mkdocs-material/blob/master/CHANGELOG)
+- [Commits](https://github.com/squidfunk/mkdocs-material/compare/9.5.28...9.5.29)
+
+---
+updated-dependencies:
+- dependency-name: transformers
+  dependency-type: direct:production
+  dependency-group: lint-and-dev
+- dependency-name: mypy
+  dependency-type: direct:production
+  update-type: version-update:semver-minor
+  dependency-group: lint-and-dev
+- dependency-name: ruff
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+  dependency-group: lint-and-dev
+- dependency-name: pyright
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+  dependency-group: lint-and-dev
+- dependency-name: pytest
+  dependency-type: direct:production
+  update-type: version-update:semver-minor
+  dependency-group: lint-and-dev
+- dependency-name: mkdocs-material
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+  dependency-group: lint-and-dev
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`695301b`](https://github.com/qthequartermasterman/hypothesis-torch/commit/695301b4171f4a31a6014560a1b471d7d133868f))
+
+### Unknown
+
+* Merge pull request #91 from qthequartermasterman/dependabot/pip/main/lint-and-dev-cca6d4ef9c
+
+build(deps): bump the lint-and-dev group across 1 directory with 6 updates ([`c428983`](https://github.com/qthequartermasterman/hypothesis-torch/commit/c428983e6954c547f82d02f776836ae5490aa564))
+
+* style fixes by ruff ([`cfd4218`](https://github.com/qthequartermasterman/hypothesis-torch/commit/cfd421803c5756f10a002e850a500548b8c3859d))
+
 ## v0.7.11 (2024-07-06)
 
 ### Build
@@ -93,14 +165,6 @@ build(deps): bump the lint-and-dev group across 1 directory with 5 updates ([`4c
 
 ## v0.7.9 (2024-06-14)
 
-### Unknown
-
-* Merge pull request #74 from qthequartermasterman/dependabot/pip/main/lint-and-dev-54db406bcd
-
-build(deps): bump the lint-and-dev group across 1 directory with 2 updates ([`ec9d014`](https://github.com/qthequartermasterman/hypothesis-torch/commit/ec9d0141447c1f0bfeb3fb5318bd747ede85f1cf))
-
-## v0.7.8 (2024-06-14)
-
 ### Build
 
 * build(deps): bump the lint-and-dev group across 1 directory with 2 updates
@@ -133,11 +197,11 @@ Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`c6351ed`](https://g
 
 ### Unknown
 
-* Merge pull request #72 from qthequartermasterman/dependabot/github_actions/main/dawidd6/action-download-artifact-6
+* Merge pull request #74 from qthequartermasterman/dependabot/pip/main/lint-and-dev-54db406bcd
 
-build(deps): bump dawidd6/action-download-artifact from 5 to 6 ([`31bfc45`](https://github.com/qthequartermasterman/hypothesis-torch/commit/31bfc45ae0bec5846db3cffc698aa3965b2d08fc))
+build(deps): bump the lint-and-dev group across 1 directory with 2 updates ([`ec9d014`](https://github.com/qthequartermasterman/hypothesis-torch/commit/ec9d0141447c1f0bfeb3fb5318bd747ede85f1cf))
 
-## v0.7.7 (2024-06-14)
+## v0.7.8 (2024-06-14)
 
 ### Build
 
@@ -155,6 +219,32 @@ updated-dependencies:
 ...
 
 Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`1564e20`](https://github.com/qthequartermasterman/hypothesis-torch/commit/1564e20d570cb4651d720935306ca77e9cde1f63))
+
+### Unknown
+
+* Merge pull request #72 from qthequartermasterman/dependabot/github_actions/main/dawidd6/action-download-artifact-6
+
+build(deps): bump dawidd6/action-download-artifact from 5 to 6 ([`31bfc45`](https://github.com/qthequartermasterman/hypothesis-torch/commit/31bfc45ae0bec5846db3cffc698aa3965b2d08fc))
+
+## v0.7.7 (2024-06-14)
+
+### Build
+
+* build(deps): bump ruff from 0.4.7 to 0.4.9
+
+Bumps [ruff](https://github.com/astral-sh/ruff) from 0.4.7 to 0.4.9.
+- [Release notes](https://github.com/astral-sh/ruff/releases)
+- [Changelog](https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md)
+- [Commits](https://github.com/astral-sh/ruff/compare/v0.4.7...v0.4.9)
+
+---
+updated-dependencies:
+- dependency-name: ruff
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`f39bef8`](https://github.com/qthequartermasterman/hypothesis-torch/commit/f39bef82626eba4df6b99060e529e61a13e19502))
 
 ### Ci
 
@@ -174,21 +264,21 @@ ci: merge all dependabot PRs into one using dependabot groups. ([`4eb1ec1`](http
 
 ### Build
 
-* build(deps): bump ruff from 0.4.7 to 0.4.9
+* build(deps): bump pytest from 8.2.1 to 8.2.2
 
-Bumps [ruff](https://github.com/astral-sh/ruff) from 0.4.7 to 0.4.9.
-- [Release notes](https://github.com/astral-sh/ruff/releases)
-- [Changelog](https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md)
-- [Commits](https://github.com/astral-sh/ruff/compare/v0.4.7...v0.4.9)
+Bumps [pytest](https://github.com/pytest-dev/pytest) from 8.2.1 to 8.2.2.
+- [Release notes](https://github.com/pytest-dev/pytest/releases)
+- [Changelog](https://github.com/pytest-dev/pytest/blob/main/CHANGELOG.rst)
+- [Commits](https://github.com/pytest-dev/pytest/compare/8.2.1...8.2.2)
 
 ---
 updated-dependencies:
-- dependency-name: ruff
+- dependency-name: pytest
   dependency-type: direct:production
   update-type: version-update:semver-patch
 ...
 
-Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`f39bef8`](https://github.com/qthequartermasterman/hypothesis-torch/commit/f39bef82626eba4df6b99060e529e61a13e19502))
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`9787eb1`](https://github.com/qthequartermasterman/hypothesis-torch/commit/9787eb1acac51f4acc02a5317983b778696ced49))
 
 * build(deps): bump dawidd6/action-download-artifact from 3.1.4 to 5
 
@@ -245,32 +335,6 @@ fix: Only generate `mps:0` devices. ([`7dc8bb3`](https://github.com/qthequarterm
 
 ### Build
 
-* build(deps): bump pytest from 8.2.1 to 8.2.2
-
-Bumps [pytest](https://github.com/pytest-dev/pytest) from 8.2.1 to 8.2.2.
-- [Release notes](https://github.com/pytest-dev/pytest/releases)
-- [Changelog](https://github.com/pytest-dev/pytest/blob/main/CHANGELOG.rst)
-- [Commits](https://github.com/pytest-dev/pytest/compare/8.2.1...8.2.2)
-
----
-updated-dependencies:
-- dependency-name: pytest
-  dependency-type: direct:production
-  update-type: version-update:semver-patch
-...
-
-Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`9787eb1`](https://github.com/qthequartermasterman/hypothesis-torch/commit/9787eb1acac51f4acc02a5317983b778696ced49))
-
-### Unknown
-
-* Merge pull request #59 from qthequartermasterman/dependabot/pip/main/pyright-1.1.365
-
-build(deps): bump pyright from 1.1.364 to 1.1.365 ([`93f95cb`](https://github.com/qthequartermasterman/hypothesis-torch/commit/93f95cb458d262630d8bac2ff172089f20da1aa3))
-
-## v0.7.3 (2024-06-03)
-
-### Build
-
 * build(deps): bump pyright from 1.1.364 to 1.1.365
 
 Bumps [pyright](https://github.com/RobertCraigie/pyright-python) from 1.1.364 to 1.1.365.
@@ -285,6 +349,30 @@ updated-dependencies:
 ...
 
 Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`80ac03d`](https://github.com/qthequartermasterman/hypothesis-torch/commit/80ac03de59d7d9c10824ddf611661366cab57463))
+
+### Unknown
+
+* Merge pull request #59 from qthequartermasterman/dependabot/pip/main/pyright-1.1.365
+
+build(deps): bump pyright from 1.1.364 to 1.1.365 ([`93f95cb`](https://github.com/qthequartermasterman/hypothesis-torch/commit/93f95cb458d262630d8bac2ff172089f20da1aa3))
+
+## v0.7.3 (2024-06-03)
+
+### Build
+
+* build(deps): update transformers requirement
+
+Updates the requirements on [transformers](https://github.com/huggingface/transformers) to permit the latest version.
+- [Release notes](https://github.com/huggingface/transformers/releases)
+- [Commits](https://github.com/huggingface/transformers/compare/v4.0.0...v4.41.2)
+
+---
+updated-dependencies:
+- dependency-name: transformers
+  dependency-type: direct:production
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`803d9fb`](https://github.com/qthequartermasterman/hypothesis-torch/commit/803d9fb626113e7d0800bee72ac401b40cfe9a2c))
 
 * build(deps): bump ruff from 0.4.5 to 0.4.7
 
@@ -301,20 +389,6 @@ updated-dependencies:
 ...
 
 Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`7709d1e`](https://github.com/qthequartermasterman/hypothesis-torch/commit/7709d1e480624c9cb0421215d063b45855f3c43b))
-
-* build(deps): update transformers requirement
-
-Updates the requirements on [transformers](https://github.com/huggingface/transformers) to permit the latest version.
-- [Release notes](https://github.com/huggingface/transformers/releases)
-- [Commits](https://github.com/huggingface/transformers/compare/v4.0.0...v4.41.2)
-
----
-updated-dependencies:
-- dependency-name: transformers
-  dependency-type: direct:production
-...
-
-Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`803d9fb`](https://github.com/qthequartermasterman/hypothesis-torch/commit/803d9fb626113e7d0800bee72ac401b40cfe9a2c))
 
 ### Unknown
 
@@ -388,6 +462,20 @@ Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`102bd96`](https://g
 
 ### Chore
 
+* chore(deps): update transformers requirement
+
+Updates the requirements on [transformers](https://github.com/huggingface/transformers) to permit the latest version.
+- [Release notes](https://github.com/huggingface/transformers/releases)
+- [Commits](https://github.com/huggingface/transformers/compare/v4.0.0...v4.41.0)
+
+---
+updated-dependencies:
+- dependency-name: transformers
+  dependency-type: direct:production
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`ca6f76a`](https://github.com/qthequartermasterman/hypothesis-torch/commit/ca6f76a4d96f4fb60bb7ec4a56010ef247a54cb3))
+
 * chore(deps): bump mkdocs-material from 9.5.23 to 9.5.24
 
 Bumps [mkdocs-material](https://github.com/squidfunk/mkdocs-material) from 9.5.23 to 9.5.24.
@@ -420,19 +508,20 @@ updated-dependencies:
 
 Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`cf6fb67`](https://github.com/qthequartermasterman/hypothesis-torch/commit/cf6fb673d4eeb551694808a118d96e7b57950d66))
 
-* chore(deps): update transformers requirement
+* chore(deps): bump pyright from 1.1.359 to 1.1.363
 
-Updates the requirements on [transformers](https://github.com/huggingface/transformers) to permit the latest version.
-- [Release notes](https://github.com/huggingface/transformers/releases)
-- [Commits](https://github.com/huggingface/transformers/compare/v4.0.0...v4.41.0)
+Bumps [pyright](https://github.com/RobertCraigie/pyright-python) from 1.1.359 to 1.1.363.
+- [Release notes](https://github.com/RobertCraigie/pyright-python/releases)
+- [Commits](https://github.com/RobertCraigie/pyright-python/compare/v1.1.359...v1.1.363)
 
 ---
 updated-dependencies:
-- dependency-name: transformers
+- dependency-name: pyright
   dependency-type: direct:production
+  update-type: version-update:semver-patch
 ...
 
-Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`ca6f76a`](https://github.com/qthequartermasterman/hypothesis-torch/commit/ca6f76a4d96f4fb60bb7ec4a56010ef247a54cb3))
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`45416ce`](https://github.com/qthequartermasterman/hypothesis-torch/commit/45416ceafa8788ef279828a84887682a5ccc63a1))
 
 * chore(deps): bump mkdocs-material from 9.5.22 to 9.5.23
 
@@ -449,21 +538,6 @@ updated-dependencies:
 ...
 
 Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`b5ef3b8`](https://github.com/qthequartermasterman/hypothesis-torch/commit/b5ef3b84d2e948f2bf7ee341850a02b52c168704))
-
-* chore(deps): bump pyright from 1.1.359 to 1.1.363
-
-Bumps [pyright](https://github.com/RobertCraigie/pyright-python) from 1.1.359 to 1.1.363.
-- [Release notes](https://github.com/RobertCraigie/pyright-python/releases)
-- [Commits](https://github.com/RobertCraigie/pyright-python/compare/v1.1.359...v1.1.363)
-
----
-updated-dependencies:
-- dependency-name: pyright
-  dependency-type: direct:production
-  update-type: version-update:semver-patch
-...
-
-Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`45416ce`](https://github.com/qthequartermasterman/hypothesis-torch/commit/45416ceafa8788ef279828a84887682a5ccc63a1))
 
 ### Unknown
 
@@ -580,21 +654,20 @@ fix: :rotating_light: :bug: :label: :memo: Increase linting ([`c290e12`](https:/
 
 ### Chore
 
-* chore(deps): bump ruff from 0.4.3 to 0.4.4
+* chore(deps): bump dawidd6/action-download-artifact from 2.24.3 to 3.1.4
 
-Bumps [ruff](https://github.com/astral-sh/ruff) from 0.4.3 to 0.4.4.
-- [Release notes](https://github.com/astral-sh/ruff/releases)
-- [Changelog](https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md)
-- [Commits](https://github.com/astral-sh/ruff/compare/v0.4.3...v0.4.4)
+Bumps [dawidd6/action-download-artifact](https://github.com/dawidd6/action-download-artifact) from 2.24.3 to 3.1.4.
+- [Release notes](https://github.com/dawidd6/action-download-artifact/releases)
+- [Commits](https://github.com/dawidd6/action-download-artifact/compare/v2.24.3...v3.1.4)
 
 ---
 updated-dependencies:
-- dependency-name: ruff
+- dependency-name: dawidd6/action-download-artifact
   dependency-type: direct:production
-  update-type: version-update:semver-patch
+  update-type: version-update:semver-major
 ...
 
-Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`aa33cf8`](https://github.com/qthequartermasterman/hypothesis-torch/commit/aa33cf872497398e30ae176e5f4e7633cba1ebe4))
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`48bc9e3`](https://github.com/qthequartermasterman/hypothesis-torch/commit/48bc9e314b0d356eafd0dd14c31a5e1976f6a946))
 
 * chore(deps): bump mkdocs-material from 9.4.6 to 9.5.22
 
@@ -612,6 +685,22 @@ updated-dependencies:
 
 Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`34558be`](https://github.com/qthequartermasterman/hypothesis-torch/commit/34558be28f578d76887fa362c01827215b7bbcfd))
 
+* chore(deps): bump ruff from 0.4.3 to 0.4.4
+
+Bumps [ruff](https://github.com/astral-sh/ruff) from 0.4.3 to 0.4.4.
+- [Release notes](https://github.com/astral-sh/ruff/releases)
+- [Changelog](https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md)
+- [Commits](https://github.com/astral-sh/ruff/compare/v0.4.3...v0.4.4)
+
+---
+updated-dependencies:
+- dependency-name: ruff
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`aa33cf8`](https://github.com/qthequartermasterman/hypothesis-torch/commit/aa33cf872497398e30ae176e5f4e7633cba1ebe4))
+
 * chore(deps): update transformers requirement
 
 Updates the requirements on [transformers](https://github.com/huggingface/transformers) to permit the latest version.
@@ -625,21 +714,6 @@ updated-dependencies:
 ...
 
 Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`06102ea`](https://github.com/qthequartermasterman/hypothesis-torch/commit/06102ea4bd0afddcd843ff72d5f76d321bb6eaad))
-
-* chore(deps): bump dawidd6/action-download-artifact from 2.24.3 to 3.1.4
-
-Bumps [dawidd6/action-download-artifact](https://github.com/dawidd6/action-download-artifact) from 2.24.3 to 3.1.4.
-- [Release notes](https://github.com/dawidd6/action-download-artifact/releases)
-- [Commits](https://github.com/dawidd6/action-download-artifact/compare/v2.24.3...v3.1.4)
-
----
-updated-dependencies:
-- dependency-name: dawidd6/action-download-artifact
-  dependency-type: direct:production
-  update-type: version-update:semver-major
-...
-
-Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`48bc9e3`](https://github.com/qthequartermasterman/hypothesis-torch/commit/48bc9e314b0d356eafd0dd14c31a5e1976f6a946))
 
 ### Ci
 
@@ -933,6 +1007,10 @@ feat: Register PyTorch&#39;s random state with Hypothesis so that torch random i
 
 ## v0.3.1 (2024-04-24)
 
+### Ci
+
+* ci: coverage report ([`36b8eb9`](https://github.com/qthequartermasterman/hypothesis-torch/commit/36b8eb909fdd266b8469ccd3a2c162ebf1310af1))
+
 ### Fix
 
 * fix: :truck: move test to test folder ([`e7460f7`](https://github.com/qthequartermasterman/hypothesis-torch/commit/e7460f7d11a84cc0a4791b90c02932505399bd5d))
@@ -950,8 +1028,6 @@ ci: coverage report ([`e04916e`](https://github.com/qthequartermasterman/hypothe
 ## v0.3.0 (2024-04-24)
 
 ### Ci
-
-* ci: coverage report ([`36b8eb9`](https://github.com/qthequartermasterman/hypothesis-torch/commit/36b8eb909fdd266b8469ccd3a2c162ebf1310af1))
 
 * ci: coverage report ([`3f80154`](https://github.com/qthequartermasterman/hypothesis-torch/commit/3f8015442c1244f4b127d7bf98b6e8d07eae77d3))
 
@@ -1017,6 +1093,23 @@ feat: :sparkles: More tensor attributes ([`c421dae`](https://github.com/qthequar
 
 ## v0.1.10 (2024-04-23)
 
+### Chore
+
+* chore(deps): bump actions/setup-python from 2 to 5
+
+Bumps [actions/setup-python](https://github.com/actions/setup-python) from 2 to 5.
+- [Release notes](https://github.com/actions/setup-python/releases)
+- [Commits](https://github.com/actions/setup-python/compare/v2...v5)
+
+---
+updated-dependencies:
+- dependency-name: actions/setup-python
+  dependency-type: direct:production
+  update-type: version-update:semver-major
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`ad754e1`](https://github.com/qthequartermasterman/hypothesis-torch/commit/ad754e1d75f802ef21fbec3ab4e0e74f9fc043cf))
+
 ### Ci
 
 * ci: set hypothesis profile ([`c2aae43`](https://github.com/qthequartermasterman/hypothesis-torch/commit/c2aae43546887810aca3b64965d99f93857f2887))
@@ -1034,21 +1127,6 @@ chore(deps): bump actions/setup-python from 2 to 5 ([`68e0892`](https://github.c
 ## v0.1.9 (2024-04-22)
 
 ### Chore
-
-* chore(deps): bump actions/setup-python from 2 to 5
-
-Bumps [actions/setup-python](https://github.com/actions/setup-python) from 2 to 5.
-- [Release notes](https://github.com/actions/setup-python/releases)
-- [Commits](https://github.com/actions/setup-python/compare/v2...v5)
-
----
-updated-dependencies:
-- dependency-name: actions/setup-python
-  dependency-type: direct:production
-  update-type: version-update:semver-major
-...
-
-Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`ad754e1`](https://github.com/qthequartermasterman/hypothesis-torch/commit/ad754e1d75f802ef21fbec3ab4e0e74f9fc043cf))
 
 * chore(deps): bump stefanzweifel/git-auto-commit-action from 4 to 5
 
