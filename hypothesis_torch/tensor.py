@@ -150,7 +150,7 @@ def tensor_strategy(
         pin_memory = st.booleans() if device.type == "cuda" else False
     if isinstance(pin_memory, st.SearchStrategy):
         pin_memory = draw(pin_memory)
-    if pin_memory and device.type == "cuda":
+    if pin_memory and device.type == "cuda":  # pragma: no cover
         tensor = tensor.pin_memory()
 
     tensor = tensor.to(device=device, dtype=dtype)
@@ -166,7 +166,7 @@ def tensor_strategy(
     elif layout == torch.sparse_coo:
         # TODO: Implement coalesced handling
         tensor = tensor.to_sparse_coo()
-    else:
+    else:  # pragma: no cover
         raise ValueError(f"Unsupported layout: {layout}")
 
     # MEMORY FORMAT HANDLING
