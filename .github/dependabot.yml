@@ -12,6 +12,17 @@ updates:
     target-branch: "main"
     reviewers:
       - "qthequartermasterman"
+    groups:
+      lint-and-dev:
+        patterns:
+          - "*"
+        exclude-patterns:
+          - "hypothesis"
+          - "torch*"
+      direct-dependencies:
+        patterns:
+          - "hypothesis"
+          - "torch*"
   - package-ecosystem: github-actions
     directory: /
     schedule:
