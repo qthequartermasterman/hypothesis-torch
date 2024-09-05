@@ -48,7 +48,7 @@ jobs:
     - name: Install Specific PyTorch version
       if: ${{ inputs.torch-version != '' }}
       run: |
-        uv pip install torch==${{ inputs.torch-version }}
+        uv pip install torch==${{ inputs.torch-version }} --index-url https://download.pytorch.org/whl/cpu
     - name: Install dependencies
       run: |
         uv pip install ".[dev,huggingface]"
