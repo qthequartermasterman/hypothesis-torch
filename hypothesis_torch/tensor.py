@@ -184,8 +184,8 @@ def tensor_strategy(
     hypothesis.assume(memory_format != torch.channels_last or len(tensor.shape) == 4)
     # channel_last_3d memory format is only supported for 5D tensors
     hypothesis.assume(memory_format != torch.channels_last_3d or len(tensor.shape) == 5)
-    # Pyright falsely reports an error here on py3.9 torch 2.1.2.
-    tensor = tensor.to(memory_format=memory_format)  # pyright: ignore[reportCallIssue]
+    # Pyright/mypy falsely reports an error here on py3.9 torch 2.1.2.
+    tensor = tensor.to(memory_format=memory_format)  # type: ignore
 
     return tensor
 
