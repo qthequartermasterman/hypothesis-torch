@@ -21,7 +21,7 @@ jobs:
     strategy:
       matrix:
         python-version: ['3.9', '3.10', '3.11', '3.12']
-        torch-version: ['2.1', '2.2', '2.3', '2.4']
+        torch-version: ['2.1.0', '2.2.0', '2.3.0', '2.4.0']
     uses: ./.github/workflows/build-reusable.yml
     with:
       python-version: ${{ matrix.python-version }}
