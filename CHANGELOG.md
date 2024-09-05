@@ -1,5 +1,51 @@
 # CHANGELOG
 
+## v0.7.13 (2024-09-05)
+
+### Build
+
+* build: Drop support for pytorch 1.13 ([`ab0beb1`](https://github.com/qthequartermasterman/hypothesis-torch/commit/ab0beb18dc099c6aec7e601f4751d807ebda530a))
+
+### Ci
+
+* ci: Exclude impossible torch/python versions py3.12torch2.1.2 ([`6129f33`](https://github.com/qthequartermasterman/hypothesis-torch/commit/6129f3364a90bae7708fa9781028daf285195e86))
+
+* ci: decrease dependabot frequency ([`d05f966`](https://github.com/qthequartermasterman/hypothesis-torch/commit/d05f96656a4e7d15ebf98107a7a566e8641066ec))
+
+* ci: fail fast false ([`34b761b`](https://github.com/qthequartermasterman/hypothesis-torch/commit/34b761bee6353f89b4991b9f6c8d194b179de79f))
+
+* ci: use cpu wheels ([`9b03cc7`](https://github.com/qthequartermasterman/hypothesis-torch/commit/9b03cc74854853ea6de16ee83f21c3fae0fdda3d))
+
+* ci: use cpu wheels ([`0610956`](https://github.com/qthequartermasterman/hypothesis-torch/commit/0610956c304c0eb89d72401f14b8e051448bec61))
+
+* ci: use cpu wheels ([`664acca`](https://github.com/qthequartermasterman/hypothesis-torch/commit/664accaea7be81a5ac6cd004c98a0482060f694b))
+
+* ci: support testing against latest ([`81781e0`](https://github.com/qthequartermasterman/hypothesis-torch/commit/81781e0e8fde386e962fd80ac2924a80c1fc5344))
+
+* ci: support testing against latest ([`f65ea91`](https://github.com/qthequartermasterman/hypothesis-torch/commit/f65ea91cc12d39113c500f3ca441fe28c5ffed1f))
+
+* ci: support testing against latest ([`1d8980c`](https://github.com/qthequartermasterman/hypothesis-torch/commit/1d8980c1c22deb47615fddc8199e1590f1ab61aa))
+
+* ci: fix torch version for github actions ([`f6a19ed`](https://github.com/qthequartermasterman/hypothesis-torch/commit/f6a19ed1822649bb2dd5f3287bf15e1ec0063d2b))
+
+* ci: fix torch version for github actions ([`3f6d3e1`](https://github.com/qthequartermasterman/hypothesis-torch/commit/3f6d3e1df8a6411c204bec29eca92c309009bbc1))
+
+### Refactor
+
+* refactor: :recycle: :label: Use a type alias to avoid type checking issues in 2.4.0 related to Optimizer not being publicly exported for the type checker ([`dfcd394`](https://github.com/qthequartermasterman/hypothesis-torch/commit/dfcd394b888819a0d9ee59dc535a1ca91c83e25f))
+
+### Style
+
+* style: :label: Add type ignore in casting to memory format ([`1c8107b`](https://github.com/qthequartermasterman/hypothesis-torch/commit/1c8107b762e9ca746d7dda60f44d2a0f0276239f))
+
+* style: :label: Add type ignore in casting to memory format ([`63b0646`](https://github.com/qthequartermasterman/hypothesis-torch/commit/63b0646f14cc3fc911ae4dc6896026933b756ac6))
+
+### Unknown
+
+* Merge pull request #114 from qthequartermasterman/drop-pytorch-1-13-support
+
+build: Drop support for pytorch 1.13 ([`30f9114`](https://github.com/qthequartermasterman/hypothesis-torch/commit/30f91148a2cf65ebd748322837c946543bcf8879))
+
 ## v0.7.12 (2024-07-22)
 
 ### Build
