@@ -19,6 +19,7 @@ updates:
         exclude-patterns:
           - "hypothesis"
           - "torch*"
+          - "transformers"
       direct-dependencies:
         patterns:
           - "hypothesis"
