@@ -328,7 +328,7 @@ class TestTensor(unittest.TestCase):
         )
 
     @hypothesis.given(
-        num_dimensions=st.integers(min_value=1, max_value=5),
+        num_dimensions=st.integers(min_value=1),
     )
     def test_get_permitted_memory_formats(self, num_dimensions: torch.Tensor) -> None:
         """Test that the get_permitted_memory_formats function returns a list of memory formats."""
@@ -341,6 +341,19 @@ class TestTensor(unittest.TestCase):
         if num_dimensions == 5:
             assert torch.channels_last_3d in memory_formats
 
+    @hypothesis.given(
+        num_dimensions=st.integers(min_value=1, max_value=5),
+        layout=hypothesis_torch.layout_strategy().filter(lambda x: x != torch.strided),
+    )
+    def test_get_permitted_memory_formats_non_strided(self, num_dimensions: torch.Tensor) -> None:
+        """Test that the get_permitted_memory_formats function returns just preserve_format when non-strided tensors are
+        passed in.
+        """
+        tensor = torch.ones((1,) * num_dimensions)
+        memory_formats = hypothesis_torch.tensor.get_permitted_memory_formats(tensor)
+
+        assert memory_formats == [torch.preserve_format]
+
     @hypothesis.settings(deadline=None)
     @hypothesis.given(st.data())
     def test_memory_format_channels_last_inferred_if_tensor_has_4_dims(self, data: st.DataObject) -> None:
@@ -349,6 +362,7 @@ class TestTensor(unittest.TestCase):
             hypothesis_torch.tensor_strategy(
                 dtype=torch.float32,
                 shape=(1, 2, 3, 4),
+                layout=torch.strided,
                 memory_format=None,
             )
         )
@@ -365,6 +379,7 @@ class TestTensor(unittest.TestCase):
             hypothesis_torch.tensor_strategy(
                 dtype=torch.float32,
                 shape=(1, 2, 3, 4, 5),
+                layout=torch.strided,
                 memory_format=None,
             )
         )
@@ -384,6 +399,7 @@ class TestTensor(unittest.TestCase):
             hypothesis_torch.tensor_strategy(
                 dtype=torch.float32,
                 shape=(1, 2, 3),
+                layout=torch.strided,
                 memory_format=st.sampled_from([torch.contiguous_format, torch.channels_last, torch.channels_last_3d]),
             )
         )

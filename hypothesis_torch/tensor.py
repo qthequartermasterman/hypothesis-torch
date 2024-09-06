@@ -195,6 +195,8 @@ def get_permitted_memory_formats(tensor: torch.Tensor) -> list[torch.memory_form
     Returns:
         A list of memory formats that are permitted for the tensor.
     """
+    if tensor.layout != torch.strided:
+        return [torch.preserve_format]
     permitted_memory_formats = [torch.contiguous_format]
     if len(tensor.shape) == 4:
         permitted_memory_formats.append(torch.channels_last)
