@@ -171,11 +171,7 @@ def tensor_strategy(
 
     # MEMORY FORMAT HANDLING
     if memory_format is None:
-        permitted_memory_formats = [torch.contiguous_format]
-        if len(tensor.shape) == 4:
-            permitted_memory_formats.append(torch.channels_last)
-        if len(tensor.shape) == 5:
-            permitted_memory_formats.append(torch.channels_last_3d)
+        permitted_memory_formats = get_permitted_memory_formats(tensor)
         memory_format = st.sampled_from(permitted_memory_formats)
     if isinstance(memory_format, st.SearchStrategy):
         memory_format = draw(memory_format)
@@ -188,6 +184,23 @@ def tensor_strategy(
     tensor = tensor.to(memory_format=memory_format)  # type: ignore
 
     return tensor
+
+
+def get_permitted_memory_formats(tensor: torch.Tensor) -> list[torch.memory_format]:
+    """Get the memory formats that are permitted for a tensor.
+
+    Args:
+        tensor: The tensor.
+
+    Returns:
+        A list of memory formats that are permitted for the tensor.
+    """
+    permitted_memory_formats = [torch.contiguous_format]
+    if len(tensor.shape) == 4:
+        permitted_memory_formats.append(torch.channels_last)
+    if len(tensor.shape) == 5:
+        permitted_memory_formats.append(torch.channels_last_3d)
+    return permitted_memory_formats
 
 
 st.register_type_strategy(

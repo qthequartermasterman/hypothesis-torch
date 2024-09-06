@@ -8,6 +8,7 @@ import torch
 from hypothesis import strategies as st
 
 import hypothesis_torch
+import hypothesis_torch.tensor
 from tests.unit import utils
 
 INT8_RANGE = {
@@ -326,6 +327,20 @@ class TestTensor(unittest.TestCase):
             )
         )
 
+    @hypothesis.given(
+        num_dimensions=st.integers(min_value=1, max_value=5),
+    )
+    def test_get_permitted_memory_formats(self, num_dimensions: torch.Tensor) -> None:
+        """Test that the get_permitted_memory_formats function returns a list of memory formats."""
+        tensor = torch.ones((1,) * num_dimensions)
+        memory_formats = hypothesis_torch.tensor.get_permitted_memory_formats(tensor)
+
+        assert torch.contiguous_format in memory_formats
+        if num_dimensions == 4:
+            assert torch.channels_last in memory_formats
+        if num_dimensions == 5:
+            assert torch.channels_last_3d in memory_formats
+
     @hypothesis.settings(deadline=None)
     @hypothesis.given(st.data())
     def test_memory_format_channels_last_inferred_if_tensor_has_4_dims(self, data: st.DataObject) -> None:
@@ -337,7 +352,10 @@ class TestTensor(unittest.TestCase):
                 memory_format=None,
             )
         )
-        # TODO: assert that the memory format is channels_last
+
+        channels_last = tensor.dim_order() == (0, 2, 3, 1)
+        dim_in_order = tensor.dim_order() == (0, 1, 2, 3)
+        assert channels_last or dim_in_order
 
     @hypothesis.settings(deadline=None)
     @hypothesis.given(st.data())
@@ -350,7 +368,10 @@ class TestTensor(unittest.TestCase):
                 memory_format=None,
             )
         )
-        # TODO: assert that the memory format is channels_last_3d
+
+        channels_last = tensor.dim_order() == (0, 2, 3, 4, 1)
+        dim_in_order = tensor.dim_order() == (0, 1, 2, 3, 4)
+        assert channels_last or dim_in_order
 
     @hypothesis.settings(deadline=None)
     @hypothesis.given(st.data())
