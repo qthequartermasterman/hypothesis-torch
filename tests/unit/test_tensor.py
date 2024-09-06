@@ -345,11 +345,11 @@ class TestTensor(unittest.TestCase):
         num_dimensions=st.integers(min_value=1, max_value=10),
         layout=hypothesis_torch.layout_strategy().filter(lambda x: x != torch.strided),
     )
-    def test_get_permitted_memory_formats_non_strided(self, num_dimensions: torch.Tensor) -> None:
+    def test_get_permitted_memory_formats_non_strided(self, num_dimensions: torch.Tensor, layout: torch.layout) -> None:
         """Test that the get_permitted_memory_formats function returns just preserve_format when non-strided tensors are
         passed in.
         """
-        tensor = torch.ones((1,) * num_dimensions)
+        tensor = torch.ones((1,) * num_dimensions, layout=layout)
         memory_formats = hypothesis_torch.tensor.get_permitted_memory_formats(tensor)
 
         assert memory_formats == [torch.preserve_format]
