@@ -328,7 +328,7 @@ class TestTensor(unittest.TestCase):
         )
 
     @hypothesis.given(
-        num_dimensions=st.integers(min_value=1),
+        num_dimensions=st.integers(min_value=1, max_value=10),
     )
     def test_get_permitted_memory_formats(self, num_dimensions: torch.Tensor) -> None:
         """Test that the get_permitted_memory_formats function returns a list of memory formats."""
@@ -342,7 +342,7 @@ class TestTensor(unittest.TestCase):
             assert torch.channels_last_3d in memory_formats
 
     @hypothesis.given(
-        num_dimensions=st.integers(min_value=1, max_value=5),
+        num_dimensions=st.integers(min_value=1, max_value=10),
         layout=hypothesis_torch.layout_strategy().filter(lambda x: x != torch.strided),
     )
     def test_get_permitted_memory_formats_non_strided(self, num_dimensions: torch.Tensor) -> None:
