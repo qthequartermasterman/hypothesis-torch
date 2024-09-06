@@ -367,4 +367,4 @@ class TestTensor(unittest.TestCase):
             )
         )
 
-        # TODO: assert that the memory format is contiguous
+        assert tensor.is_contiguous()
