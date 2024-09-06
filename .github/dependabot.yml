@@ -8,7 +8,7 @@ updates:
   - package-ecosystem: "pip"
     directory: "/" # Location of package manifests
     schedule:
-      interval: "daily"
+      interval: "weekly"
     target-branch: "main"
     reviewers:
       - "qthequartermasterman"
@@ -19,10 +19,14 @@ updates:
         exclude-patterns:
           - "hypothesis"
           - "torch*"
+          - "transformers"
       direct-dependencies:
         patterns:
           - "hypothesis"
           - "torch*"
+      optional-dependencies:
+        patterns:
+          - "transformers"
   - package-ecosystem: github-actions
     directory: /
     schedule:

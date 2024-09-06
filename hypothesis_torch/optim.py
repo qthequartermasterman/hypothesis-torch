@@ -13,12 +13,15 @@ from typing_extensions import TypeAlias
 
 from hypothesis_torch import inspection_util
 
-OptimizerConstructorWithOnlyParameters: TypeAlias = Callable[[Iterable[torch.nn.Parameter]], torch.optim.Optimizer]
+# We do an alias here to avoid some type checking issues with torch 2.4.0
+Optimizer: TypeAlias = torch.optim.Optimizer  # pyright: ignore[reportPrivateImportUsage]
 
-OPTIMIZERS: Final[tuple[type[torch.optim.Optimizer], ...]] = tuple(
+OptimizerConstructorWithOnlyParameters: TypeAlias = Callable[[Iterable[torch.nn.Parameter]], Optimizer]
+
+OPTIMIZERS: Final[tuple[type[Optimizer], ...]] = tuple(
     optimizer
-    for optimizer in inspection_util.get_all_subclasses(torch.optim.Optimizer)
-    if optimizer is not torch.optim.Optimizer and "NewCls" not in optimizer.__name__
+    for optimizer in inspection_util.get_all_subclasses(Optimizer)
+    if optimizer is not Optimizer and "NewCls" not in optimizer.__name__
 )
 
 _ZERO_TO_ONE_FLOATS: Final[st.SearchStrategy[float]] = st.floats(
@@ -63,8 +66,8 @@ HYPERPARAM_OVERRIDE_STRATEGIES: Final[dict[str, st.SearchStrategy]] = {
 
 
 def optimizer_type_strategy(
-    allowed_optimizer_types: Sequence[type[torch.optim.Optimizer]] | None = None,
-) -> st.SearchStrategy[type[torch.optim.Optimizer]]:
+    allowed_optimizer_types: Sequence[type[Optimizer]] | None = None,
+) -> st.SearchStrategy[type[Optimizer]]:
     """Strategy for generating torch optimizers.
 
     Args:
@@ -81,7 +84,7 @@ def optimizer_type_strategy(
 @st.composite
 def optimizer_strategy(
     draw: st.DrawFn,
-    optimizer_type: type[torch.optim.Optimizer] | st.SearchStrategy[type[torch.optim.Optimizer]] | None = None,
+    optimizer_type: type[Optimizer] | st.SearchStrategy[type[Optimizer]] | None = None,
     **kwargs: Any,  # noqa: ANN401
 ) -> OptimizerConstructorWithOnlyParameters:
     """Strategy for generating torch optimizers.
@@ -121,7 +124,7 @@ def optimizer_strategy(
     hypothesis.note(f"Chosen optimizer type: {optimizer_type}")
     hypothesis.note(f"Chosen optimizer hyperparameters: {kwargs}")
 
-    def optimizer_factory(params: Iterable[torch.nn.Parameter]) -> torch.optim.Optimizer:
+    def optimizer_factory(params: Iterable[torch.nn.Parameter]) -> Optimizer:
         return optimizer_type(params, **kwargs)
 
     return optimizer_factory
