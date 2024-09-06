@@ -1,5 +1,49 @@
 # CHANGELOG
 
+## v0.7.15 (2024-09-06)
+
+### Ci
+
+* ci: add pre-commit pyright/mypy full library ([`98c1985`](https://github.com/qthequartermasterman/hypothesis-torch/commit/98c198565454a8fa68d0735940e69238b3f0e139))
+
+### Fix
+
+* fix: Only support memory formats for strided tensors ([`6add69f`](https://github.com/qthequartermasterman/hypothesis-torch/commit/6add69f419adacf0090079a3f7cb7b3bea23e02e))
+
+### Refactor
+
+* refactor: :recycle: extract internal function to more easily test available memory formats when inferring a strategy ([`b95feea`](https://github.com/qthequartermasterman/hypothesis-torch/commit/b95feea541d397e6ccbac47e6fa2d04b57e7e91d))
+
+### Test
+
+* test: use zeros for sparse tensors ([`6519c27`](https://github.com/qthequartermasterman/hypothesis-torch/commit/6519c278adaf7089dc752feb85e63d073f89aa1f))
+
+* test: fix missing arg ([`b14d1b9`](https://github.com/qthequartermasterman/hypothesis-torch/commit/b14d1b9a00254c38f43dadbda29b37436b517d91))
+
+* test: limit size of tensors for permitted memory format tests ([`c76bac8`](https://github.com/qthequartermasterman/hypothesis-torch/commit/c76bac89d68e55da895542c42bd7349136588ef7))
+
+* test: do correct assertion using dim order instead of contiguous for memory format ([`56f0997`](https://github.com/qthequartermasterman/hypothesis-torch/commit/56f0997d701eafa17fdb23e5080c2cb0650565f9))
+
+* test: assert tensor is contiguous ([`c358946`](https://github.com/qthequartermasterman/hypothesis-torch/commit/c35894600e8cb970c3d3a04976b65e16a5af905c))
+
+* test: mark pragma no cover ([`b7b87d9`](https://github.com/qthequartermasterman/hypothesis-torch/commit/b7b87d911867a7b2559cac6164ad3b6fbd23e66e))
+
+* test: :white_check_mark: add additional tests for `tensor_strategy` checking that passing in strategies as arguments is correct. ([`39795ce`](https://github.com/qthequartermasterman/hypothesis-torch/commit/39795ceccd3d596c4ab2c5ad667ffa79dd6c0d4d))
+
+### Unknown
+
+* Merge pull request #47 from qthequartermasterman/increase-coverage-for-tensor-strategy
+
+refactor: Increase coverage for tensor strategy with some internal refactoring ([`4b639bd`](https://github.com/qthequartermasterman/hypothesis-torch/commit/4b639bdbc2a25e7efe05b6f03e0fecdc28410ef1))
+
+* style fixes by ruff ([`d97849a`](https://github.com/qthequartermasterman/hypothesis-torch/commit/d97849a1d0d51e1ba73bddb49d28c4f1db280f0b))
+
+* Merge branch &#39;main&#39; into increase-coverage-for-tensor-strategy ([`6eebefc`](https://github.com/qthequartermasterman/hypothesis-torch/commit/6eebefc5b7d37639b06da4613e41c233c6eca376))
+
+* Merge branch &#39;main&#39; into increase-coverage-for-tensor-strategy ([`e4bcc8f`](https://github.com/qthequartermasterman/hypothesis-torch/commit/e4bcc8f8e6719a75f0cfb88211357fe52c14d0ed))
+
+* Merge branch &#39;main&#39; into increase-coverage-for-tensor-strategy ([`6334067`](https://github.com/qthequartermasterman/hypothesis-torch/commit/6334067f180e39b6921e10097b3fe8a8cd11f546))
+
 ## v0.7.14 (2024-09-06)
 
 ### Build
