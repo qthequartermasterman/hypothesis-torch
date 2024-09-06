@@ -349,7 +349,7 @@ class TestTensor(unittest.TestCase):
         """Test that the get_permitted_memory_formats function returns just preserve_format when non-strided tensors are
         passed in.
         """
-        tensor = torch.ones((1,) * num_dimensions, layout=layout)
+        tensor = torch.zeros((1,) * num_dimensions, layout=layout)
         memory_formats = hypothesis_torch.tensor.get_permitted_memory_formats(tensor)
 
         assert memory_formats == [torch.preserve_format]
