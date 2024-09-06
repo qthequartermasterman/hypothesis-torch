@@ -29,6 +29,7 @@ if sys.version_info < (3, 10):  # pragma: no cover
         a, b = itertools.tee(iterable)
         next(b, None)
         return zip(a, b)
+
 else:  # pragma: no cover
     pairwise = itertools.pairwise
 
