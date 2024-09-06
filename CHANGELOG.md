@@ -1,5 +1,111 @@
 # CHANGELOG
 
+## v0.7.14 (2024-09-06)
+
+### Build
+
+* build(deps): bump the lint-and-dev group across 1 directory with 7 updates
+
+Bumps the lint-and-dev group with 7 updates in the / directory:
+
+| Package | From | To |
+| --- | --- | --- |
+| [mypy](https://github.com/python/mypy) | `1.11.0` | `1.11.2` |
+| [ruff](https://github.com/astral-sh/ruff) | `0.5.4` | `0.6.4` |
+| [pyright](https://github.com/RobertCraigie/pyright-python) | `1.1.372` | `1.1.379` |
+| [pytest](https://github.com/pytest-dev/pytest) | `8.3.1` | `8.3.2` |
+| [mkdocs](https://github.com/mkdocs/mkdocs) | `1.6.0` | `1.6.1` |
+| [mkdocstrings[python]](https://github.com/mkdocstrings/mkdocstrings) | `0.25.1` | `0.26.1` |
+| [mkdocs-material](https://github.com/squidfunk/mkdocs-material) | `9.5.29` | `9.5.34` |
+
+
+
+Updates `mypy` from 1.11.0 to 1.11.2
+- [Changelog](https://github.com/python/mypy/blob/master/CHANGELOG.md)
+- [Commits](https://github.com/python/mypy/compare/v1.11...v1.11.2)
+
+Updates `ruff` from 0.5.4 to 0.6.4
+- [Release notes](https://github.com/astral-sh/ruff/releases)
+- [Changelog](https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md)
+- [Commits](https://github.com/astral-sh/ruff/compare/0.5.4...0.6.4)
+
+Updates `pyright` from 1.1.372 to 1.1.379
+- [Release notes](https://github.com/RobertCraigie/pyright-python/releases)
+- [Commits](https://github.com/RobertCraigie/pyright-python/compare/v1.1.372...v1.1.379)
+
+Updates `pytest` from 8.3.1 to 8.3.2
+- [Release notes](https://github.com/pytest-dev/pytest/releases)
+- [Changelog](https://github.com/pytest-dev/pytest/blob/main/CHANGELOG.rst)
+- [Commits](https://github.com/pytest-dev/pytest/compare/8.3.1...8.3.2)
+
+Updates `mkdocs` from 1.6.0 to 1.6.1
+- [Release notes](https://github.com/mkdocs/mkdocs/releases)
+- [Commits](https://github.com/mkdocs/mkdocs/compare/1.6.0...1.6.1)
+
+Updates `mkdocstrings[python]` from 0.25.1 to 0.26.1
+- [Release notes](https://github.com/mkdocstrings/mkdocstrings/releases)
+- [Changelog](https://github.com/mkdocstrings/mkdocstrings/blob/main/CHANGELOG.md)
+- [Commits](https://github.com/mkdocstrings/mkdocstrings/compare/0.25.1...0.26.1)
+
+Updates `mkdocs-material` from 9.5.29 to 9.5.34
+- [Release notes](https://github.com/squidfunk/mkdocs-material/releases)
+- [Changelog](https://github.com/squidfunk/mkdocs-material/blob/master/CHANGELOG)
+- [Commits](https://github.com/squidfunk/mkdocs-material/compare/9.5.29...9.5.34)
+
+---
+updated-dependencies:
+- dependency-name: mypy
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+  dependency-group: lint-and-dev
+- dependency-name: ruff
+  dependency-type: direct:production
+  update-type: version-update:semver-minor
+  dependency-group: lint-and-dev
+- dependency-name: pyright
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+  dependency-group: lint-and-dev
+- dependency-name: pytest
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+  dependency-group: lint-and-dev
+- dependency-name: mkdocs
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+  dependency-group: lint-and-dev
+- dependency-name: mkdocstrings[python]
+  dependency-type: direct:production
+  update-type: version-update:semver-minor
+  dependency-group: lint-and-dev
+- dependency-name: mkdocs-material
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+  dependency-group: lint-and-dev
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`c444527`](https://github.com/qthequartermasterman/hypothesis-torch/commit/c4445275df35bf4f520d7e6024c0d3644b51b05f))
+
+### Ci
+
+* ci: move transformers to its own dependabot group ([`8f9e21c`](https://github.com/qthequartermasterman/hypothesis-torch/commit/8f9e21c66989b4aa69578a229bcf5d6508430c19))
+
+* ci: move transformers to its own dependabot group ([`81eefab`](https://github.com/qthequartermasterman/hypothesis-torch/commit/81eefab044247b359062d01390eb0daa4fec1f3f))
+
+### Unknown
+
+* Merge pull request #118 from qthequartermasterman/dependabot/pip/main/lint-and-dev-269eb57662
+
+build(deps): bump the lint-and-dev group across 1 directory with 7 updates ([`075ca04`](https://github.com/qthequartermasterman/hypothesis-torch/commit/075ca0482e9c21854bb56974e03f1ae083b1dc05))
+
+* Merge pull request #117 from qthequartermasterman/optional-transformers-dependabot
+
+ci: move transformers to its own dependabot group ([`92cd8a0`](https://github.com/qthequartermasterman/hypothesis-torch/commit/92cd8a066bc2fe64a06c960e29ff19f90703d3ce))
+
+* Merge pull request #115 from qthequartermasterman/optional-transformers-dependabot
+
+ci: move transformers to its own dependabot group ([`33da1f7`](https://github.com/qthequartermasterman/hypothesis-torch/commit/33da1f71e0800b5f2c2abf1ca11bffdb97ae70c9))
+
 ## v0.7.13 (2024-09-05)
 
 ### Build
