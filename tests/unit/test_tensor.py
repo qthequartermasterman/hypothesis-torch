@@ -388,4 +388,4 @@ class TestTensor(unittest.TestCase):
             )
         )
 
-        assert tensor.is_contiguous()
+        assert tensor.dim_order() == tuple(range(tensor.dim()))
