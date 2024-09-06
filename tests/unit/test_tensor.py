@@ -8,6 +8,7 @@ import torch
 from hypothesis import strategies as st
 
 import hypothesis_torch
+import hypothesis_torch.tensor
 from tests.unit import utils
 
 INT8_RANGE = {
@@ -299,3 +300,108 @@ class TestTensor(unittest.TestCase):
         """Test that no infinities are generated."""
         self.assertFalse(torch.isinf(no_inf_tensor).any())
         self.assertFalse(torch.isnan(no_inf_tensor).any())
+
+    @hypothesis.settings(deadline=None)
+    @hypothesis.given(st.data())
+    def test_tensor_strategy_with_unique_strategy(self, data: st.DataObject) -> None:
+        """Test that the tensor strategy works when specifying a strategy for `unique`."""
+        unique_strategy = st.booleans()
+        _ = data.draw(
+            hypothesis_torch.tensor_strategy(
+                dtype=torch.float32,
+                shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3).map(tuple),
+                unique=unique_strategy,
+            )
+        )
+
+    @hypothesis.settings(deadline=None)
+    @hypothesis.given(st.data())
+    def test_tensor_strategy_with_pin_memory_strategy(self, data: st.DataObject) -> None:
+        """Test that the tensor strategy works when specifying a strategy for `pin_memory`."""
+        pin_memory_strategy = st.booleans()
+        _ = data.draw(
+            hypothesis_torch.tensor_strategy(
+                dtype=torch.float32,
+                shape=st.lists(st.integers(min_value=1, max_value=10), min_size=1, max_size=3).map(tuple),
+                pin_memory=pin_memory_strategy,
+            )
+        )
+
+    @hypothesis.given(
+        num_dimensions=st.integers(min_value=1, max_value=10),
+    )
+    def test_get_permitted_memory_formats(self, num_dimensions: torch.Tensor) -> None:
+        """Test that the get_permitted_memory_formats function returns a list of memory formats."""
+        tensor = torch.ones((1,) * num_dimensions)
+        memory_formats = hypothesis_torch.tensor.get_permitted_memory_formats(tensor)
+
+        assert torch.contiguous_format in memory_formats
+        if num_dimensions == 4:
+            assert torch.channels_last in memory_formats
+        if num_dimensions == 5:
+            assert torch.channels_last_3d in memory_formats
+
+    @hypothesis.given(
+        num_dimensions=st.integers(min_value=1, max_value=10),
+        layout=hypothesis_torch.layout_strategy().filter(lambda x: x != torch.strided),
+    )
+    def test_get_permitted_memory_formats_non_strided(self, num_dimensions: torch.Tensor, layout: torch.layout) -> None:
+        """Test that the get_permitted_memory_formats function returns just preserve_format when non-strided tensors are
+        passed in.
+        """
+        tensor = torch.zeros((1,) * num_dimensions, layout=layout)
+        memory_formats = hypothesis_torch.tensor.get_permitted_memory_formats(tensor)
+
+        assert memory_formats == [torch.preserve_format]
+
+    @hypothesis.settings(deadline=None)
+    @hypothesis.given(st.data())
+    def test_memory_format_channels_last_inferred_if_tensor_has_4_dims(self, data: st.DataObject) -> None:
+        """Test that the memory format channels_last is available if the tensor has 4 dimensions."""
+        tensor = data.draw(
+            hypothesis_torch.tensor_strategy(
+                dtype=torch.float32,
+                shape=(1, 2, 3, 4),
+                layout=torch.strided,
+                memory_format=None,
+            )
+        )
+
+        channels_last = tensor.dim_order() == (0, 2, 3, 1)
+        dim_in_order = tensor.dim_order() == (0, 1, 2, 3)
+        assert channels_last or dim_in_order
+
+    @hypothesis.settings(deadline=None)
+    @hypothesis.given(st.data())
+    def test_memory_format_channels3d_last_inferred_if_tensor_has_5_dims(self, data: st.DataObject) -> None:
+        """Test that the memory format channels_last is available if the tensor has 4 dimensions."""
+        tensor = data.draw(
+            hypothesis_torch.tensor_strategy(
+                dtype=torch.float32,
+                shape=(1, 2, 3, 4, 5),
+                layout=torch.strided,
+                memory_format=None,
+            )
+        )
+
+        channels_last = tensor.dim_order() == (0, 2, 3, 4, 1)
+        dim_in_order = tensor.dim_order() == (0, 1, 2, 3, 4)
+        assert channels_last or dim_in_order
+
+    @hypothesis.settings(deadline=None)
+    @hypothesis.given(st.data())
+    def test_memory_format_strategy_filtered_for_non_4d_or_5d_tensors(self, data: st.DataObject) -> None:
+        """Test that the memory format strategy is filtered for non 4D or 5D tensors.
+
+        If the strategy is too wide, we want to prevent generating tensors with memory formats that are not supported.
+        """
+        tensor = data.draw(
+            hypothesis_torch.tensor_strategy(
+                dtype=torch.float32,
+                shape=(1, 2, 3),
+                layout=torch.strided,
+                memory_format=st.sampled_from([torch.contiguous_format, torch.channels_last, torch.channels_last_3d]),
+            )
+        )
+
+        assert tensor.dim_order() == tuple(range(tensor.dim()))

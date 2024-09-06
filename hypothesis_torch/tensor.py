@@ -150,7 +150,7 @@ def tensor_strategy(
         pin_memory = st.booleans() if device.type == "cuda" else False
     if isinstance(pin_memory, st.SearchStrategy):
         pin_memory = draw(pin_memory)
-    if pin_memory and device.type == "cuda":
+    if pin_memory and device.type == "cuda":  # pragma: no cover
         tensor = tensor.pin_memory()
 
     tensor = tensor.to(device=device, dtype=dtype)
@@ -166,16 +166,12 @@ def tensor_strategy(
     elif layout == torch.sparse_coo:
         # TODO: Implement coalesced handling
         tensor = tensor.to_sparse_coo()
-    else:
+    else:  # pragma: no cover
         raise ValueError(f"Unsupported layout: {layout}")
 
     # MEMORY FORMAT HANDLING
     if memory_format is None:
-        permitted_memory_formats = [torch.contiguous_format]
-        if len(tensor.shape) == 4:
-            permitted_memory_formats.append(torch.channels_last)
-        if len(tensor.shape) == 5:
-            permitted_memory_formats.append(torch.channels_last_3d)
+        permitted_memory_formats = get_permitted_memory_formats(tensor)
         memory_format = st.sampled_from(permitted_memory_formats)
     if isinstance(memory_format, st.SearchStrategy):
         memory_format = draw(memory_format)
@@ -188,6 +184,25 @@ def tensor_strategy(
     tensor = tensor.to(memory_format=memory_format)  # type: ignore
 
     return tensor
+
+
+def get_permitted_memory_formats(tensor: torch.Tensor) -> list[torch.memory_format]:
+    """Get the memory formats that are permitted for a tensor.
+
+    Args:
+        tensor: The tensor.
+
+    Returns:
+        A list of memory formats that are permitted for the tensor.
+    """
+    if tensor.layout != torch.strided:
+        return [torch.preserve_format]
+    permitted_memory_formats = [torch.contiguous_format]
+    if len(tensor.shape) == 4:
+        permitted_memory_formats.append(torch.channels_last)
+    if len(tensor.shape) == 5:
+        permitted_memory_formats.append(torch.channels_last_3d)
+    return permitted_memory_formats
 
 
 st.register_type_strategy(

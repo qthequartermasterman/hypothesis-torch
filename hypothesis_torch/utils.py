@@ -10,7 +10,7 @@ from typing import TypeVar, cast
 T = TypeVar("T")
 T_co = TypeVar("T_co", covariant=True)
 
-if sys.version_info < (3, 10):
+if sys.version_info < (3, 10):  # pragma: no cover
 
     def pairwise(iterable: Iterable[T]) -> Iterable[tuple[T, T]]:  # pragma: no cover
         """Iterate over pairs of consecutive elements in an iterable.
@@ -30,7 +30,7 @@ if sys.version_info < (3, 10):
         next(b, None)
         return zip(a, b)
 
-else:
+else:  # pragma: no cover
     pairwise = itertools.pairwise
 
 
