@@ -1,5 +1,59 @@
 # CHANGELOG
 
+## v0.7.16 (2024-09-23)
+
+### Build
+
+* build(deps): bump the lint-and-dev group across 1 directory with 4 updates
+
+Bumps the lint-and-dev group with 4 updates in the / directory: [ruff](https://github.com/astral-sh/ruff), [pyright](https://github.com/RobertCraigie/pyright-python), [pytest](https://github.com/pytest-dev/pytest) and [mkdocs-material](https://github.com/squidfunk/mkdocs-material).
+
+
+Updates `ruff` from 0.6.4 to 0.6.7
+- [Release notes](https://github.com/astral-sh/ruff/releases)
+- [Changelog](https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md)
+- [Commits](https://github.com/astral-sh/ruff/compare/0.6.4...0.6.7)
+
+Updates `pyright` from 1.1.379 to 1.1.381
+- [Release notes](https://github.com/RobertCraigie/pyright-python/releases)
+- [Commits](https://github.com/RobertCraigie/pyright-python/compare/v1.1.379...v1.1.381)
+
+Updates `pytest` from 8.3.2 to 8.3.3
+- [Release notes](https://github.com/pytest-dev/pytest/releases)
+- [Changelog](https://github.com/pytest-dev/pytest/blob/main/CHANGELOG.rst)
+- [Commits](https://github.com/pytest-dev/pytest/compare/8.3.2...8.3.3)
+
+Updates `mkdocs-material` from 9.5.34 to 9.5.36
+- [Release notes](https://github.com/squidfunk/mkdocs-material/releases)
+- [Changelog](https://github.com/squidfunk/mkdocs-material/blob/master/CHANGELOG)
+- [Commits](https://github.com/squidfunk/mkdocs-material/compare/9.5.34...9.5.36)
+
+---
+updated-dependencies:
+- dependency-name: ruff
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+  dependency-group: lint-and-dev
+- dependency-name: pyright
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+  dependency-group: lint-and-dev
+- dependency-name: pytest
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+  dependency-group: lint-and-dev
+- dependency-name: mkdocs-material
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+  dependency-group: lint-and-dev
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`38241ed`](https://github.com/qthequartermasterman/hypothesis-torch/commit/38241edb76dd566f46282371fc5067911ad76dc0))
+
+### Unknown
+
+* Merge pull request #121 from qthequartermasterman/dependabot/pip/main/lint-and-dev-74f86f3592 ([`056391f`](https://github.com/qthequartermasterman/hypothesis-torch/commit/056391f0e845e6ade96a47db374fcf243c17837a))
+
 ## v0.7.15 (2024-09-06)
 
 ### Ci
