@@ -1,5 +1,52 @@
 # CHANGELOG
 
+## v0.7.17 (2024-09-30)
+
+### Build
+
+* build(deps): bump the lint-and-dev group with 3 updates
+
+Bumps the lint-and-dev group with 3 updates: [ruff](https://github.com/astral-sh/ruff), [pyright](https://github.com/RobertCraigie/pyright-python) and [mkdocs-material](https://github.com/squidfunk/mkdocs-material).
+
+
+Updates `ruff` from 0.6.7 to 0.6.8
+- [Release notes](https://github.com/astral-sh/ruff/releases)
+- [Changelog](https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md)
+- [Commits](https://github.com/astral-sh/ruff/compare/0.6.7...0.6.8)
+
+Updates `pyright` from 1.1.381 to 1.1.382.post1
+- [Release notes](https://github.com/RobertCraigie/pyright-python/releases)
+- [Commits](https://github.com/RobertCraigie/pyright-python/compare/v1.1.381...v1.1.382.post1)
+
+Updates `mkdocs-material` from 9.5.36 to 9.5.39
+- [Release notes](https://github.com/squidfunk/mkdocs-material/releases)
+- [Changelog](https://github.com/squidfunk/mkdocs-material/blob/master/CHANGELOG)
+- [Commits](https://github.com/squidfunk/mkdocs-material/compare/9.5.36...9.5.39)
+
+---
+updated-dependencies:
+- dependency-name: ruff
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+  dependency-group: lint-and-dev
+- dependency-name: pyright
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+  dependency-group: lint-and-dev
+- dependency-name: mkdocs-material
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+  dependency-group: lint-and-dev
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`af776ac`](https://github.com/qthequartermasterman/hypothesis-torch/commit/af776ac38f0e2749faeeae4e7c96936d27752a80))
+
+### Unknown
+
+* Merge pull request #123 from qthequartermasterman/dependabot/pip/main/lint-and-dev-75f4db8643
+
+build(deps): bump the lint-and-dev group with 3 updates ([`47803dd`](https://github.com/qthequartermasterman/hypothesis-torch/commit/47803dd56e38ebc2e23f5b3b2cf53fe1017b2f13))
+
 ## v0.7.16 (2024-09-23)
 
 ### Build
