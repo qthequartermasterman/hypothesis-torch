@@ -1,6 +1,62 @@
 # CHANGELOG
 
 
+## v0.7.19 (2024-10-14)
+
+### Build System
+
+* build(deps): bump the lint-and-dev group with 4 updates
+
+Bumps the lint-and-dev group with 4 updates: [mypy](https://github.com/python/mypy), [pyright](https://github.com/RobertCraigie/pyright-python), [mkdocstrings[python]](https://github.com/mkdocstrings/mkdocstrings) and [mkdocs-material](https://github.com/squidfunk/mkdocs-material).
+
+
+Updates `mypy` from 1.11.2 to 1.12.0
+- [Changelog](https://github.com/python/mypy/blob/master/CHANGELOG.md)
+- [Commits](https://github.com/python/mypy/compare/v1.11.2...v1.12.0)
+
+Updates `pyright` from 1.1.383 to 1.1.384
+- [Release notes](https://github.com/RobertCraigie/pyright-python/releases)
+- [Commits](https://github.com/RobertCraigie/pyright-python/compare/v1.1.383...v1.1.384)
+
+Updates `mkdocstrings[python]` from 0.26.1 to 0.26.2
+- [Release notes](https://github.com/mkdocstrings/mkdocstrings/releases)
+- [Changelog](https://github.com/mkdocstrings/mkdocstrings/blob/main/CHANGELOG.md)
+- [Commits](https://github.com/mkdocstrings/mkdocstrings/compare/0.26.1...0.26.2)
+
+Updates `mkdocs-material` from 9.5.39 to 9.5.40
+- [Release notes](https://github.com/squidfunk/mkdocs-material/releases)
+- [Changelog](https://github.com/squidfunk/mkdocs-material/blob/master/CHANGELOG)
+- [Commits](https://github.com/squidfunk/mkdocs-material/compare/9.5.39...9.5.40)
+
+---
+updated-dependencies:
+- dependency-name: mypy
+  dependency-type: direct:production
+  update-type: version-update:semver-minor
+  dependency-group: lint-and-dev
+- dependency-name: pyright
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+  dependency-group: lint-and-dev
+- dependency-name: mkdocstrings[python]
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+  dependency-group: lint-and-dev
+- dependency-name: mkdocs-material
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+  dependency-group: lint-and-dev
+...
+
+Signed-off-by: dependabot[bot] <support@github.com> ([`1600e62`](https://github.com/qthequartermasterman/hypothesis-torch/commit/1600e6260d8e963f131a02c5a0de6c76b3c797d6))
+
+### Unknown
+
+* Merge pull request #127 from qthequartermasterman/dependabot/pip/main/lint-and-dev-0e2382bd4a
+
+build(deps): bump the lint-and-dev group with 4 updates ([`7989f96`](https://github.com/qthequartermasterman/hypothesis-torch/commit/7989f96b9e9e10ce889f269dd4e4630529060e74))
+
+
 ## v0.7.18 (2024-10-07)
 
 ### Build System
