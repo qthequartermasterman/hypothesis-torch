@@ -1,6 +1,46 @@
 # CHANGELOG
 
 
+## v0.8.2 (2024-10-31)
+
+### Build System
+
+* build(deps): update transformers requirement
+
+Updates the requirements on [transformers](https://github.com/huggingface/transformers) to permit the latest version.
+
+Updates `transformers` to 4.46.1
+- [Release notes](https://github.com/huggingface/transformers/releases)
+- [Commits](https://github.com/huggingface/transformers/compare/v4.42.3...v4.46.1)
+
+---
+updated-dependencies:
+- dependency-name: transformers
+  dependency-type: direct:production
+  dependency-group: optional-dependencies
+...
+
+Signed-off-by: dependabot[bot] <support@github.com> ([`eb5499f`](https://github.com/qthequartermasterman/hypothesis-torch/commit/eb5499f923abca8056e37814e754acc85cef4d7d))
+
+### Continuous Integration
+
+* ci: allow using any available pypi index in ci ([`4629597`](https://github.com/qthequartermasterman/hypothesis-torch/commit/46295972e35f2ceb419d29b7ea6d98e332a0e2df))
+
+* ci: pin numpy versions for old torch versions ([`61e6db6`](https://github.com/qthequartermasterman/hypothesis-torch/commit/61e6db6a0f21268370f2cc3a9763fc27ae65850f))
+
+* ci: install torch after the rest of the dependencies in CI to force correct version of numpy ([`fbc2ef0`](https://github.com/qthequartermasterman/hypothesis-torch/commit/fbc2ef0695e9acad7c0fa98d4fe5222d13800167))
+
+### Unknown
+
+* Merge pull request #134 from qthequartermasterman/dependabot/pip/main/optional-dependencies-d4b53791ec
+
+build(deps): update transformers requirement from <=4.42.4,>=4.42.3 to >=4.42.3,<=4.46.1 in the optional-dependencies group across 1 directory ([`ace778b`](https://github.com/qthequartermasterman/hypothesis-torch/commit/ace778b9e5ba9ec2b4fc510e7e1f3bf7bf0c7e19))
+
+* Merge pull request #135 from qthequartermasterman/fix-ci-for-old-torch
+
+ci: install torch after the rest of the dependencies in CI to force correct version of numpy ([`0fa12f1`](https://github.com/qthequartermasterman/hypothesis-torch/commit/0fa12f185e7ea9531aea1fb83af87da8f66693bf))
+
+
 ## v0.8.1 (2024-10-31)
 
 ### Build System
