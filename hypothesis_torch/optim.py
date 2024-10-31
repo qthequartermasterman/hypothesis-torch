@@ -62,6 +62,8 @@ HYPERPARAM_OVERRIDE_STRATEGIES: Final[dict[str, st.SearchStrategy]] = {
     "nesterov": st.booleans(),
     "initial_accumulator_value": _ZERO_TO_ONE_FLOATS,
     "fused": st.booleans() if torch.cuda.is_available() else st.just(False),
+    "beta2_decay": st.floats(max_value=0.0, exclude_max=False, allow_nan=False, allow_infinity=False),
+    "d": st.floats(min_value=1.0, exclude_min=False, allow_nan=False, allow_infinity=False),
 }
 
 
@@ -120,6 +122,11 @@ def optimizer_strategy(
     # Adam cannot be both fused and differentiable simultaneously
     if "differentiable" in kwargs and kwargs["differentiable"] and "fused" in kwargs and kwargs["fused"]:
         kwargs.pop("differentiable")
+
+    # Adafactor has a unique eps: Tuple[Optional[float], float], with eps[0] being None or >=0 and eps[1] >=0
+    if "Adafactor" in optimizer_type.__name__:  # type: ignore
+        eps0 = draw(st.one_of(st.none(), _ZERO_TO_ONE_FLOATS))
+        kwargs["eps"] = (eps0, draw(_ZERO_TO_ONE_FLOATS))
 
     hypothesis.note(f"Chosen optimizer type: {optimizer_type}")
     hypothesis.note(f"Chosen optimizer hyperparameters: {kwargs}")
