@@ -63,7 +63,7 @@ HYPERPARAM_OVERRIDE_STRATEGIES: Final[dict[str, st.SearchStrategy]] = {
     "initial_accumulator_value": _ZERO_TO_ONE_FLOATS,
     "fused": st.booleans() if torch.cuda.is_available() else st.just(False),
     "beta2_decay": st.floats(max_value=0.0, exclude_max=False, allow_nan=False, allow_infinity=False),
-    "d": _ZERO_TO_ONE_FLOATS,
+    "d": st.floats(min_value=1.0, exclude_min=False, allow_nan=False, allow_infinity=False),
 }
 
 
