@@ -1,6 +1,79 @@
 # CHANGELOG
 
 
+## v0.8.1 (2024-10-31)
+
+### Build System
+
+* build(deps): bump the lint-and-dev group across 1 directory with 5 updates
+
+Bumps the lint-and-dev group with 5 updates in the / directory:
+
+| Package | From | To |
+| --- | --- | --- |
+| [mypy](https://github.com/python/mypy) | `1.12.0` | `1.13.0` |
+| [ruff](https://github.com/astral-sh/ruff) | `0.6.9` | `0.7.1` |
+| [pyright](https://github.com/RobertCraigie/pyright-python) | `1.1.384` | `1.1.387` |
+| [pytest-cov](https://github.com/pytest-dev/pytest-cov) | `5.0.0` | `6.0.0` |
+| [mkdocs-material](https://github.com/squidfunk/mkdocs-material) | `9.5.40` | `9.5.42` |
+
+
+
+Updates `mypy` from 1.12.0 to 1.13.0
+- [Changelog](https://github.com/python/mypy/blob/master/CHANGELOG.md)
+- [Commits](https://github.com/python/mypy/compare/v1.12.0...v1.13.0)
+
+Updates `ruff` from 0.6.9 to 0.7.1
+- [Release notes](https://github.com/astral-sh/ruff/releases)
+- [Changelog](https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md)
+- [Commits](https://github.com/astral-sh/ruff/compare/0.6.9...0.7.1)
+
+Updates `pyright` from 1.1.384 to 1.1.387
+- [Release notes](https://github.com/RobertCraigie/pyright-python/releases)
+- [Commits](https://github.com/RobertCraigie/pyright-python/compare/v1.1.384...v1.1.387)
+
+Updates `pytest-cov` from 5.0.0 to 6.0.0
+- [Changelog](https://github.com/pytest-dev/pytest-cov/blob/master/CHANGELOG.rst)
+- [Commits](https://github.com/pytest-dev/pytest-cov/compare/v5.0.0...v6.0.0)
+
+Updates `mkdocs-material` from 9.5.40 to 9.5.42
+- [Release notes](https://github.com/squidfunk/mkdocs-material/releases)
+- [Changelog](https://github.com/squidfunk/mkdocs-material/blob/master/CHANGELOG)
+- [Commits](https://github.com/squidfunk/mkdocs-material/compare/9.5.40...9.5.42)
+
+---
+updated-dependencies:
+- dependency-name: mypy
+  dependency-type: direct:production
+  update-type: version-update:semver-minor
+  dependency-group: lint-and-dev
+- dependency-name: ruff
+  dependency-type: direct:production
+  update-type: version-update:semver-minor
+  dependency-group: lint-and-dev
+- dependency-name: pyright
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+  dependency-group: lint-and-dev
+- dependency-name: pytest-cov
+  dependency-type: direct:production
+  update-type: version-update:semver-major
+  dependency-group: lint-and-dev
+- dependency-name: mkdocs-material
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+  dependency-group: lint-and-dev
+...
+
+Signed-off-by: dependabot[bot] <support@github.com> ([`c9c0f57`](https://github.com/qthequartermasterman/hypothesis-torch/commit/c9c0f57cc66e33de2eaf70926473c2b8cf2b2259))
+
+### Unknown
+
+* Merge pull request #133 from qthequartermasterman/dependabot/pip/main/lint-and-dev-fc5d0e71ca
+
+build(deps): bump the lint-and-dev group across 1 directory with 5 updates ([`15d7bcc`](https://github.com/qthequartermasterman/hypothesis-torch/commit/15d7bcc1c996ecd3240d1166edf436793ee236f4))
+
+
 ## v0.8.0 (2024-10-31)
 
 ### Bug Fixes
