@@ -47,11 +47,7 @@ jobs:
         python -m pip install --upgrade uv
     - name: Install dependencies
       run: |
-        uv pip install ".[dev,huggingface]"
-    - name: Install Specific PyTorch version
-      if: ${{ inputs.torch-version != '' }}
-      run: |
-        uv pip install 'torch==${{ inputs.torch-version }}+cpu' --extra-index-url https://download.pytorch.org/whl/cpu
+        uv pip install ".[dev,huggingface,torch${{ inputs.torch-version }}]" --extra-index-url https://download.pytorch.org/whl/cpu --index-strategy unsafe-best-match
     - name: Lint with ruff
       if: ${{ inputs.lint }}
       run: |
