@@ -1,6 +1,25 @@
 # CHANGELOG
 
 
+## v0.8.0 (2024-10-31)
+
+### Bug Fixes
+
+* fix: add support for 'd' ([`339456b`](https://github.com/qthequartermasterman/hypothesis-torch/commit/339456bb113cfd22e3a1f27911582d334e499549))
+
+* fix: add support for 'd' and 'eps' for Adafactor ([`d5c3d9a`](https://github.com/qthequartermasterman/hypothesis-torch/commit/d5c3d9a2cf6e99d07bef9343cac0696707051c5d))
+
+### Features
+
+* feat: support pytorch 2.5 ([`7ce1d64`](https://github.com/qthequartermasterman/hypothesis-torch/commit/7ce1d6420dabd81c30da00fce0e344dac04e6984))
+
+### Unknown
+
+* Merge pull request #132 from qthequartermasterman/support-torch-2.5
+
+feat: support pytorch 2.5 ([`558024c`](https://github.com/qthequartermasterman/hypothesis-torch/commit/558024c23288c2356e73bc534a83e96a4056f94e))
+
+
 ## v0.7.19 (2024-10-14)
 
 ### Build System
@@ -201,13 +220,13 @@ Signed-off-by: dependabot[bot] <support@github.com> ([`38241ed`](https://github.
 
 ## v0.7.15 (2024-09-06)
 
+### Bug Fixes
+
+* fix: Only support memory formats for strided tensors ([`6add69f`](https://github.com/qthequartermasterman/hypothesis-torch/commit/6add69f419adacf0090079a3f7cb7b3bea23e02e))
+
 ### Continuous Integration
 
 * ci: add pre-commit pyright/mypy full library ([`98c1985`](https://github.com/qthequartermasterman/hypothesis-torch/commit/98c198565454a8fa68d0735940e69238b3f0e139))
-
-### Fixes
-
-* fix: Only support memory formats for strided tensors ([`6add69f`](https://github.com/qthequartermasterman/hypothesis-torch/commit/6add69f419adacf0090079a3f7cb7b3bea23e02e))
 
 ### Refactoring
 
@@ -712,7 +731,7 @@ build(deps): bump dawidd6/action-download-artifact from 3.1.4 to 5 ([`0c48d89`](
 
 ## v0.7.5 (2024-06-07)
 
-### Fixes
+### Bug Fixes
 
 * fix: Only generate `mps:0` devices.
 
@@ -1171,6 +1190,14 @@ ci: store hypothesis database in GitHub Actions to allow reproducing failures lo
 
 ## v0.6.3 (2024-05-12)
 
+### Bug Fixes
+
+* fix: :bug: fix incompatible parameters when generating Adam optimizers on Torch 1.13.
+
+Fix incompatible parameters:
+- fused is only available if cuda is available
+- fused is incompatible with differentiable ([`d0ef6bb`](https://github.com/qthequartermasterman/hypothesis-torch/commit/d0ef6bb44b935879864915c15496986afafc9375))
+
 ### Documentation
 
 * docs: update pyproject toml classifiers, keywords, and urls. ([`e6d4a7c`](https://github.com/qthequartermasterman/hypothesis-torch/commit/e6d4a7c63921a097a8fc419c06c5483d4baa092c))
@@ -1178,14 +1205,6 @@ ci: store hypothesis database in GitHub Actions to allow reproducing failures lo
 * docs(badges): :memo: Add pypi badges for downloads and version to readme ([`00563e6`](https://github.com/qthequartermasterman/hypothesis-torch/commit/00563e65d7e652bc5bcc51ca185f8b05d908c352))
 
 * docs(version): :memo: remove reference to python 3.8 in classifiers ([`03322e1`](https://github.com/qthequartermasterman/hypothesis-torch/commit/03322e156f3c118ef10ea2d2395076088e5960d8))
-
-### Fixes
-
-* fix: :bug: fix incompatible parameters when generating Adam optimizers on Torch 1.13.
-
-Fix incompatible parameters:
-- fused is only available if cuda is available
-- fused is incompatible with differentiable ([`d0ef6bb`](https://github.com/qthequartermasterman/hypothesis-torch/commit/d0ef6bb44b935879864915c15496986afafc9375))
 
 ### Unknown
 
@@ -1212,6 +1231,14 @@ build: :bug: set dependency ranges for optimal compatibility ([`71c52b7`](https:
 
 
 ## v0.6.1 (2024-05-10)
+
+### Bug Fixes
+
+* fix: :bug: do not try to use the device as a context manager in torch<2. ([`3114162`](https://github.com/qthequartermasterman/hypothesis-torch/commit/3114162fb77ed48ecb5d980b4e2b41c6184bc3ae))
+
+* fix: :bug: do not try to use the meta device as a context manager in torch<2. ([`ef0e47c`](https://github.com/qthequartermasterman/hypothesis-torch/commit/ef0e47c20a65606400b1335902417db0c88f0f79))
+
+* fix: :zap: remove overly-restrictive hypothesis deadline for transformers tests ([`d1c89f2`](https://github.com/qthequartermasterman/hypothesis-torch/commit/d1c89f2dceed4132dc363b63b1b27a75bd191d87))
 
 ### Build System
 
@@ -1249,14 +1276,6 @@ build: :bug: set dependency ranges for optimal compatibility ([`71c52b7`](https:
 
 * docs: :sparkles: Initial docsite set up. ([`274bb65`](https://github.com/qthequartermasterman/hypothesis-torch/commit/274bb6512912fab817c71f394a3ccfad124de625))
 
-### Fixes
-
-* fix: :bug: do not try to use the device as a context manager in torch<2. ([`3114162`](https://github.com/qthequartermasterman/hypothesis-torch/commit/3114162fb77ed48ecb5d980b4e2b41c6184bc3ae))
-
-* fix: :bug: do not try to use the meta device as a context manager in torch<2. ([`ef0e47c`](https://github.com/qthequartermasterman/hypothesis-torch/commit/ef0e47c20a65606400b1335902417db0c88f0f79))
-
-* fix: :zap: remove overly-restrictive hypothesis deadline for transformers tests ([`d1c89f2`](https://github.com/qthequartermasterman/hypothesis-torch/commit/d1c89f2dceed4132dc363b63b1b27a75bd191d87))
-
 ### Testing
 
 * test: :bug: ignore runtime errors during module import ([`882f515`](https://github.com/qthequartermasterman/hypothesis-torch/commit/882f5156d4ceb9b7533dd8d10b2a854c0af2e472))
@@ -1290,6 +1309,14 @@ feat: :sparkles: add strategies for torch optimizers ([`fbefa06`](https://github
 
 
 ## v0.5.0 (2024-05-09)
+
+### Bug Fixes
+
+* fix: :label: fix incorrect decorator typing ([`3e80d6a`](https://github.com/qthequartermasterman/hypothesis-torch/commit/3e80d6a0f71b6cde8f539150bffffe9ee338253b))
+
+* fix: :white_check_mark: designate officially supported versus unofficially supported transformers.
+
+By default, only officially supported transformer types are tested in CI, but unofficially supported transformers MAY or MAY NOT be compatible with the `transformer_strategy`. A test fully parametrized over ALL of the model types in `transformers` is available, and can be enabled when setting the environment variable `HYPOTHESIS_TORCH_TEST_UNSUPPORTED_TRANSFORMERS=True`. ([`7d22190`](https://github.com/qthequartermasterman/hypothesis-torch/commit/7d22190766613db31a220b0cda54bb79d73cc6b1))
 
 ### Build System
 
@@ -1329,14 +1356,6 @@ updated-dependencies:
 
 Signed-off-by: dependabot[bot] <support@github.com> ([`c7e5d8d`](https://github.com/qthequartermasterman/hypothesis-torch/commit/c7e5d8d0c611a03dd03a8cc6373e4992e709919b))
 
-### Fixes
-
-* fix: :label: fix incorrect decorator typing ([`3e80d6a`](https://github.com/qthequartermasterman/hypothesis-torch/commit/3e80d6a0f71b6cde8f539150bffffe9ee338253b))
-
-* fix: :white_check_mark: designate officially supported versus unofficially supported transformers.
-
-By default, only officially supported transformer types are tested in CI, but unofficially supported transformers MAY or MAY NOT be compatible with the `transformer_strategy`. A test fully parametrized over ALL of the model types in `transformers` is available, and can be enabled when setting the environment variable `HYPOTHESIS_TORCH_TEST_UNSUPPORTED_TRANSFORMERS=True`. ([`7d22190`](https://github.com/qthequartermasterman/hypothesis-torch/commit/7d22190766613db31a220b0cda54bb79d73cc6b1))
-
 ### Testing
 
 * test: ignore import errors while inferring available transformers in tests. ([`84185cb`](https://github.com/qthequartermasterman/hypothesis-torch/commit/84185cb66fcec5f50aad09e38b0026624ca5862a))
@@ -1366,7 +1385,7 @@ build: 🔧 add py.typed ([`b2e8557`](https://github.com/qthequartermasterman/hy
 
 ## v0.4.3 (2024-04-28)
 
-### Fixes
+### Bug Fixes
 
 * fix: :bug: do not generate inf values if elements has infinity disabled for bfloat16 tensors.
 
@@ -1381,6 +1400,12 @@ fix: :bug: do not generate inf values if elements has infinity disabled for bflo
 
 ## v0.4.2 (2024-04-27)
 
+### Bug Fixes
+
+* fix: :bug: do not generate inf values if elements has infinity disabled for float16 and float32 tensors.
+
+This fix does not work for all bfloat16 tensors. ([`8e9eb5d`](https://github.com/qthequartermasterman/hypothesis-torch/commit/8e9eb5daf6f94e121ad6554bb1a41fcd73ac8da0))
+
 ### Features
 
 * feat: :sparkles: add support for more transformers strategies ([`7ac7508`](https://github.com/qthequartermasterman/hypothesis-torch/commit/7ac75088956adf3ec5b06b9352d6ed7c0492ad59))
@@ -1389,16 +1414,10 @@ fix: :bug: do not generate inf values if elements has infinity disabled for bflo
 
 NOTE: The strategy for torch optimizers actually generates an "alternate constructor" for a torch optimizer that takes in only a torch module's parameters. The strategy will "pre-fill" all of the hyperparameters. If these hyparameters should be overridden, they can be specified as kwargs in the strategy. ([`5cf6181`](https://github.com/qthequartermasterman/hypothesis-torch/commit/5cf6181ef6617eda19eb0b51658f835280421c63))
 
-### Fixes
-
-* fix: :bug: do not generate inf values if elements has infinity disabled for float16 and float32 tensors.
-
-This fix does not work for all bfloat16 tensors. ([`8e9eb5d`](https://github.com/qthequartermasterman/hypothesis-torch/commit/8e9eb5daf6f94e121ad6554bb1a41fcd73ac8da0))
-
 
 ## v0.4.1 (2024-04-24)
 
-### Fixes
+### Bug Fixes
 
 * fix: mark bfloat16 as a floating dtype ([`38b4ed3`](https://github.com/qthequartermasterman/hypothesis-torch/commit/38b4ed3425439525848375a5bd200786d3dfd236))
 
@@ -1428,13 +1447,13 @@ feat: Register PyTorch's random state with Hypothesis so that torch random is de
 
 ## v0.3.1 (2024-04-24)
 
+### Bug Fixes
+
+* fix: :truck: move test to test folder ([`e7460f7`](https://github.com/qthequartermasterman/hypothesis-torch/commit/e7460f7d11a84cc0a4791b90c02932505399bd5d))
+
 ### Continuous Integration
 
 * ci: coverage report ([`36b8eb9`](https://github.com/qthequartermasterman/hypothesis-torch/commit/36b8eb909fdd266b8469ccd3a2c162ebf1310af1))
-
-### Fixes
-
-* fix: :truck: move test to test folder ([`e7460f7`](https://github.com/qthequartermasterman/hypothesis-torch/commit/e7460f7d11a84cc0a4791b90c02932505399bd5d))
 
 ### Testing
 
@@ -1517,6 +1536,10 @@ feat: :sparkles: More tensor attributes ([`c421dae`](https://github.com/qthequar
 
 ## v0.1.10 (2024-04-23)
 
+### Bug Fixes
+
+* fix: only generate sensible floats and integer values for the given dtype ([`8175a73`](https://github.com/qthequartermasterman/hypothesis-torch/commit/8175a73bce4888a546215517145c0b85d5b4624d))
+
 ### Chores
 
 * chore(deps): bump actions/setup-python from 2 to 5
@@ -1538,10 +1561,6 @@ Signed-off-by: dependabot[bot] <support@github.com> ([`ad754e1`](https://github.
 
 * ci: set hypothesis profile ([`c2aae43`](https://github.com/qthequartermasterman/hypothesis-torch/commit/c2aae43546887810aca3b64965d99f93857f2887))
 
-### Fixes
-
-* fix: only generate sensible floats and integer values for the given dtype ([`8175a73`](https://github.com/qthequartermasterman/hypothesis-torch/commit/8175a73bce4888a546215517145c0b85d5b4624d))
-
 ### Unknown
 
 * Merge pull request #3 from qthequartermasterman/dependabot/github_actions/main/actions/setup-python-5
@@ -1550,6 +1569,10 @@ chore(deps): bump actions/setup-python from 2 to 5 ([`68e0892`](https://github.c
 
 
 ## v0.1.9 (2024-04-22)
+
+### Bug Fixes
+
+* fix: only generate sensible floats for Softplus threshold ([`6d81c89`](https://github.com/qthequartermasterman/hypothesis-torch/commit/6d81c89f516688fae34bedcb5a5254db11de92d5))
 
 ### Chores
 
@@ -1595,10 +1618,6 @@ Signed-off-by: dependabot[bot] <support@github.com> ([`1409079`](https://github.
 
 * ci: enable dependabot ([`1e63f06`](https://github.com/qthequartermasterman/hypothesis-torch/commit/1e63f06f995c1e329aa89ffefe73e09ca37254a7))
 
-### Fixes
-
-* fix: only generate sensible floats for Softplus threshold ([`6d81c89`](https://github.com/qthequartermasterman/hypothesis-torch/commit/6d81c89f516688fae34bedcb5a5254db11de92d5))
-
 ### Testing
 
 * test: :white_check_mark: unit tests for linear strategy ([`5dbfe6e`](https://github.com/qthequartermasterman/hypothesis-torch/commit/5dbfe6e618acc4aea31d2a81419f1736509bfd01))
@@ -1615,6 +1634,10 @@ chore(deps): bump actions/checkout from 3 to 4 ([`ba59e35`](https://github.com/q
 
 
 ## v0.1.8 (2024-04-22)
+
+### Bug Fixes
+
+* fix: only mark MPS devices as available if MPS itself is available ([`d277350`](https://github.com/qthequartermasterman/hypothesis-torch/commit/d277350ff3de4d359011a8b234aef5beff227880))
 
 ### Chores
 
@@ -1636,10 +1659,6 @@ chore(deps): bump actions/checkout from 3 to 4 ([`ba59e35`](https://github.com/q
 
 * ci: add PR build ([`3284a11`](https://github.com/qthequartermasterman/hypothesis-torch/commit/3284a1168e75bb33f95a119406d1c73a85c28d26))
 
-### Fixes
-
-* fix: only mark MPS devices as available if MPS itself is available ([`d277350`](https://github.com/qthequartermasterman/hypothesis-torch/commit/d277350ff3de4d359011a8b234aef5beff227880))
-
 ### Testing
 
 * test: :white_check_mark: unit tests for tensors ([`50da775`](https://github.com/qthequartermasterman/hypothesis-torch/commit/50da77539f9d4d30165d6f136d46518b7991b00d))
@@ -1649,6 +1668,10 @@ chore(deps): bump actions/checkout from 3 to 4 ([`ba59e35`](https://github.com/q
 
 ## v0.1.7 (2024-04-21)
 
+### Bug Fixes
+
+* fix: :label: typing fixes ([`a03d697`](https://github.com/qthequartermasterman/hypothesis-torch/commit/a03d6979d47f9b2bd5c4a8328e9b1927fdc96339))
+
 ### Continuous Integration
 
 * ci: use deploy key to bypass branch protection ([`22dd442`](https://github.com/qthequartermasterman/hypothesis-torch/commit/22dd442de7435f78eac1d7b6fddb3ecf8b6d67f6))
@@ -1657,58 +1680,62 @@ chore(deps): bump actions/checkout from 3 to 4 ([`ba59e35`](https://github.com/q
 
 * ci: use uv to install requirements ([`3d4a0b0`](https://github.com/qthequartermasterman/hypothesis-torch/commit/3d4a0b02c31dd04f6f3c9a3bec946c81dab83f01))
 
-### Fixes
-
-* fix: :label: typing fixes ([`a03d697`](https://github.com/qthequartermasterman/hypothesis-torch/commit/a03d6979d47f9b2bd5c4a8328e9b1927fdc96339))
-
 
 ## v0.1.6 (2024-04-21)
 
-### Fixes
+### Bug Fixes
 
 * fix: semantic release reference in pyproject toml ([`7fe09c9`](https://github.com/qthequartermasterman/hypothesis-torch/commit/7fe09c9da9dcdb9d746ad08717870e6b43ecfa88))
 
 
 ## v0.1.5 (2024-04-21)
 
-### Fixes
+### Bug Fixes
 
 * fix: clean up imports ([`fc93cd5`](https://github.com/qthequartermasterman/hypothesis-torch/commit/fc93cd5b56f605713272085329bbb5fcd1134f3d))
 
 
 ## v0.1.4 (2024-04-21)
 
-### Fixes
+### Bug Fixes
 
 * fix: build command and dynamic version for setuptools ([`cd1889d`](https://github.com/qthequartermasterman/hypothesis-torch/commit/cd1889dd687904b1f8a1a946bdf41f2d17ac6c0f))
 
 
 ## v0.1.3 (2024-04-21)
 
-### Fixes
+### Bug Fixes
 
 * fix: allow manually launching release ([`f651484`](https://github.com/qthequartermasterman/hypothesis-torch/commit/f651484d092ce20e4d93c3406309069e5c551af9))
 
 
 ## v0.1.2 (2024-04-21)
 
-### Fixes
+### Bug Fixes
 
 * fix: upload to pypi using semantic release ([`98ac240`](https://github.com/qthequartermasterman/hypothesis-torch/commit/98ac24014307ca8ac6e14170652fd4448228ccd8))
 
 
 ## v0.1.1 (2024-04-21)
 
+### Bug Fixes
+
+* fix: fix semantic release settings ([`b702e85`](https://github.com/qthequartermasterman/hypothesis-torch/commit/b702e85e319324a2904f73a003121aa7bd6ffd6d))
+
 ### Continuous Integration
 
 * ci: publish to pypi ([`6d3bd54`](https://github.com/qthequartermasterman/hypothesis-torch/commit/6d3bd54eaf0dc12ff705e6f3847e25c27bacb8d1))
 
-### Fixes
-
-* fix: fix semantic release settings ([`b702e85`](https://github.com/qthequartermasterman/hypothesis-torch/commit/b702e85e319324a2904f73a003121aa7bd6ffd6d))
-
 
 ## v0.1.0 (2024-04-21)
+
+### Bug Fixes
+
+* fix: add urls ([`6c8dd3d`](https://github.com/qthequartermasterman/hypothesis-torch/commit/6c8dd3d72463e133ec5695e38d0f590e694d9f50))
+
+* fix: allow `unique` to be a strategy ([`50bedeb`](https://github.com/qthequartermasterman/hypothesis-torch/commit/50bedeba2f54b1333fa38ccc06abe5010ab8f6ec))
+
+* fix: rename parameter ([`1df242d`](https://github.com/qthequartermasterman/hypothesis-torch/commit/1df242dcc8f6ac3ea589f74614e942cd7b59bf18))
 
 ### Chores
 
@@ -1757,14 +1784,6 @@ chore(deps): bump actions/checkout from 3 to 4 ([`ba59e35`](https://github.com/q
 * feat: dtype strategies ([`723f096`](https://github.com/qthequartermasterman/hypothesis-torch/commit/723f096bc36164f09cc6662fccb56e2bc2ae3f8b))
 
 * feat: device strategies ([`1acab83`](https://github.com/qthequartermasterman/hypothesis-torch/commit/1acab833ea64a71aedf134879ec07a9270a96b88))
-
-### Fixes
-
-* fix: add urls ([`6c8dd3d`](https://github.com/qthequartermasterman/hypothesis-torch/commit/6c8dd3d72463e133ec5695e38d0f590e694d9f50))
-
-* fix: allow `unique` to be a strategy ([`50bedeb`](https://github.com/qthequartermasterman/hypothesis-torch/commit/50bedeba2f54b1333fa38ccc06abe5010ab8f6ec))
-
-* fix: rename parameter ([`1df242d`](https://github.com/qthequartermasterman/hypothesis-torch/commit/1df242dcc8f6ac3ea589f74614e942cd7b59bf18))
 
 ### Testing
 
