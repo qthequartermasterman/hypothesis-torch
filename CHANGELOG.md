@@ -1,6 +1,44 @@
 # CHANGELOG
 
 
+## v0.8.3 (2024-11-04)
+
+### Build System
+
+* build(deps): bump the lint-and-dev group across 1 directory with 2 updates
+
+Bumps the lint-and-dev group with 2 updates in the / directory: [ruff](https://github.com/astral-sh/ruff) and [mkdocs-material](https://github.com/squidfunk/mkdocs-material).
+
+
+Updates `ruff` from 0.7.1 to 0.7.2
+- [Release notes](https://github.com/astral-sh/ruff/releases)
+- [Changelog](https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md)
+- [Commits](https://github.com/astral-sh/ruff/compare/0.7.1...0.7.2)
+
+Updates `mkdocs-material` from 9.5.42 to 9.5.43
+- [Release notes](https://github.com/squidfunk/mkdocs-material/releases)
+- [Changelog](https://github.com/squidfunk/mkdocs-material/blob/master/CHANGELOG)
+- [Commits](https://github.com/squidfunk/mkdocs-material/compare/9.5.42...9.5.43)
+
+---
+updated-dependencies:
+- dependency-name: ruff
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+  dependency-group: lint-and-dev
+- dependency-name: mkdocs-material
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+  dependency-group: lint-and-dev
+...
+
+Signed-off-by: dependabot[bot] <support@github.com> ([`f8a27a6`](https://github.com/qthequartermasterman/hypothesis-torch/commit/f8a27a6c03247558f9108b37cf4b96d42eb20dfe))
+
+### Unknown
+
+* Merge pull request #138 from qthequartermasterman/dependabot/pip/main/lint-and-dev-b2d340b36e ([`7bfb873`](https://github.com/qthequartermasterman/hypothesis-torch/commit/7bfb8733b833f9489939896e0353b97e770c2ecc))
+
+
 ## v0.8.2 (2024-10-31)
 
 ### Build System
