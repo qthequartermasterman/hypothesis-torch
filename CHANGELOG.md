@@ -1,6 +1,32 @@
 # CHANGELOG
 
 
+## v0.8.5 (2024-11-18)
+
+### Build System
+
+- **deps**: Bump the lint-and-dev group with 2 updates
+  ([`80208fe`](https://github.com/qthequartermasterman/hypothesis-torch/commit/80208fe457c1b20ade72c53dc5f7c4b053367864))
+
+Bumps the lint-and-dev group with 2 updates: [ruff](https://github.com/astral-sh/ruff) and
+  [pyright](https://github.com/RobertCraigie/pyright-python).
+
+Updates `ruff` from 0.7.3 to 0.7.4 - [Release notes](https://github.com/astral-sh/ruff/releases) -
+  [Changelog](https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md) -
+  [Commits](https://github.com/astral-sh/ruff/compare/0.7.3...0.7.4)
+
+Updates `pyright` from 1.1.388 to 1.1.389 - [Release
+  notes](https://github.com/RobertCraigie/pyright-python/releases) -
+  [Commits](https://github.com/RobertCraigie/pyright-python/compare/v1.1.388...v1.1.389)
+
+--- updated-dependencies: - dependency-name: ruff dependency-type: direct:production update-type:
+  version-update:semver-patch dependency-group: lint-and-dev - dependency-name: pyright
+  dependency-type: direct:production update-type: version-update:semver-patch dependency-group:
+  lint-and-dev ...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+
+
 ## v0.8.4 (2024-11-13)
 
 ### Build System
