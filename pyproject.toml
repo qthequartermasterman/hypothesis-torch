@@ -83,7 +83,7 @@ torch = [
   "hypothesis_torch[numpy]"
 ]
 "torch2.4.0"=[
-  "torch==2.4.0+cpu",
+  "torch==2.5.1",
   "hypothesis_torch[numpy]"
 ]
 "torch2.5.1"=[
