@@ -1,6 +1,82 @@
 # CHANGELOG
 
 
+## v0.8.6 (2024-12-02)
+
+### Build System
+
+- **deps**: Bump dawidd6/action-download-artifact from 6 to 7
+  ([`8d6db2d`](https://github.com/qthequartermasterman/hypothesis-torch/commit/8d6db2d578c6c025f9b5913bd2d17c08c7155845))
+
+Bumps [dawidd6/action-download-artifact](https://github.com/dawidd6/action-download-artifact) from 6
+  to 7. - [Release notes](https://github.com/dawidd6/action-download-artifact/releases) -
+  [Commits](https://github.com/dawidd6/action-download-artifact/compare/v6...v7)
+
+--- updated-dependencies: - dependency-name: dawidd6/action-download-artifact dependency-type:
+  direct:production
+
+update-type: version-update:semver-major
+
+...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+
+- **deps**: Bump the lint-and-dev group across 1 directory with 3 updates
+  ([`7549e8d`](https://github.com/qthequartermasterman/hypothesis-torch/commit/7549e8d9cde3294aff78431c607c909a0f5f55b8))
+
+Bumps the lint-and-dev group with 3 updates in the / directory:
+  [ruff](https://github.com/astral-sh/ruff), [pytest](https://github.com/pytest-dev/pytest) and
+  [mkdocs-material](https://github.com/squidfunk/mkdocs-material).
+
+Updates `ruff` from 0.7.4 to 0.8.1 - [Release notes](https://github.com/astral-sh/ruff/releases) -
+  [Changelog](https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md) -
+  [Commits](https://github.com/astral-sh/ruff/compare/0.7.4...0.8.1)
+
+Updates `pytest` from 8.3.3 to 8.3.4 - [Release
+  notes](https://github.com/pytest-dev/pytest/releases) -
+  [Changelog](https://github.com/pytest-dev/pytest/blob/main/CHANGELOG.rst) -
+  [Commits](https://github.com/pytest-dev/pytest/compare/8.3.3...8.3.4)
+
+Updates `mkdocs-material` from 9.5.44 to 9.5.47 - [Release
+  notes](https://github.com/squidfunk/mkdocs-material/releases) -
+  [Changelog](https://github.com/squidfunk/mkdocs-material/blob/master/CHANGELOG) -
+  [Commits](https://github.com/squidfunk/mkdocs-material/compare/9.5.44...9.5.47)
+
+--- updated-dependencies: - dependency-name: ruff dependency-type: direct:production
+
+update-type: version-update:semver-minor
+
+dependency-group: lint-and-dev
+
+- dependency-name: pytest dependency-type: direct:production
+
+update-type: version-update:semver-patch
+
+- dependency-name: mkdocs-material dependency-type: direct:production
+
+...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+
+- **deps**: Update transformers requirement
+  ([`dc0e200`](https://github.com/qthequartermasterman/hypothesis-torch/commit/dc0e2007f4043e90031de71074e38f23d3ab9954))
+
+Updates the requirements on [transformers](https://github.com/huggingface/transformers) to permit
+  the latest version.
+
+Updates `transformers` to 4.46.3 - [Release
+  notes](https://github.com/huggingface/transformers/releases) -
+  [Commits](https://github.com/huggingface/transformers/compare/v4.42.3...v4.46.3)
+
+--- updated-dependencies: - dependency-name: transformers dependency-type: direct:production
+
+dependency-group: optional-dependencies
+
+...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+
+
 ## v0.8.5 (2024-11-18)
 
 ### Build System
@@ -19,10 +95,15 @@ Updates `pyright` from 1.1.388 to 1.1.389 - [Release
   notes](https://github.com/RobertCraigie/pyright-python/releases) -
   [Commits](https://github.com/RobertCraigie/pyright-python/compare/v1.1.388...v1.1.389)
 
---- updated-dependencies: - dependency-name: ruff dependency-type: direct:production update-type:
-  version-update:semver-patch dependency-group: lint-and-dev - dependency-name: pyright
-  dependency-type: direct:production update-type: version-update:semver-patch dependency-group:
-  lint-and-dev ...
+--- updated-dependencies: - dependency-name: ruff dependency-type: direct:production
+
+update-type: version-update:semver-patch
+
+dependency-group: lint-and-dev
+
+- dependency-name: pyright dependency-type: direct:production
+
+...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -57,13 +138,21 @@ Updates `mkdocs-material` from 9.5.43 to 9.5.44 - [Release
   [Changelog](https://github.com/squidfunk/mkdocs-material/blob/master/CHANGELOG) -
   [Commits](https://github.com/squidfunk/mkdocs-material/compare/9.5.43...9.5.44)
 
---- updated-dependencies: - dependency-name: ruff dependency-type: direct:production update-type:
-  version-update:semver-patch dependency-group: lint-and-dev - dependency-name: pyright
-  dependency-type: direct:production update-type: version-update:semver-patch dependency-group:
-  lint-and-dev - dependency-name: mkdocstrings[python] dependency-type: direct:production
-  update-type: version-update:semver-minor dependency-group: lint-and-dev - dependency-name:
-  mkdocs-material dependency-type: direct:production update-type: version-update:semver-patch
-  dependency-group: lint-and-dev ...
+--- updated-dependencies: - dependency-name: ruff dependency-type: direct:production
+
+update-type: version-update:semver-patch
+
+dependency-group: lint-and-dev
+
+- dependency-name: pyright dependency-type: direct:production
+
+- dependency-name: mkdocstrings[python] dependency-type: direct:production
+
+update-type: version-update:semver-minor
+
+- dependency-name: mkdocs-material dependency-type: direct:production
+
+...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -77,8 +166,13 @@ Updates `torch` from 2.1.2+cpu to 2.5.1 - [Release
   [Changelog](https://github.com/pytorch/pytorch/blob/main/RELEASE.md) -
   [Commits](https://github.com/pytorch/pytorch/commits/v2.5.1)
 
---- updated-dependencies: - dependency-name: torch dependency-type: direct:production update-type:
-  version-update:semver-minor dependency-group: direct-dependencies ...
+--- updated-dependencies: - dependency-name: torch dependency-type: direct:production
+
+update-type: version-update:semver-minor
+
+dependency-group: direct-dependencies
+
+...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -93,7 +187,10 @@ Updates `transformers` to 4.46.2 - [Release
   [Commits](https://github.com/huggingface/transformers/compare/v4.42.3...v4.46.2)
 
 --- updated-dependencies: - dependency-name: transformers dependency-type: direct:production
-  dependency-group: optional-dependencies ...
+
+dependency-group: optional-dependencies
+
+...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -118,10 +215,15 @@ Updates `mkdocs-material` from 9.5.42 to 9.5.43 - [Release
   [Changelog](https://github.com/squidfunk/mkdocs-material/blob/master/CHANGELOG) -
   [Commits](https://github.com/squidfunk/mkdocs-material/compare/9.5.42...9.5.43)
 
---- updated-dependencies: - dependency-name: ruff dependency-type: direct:production update-type:
-  version-update:semver-patch dependency-group: lint-and-dev - dependency-name: mkdocs-material
-  dependency-type: direct:production update-type: version-update:semver-patch dependency-group:
-  lint-and-dev ...
+--- updated-dependencies: - dependency-name: ruff dependency-type: direct:production
+
+update-type: version-update:semver-patch
+
+dependency-group: lint-and-dev
+
+- dependency-name: mkdocs-material dependency-type: direct:production
+
+...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -141,7 +243,10 @@ Updates `transformers` to 4.46.1 - [Release
   [Commits](https://github.com/huggingface/transformers/compare/v4.42.3...v4.46.1)
 
 --- updated-dependencies: - dependency-name: transformers dependency-type: direct:production
-  dependency-group: optional-dependencies ...
+
+dependency-group: optional-dependencies
+
+...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -150,11 +255,11 @@ Signed-off-by: dependabot[bot] <support@github.com>
 - Allow using any available pypi index in ci
   ([`4629597`](https://github.com/qthequartermasterman/hypothesis-torch/commit/46295972e35f2ceb419d29b7ea6d98e332a0e2df))
 
-- Pin numpy versions for old torch versions
-  ([`61e6db6`](https://github.com/qthequartermasterman/hypothesis-torch/commit/61e6db6a0f21268370f2cc3a9763fc27ae65850f))
-
 - Install torch after the rest of the dependencies in CI to force correct version of numpy
   ([`fbc2ef0`](https://github.com/qthequartermasterman/hypothesis-torch/commit/fbc2ef0695e9acad7c0fa98d4fe5222d13800167))
+
+- Pin numpy versions for old torch versions
+  ([`61e6db6`](https://github.com/qthequartermasterman/hypothesis-torch/commit/61e6db6a0f21268370f2cc3a9763fc27ae65850f))
 
 
 ## v0.8.1 (2024-10-31)
@@ -193,14 +298,25 @@ Updates `mkdocs-material` from 9.5.40 to 9.5.42 - [Release
   [Changelog](https://github.com/squidfunk/mkdocs-material/blob/master/CHANGELOG) -
   [Commits](https://github.com/squidfunk/mkdocs-material/compare/9.5.40...9.5.42)
 
---- updated-dependencies: - dependency-name: mypy dependency-type: direct:production update-type:
-  version-update:semver-minor dependency-group: lint-and-dev - dependency-name: ruff
-  dependency-type: direct:production update-type: version-update:semver-minor dependency-group:
-  lint-and-dev - dependency-name: pyright dependency-type: direct:production update-type:
-  version-update:semver-patch dependency-group: lint-and-dev - dependency-name: pytest-cov
-  dependency-type: direct:production update-type: version-update:semver-major dependency-group:
-  lint-and-dev - dependency-name: mkdocs-material dependency-type: direct:production update-type:
-  version-update:semver-patch dependency-group: lint-and-dev ...
+--- updated-dependencies: - dependency-name: mypy dependency-type: direct:production
+
+update-type: version-update:semver-minor
+
+dependency-group: lint-and-dev
+
+- dependency-name: ruff dependency-type: direct:production
+
+- dependency-name: pyright dependency-type: direct:production
+
+update-type: version-update:semver-patch
+
+- dependency-name: pytest-cov dependency-type: direct:production
+
+update-type: version-update:semver-major
+
+- dependency-name: mkdocs-material dependency-type: direct:production
+
+...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -251,13 +367,21 @@ Updates `mkdocs-material` from 9.5.39 to 9.5.40 - [Release
   [Changelog](https://github.com/squidfunk/mkdocs-material/blob/master/CHANGELOG) -
   [Commits](https://github.com/squidfunk/mkdocs-material/compare/9.5.39...9.5.40)
 
---- updated-dependencies: - dependency-name: mypy dependency-type: direct:production update-type:
-  version-update:semver-minor dependency-group: lint-and-dev - dependency-name: pyright
-  dependency-type: direct:production update-type: version-update:semver-patch dependency-group:
-  lint-and-dev - dependency-name: mkdocstrings[python] dependency-type: direct:production
-  update-type: version-update:semver-patch dependency-group: lint-and-dev - dependency-name:
-  mkdocs-material dependency-type: direct:production update-type: version-update:semver-patch
-  dependency-group: lint-and-dev ...
+--- updated-dependencies: - dependency-name: mypy dependency-type: direct:production
+
+update-type: version-update:semver-minor
+
+dependency-group: lint-and-dev
+
+- dependency-name: pyright dependency-type: direct:production
+
+update-type: version-update:semver-patch
+
+- dependency-name: mkdocstrings[python] dependency-type: direct:production
+
+- dependency-name: mkdocs-material dependency-type: direct:production
+
+...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -280,10 +404,15 @@ Updates `pyright` from 1.1.382.post1 to 1.1.383 - [Release
   notes](https://github.com/RobertCraigie/pyright-python/releases) -
   [Commits](https://github.com/RobertCraigie/pyright-python/compare/v1.1.382.post1...v1.1.383)
 
---- updated-dependencies: - dependency-name: ruff dependency-type: direct:production update-type:
-  version-update:semver-patch dependency-group: lint-and-dev - dependency-name: pyright
-  dependency-type: direct:production update-type: version-update:semver-patch dependency-group:
-  lint-and-dev ...
+--- updated-dependencies: - dependency-name: ruff dependency-type: direct:production
+
+update-type: version-update:semver-patch
+
+dependency-group: lint-and-dev
+
+- dependency-name: pyright dependency-type: direct:production
+
+...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -312,11 +441,17 @@ Updates `mkdocs-material` from 9.5.36 to 9.5.39 - [Release
   [Changelog](https://github.com/squidfunk/mkdocs-material/blob/master/CHANGELOG) -
   [Commits](https://github.com/squidfunk/mkdocs-material/compare/9.5.36...9.5.39)
 
---- updated-dependencies: - dependency-name: ruff dependency-type: direct:production update-type:
-  version-update:semver-patch dependency-group: lint-and-dev - dependency-name: pyright
-  dependency-type: direct:production update-type: version-update:semver-patch dependency-group:
-  lint-and-dev - dependency-name: mkdocs-material dependency-type: direct:production update-type:
-  version-update:semver-patch dependency-group: lint-and-dev ...
+--- updated-dependencies: - dependency-name: ruff dependency-type: direct:production
+
+update-type: version-update:semver-patch
+
+dependency-group: lint-and-dev
+
+- dependency-name: pyright dependency-type: direct:production
+
+- dependency-name: mkdocs-material dependency-type: direct:production
+
+...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -352,13 +487,19 @@ Updates `mkdocs-material` from 9.5.34 to 9.5.36 - [Release
   [Changelog](https://github.com/squidfunk/mkdocs-material/blob/master/CHANGELOG) -
   [Commits](https://github.com/squidfunk/mkdocs-material/compare/9.5.34...9.5.36)
 
---- updated-dependencies: - dependency-name: ruff dependency-type: direct:production update-type:
-  version-update:semver-patch dependency-group: lint-and-dev - dependency-name: pyright
-  dependency-type: direct:production update-type: version-update:semver-patch dependency-group:
-  lint-and-dev - dependency-name: pytest dependency-type: direct:production update-type:
-  version-update:semver-patch dependency-group: lint-and-dev - dependency-name: mkdocs-material
-  dependency-type: direct:production update-type: version-update:semver-patch dependency-group:
-  lint-and-dev ...
+--- updated-dependencies: - dependency-name: ruff dependency-type: direct:production
+
+update-type: version-update:semver-patch
+
+dependency-group: lint-and-dev
+
+- dependency-name: pyright dependency-type: direct:production
+
+- dependency-name: pytest dependency-type: direct:production
+
+- dependency-name: mkdocs-material dependency-type: direct:production
+
+...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -383,8 +524,15 @@ Signed-off-by: dependabot[bot] <support@github.com>
 
 ### Testing
 
-- Use zeros for sparse tensors
-  ([`6519c27`](https://github.com/qthequartermasterman/hypothesis-torch/commit/6519c278adaf7089dc752feb85e63d073f89aa1f))
+- :white_check_mark: add additional tests for `tensor_strategy` checking that passing in strategies
+  as arguments is correct.
+  ([`39795ce`](https://github.com/qthequartermasterman/hypothesis-torch/commit/39795ceccd3d596c4ab2c5ad667ffa79dd6c0d4d))
+
+- Assert tensor is contiguous
+  ([`c358946`](https://github.com/qthequartermasterman/hypothesis-torch/commit/c35894600e8cb970c3d3a04976b65e16a5af905c))
+
+- Do correct assertion using dim order instead of contiguous for memory format
+  ([`56f0997`](https://github.com/qthequartermasterman/hypothesis-torch/commit/56f0997d701eafa17fdb23e5080c2cb0650565f9))
 
 - Fix missing arg
   ([`b14d1b9`](https://github.com/qthequartermasterman/hypothesis-torch/commit/b14d1b9a00254c38f43dadbda29b37436b517d91))
@@ -392,18 +540,11 @@ Signed-off-by: dependabot[bot] <support@github.com>
 - Limit size of tensors for permitted memory format tests
   ([`c76bac8`](https://github.com/qthequartermasterman/hypothesis-torch/commit/c76bac89d68e55da895542c42bd7349136588ef7))
 
-- Do correct assertion using dim order instead of contiguous for memory format
-  ([`56f0997`](https://github.com/qthequartermasterman/hypothesis-torch/commit/56f0997d701eafa17fdb23e5080c2cb0650565f9))
-
-- Assert tensor is contiguous
-  ([`c358946`](https://github.com/qthequartermasterman/hypothesis-torch/commit/c35894600e8cb970c3d3a04976b65e16a5af905c))
-
 - Mark pragma no cover
   ([`b7b87d9`](https://github.com/qthequartermasterman/hypothesis-torch/commit/b7b87d911867a7b2559cac6164ad3b6fbd23e66e))
 
-- :white_check_mark: add additional tests for `tensor_strategy` checking that passing in strategies
-  as arguments is correct.
-  ([`39795ce`](https://github.com/qthequartermasterman/hypothesis-torch/commit/39795ceccd3d596c4ab2c5ad667ffa79dd6c0d4d))
+- Use zeros for sparse tensors
+  ([`6519c27`](https://github.com/qthequartermasterman/hypothesis-torch/commit/6519c278adaf7089dc752feb85e63d073f89aa1f))
 
 
 ## v0.7.14 (2024-09-06)
@@ -453,17 +594,27 @@ Updates `mkdocs-material` from 9.5.29 to 9.5.34 - [Release
   [Changelog](https://github.com/squidfunk/mkdocs-material/blob/master/CHANGELOG) -
   [Commits](https://github.com/squidfunk/mkdocs-material/compare/9.5.29...9.5.34)
 
---- updated-dependencies: - dependency-name: mypy dependency-type: direct:production update-type:
-  version-update:semver-patch dependency-group: lint-and-dev - dependency-name: ruff
-  dependency-type: direct:production update-type: version-update:semver-minor dependency-group:
-  lint-and-dev - dependency-name: pyright dependency-type: direct:production update-type:
-  version-update:semver-patch dependency-group: lint-and-dev - dependency-name: pytest
-  dependency-type: direct:production update-type: version-update:semver-patch dependency-group:
-  lint-and-dev - dependency-name: mkdocs dependency-type: direct:production update-type:
-  version-update:semver-patch dependency-group: lint-and-dev - dependency-name: mkdocstrings[python]
-  dependency-type: direct:production update-type: version-update:semver-minor dependency-group:
-  lint-and-dev - dependency-name: mkdocs-material dependency-type: direct:production update-type:
-  version-update:semver-patch dependency-group: lint-and-dev ...
+--- updated-dependencies: - dependency-name: mypy dependency-type: direct:production
+
+update-type: version-update:semver-patch
+
+dependency-group: lint-and-dev
+
+- dependency-name: ruff dependency-type: direct:production
+
+update-type: version-update:semver-minor
+
+- dependency-name: pyright dependency-type: direct:production
+
+- dependency-name: pytest dependency-type: direct:production
+
+- dependency-name: mkdocs dependency-type: direct:production
+
+- dependency-name: mkdocstrings[python] dependency-type: direct:production
+
+- dependency-name: mkdocs-material dependency-type: direct:production
+
+...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -493,23 +644,20 @@ Signed-off-by: dependabot[bot] <support@github.com>
 
 ### Continuous Integration
 
-- Exclude impossible torch/python versions py3.12torch2.1.2
-  ([`6129f33`](https://github.com/qthequartermasterman/hypothesis-torch/commit/6129f3364a90bae7708fa9781028daf285195e86))
-
 - Decrease dependabot frequency
   ([`d05f966`](https://github.com/qthequartermasterman/hypothesis-torch/commit/d05f96656a4e7d15ebf98107a7a566e8641066ec))
+
+- Exclude impossible torch/python versions py3.12torch2.1.2
+  ([`6129f33`](https://github.com/qthequartermasterman/hypothesis-torch/commit/6129f3364a90bae7708fa9781028daf285195e86))
 
 - Fail fast false
   ([`34b761b`](https://github.com/qthequartermasterman/hypothesis-torch/commit/34b761bee6353f89b4991b9f6c8d194b179de79f))
 
-- Use cpu wheels
-  ([`9b03cc7`](https://github.com/qthequartermasterman/hypothesis-torch/commit/9b03cc74854853ea6de16ee83f21c3fae0fdda3d))
+- Fix torch version for github actions
+  ([`f6a19ed`](https://github.com/qthequartermasterman/hypothesis-torch/commit/f6a19ed1822649bb2dd5f3287bf15e1ec0063d2b))
 
-- Use cpu wheels
-  ([`0610956`](https://github.com/qthequartermasterman/hypothesis-torch/commit/0610956c304c0eb89d72401f14b8e051448bec61))
-
-- Use cpu wheels
-  ([`664acca`](https://github.com/qthequartermasterman/hypothesis-torch/commit/664accaea7be81a5ac6cd004c98a0482060f694b))
+- Fix torch version for github actions
+  ([`3f6d3e1`](https://github.com/qthequartermasterman/hypothesis-torch/commit/3f6d3e1df8a6411c204bec29eca92c309009bbc1))
 
 - Support testing against latest
   ([`81781e0`](https://github.com/qthequartermasterman/hypothesis-torch/commit/81781e0e8fde386e962fd80ac2924a80c1fc5344))
@@ -520,11 +668,14 @@ Signed-off-by: dependabot[bot] <support@github.com>
 - Support testing against latest
   ([`1d8980c`](https://github.com/qthequartermasterman/hypothesis-torch/commit/1d8980c1c22deb47615fddc8199e1590f1ab61aa))
 
-- Fix torch version for github actions
-  ([`f6a19ed`](https://github.com/qthequartermasterman/hypothesis-torch/commit/f6a19ed1822649bb2dd5f3287bf15e1ec0063d2b))
+- Use cpu wheels
+  ([`9b03cc7`](https://github.com/qthequartermasterman/hypothesis-torch/commit/9b03cc74854853ea6de16ee83f21c3fae0fdda3d))
 
-- Fix torch version for github actions
-  ([`3f6d3e1`](https://github.com/qthequartermasterman/hypothesis-torch/commit/3f6d3e1df8a6411c204bec29eca92c309009bbc1))
+- Use cpu wheels
+  ([`0610956`](https://github.com/qthequartermasterman/hypothesis-torch/commit/0610956c304c0eb89d72401f14b8e051448bec61))
+
+- Use cpu wheels
+  ([`664acca`](https://github.com/qthequartermasterman/hypothesis-torch/commit/664accaea7be81a5ac6cd004c98a0482060f694b))
 
 ### Refactoring
 
@@ -573,14 +724,24 @@ Updates `mkdocs-material` from 9.5.28 to 9.5.29 - [Release
   [Commits](https://github.com/squidfunk/mkdocs-material/compare/9.5.28...9.5.29)
 
 --- updated-dependencies: - dependency-name: transformers dependency-type: direct:production
-  dependency-group: lint-and-dev - dependency-name: mypy dependency-type: direct:production
-  update-type: version-update:semver-minor dependency-group: lint-and-dev - dependency-name: ruff
-  dependency-type: direct:production update-type: version-update:semver-patch dependency-group:
-  lint-and-dev - dependency-name: pyright dependency-type: direct:production update-type:
-  version-update:semver-patch dependency-group: lint-and-dev - dependency-name: pytest
-  dependency-type: direct:production update-type: version-update:semver-minor dependency-group:
-  lint-and-dev - dependency-name: mkdocs-material dependency-type: direct:production update-type:
-  version-update:semver-patch dependency-group: lint-and-dev ...
+
+dependency-group: lint-and-dev
+
+- dependency-name: mypy dependency-type: direct:production
+
+update-type: version-update:semver-minor
+
+- dependency-name: ruff dependency-type: direct:production
+
+update-type: version-update:semver-patch
+
+- dependency-name: pyright dependency-type: direct:production
+
+- dependency-name: pytest dependency-type: direct:production
+
+- dependency-name: mkdocs-material dependency-type: direct:production
+
+...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -598,8 +759,13 @@ Updates `ruff` from 0.5.0 to 0.5.1 - [Release notes](https://github.com/astral-s
   [Changelog](https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md) -
   [Commits](https://github.com/astral-sh/ruff/compare/0.5.0...0.5.1)
 
---- updated-dependencies: - dependency-name: ruff dependency-type: direct:production update-type:
-  version-update:semver-patch dependency-group: lint-and-dev ...
+--- updated-dependencies: - dependency-name: ruff dependency-type: direct:production
+
+update-type: version-update:semver-patch
+
+dependency-group: lint-and-dev
+
+...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -638,13 +804,22 @@ Updates `mkdocs-material` from 9.5.26 to 9.5.28 - [Release
   [Commits](https://github.com/squidfunk/mkdocs-material/compare/9.5.26...9.5.28)
 
 --- updated-dependencies: - dependency-name: transformers dependency-type: direct:production
-  dependency-group: lint-and-dev - dependency-name: mypy dependency-type: direct:production
-  update-type: version-update:semver-patch dependency-group: lint-and-dev - dependency-name: ruff
-  dependency-type: direct:production update-type: version-update:semver-minor dependency-group:
-  lint-and-dev - dependency-name: pyright dependency-type: direct:production update-type:
-  version-update:semver-patch dependency-group: lint-and-dev - dependency-name: mkdocs-material
-  dependency-type: direct:production update-type: version-update:semver-patch dependency-group:
-  lint-and-dev ...
+
+dependency-group: lint-and-dev
+
+- dependency-name: mypy dependency-type: direct:production
+
+update-type: version-update:semver-patch
+
+- dependency-name: ruff dependency-type: direct:production
+
+update-type: version-update:semver-minor
+
+- dependency-name: pyright dependency-type: direct:production
+
+- dependency-name: mkdocs-material dependency-type: direct:production
+
+...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -669,10 +844,15 @@ Updates `mkdocs-material` from 9.5.25 to 9.5.26 - [Release
   [Changelog](https://github.com/squidfunk/mkdocs-material/blob/master/CHANGELOG) -
   [Commits](https://github.com/squidfunk/mkdocs-material/compare/9.5.25...9.5.26)
 
---- updated-dependencies: - dependency-name: pyright dependency-type: direct:production update-type:
-  version-update:semver-patch dependency-group: lint-and-dev - dependency-name: mkdocs-material
-  dependency-type: direct:production update-type: version-update:semver-patch dependency-group:
-  lint-and-dev ...
+--- updated-dependencies: - dependency-name: pyright dependency-type: direct:production
+
+update-type: version-update:semver-patch
+
+dependency-group: lint-and-dev
+
+- dependency-name: mkdocs-material dependency-type: direct:production
+
+...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -689,7 +869,11 @@ Bumps [dawidd6/action-download-artifact](https://github.com/dawidd6/action-downl
   [Commits](https://github.com/dawidd6/action-download-artifact/compare/v5...v6)
 
 --- updated-dependencies: - dependency-name: dawidd6/action-download-artifact dependency-type:
-  direct:production update-type: version-update:semver-major ...
+  direct:production
+
+update-type: version-update:semver-major
+
+...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -706,8 +890,11 @@ Bumps [ruff](https://github.com/astral-sh/ruff) from 0.4.7 to 0.4.9. - [Release
   [Changelog](https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md) -
   [Commits](https://github.com/astral-sh/ruff/compare/v0.4.7...v0.4.9)
 
---- updated-dependencies: - dependency-name: ruff dependency-type: direct:production update-type:
-  version-update:semver-patch ...
+--- updated-dependencies: - dependency-name: ruff dependency-type: direct:production
+
+update-type: version-update:semver-patch
+
+...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -721,19 +908,6 @@ Signed-off-by: dependabot[bot] <support@github.com>
 
 ### Build System
 
-- **deps**: Bump pytest from 8.2.1 to 8.2.2
-  ([`9787eb1`](https://github.com/qthequartermasterman/hypothesis-torch/commit/9787eb1acac51f4acc02a5317983b778696ced49))
-
-Bumps [pytest](https://github.com/pytest-dev/pytest) from 8.2.1 to 8.2.2. - [Release
-  notes](https://github.com/pytest-dev/pytest/releases) -
-  [Changelog](https://github.com/pytest-dev/pytest/blob/main/CHANGELOG.rst) -
-  [Commits](https://github.com/pytest-dev/pytest/compare/8.2.1...8.2.2)
-
---- updated-dependencies: - dependency-name: pytest dependency-type: direct:production update-type:
-  version-update:semver-patch ...
-
-Signed-off-by: dependabot[bot] <support@github.com>
-
 - **deps**: Bump dawidd6/action-download-artifact from 3.1.4 to 5
   ([`380fee0`](https://github.com/qthequartermasterman/hypothesis-torch/commit/380fee0f731bcf480443f399b26b73227e86400a))
 
@@ -742,7 +916,27 @@ Bumps [dawidd6/action-download-artifact](https://github.com/dawidd6/action-downl
   [Commits](https://github.com/dawidd6/action-download-artifact/compare/v3.1.4...v5)
 
 --- updated-dependencies: - dependency-name: dawidd6/action-download-artifact dependency-type:
-  direct:production update-type: version-update:semver-major ...
+  direct:production
+
+update-type: version-update:semver-major
+
+...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+
+- **deps**: Bump pytest from 8.2.1 to 8.2.2
+  ([`9787eb1`](https://github.com/qthequartermasterman/hypothesis-torch/commit/9787eb1acac51f4acc02a5317983b778696ced49))
+
+Bumps [pytest](https://github.com/pytest-dev/pytest) from 8.2.1 to 8.2.2. - [Release
+  notes](https://github.com/pytest-dev/pytest/releases) -
+  [Changelog](https://github.com/pytest-dev/pytest/blob/main/CHANGELOG.rst) -
+  [Commits](https://github.com/pytest-dev/pytest/compare/8.2.1...8.2.2)
+
+--- updated-dependencies: - dependency-name: pytest dependency-type: direct:production
+
+update-type: version-update:semver-patch
+
+...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -780,8 +974,11 @@ Bumps [pyright](https://github.com/RobertCraigie/pyright-python) from 1.1.364 to
   notes](https://github.com/RobertCraigie/pyright-python/releases) -
   [Commits](https://github.com/RobertCraigie/pyright-python/compare/v1.1.364...v1.1.365)
 
---- updated-dependencies: - dependency-name: pyright dependency-type: direct:production update-type:
-  version-update:semver-patch ...
+--- updated-dependencies: - dependency-name: pyright dependency-type: direct:production
+
+update-type: version-update:semver-patch
+
+...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -789,17 +986,6 @@ Signed-off-by: dependabot[bot] <support@github.com>
 ## v0.7.3 (2024-06-03)
 
 ### Build System
-
-- **deps**: Update transformers requirement
-  ([`803d9fb`](https://github.com/qthequartermasterman/hypothesis-torch/commit/803d9fb626113e7d0800bee72ac401b40cfe9a2c))
-
-Updates the requirements on [transformers](https://github.com/huggingface/transformers) to permit
-  the latest version. - [Release notes](https://github.com/huggingface/transformers/releases) -
-  [Commits](https://github.com/huggingface/transformers/compare/v4.0.0...v4.41.2)
-
---- updated-dependencies: - dependency-name: transformers dependency-type: direct:production ...
-
-Signed-off-by: dependabot[bot] <support@github.com>
 
 - **deps**: Bump ruff from 0.4.5 to 0.4.7
   ([`7709d1e`](https://github.com/qthequartermasterman/hypothesis-torch/commit/7709d1e480624c9cb0421215d063b45855f3c43b))
@@ -809,8 +995,24 @@ Bumps [ruff](https://github.com/astral-sh/ruff) from 0.4.5 to 0.4.7. - [Release
   [Changelog](https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md) -
   [Commits](https://github.com/astral-sh/ruff/compare/v0.4.5...v0.4.7)
 
---- updated-dependencies: - dependency-name: ruff dependency-type: direct:production update-type:
-  version-update:semver-patch ...
+--- updated-dependencies: - dependency-name: ruff dependency-type: direct:production
+
+update-type: version-update:semver-patch
+
+...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+
+- **deps**: Update transformers requirement
+  ([`803d9fb`](https://github.com/qthequartermasterman/hypothesis-torch/commit/803d9fb626113e7d0800bee72ac401b40cfe9a2c))
+
+Updates the requirements on [transformers](https://github.com/huggingface/transformers) to permit
+  the latest version. - [Release notes](https://github.com/huggingface/transformers/releases) -
+  [Commits](https://github.com/huggingface/transformers/compare/v4.0.0...v4.41.2)
+
+--- updated-dependencies: - dependency-name: transformers dependency-type: direct:production
+
+...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -828,7 +1030,10 @@ Bumps [mkdocs-material](https://github.com/squidfunk/mkdocs-material) from 9.5.2
   [Commits](https://github.com/squidfunk/mkdocs-material/compare/9.5.24...9.5.25)
 
 --- updated-dependencies: - dependency-name: mkdocs-material dependency-type: direct:production
-  update-type: version-update:semver-patch ...
+
+update-type: version-update:semver-patch
+
+...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -836,17 +1041,6 @@ Signed-off-by: dependabot[bot] <support@github.com>
 ## v0.7.1 (2024-05-24)
 
 ### Build System
-
-- **deps**: Update transformers requirement
-  ([`a3167a4`](https://github.com/qthequartermasterman/hypothesis-torch/commit/a3167a421bb5e94b66b27c27964596f4cae8a98b))
-
-Updates the requirements on [transformers](https://github.com/huggingface/transformers) to permit
-  the latest version. - [Release notes](https://github.com/huggingface/transformers/releases) -
-  [Commits](https://github.com/huggingface/transformers/compare/v4.0.0...v4.41.1)
-
---- updated-dependencies: - dependency-name: transformers dependency-type: direct:production ...
-
-Signed-off-by: dependabot[bot] <support@github.com>
 
 - **deps**: Bump ruff from 0.4.4 to 0.4.5
   ([`102bd96`](https://github.com/qthequartermasterman/hypothesis-torch/commit/102bd96f354ef73d7b848183af21ffb02fb6c96b))
@@ -856,21 +1050,42 @@ Bumps [ruff](https://github.com/astral-sh/ruff) from 0.4.4 to 0.4.5. - [Release
   [Changelog](https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md) -
   [Commits](https://github.com/astral-sh/ruff/compare/v0.4.4...v0.4.5)
 
---- updated-dependencies: - dependency-name: ruff dependency-type: direct:production update-type:
-  version-update:semver-patch ...
+--- updated-dependencies: - dependency-name: ruff dependency-type: direct:production
+
+update-type: version-update:semver-patch
+
+...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+
+- **deps**: Update transformers requirement
+  ([`a3167a4`](https://github.com/qthequartermasterman/hypothesis-torch/commit/a3167a421bb5e94b66b27c27964596f4cae8a98b))
+
+Updates the requirements on [transformers](https://github.com/huggingface/transformers) to permit
+  the latest version. - [Release notes](https://github.com/huggingface/transformers/releases) -
+  [Commits](https://github.com/huggingface/transformers/compare/v4.0.0...v4.41.1)
+
+--- updated-dependencies: - dependency-name: transformers dependency-type: direct:production
+
+...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
 ### Chores
 
-- **deps**: Update transformers requirement
-  ([`ca6f76a`](https://github.com/qthequartermasterman/hypothesis-torch/commit/ca6f76a4d96f4fb60bb7ec4a56010ef247a54cb3))
+- **deps**: Bump mkdocs-material from 9.5.22 to 9.5.23
+  ([`b5ef3b8`](https://github.com/qthequartermasterman/hypothesis-torch/commit/b5ef3b84d2e948f2bf7ee341850a02b52c168704))
 
-Updates the requirements on [transformers](https://github.com/huggingface/transformers) to permit
-  the latest version. - [Release notes](https://github.com/huggingface/transformers/releases) -
-  [Commits](https://github.com/huggingface/transformers/compare/v4.0.0...v4.41.0)
+Bumps [mkdocs-material](https://github.com/squidfunk/mkdocs-material) from 9.5.22 to 9.5.23. -
+  [Release notes](https://github.com/squidfunk/mkdocs-material/releases) -
+  [Changelog](https://github.com/squidfunk/mkdocs-material/blob/master/CHANGELOG) -
+  [Commits](https://github.com/squidfunk/mkdocs-material/compare/9.5.22...9.5.23)
 
---- updated-dependencies: - dependency-name: transformers dependency-type: direct:production ...
+--- updated-dependencies: - dependency-name: mkdocs-material dependency-type: direct:production
+
+update-type: version-update:semver-patch
+
+...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -883,7 +1098,25 @@ Bumps [mkdocs-material](https://github.com/squidfunk/mkdocs-material) from 9.5.2
   [Commits](https://github.com/squidfunk/mkdocs-material/compare/9.5.23...9.5.24)
 
 --- updated-dependencies: - dependency-name: mkdocs-material dependency-type: direct:production
-  update-type: version-update:semver-patch ...
+
+update-type: version-update:semver-patch
+
+...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+
+- **deps**: Bump pyright from 1.1.359 to 1.1.363
+  ([`45416ce`](https://github.com/qthequartermasterman/hypothesis-torch/commit/45416ceafa8788ef279828a84887682a5ccc63a1))
+
+Bumps [pyright](https://github.com/RobertCraigie/pyright-python) from 1.1.359 to 1.1.363. - [Release
+  notes](https://github.com/RobertCraigie/pyright-python/releases) -
+  [Commits](https://github.com/RobertCraigie/pyright-python/compare/v1.1.359...v1.1.363)
+
+--- updated-dependencies: - dependency-name: pyright dependency-type: direct:production
+
+update-type: version-update:semver-patch
+
+...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -895,33 +1128,24 @@ Bumps [pytest](https://github.com/pytest-dev/pytest) from 8.2.0 to 8.2.1. - [Rel
   [Changelog](https://github.com/pytest-dev/pytest/blob/main/CHANGELOG.rst) -
   [Commits](https://github.com/pytest-dev/pytest/compare/8.2.0...8.2.1)
 
---- updated-dependencies: - dependency-name: pytest dependency-type: direct:production update-type:
-  version-update:semver-patch ...
+--- updated-dependencies: - dependency-name: pytest dependency-type: direct:production
+
+update-type: version-update:semver-patch
+
+...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
-- **deps**: Bump pyright from 1.1.359 to 1.1.363
-  ([`45416ce`](https://github.com/qthequartermasterman/hypothesis-torch/commit/45416ceafa8788ef279828a84887682a5ccc63a1))
+- **deps**: Update transformers requirement
+  ([`ca6f76a`](https://github.com/qthequartermasterman/hypothesis-torch/commit/ca6f76a4d96f4fb60bb7ec4a56010ef247a54cb3))
 
-Bumps [pyright](https://github.com/RobertCraigie/pyright-python) from 1.1.359 to 1.1.363. - [Release
-  notes](https://github.com/RobertCraigie/pyright-python/releases) -
-  [Commits](https://github.com/RobertCraigie/pyright-python/compare/v1.1.359...v1.1.363)
+Updates the requirements on [transformers](https://github.com/huggingface/transformers) to permit
+  the latest version. - [Release notes](https://github.com/huggingface/transformers/releases) -
+  [Commits](https://github.com/huggingface/transformers/compare/v4.0.0...v4.41.0)
 
---- updated-dependencies: - dependency-name: pyright dependency-type: direct:production update-type:
-  version-update:semver-patch ...
+--- updated-dependencies: - dependency-name: transformers dependency-type: direct:production
 
-Signed-off-by: dependabot[bot] <support@github.com>
-
-- **deps**: Bump mkdocs-material from 9.5.22 to 9.5.23
-  ([`b5ef3b8`](https://github.com/qthequartermasterman/hypothesis-torch/commit/b5ef3b84d2e948f2bf7ee341850a02b52c168704))
-
-Bumps [mkdocs-material](https://github.com/squidfunk/mkdocs-material) from 9.5.22 to 9.5.23. -
-  [Release notes](https://github.com/squidfunk/mkdocs-material/releases) -
-  [Changelog](https://github.com/squidfunk/mkdocs-material/blob/master/CHANGELOG) -
-  [Commits](https://github.com/squidfunk/mkdocs-material/compare/9.5.22...9.5.23)
-
---- updated-dependencies: - dependency-name: mkdocs-material dependency-type: direct:production
-  update-type: version-update:semver-patch ...
+...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -947,21 +1171,8 @@ BREAKING-CHANGE: Removed support for `Mapping[str, Any]` as `elements` argument 
 
 ### Code Style
 
-- Enable ruff style rules.
-  ([`680bacf`](https://github.com/qthequartermasterman/hypothesis-torch/commit/680bacfb1f99c3504635b0967f5725e249ffb670))
-
-- Enable flake9-use-pathlib annotation via ruff.
-  ([`fb60e9c`](https://github.com/qthequartermasterman/hypothesis-torch/commit/fb60e9ca073f62e8121553d3268f9eab9c86c2a0))
-
-- Enable pyflakes annotation via ruff.
-  ([`829bbf7`](https://github.com/qthequartermasterman/hypothesis-torch/commit/829bbf7a4e82ad852ec10c9a72cc3ac230e8a9ee))
-
-- Upgrade internal references to deprecated/moved python typing constructs to be compatible with
-  python 3.9
-  ([`04b15c1`](https://github.com/qthequartermasterman/hypothesis-torch/commit/04b15c1f9cd17a7e85f9f8449fdf354739798591))
-
-- Enable pycodestyle warning via ruff.
-  ([`7b4d0c7`](https://github.com/qthequartermasterman/hypothesis-torch/commit/7b4d0c78ffac8fb62fccd7c03eac5747ad2dcf7c))
+- Adopt isort via ruff for internal code.
+  ([`2dc520d`](https://github.com/qthequartermasterman/hypothesis-torch/commit/2dc520d839d4f00080581bf3c4f7955e5db67b5b))
 
 - Adopt perflint via ruff for internal code.
   ([`12ec834`](https://github.com/qthequartermasterman/hypothesis-torch/commit/12ec834f36e1d72f65708baf27c0f5e32335ea0a))
@@ -969,8 +1180,21 @@ BREAKING-CHANGE: Removed support for `Mapping[str, Any]` as `elements` argument 
 - Adopt refurb via ruff for internal code.
   ([`0fe5f13`](https://github.com/qthequartermasterman/hypothesis-torch/commit/0fe5f13a8728aa6f58deb4a8b95088258775164a))
 
-- Adopt isort via ruff for internal code.
-  ([`2dc520d`](https://github.com/qthequartermasterman/hypothesis-torch/commit/2dc520d839d4f00080581bf3c4f7955e5db67b5b))
+- Enable flake9-use-pathlib annotation via ruff.
+  ([`fb60e9c`](https://github.com/qthequartermasterman/hypothesis-torch/commit/fb60e9ca073f62e8121553d3268f9eab9c86c2a0))
+
+- Enable pycodestyle warning via ruff.
+  ([`7b4d0c7`](https://github.com/qthequartermasterman/hypothesis-torch/commit/7b4d0c78ffac8fb62fccd7c03eac5747ad2dcf7c))
+
+- Enable pyflakes annotation via ruff.
+  ([`829bbf7`](https://github.com/qthequartermasterman/hypothesis-torch/commit/829bbf7a4e82ad852ec10c9a72cc3ac230e8a9ee))
+
+- Enable ruff style rules.
+  ([`680bacf`](https://github.com/qthequartermasterman/hypothesis-torch/commit/680bacfb1f99c3504635b0967f5725e249ffb670))
+
+- Upgrade internal references to deprecated/moved python typing constructs to be compatible with
+  python 3.9
+  ([`04b15c1`](https://github.com/qthequartermasterman/hypothesis-torch/commit/04b15c1f9cd17a7e85f9f8449fdf354739798591))
 
 ### Continuous Integration
 
@@ -980,34 +1204,39 @@ BREAKING-CHANGE: Removed support for `Mapping[str, Any]` as `elements` argument 
 - Enable mypy in pre-commit and use local ruff
   ([`5751de7`](https://github.com/qthequartermasterman/hypothesis-torch/commit/5751de7a37647806323c3fe5959c94701e10881e))
 
-- Enable pyright in pre-commit
-  ([`57b7a44`](https://github.com/qthequartermasterman/hypothesis-torch/commit/57b7a441532ab2ba33cd16457433db29a0574443))
-
 - Enable pyright in CI
   ([`c7508c6`](https://github.com/qthequartermasterman/hypothesis-torch/commit/c7508c65d7a79291fd9ca513d52e4f1a35c4a9d3))
 
 - Enable pyright in CI
   ([`ae70427`](https://github.com/qthequartermasterman/hypothesis-torch/commit/ae70427883312ade461ccaa03fbcd8731df956be))
 
-### Documentation
+- Enable pyright in pre-commit
+  ([`57b7a44`](https://github.com/qthequartermasterman/hypothesis-torch/commit/57b7a441532ab2ba33cd16457433db29a0574443))
 
-- :label: improve type hints for `transformer_strategy` by fixing missing `None` Type and incorrect
-  return type.
-  ([`c435e3c`](https://github.com/qthequartermasterman/hypothesis-torch/commit/c435e3c16e5016ab634a0b9c1d020c7e1dc02c1d))
+### Documentation
 
 - :label: improve type hints for `optimizer_strategy` by fixing missing `None` Type and incorrect
   return type.
   ([`4001a0c`](https://github.com/qthequartermasterman/hypothesis-torch/commit/4001a0c4fb0e8b94bd167baf3d1c2e76fe7c15af))
 
-- :label: improve type hints for internal implementation details of `alternate` iterable util
-  function.
-  ([`3f85472`](https://github.com/qthequartermasterman/hypothesis-torch/commit/3f85472baf44b121b31078024efc0537b39c3c71))
+- :label: improve type hints for `transformer_strategy` by fixing missing `None` Type and incorrect
+  return type.
+  ([`c435e3c`](https://github.com/qthequartermasterman/hypothesis-torch/commit/c435e3c16e5016ab634a0b9c1d020c7e1dc02c1d))
 
 - :label: improve type hints for internal implementation by making some imports explicit.
   ([`e6ac523`](https://github.com/qthequartermasterman/hypothesis-torch/commit/e6ac5233e6b669e6e3d414df9a01eb7e4c609820))
 
+- :label: improve type hints for internal implementation details of `alternate` iterable util
+  function.
+  ([`3f85472`](https://github.com/qthequartermasterman/hypothesis-torch/commit/3f85472baf44b121b31078024efc0537b39c3c71))
+
 - :label: improve type hints for internal TorchRandomWrapper object.
   ([`af953ce`](https://github.com/qthequartermasterman/hypothesis-torch/commit/af953ced15294b8023078436e2b304f3eef55c46))
+
+### BREAKING CHANGES
+
+- Hypothesis will no longer (incorrectly) generate a arbitrary CUDA torch.devices when using builds
+  on `torch.cuda.device`.
 
 
 ## v0.6.4 (2024-05-13)
@@ -1027,7 +1256,11 @@ Bumps [dawidd6/action-download-artifact](https://github.com/dawidd6/action-downl
   [Commits](https://github.com/dawidd6/action-download-artifact/compare/v2.24.3...v3.1.4)
 
 --- updated-dependencies: - dependency-name: dawidd6/action-download-artifact dependency-type:
-  direct:production update-type: version-update:semver-major ...
+  direct:production
+
+update-type: version-update:semver-major
+
+...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -1040,7 +1273,10 @@ Bumps [mkdocs-material](https://github.com/squidfunk/mkdocs-material) from 9.4.6
   [Commits](https://github.com/squidfunk/mkdocs-material/compare/9.4.6...9.5.22)
 
 --- updated-dependencies: - dependency-name: mkdocs-material dependency-type: direct:production
-  update-type: version-update:semver-minor ...
+
+update-type: version-update:semver-minor
+
+...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -1052,8 +1288,11 @@ Bumps [ruff](https://github.com/astral-sh/ruff) from 0.4.3 to 0.4.4. - [Release
   [Changelog](https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md) -
   [Commits](https://github.com/astral-sh/ruff/compare/v0.4.3...v0.4.4)
 
---- updated-dependencies: - dependency-name: ruff dependency-type: direct:production update-type:
-  version-update:semver-patch ...
+--- updated-dependencies: - dependency-name: ruff dependency-type: direct:production
+
+update-type: version-update:semver-patch
+
+...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -1064,17 +1303,19 @@ Updates the requirements on [transformers](https://github.com/huggingface/transf
   the latest version. - [Release notes](https://github.com/huggingface/transformers/releases) -
   [Commits](https://github.com/huggingface/transformers/compare/v4.0.0...v4.40.2)
 
---- updated-dependencies: - dependency-name: transformers dependency-type: direct:production ...
+--- updated-dependencies: - dependency-name: transformers dependency-type: direct:production
+
+...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
 ### Continuous Integration
 
-- Increase dependabot frequency
-  ([`e44cd5f`](https://github.com/qthequartermasterman/hypothesis-torch/commit/e44cd5f45133d1d0915e4b1c12ccf8aa1cf8b000))
-
 - Fix missing coverage comment by creating pytest-coverage.txt file during build
   ([`a8772c9`](https://github.com/qthequartermasterman/hypothesis-torch/commit/a8772c9abc14ab2a53aed3eb9c3c2c6beab97e52))
+
+- Increase dependabot frequency
+  ([`e44cd5f`](https://github.com/qthequartermasterman/hypothesis-torch/commit/e44cd5f45133d1d0915e4b1c12ccf8aa1cf8b000))
 
 - Store hypothesis database in GitHub Actions to allow reproducing locally
   ([`fd62aca`](https://github.com/qthequartermasterman/hypothesis-torch/commit/fd62acad596925d0ae58187767452df1bd6b9350))
@@ -1125,8 +1366,14 @@ Fix incompatible parameters: - fused is only available if cuda is available - fu
 
 ### Build System
 
+- :sparkles: :memo: Add readthedocs configuration.
+  ([`95ffac5`](https://github.com/qthequartermasterman/hypothesis-torch/commit/95ffac52292a6290ad5a2f418c0e11d40c9c1af3))
+
 - :zap: remove unnecessary tee to avoid supressing error code
   ([`8716033`](https://github.com/qthequartermasterman/hypothesis-torch/commit/87160333a8ba121b710fedde3f29066e711e6c19))
+
+- Convert workflow to reusable workflow for simplicity
+  ([`b1aa17a`](https://github.com/qthequartermasterman/hypothesis-torch/commit/b1aa17a70bd93c51f8c9f9f297741f53c90fcb00))
 
 - Fix incorrect reusable workflow path
   ([`ec36fc6`](https://github.com/qthequartermasterman/hypothesis-torch/commit/ec36fc68b1a0acf62902623ca67983c1fc699914))
@@ -1134,34 +1381,7 @@ Fix incompatible parameters: - fused is only available if cuda is available - fu
 - Test pytorch 1.13 in CI
   ([`6aff502`](https://github.com/qthequartermasterman/hypothesis-torch/commit/6aff502b464bb3c5a43ca19acc4ff4854b104056))
 
-- Convert workflow to reusable workflow for simplicity
-  ([`b1aa17a`](https://github.com/qthequartermasterman/hypothesis-torch/commit/b1aa17a70bd93c51f8c9f9f297741f53c90fcb00))
-
-- :sparkles: :memo: Add readthedocs configuration.
-  ([`95ffac5`](https://github.com/qthequartermasterman/hypothesis-torch/commit/95ffac52292a6290ad5a2f418c0e11d40c9c1af3))
-
 ### Documentation
-
-- :sparkles: :memo: Add index page
-  ([`510e3df`](https://github.com/qthequartermasterman/hypothesis-torch/commit/510e3dfedd2af3afae3b569183574ee223eb31f1))
-
-- :sparkles: :memo: Add strategies reference to docs.
-  ([`8fc0d95`](https://github.com/qthequartermasterman/hypothesis-torch/commit/8fc0d95d89b06191e5aaa9bf8214f9e92f3caca5))
-
-- :sparkles: :memo: Add compatability guide to docs.
-  ([`ca3bada`](https://github.com/qthequartermasterman/hypothesis-torch/commit/ca3badae4a2096f2ab84373c7118452cd4626e20))
-
-- :sparkles: :memo: Disable top tabs on docs.
-  ([`53164a2`](https://github.com/qthequartermasterman/hypothesis-torch/commit/53164a2febb25f86630e2b26e27f01a941bfa8e1))
-
-- :sparkles: :memo: Add quick start guide to docs.
-  ([`2710504`](https://github.com/qthequartermasterman/hypothesis-torch/commit/27105049976e83a024af4cb5d1c6d8314005cf7f))
-
-- :sparkles: :memo: Add quick start guide to docs.
-  ([`a59871c`](https://github.com/qthequartermasterman/hypothesis-torch/commit/a59871c2755088c9954384bdca7e395a51f71868))
-
-- :sparkles: :memo: Add contribuging guidelines to docs.
-  ([`3f30767`](https://github.com/qthequartermasterman/hypothesis-torch/commit/3f3076763b50de5a4c663faed4113490cb8d5ad2))
 
 - :sparkles: :memo: Add changelog to docs.
   ([`05dc054`](https://github.com/qthequartermasterman/hypothesis-torch/commit/05dc05400bcf4c7b8d0da34822bd67b8150e67e6))
@@ -1169,8 +1389,29 @@ Fix incompatible parameters: - fused is only available if cuda is available - fu
 - :sparkles: :memo: Add changelog to docs.
   ([`ddb9598`](https://github.com/qthequartermasterman/hypothesis-torch/commit/ddb95980bb5e9fda47af72977fcd33b1954be122))
 
+- :sparkles: :memo: Add compatability guide to docs.
+  ([`ca3bada`](https://github.com/qthequartermasterman/hypothesis-torch/commit/ca3badae4a2096f2ab84373c7118452cd4626e20))
+
+- :sparkles: :memo: Add contribuging guidelines to docs.
+  ([`3f30767`](https://github.com/qthequartermasterman/hypothesis-torch/commit/3f3076763b50de5a4c663faed4113490cb8d5ad2))
+
+- :sparkles: :memo: Add index page
+  ([`510e3df`](https://github.com/qthequartermasterman/hypothesis-torch/commit/510e3dfedd2af3afae3b569183574ee223eb31f1))
+
 - :sparkles: :memo: Add license file to docs.
   ([`06adb42`](https://github.com/qthequartermasterman/hypothesis-torch/commit/06adb42eaf466688b97878daf2395cb957536fee))
+
+- :sparkles: :memo: Add quick start guide to docs.
+  ([`2710504`](https://github.com/qthequartermasterman/hypothesis-torch/commit/27105049976e83a024af4cb5d1c6d8314005cf7f))
+
+- :sparkles: :memo: Add quick start guide to docs.
+  ([`a59871c`](https://github.com/qthequartermasterman/hypothesis-torch/commit/a59871c2755088c9954384bdca7e395a51f71868))
+
+- :sparkles: :memo: Add strategies reference to docs.
+  ([`8fc0d95`](https://github.com/qthequartermasterman/hypothesis-torch/commit/8fc0d95d89b06191e5aaa9bf8214f9e92f3caca5))
+
+- :sparkles: :memo: Disable top tabs on docs.
+  ([`53164a2`](https://github.com/qthequartermasterman/hypothesis-torch/commit/53164a2febb25f86630e2b26e27f01a941bfa8e1))
 
 - :sparkles: Initial docsite set up.
   ([`274bb65`](https://github.com/qthequartermasterman/hypothesis-torch/commit/274bb6512912fab817c71f394a3ccfad124de625))
@@ -1217,8 +1458,11 @@ Bumps [pytest](https://github.com/pytest-dev/pytest) from 8.1.1 to 8.2.0. - [Rel
   [Changelog](https://github.com/pytest-dev/pytest/blob/main/CHANGELOG.rst) -
   [Commits](https://github.com/pytest-dev/pytest/compare/8.1.1...8.2.0)
 
---- updated-dependencies: - dependency-name: pytest dependency-type: direct:production update-type:
-  version-update:semver-minor ...
+--- updated-dependencies: - dependency-name: pytest dependency-type: direct:production
+
+update-type: version-update:semver-minor
+
+...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -1230,18 +1474,21 @@ Bumps [ruff](https://github.com/astral-sh/ruff) from 0.4.1 to 0.4.3. - [Release
   [Changelog](https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md) -
   [Commits](https://github.com/astral-sh/ruff/compare/v0.4.1...v0.4.3)
 
---- updated-dependencies: - dependency-name: ruff dependency-type: direct:production update-type:
-  version-update:semver-patch ...
+--- updated-dependencies: - dependency-name: ruff dependency-type: direct:production
+
+update-type: version-update:semver-patch
+
+...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
 ### Testing
 
-- Ignore import errors while inferring available transformers in tests.
-  ([`84185cb`](https://github.com/qthequartermasterman/hypothesis-torch/commit/84185cb66fcec5f50aad09e38b0026624ca5862a))
-
 - Disable deadline for occasionally slow tests
   ([`34ae9db`](https://github.com/qthequartermasterman/hypothesis-torch/commit/34ae9db1d2ef05433c87a25a4d17aa224c67b4ff))
+
+- Ignore import errors while inferring available transformers in tests.
+  ([`84185cb`](https://github.com/qthequartermasterman/hypothesis-torch/commit/84185cb66fcec5f50aad09e38b0026624ca5862a))
 
 
 ## v0.4.3 (2024-04-28)
@@ -1268,9 +1515,6 @@ This fix does not work for all bfloat16 tensors.
 
 ### Features
 
-- :sparkles: add support for more transformers strategies
-  ([`7ac7508`](https://github.com/qthequartermasterman/hypothesis-torch/commit/7ac75088956adf3ec5b06b9352d6ed7c0492ad59))
-
 - :sparkles: add strategies for torch optimizer types and torch optimizer instances
   ([`5cf6181`](https://github.com/qthequartermasterman/hypothesis-torch/commit/5cf6181ef6617eda19eb0b51658f835280421c63))
 
@@ -1278,6 +1522,9 @@ NOTE: The strategy for torch optimizers actually generates an "alternate constru
   optimizer that takes in only a torch module's parameters. The strategy will "pre-fill" all of the
   hyperparameters. If these hyparameters should be overridden, they can be specified as kwargs in
   the strategy.
+
+- :sparkles: add support for more transformers strategies
+  ([`7ac7508`](https://github.com/qthequartermasterman/hypothesis-torch/commit/7ac75088956adf3ec5b06b9352d6ed7c0492ad59))
 
 
 ## v0.4.1 (2024-04-24)
@@ -1330,28 +1577,28 @@ NOTE: The strategy for torch optimizers actually generates an "alternate constru
 
 ### Features
 
+- :sparkles: add layout argument to tensor strategy
+  ([`a77069c`](https://github.com/qthequartermasterman/hypothesis-torch/commit/a77069cc8502f15c69b46fd16a92926645b4e9b5))
+
 - :sparkles: add pin_memory to tensor generation
   ([`dc42447`](https://github.com/qthequartermasterman/hypothesis-torch/commit/dc42447ec057ac7bc1939c1491fdd53c9e9bece2))
 
 - :sparkles: add requires_grad to tensor generation
   ([`51bda34`](https://github.com/qthequartermasterman/hypothesis-torch/commit/51bda34b0e33f71708e43279969908dbe656be87))
 
-- :sparkles: allow tensor strategy to sample over layout and memory format
-  ([`af02d54`](https://github.com/qthequartermasterman/hypothesis-torch/commit/af02d542d84049c9ece7c738799c9472b8332c44))
-
-- :sparkles: add layout argument to tensor strategy
-  ([`a77069c`](https://github.com/qthequartermasterman/hypothesis-torch/commit/a77069cc8502f15c69b46fd16a92926645b4e9b5))
-
 - :sparkles: add strategies for layout and memory format
   ([`153fa0b`](https://github.com/qthequartermasterman/hypothesis-torch/commit/153fa0bd49c51c04c31784cbb83dd42e1f41dbe9))
 
-### Refactoring
+- :sparkles: allow tensor strategy to sample over layout and memory format
+  ([`af02d54`](https://github.com/qthequartermasterman/hypothesis-torch/commit/af02d542d84049c9ece7c738799c9472b8332c44))
 
-- :recycle: rename global private constant
-  ([`3fcfac6`](https://github.com/qthequartermasterman/hypothesis-torch/commit/3fcfac64d9ccbe4cda70d1fc1ad2caa8af539bf0))
+### Refactoring
 
 - :recycle: improve typing to enforce global constants
   ([`c46f53c`](https://github.com/qthequartermasterman/hypothesis-torch/commit/c46f53c86e3b9cfffb609a18a9d21e744002e91b))
+
+- :recycle: rename global private constant
+  ([`3fcfac6`](https://github.com/qthequartermasterman/hypothesis-torch/commit/3fcfac64d9ccbe4cda70d1fc1ad2caa8af539bf0))
 
 ### Testing
 
@@ -1384,11 +1631,11 @@ NOTE: The strategy for torch optimizers actually generates an "alternate constru
 
 ### Refactoring
 
-- :zap: :recycle: do not define dtype_strategy as as composite strategy to avoid overhead
-  ([`e47ea82`](https://github.com/qthequartermasterman/hypothesis-torch/commit/e47ea82aabba12f4a7e16865829e6b2ec3b59a2f))
-
 - :zap: :recycle: do not define device_strategy as as composite strategy to avoid overhead
   ([`221d72a`](https://github.com/qthequartermasterman/hypothesis-torch/commit/221d72a99dc3ca40a6cec3800a12833026dc46d2))
+
+- :zap: :recycle: do not define dtype_strategy as as composite strategy to avoid overhead
+  ([`e47ea82`](https://github.com/qthequartermasterman/hypothesis-torch/commit/e47ea82aabba12f4a7e16865829e6b2ec3b59a2f))
 
 ### Testing
 
@@ -1416,7 +1663,10 @@ Bumps [actions/setup-python](https://github.com/actions/setup-python) from 2 to 
   [Commits](https://github.com/actions/setup-python/compare/v2...v5)
 
 --- updated-dependencies: - dependency-name: actions/setup-python dependency-type: direct:production
-  update-type: version-update:semver-major ...
+
+update-type: version-update:semver-major
+
+...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -1435,6 +1685,22 @@ Signed-off-by: dependabot[bot] <support@github.com>
 
 ### Chores
 
+- **deps**: Bump actions/checkout from 3 to 4
+  ([`1409079`](https://github.com/qthequartermasterman/hypothesis-torch/commit/140907957ed24f6adf196c9a4a0b01cb3ab9fe5f))
+
+Bumps [actions/checkout](https://github.com/actions/checkout) from 3 to 4. - [Release
+  notes](https://github.com/actions/checkout/releases) -
+  [Changelog](https://github.com/actions/checkout/blob/main/CHANGELOG.md) -
+  [Commits](https://github.com/actions/checkout/compare/v3...v4)
+
+--- updated-dependencies: - dependency-name: actions/checkout dependency-type: direct:production
+
+update-type: version-update:semver-major
+
+...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+
 - **deps**: Bump stefanzweifel/git-auto-commit-action from 4 to 5
   ([`77dcfa5`](https://github.com/qthequartermasterman/hypothesis-torch/commit/77dcfa5cda44125a738f7338338c823e9c708d04))
 
@@ -1445,20 +1711,11 @@ Bumps
   [Commits](https://github.com/stefanzweifel/git-auto-commit-action/compare/v4...v5)
 
 --- updated-dependencies: - dependency-name: stefanzweifel/git-auto-commit-action dependency-type:
-  direct:production update-type: version-update:semver-major ...
+  direct:production
 
-Signed-off-by: dependabot[bot] <support@github.com>
+update-type: version-update:semver-major
 
-- **deps**: Bump actions/checkout from 3 to 4
-  ([`1409079`](https://github.com/qthequartermasterman/hypothesis-torch/commit/140907957ed24f6adf196c9a4a0b01cb3ab9fe5f))
-
-Bumps [actions/checkout](https://github.com/actions/checkout) from 3 to 4. - [Release
-  notes](https://github.com/actions/checkout/releases) -
-  [Changelog](https://github.com/actions/checkout/blob/main/CHANGELOG.md) -
-  [Commits](https://github.com/actions/checkout/compare/v3...v4)
-
---- updated-dependencies: - dependency-name: actions/checkout dependency-type: direct:production
-  update-type: version-update:semver-major ...
+...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -1506,22 +1763,22 @@ Signed-off-by: dependabot[bot] <support@github.com>
 
 ### Continuous Integration
 
+- Add PR build
+  ([`3284a11`](https://github.com/qthequartermasterman/hypothesis-torch/commit/3284a1168e75bb33f95a119406d1c73a85c28d26))
+
 - Fix github actions
   ([`1b6d8b2`](https://github.com/qthequartermasterman/hypothesis-torch/commit/1b6d8b29b460579730954210fbb221db200a53d7))
 
 - Fix github actions
   ([`a3abe85`](https://github.com/qthequartermasterman/hypothesis-torch/commit/a3abe8564863bf5818fecc900b538d647051d528))
 
-- Add PR build
-  ([`3284a11`](https://github.com/qthequartermasterman/hypothesis-torch/commit/3284a1168e75bb33f95a119406d1c73a85c28d26))
-
 ### Testing
-
-- :white_check_mark: unit tests for tensors
-  ([`50da775`](https://github.com/qthequartermasterman/hypothesis-torch/commit/50da77539f9d4d30165d6f136d46518b7991b00d))
 
 - :white_check_mark: unit tests for iterable utils
   ([`f262c89`](https://github.com/qthequartermasterman/hypothesis-torch/commit/f262c8936ac1dfc7b2d4b082d5478ad5111a3bf2))
+
+- :white_check_mark: unit tests for tensors
+  ([`50da775`](https://github.com/qthequartermasterman/hypothesis-torch/commit/50da77539f9d4d30165d6f136d46518b7991b00d))
 
 
 ## v0.1.7 (2024-04-21)
@@ -1611,17 +1868,17 @@ Signed-off-by: dependabot[bot] <support@github.com>
 
 ### Chores
 
+- Pyproject toml
+  ([`a1bfdaa`](https://github.com/qthequartermasterman/hypothesis-torch/commit/a1bfdaa067915518600cdc5d187c8a2d75c346b5))
+
+- Set optional dependencies
+  ([`64547b3`](https://github.com/qthequartermasterman/hypothesis-torch/commit/64547b3cb5a7219aef3871e3d68eabcbcecb4b74))
+
 - Specify optional dependencies
   ([`fe1b34e`](https://github.com/qthequartermasterman/hypothesis-torch/commit/fe1b34ea1dd58c8bd637b678a3901cde811ef0fa))
 
 - Typing
   ([`8b184e0`](https://github.com/qthequartermasterman/hypothesis-torch/commit/8b184e0fa72dda66c75cbfe31929869e3cfebfd6))
-
-- Set optional dependencies
-  ([`64547b3`](https://github.com/qthequartermasterman/hypothesis-torch/commit/64547b3cb5a7219aef3871e3d68eabcbcecb4b74))
-
-- Pyproject toml
-  ([`a1bfdaa`](https://github.com/qthequartermasterman/hypothesis-torch/commit/a1bfdaa067915518600cdc5d187c8a2d75c346b5))
 
 ### Code Style
 
@@ -1649,32 +1906,32 @@ Signed-off-by: dependabot[bot] <support@github.com>
 
 ### Features
 
-- Modify linear network strategy api
-  ([`4c7d831`](https://github.com/qthequartermasterman/hypothesis-torch/commit/4c7d831f7b1d61383da5b1254ea44fb897c4732a))
-
-- Import transformer strategy into root if and only if transformers is installed
-  ([`b314203`](https://github.com/qthequartermasterman/hypothesis-torch/commit/b3142037e069fad2f4a659296c350558a58e9fd7))
-
-- Import strategies into the root
-  ([`eaa7a78`](https://github.com/qthequartermasterman/hypothesis-torch/commit/eaa7a78d5a8fdcccc35f577c33d4b50516d9efcb))
-
-- Generate modules
-  ([`ad8f103`](https://github.com/qthequartermasterman/hypothesis-torch/commit/ad8f103e7b4f3b2608f0b12f7068c63f7b1903ef))
-
-- Inspection_util.py
-  ([`1d22dc8`](https://github.com/qthequartermasterman/hypothesis-torch/commit/1d22dc8b927dba4ec5b301503f791aef4a64ffe5))
-
-- Generate hugging face transformers
-  ([`74a1ae2`](https://github.com/qthequartermasterman/hypothesis-torch/commit/74a1ae2f25afde8a676401dd3e65d3a8f43c6d54))
-
-- Generate tensors
-  ([`e9785d7`](https://github.com/qthequartermasterman/hypothesis-torch/commit/e9785d78c4d68e4fd0e80591319a5b3934031b5e))
+- Device strategies
+  ([`1acab83`](https://github.com/qthequartermasterman/hypothesis-torch/commit/1acab833ea64a71aedf134879ec07a9270a96b88))
 
 - Dtype strategies
   ([`723f096`](https://github.com/qthequartermasterman/hypothesis-torch/commit/723f096bc36164f09cc6662fccb56e2bc2ae3f8b))
 
-- Device strategies
-  ([`1acab83`](https://github.com/qthequartermasterman/hypothesis-torch/commit/1acab833ea64a71aedf134879ec07a9270a96b88))
+- Generate hugging face transformers
+  ([`74a1ae2`](https://github.com/qthequartermasterman/hypothesis-torch/commit/74a1ae2f25afde8a676401dd3e65d3a8f43c6d54))
+
+- Generate modules
+  ([`ad8f103`](https://github.com/qthequartermasterman/hypothesis-torch/commit/ad8f103e7b4f3b2608f0b12f7068c63f7b1903ef))
+
+- Generate tensors
+  ([`e9785d7`](https://github.com/qthequartermasterman/hypothesis-torch/commit/e9785d78c4d68e4fd0e80591319a5b3934031b5e))
+
+- Import strategies into the root
+  ([`eaa7a78`](https://github.com/qthequartermasterman/hypothesis-torch/commit/eaa7a78d5a8fdcccc35f577c33d4b50516d9efcb))
+
+- Import transformer strategy into root if and only if transformers is installed
+  ([`b314203`](https://github.com/qthequartermasterman/hypothesis-torch/commit/b3142037e069fad2f4a659296c350558a58e9fd7))
+
+- Inspection_util.py
+  ([`1d22dc8`](https://github.com/qthequartermasterman/hypothesis-torch/commit/1d22dc8b927dba4ec5b301503f791aef4a64ffe5))
+
+- Modify linear network strategy api
+  ([`4c7d831`](https://github.com/qthequartermasterman/hypothesis-torch/commit/4c7d831f7b1d61383da5b1254ea44fb897c4732a))
 
 ### Testing
 
