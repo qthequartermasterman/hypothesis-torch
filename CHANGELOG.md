@@ -1,6 +1,38 @@
 # CHANGELOG
 
 
+## v0.8.8 (2024-12-18)
+
+### Build System
+
+- **deps**: Bump the lint-and-dev group with 2 updates
+  ([`10cf12f`](https://github.com/qthequartermasterman/hypothesis-torch/commit/10cf12f19ab617d370ef77ecd68a0715e6100379))
+
+Bumps the lint-and-dev group with 2 updates: [ruff](https://github.com/astral-sh/ruff) and
+  [mkdocs-material](https://github.com/squidfunk/mkdocs-material).
+
+Updates `ruff` from 0.8.2 to 0.8.3 - [Release notes](https://github.com/astral-sh/ruff/releases) -
+  [Changelog](https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md) -
+  [Commits](https://github.com/astral-sh/ruff/compare/0.8.2...0.8.3)
+
+Updates `mkdocs-material` from 9.5.48 to 9.5.49 - [Release
+  notes](https://github.com/squidfunk/mkdocs-material/releases) -
+  [Changelog](https://github.com/squidfunk/mkdocs-material/blob/master/CHANGELOG) -
+  [Commits](https://github.com/squidfunk/mkdocs-material/compare/9.5.48...9.5.49)
+
+--- updated-dependencies: - dependency-name: ruff dependency-type: direct:production
+
+update-type: version-update:semver-patch
+
+dependency-group: lint-and-dev
+
+- dependency-name: mkdocs-material dependency-type: direct:production
+
+...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+
+
 ## v0.8.7 (2024-12-10)
 
 ### Build System
