@@ -47,9 +47,9 @@ huggingface = [
   "transformers>=4.42.3,<=4.47.0",
 ]
 dev = [
-  "mypy==1.13.0",
-  "ruff==0.8.3",
-  "pyright==1.1.390",
+  "mypy==1.14.0",
+  "ruff==0.8.4",
+  "pyright==1.1.391",
   "pytest==8.3.4",
   "pytest-cov==6.0.0"
 ]
