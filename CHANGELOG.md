@@ -1,6 +1,64 @@
 # CHANGELOG
 
 
+## v0.8.9 (2024-12-25)
+
+### Build System
+
+- **deps**: Bump the lint-and-dev group with 3 updates
+  ([`0dc263e`](https://github.com/qthequartermasterman/hypothesis-torch/commit/0dc263e0f0f4d2c2c3869fb0aaebadac82160770))
+
+Bumps the lint-and-dev group with 3 updates: [mypy](https://github.com/python/mypy),
+  [ruff](https://github.com/astral-sh/ruff) and
+  [pyright](https://github.com/RobertCraigie/pyright-python).
+
+Updates `mypy` from 1.13.0 to 1.14.0 -
+  [Changelog](https://github.com/python/mypy/blob/master/CHANGELOG.md) -
+  [Commits](https://github.com/python/mypy/compare/v1.13.0...v1.14.0)
+
+Updates `ruff` from 0.8.3 to 0.8.4 - [Release notes](https://github.com/astral-sh/ruff/releases) -
+  [Changelog](https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md) -
+  [Commits](https://github.com/astral-sh/ruff/compare/0.8.3...0.8.4)
+
+Updates `pyright` from 1.1.390 to 1.1.391 - [Release
+  notes](https://github.com/RobertCraigie/pyright-python/releases) -
+  [Commits](https://github.com/RobertCraigie/pyright-python/compare/v1.1.390...v1.1.391)
+
+--- updated-dependencies: - dependency-name: mypy dependency-type: direct:production
+
+update-type: version-update:semver-minor
+
+dependency-group: lint-and-dev
+
+- dependency-name: ruff dependency-type: direct:production
+
+update-type: version-update:semver-patch
+
+- dependency-name: pyright dependency-type: direct:production
+
+...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+
+- **deps**: Update transformers requirement
+  ([`de0ccbf`](https://github.com/qthequartermasterman/hypothesis-torch/commit/de0ccbfe5f3e9c2a0e561d66a82309c84bb0187e))
+
+Updates the requirements on [transformers](https://github.com/huggingface/transformers) to permit
+  the latest version.
+
+Updates `transformers` to 4.47.1 - [Release
+  notes](https://github.com/huggingface/transformers/releases) -
+  [Commits](https://github.com/huggingface/transformers/compare/v4.42.3...v4.47.1)
+
+--- updated-dependencies: - dependency-name: transformers dependency-type: direct:production
+
+dependency-group: optional-dependencies
+
+...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+
+
 ## v0.8.8 (2024-12-18)
 
 ### Build System
