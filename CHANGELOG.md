@@ -1,6 +1,37 @@
 # CHANGELOG
 
 
+## v0.8.10 (2025-01-06)
+
+### Build System
+
+- **deps**: Bump the lint-and-dev group across 1 directory with 2 updates
+  ([`6abe5b8`](https://github.com/qthequartermasterman/hypothesis-torch/commit/6abe5b8d67f2d5b2d887863d3831c6490dad3c37))
+
+Bumps the lint-and-dev group with 2 updates in the / directory:
+  [mypy](https://github.com/python/mypy) and [ruff](https://github.com/astral-sh/ruff).
+
+Updates `mypy` from 1.14.0 to 1.14.1 -
+  [Changelog](https://github.com/python/mypy/blob/master/CHANGELOG.md) -
+  [Commits](https://github.com/python/mypy/compare/v1.14.0...v1.14.1)
+
+Updates `ruff` from 0.8.4 to 0.8.6 - [Release notes](https://github.com/astral-sh/ruff/releases) -
+  [Changelog](https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md) -
+  [Commits](https://github.com/astral-sh/ruff/compare/0.8.4...0.8.6)
+
+--- updated-dependencies: - dependency-name: mypy dependency-type: direct:production
+
+update-type: version-update:semver-patch
+
+dependency-group: lint-and-dev
+
+- dependency-name: ruff dependency-type: direct:production
+
+...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+
+
 ## v0.8.9 (2024-12-25)
 
 ### Build System
