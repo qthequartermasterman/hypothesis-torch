@@ -48,7 +48,7 @@ huggingface = [
 ]
 dev = [
   "mypy==1.14.1",
-  "ruff==0.8.6",
+  "ruff==0.9.1",
   "pyright==1.1.391",
   "pytest==8.3.4",
   "pytest-cov==6.0.0"
