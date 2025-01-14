@@ -1,6 +1,48 @@
 # CHANGELOG
 
 
+## v0.8.11 (2025-01-14)
+
+### Build System
+
+- **deps**: Bump ruff from 0.8.6 to 0.9.1 in the lint-and-dev group
+  ([`75e0c62`](https://github.com/qthequartermasterman/hypothesis-torch/commit/75e0c6278edf1ced8bfc00d10d745d17fcc0c13a))
+
+Bumps the lint-and-dev group with 1 update: [ruff](https://github.com/astral-sh/ruff).
+
+Updates `ruff` from 0.8.6 to 0.9.1 - [Release notes](https://github.com/astral-sh/ruff/releases) -
+  [Changelog](https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md) -
+  [Commits](https://github.com/astral-sh/ruff/compare/0.8.6...0.9.1)
+
+--- updated-dependencies: - dependency-name: ruff dependency-type: direct:production
+
+update-type: version-update:semver-minor
+
+dependency-group: lint-and-dev
+
+...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+
+- **deps**: Update transformers requirement
+  ([`e713571`](https://github.com/qthequartermasterman/hypothesis-torch/commit/e7135717fa0994ba3f42e38b27a52c3c62f2602a))
+
+Updates the requirements on [transformers](https://github.com/huggingface/transformers) to permit
+  the latest version.
+
+Updates `transformers` to 4.48.0 - [Release
+  notes](https://github.com/huggingface/transformers/releases) -
+  [Commits](https://github.com/huggingface/transformers/compare/v4.42.3...v4.48.0)
+
+--- updated-dependencies: - dependency-name: transformers dependency-type: direct:production
+
+dependency-group: optional-dependencies
+
+...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+
+
 ## v0.8.10 (2025-01-06)
 
 ### Build System
