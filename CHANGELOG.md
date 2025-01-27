@@ -1,6 +1,83 @@
 # CHANGELOG
 
 
+## v0.8.12 (2025-01-27)
+
+### Build System
+
+- **deps**: Bump the lint-and-dev group with 3 updates
+  ([`6b1a535`](https://github.com/qthequartermasterman/hypothesis-torch/commit/6b1a53504d7d15ad52c6c5d665d616bdc25b5206))
+
+Bumps the lint-and-dev group with 3 updates: [ruff](https://github.com/astral-sh/ruff),
+  [pyright](https://github.com/RobertCraigie/pyright-python) and
+  [mkdocs-material](https://github.com/squidfunk/mkdocs-material).
+
+Updates `ruff` from 0.9.1 to 0.9.2 - [Release notes](https://github.com/astral-sh/ruff/releases) -
+  [Changelog](https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md) -
+  [Commits](https://github.com/astral-sh/ruff/compare/0.9.1...0.9.2)
+
+Updates `pyright` from 1.1.391 to 1.1.392.post0 - [Release
+  notes](https://github.com/RobertCraigie/pyright-python/releases) -
+  [Commits](https://github.com/RobertCraigie/pyright-python/compare/v1.1.391...v1.1.392.post0)
+
+Updates `mkdocs-material` from 9.5.49 to 9.5.50 - [Release
+  notes](https://github.com/squidfunk/mkdocs-material/releases) -
+  [Changelog](https://github.com/squidfunk/mkdocs-material/blob/master/CHANGELOG) -
+  [Commits](https://github.com/squidfunk/mkdocs-material/compare/9.5.49...9.5.50)
+
+--- updated-dependencies: - dependency-name: ruff dependency-type: direct:production
+
+update-type: version-update:semver-patch
+
+dependency-group: lint-and-dev
+
+- dependency-name: pyright dependency-type: direct:production
+
+- dependency-name: mkdocs-material dependency-type: direct:production
+
+...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+
+- **deps**: Bump torch in the direct-dependencies group
+  ([`5350be3`](https://github.com/qthequartermasterman/hypothesis-torch/commit/5350be399f90239eaaaa1235f15ea6b2e7e913bf))
+
+Bumps the direct-dependencies group with 1 update: [torch](https://github.com/pytorch/pytorch).
+
+Updates `torch` from 2.1.2+cpu to 2.5.1 - [Release
+  notes](https://github.com/pytorch/pytorch/releases) -
+  [Changelog](https://github.com/pytorch/pytorch/blob/main/RELEASE.md) -
+  [Commits](https://github.com/pytorch/pytorch/commits/v2.5.1)
+
+--- updated-dependencies: - dependency-name: torch dependency-type: direct:production
+
+update-type: version-update:semver-minor
+
+dependency-group: direct-dependencies
+
+...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+
+- **deps**: Update transformers requirement
+  ([`79d5922`](https://github.com/qthequartermasterman/hypothesis-torch/commit/79d5922576c0f4fc4e1e2864843baccb0021ea97))
+
+Updates the requirements on [transformers](https://github.com/huggingface/transformers) to permit
+  the latest version.
+
+Updates `transformers` to 4.48.1 - [Release
+  notes](https://github.com/huggingface/transformers/releases) -
+  [Commits](https://github.com/huggingface/transformers/compare/v4.42.3...v4.48.1)
+
+--- updated-dependencies: - dependency-name: transformers dependency-type: direct:production
+
+dependency-group: optional-dependencies
+
+...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+
+
 ## v0.8.11 (2025-01-14)
 
 ### Build System
