@@ -1,6 +1,46 @@
 # CHANGELOG
 
 
+## v0.8.13 (2025-01-29)
+
+### Build System
+
+- **deps**: Bump dawidd6/action-download-artifact from 7 to 8
+  ([`9a496c2`](https://github.com/qthequartermasterman/hypothesis-torch/commit/9a496c2c86e2186bd4e9c19392816cead995de0d))
+
+Bumps [dawidd6/action-download-artifact](https://github.com/dawidd6/action-download-artifact) from 7
+  to 8. - [Release notes](https://github.com/dawidd6/action-download-artifact/releases) -
+  [Commits](https://github.com/dawidd6/action-download-artifact/compare/v7...v8)
+
+--- updated-dependencies: - dependency-name: dawidd6/action-download-artifact dependency-type:
+  direct:production
+
+update-type: version-update:semver-major
+
+...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+
+- **deps**: Bump ruff from 0.9.2 to 0.9.3 in the lint-and-dev group
+  ([`b2cba4e`](https://github.com/qthequartermasterman/hypothesis-torch/commit/b2cba4ee7d6f1cfa571de3966ed7dcc0c573f1ff))
+
+Bumps the lint-and-dev group with 1 update: [ruff](https://github.com/astral-sh/ruff).
+
+Updates `ruff` from 0.9.2 to 0.9.3 - [Release notes](https://github.com/astral-sh/ruff/releases) -
+  [Changelog](https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md) -
+  [Commits](https://github.com/astral-sh/ruff/compare/0.9.2...0.9.3)
+
+--- updated-dependencies: - dependency-name: ruff dependency-type: direct:production
+
+update-type: version-update:semver-patch
+
+dependency-group: lint-and-dev
+
+...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+
+
 ## v0.8.12 (2025-01-27)
 
 ### Build System
