@@ -1,6 +1,28 @@
 # CHANGELOG
 
 
+## v0.8.14 (2025-01-30)
+
+### Build System
+
+- Do not test Python 3.13 + torch 2.1
+  ([`73f090d`](https://github.com/qthequartermasterman/hypothesis-torch/commit/73f090d13a7a7fa4c29e984a8ddb6ffb1892973c))
+
+- Support Python 3.13 and PyTorch 2.6
+  ([`92017c8`](https://github.com/qthequartermasterman/hypothesis-torch/commit/92017c85a79f586b1c3c536d74a10e742b8dee23))
+
+### Continuous Integration
+
+- Ignore torch<2.4 for python 3.13
+  ([`968d454`](https://github.com/qthequartermasterman/hypothesis-torch/commit/968d4541a38dc1de58b6f5bb10dddae7db5f59dd))
+
+- Update upload artifact
+  ([`92c69ff`](https://github.com/qthequartermasterman/hypothesis-torch/commit/92c69ffeb944ee4bb115063847fc9286feaf3277))
+
+- Update upload artifact
+  ([`ac8f6df`](https://github.com/qthequartermasterman/hypothesis-torch/commit/ac8f6df1b5b025b58111ecc6194ddd57c60d718a))
+
+
 ## v0.8.13 (2025-01-29)
 
 ### Build System
