@@ -26,6 +26,8 @@ jobs:
         exclude:
           - python-version: '3.12'
             torch-version: '2.1.2'
+          - python-version: '3.13'
+            torch-version: '2.1.2'
     uses: ./.github/workflows/build-reusable.yml
     with:
       python-version: ${{ matrix.python-version }}
