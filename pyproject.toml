@@ -9,9 +9,9 @@ description = "Hypothesis strategies for various Pytorch structures, including t
 dynamic = ["version"]
 dependencies = [
     "hypothesis>=6.0.0",
-    "torch>=2.1.0",
+    "torch>=2.1.0,<2.7.0",
 ]
-requires-python = ">=3.9"
+requires-python = ">=3.9,<3.14"
 authors=[{name="Andrew P. Sansom", email="andrew@euleriancircuit.com"}]
 readme="README.md"
 license={file="LICENSE"}
@@ -82,12 +82,16 @@ torch = [
   "torch==2.3.1+cpu",
   "hypothesis_torch[numpy]"
 ]
-"torch2.4.0"=[
-  "torch==2.5.1",
+"torch2.4.1"=[
+  "torch==2.4.1",
   "hypothesis_torch[numpy]"
 ]
 "torch2.5.1"=[
   "torch==2.5.1",
+  "hypothesis_torch[numpy]"
+]
+"torch2.6.0"=[
+  "torch==2.6.0",
   "hypothesis_torch[numpy]"
 ]
 
