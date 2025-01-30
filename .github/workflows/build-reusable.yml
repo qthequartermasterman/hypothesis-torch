@@ -84,13 +84,13 @@ jobs:
         --cov-report=term-missing:skip-covered \
         --cov=hypothesis_torch \
         tests | tee pytest-coverage.txt
-
-    - name: Upload example database
-      uses: actions/upload-artifact@v4
-      if: always()
-      with:
-        name: hypothesis-example-db
-        path: .hypothesis/examples
+# TODO: Add a step to upload the example database to the artifacts
+#    - name: Upload example database
+#      uses: actions/upload-artifact@v4
+#      if: always()
+#      with:
+#        name: hypothesis-example-db
+#        path: .hypothesis/examples
 
     - name: Pytest coverage comment
       uses: MishaKav/pytest-coverage-comment@main
