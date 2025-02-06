@@ -4,7 +4,7 @@
 lacks built-in support for Pytorch tensors and modules, so this library provides strategies for generating them.
 """
 
-__version__ = "0.8.14"
+__version__ = "0.8.15"
 import importlib.util
 
 from hypothesis_torch.device import (

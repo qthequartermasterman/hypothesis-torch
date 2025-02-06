@@ -1,6 +1,71 @@
 # CHANGELOG
 
 
+## v0.8.15 (2025-02-06)
+
+### Build System
+
+- **deps**: Bump the lint-and-dev group with 4 updates
+  ([`0fff4ad`](https://github.com/qthequartermasterman/hypothesis-torch/commit/0fff4ad8c81d59996341b857e71e439baaf4d721))
+
+Bumps the lint-and-dev group with 4 updates: [ruff](https://github.com/astral-sh/ruff),
+  [pyright](https://github.com/RobertCraigie/pyright-python),
+  [mkdocstrings[python]](https://github.com/mkdocstrings/mkdocstrings) and
+  [mkdocs-material](https://github.com/squidfunk/mkdocs-material).
+
+Updates `ruff` from 0.9.3 to 0.9.4 - [Release notes](https://github.com/astral-sh/ruff/releases) -
+  [Changelog](https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md) -
+  [Commits](https://github.com/astral-sh/ruff/compare/0.9.3...0.9.4)
+
+Updates `pyright` from 1.1.392.post0 to 1.1.393 - [Release
+  notes](https://github.com/RobertCraigie/pyright-python/releases) -
+  [Commits](https://github.com/RobertCraigie/pyright-python/compare/v1.1.392.post0...v1.1.393)
+
+Updates `mkdocstrings[python]` from 0.27.0 to 0.28.0 - [Release
+  notes](https://github.com/mkdocstrings/mkdocstrings/releases) -
+  [Changelog](https://github.com/mkdocstrings/mkdocstrings/blob/main/CHANGELOG.md) -
+  [Commits](https://github.com/mkdocstrings/mkdocstrings/compare/0.27.0...0.28.0)
+
+Updates `mkdocs-material` from 9.5.50 to 9.6.2 - [Release
+  notes](https://github.com/squidfunk/mkdocs-material/releases) -
+  [Changelog](https://github.com/squidfunk/mkdocs-material/blob/master/CHANGELOG) -
+  [Commits](https://github.com/squidfunk/mkdocs-material/compare/9.5.50...9.6.2)
+
+--- updated-dependencies: - dependency-name: ruff dependency-type: direct:production
+
+update-type: version-update:semver-patch
+
+dependency-group: lint-and-dev
+
+- dependency-name: pyright dependency-type: direct:production
+
+- dependency-name: mkdocstrings[python] dependency-type: direct:production
+
+update-type: version-update:semver-minor
+
+- dependency-name: mkdocs-material dependency-type: direct:production
+
+dependency-group: lint-and-dev ...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+
+- **deps**: Update transformers requirement
+  ([`b52dd4f`](https://github.com/qthequartermasterman/hypothesis-torch/commit/b52dd4f1e4dfb85e6739c43d6a1688077a316c27))
+
+Updates the requirements on [transformers](https://github.com/huggingface/transformers) to permit
+  the latest version.
+
+Updates `transformers` to 4.48.2 - [Release
+  notes](https://github.com/huggingface/transformers/releases) -
+  [Commits](https://github.com/huggingface/transformers/compare/v4.42.3...v4.48.2)
+
+--- updated-dependencies: - dependency-name: transformers dependency-type: direct:production
+
+dependency-group: optional-dependencies ...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+
+
 ## v0.8.14 (2025-01-30)
 
 ### Build System
@@ -37,9 +102,7 @@ Bumps [dawidd6/action-download-artifact](https://github.com/dawidd6/action-downl
 --- updated-dependencies: - dependency-name: dawidd6/action-download-artifact dependency-type:
   direct:production
 
-update-type: version-update:semver-major
-
-...
+update-type: version-update:semver-major ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -56,9 +119,7 @@ Updates `ruff` from 0.9.2 to 0.9.3 - [Release notes](https://github.com/astral-s
 
 update-type: version-update:semver-patch
 
-dependency-group: lint-and-dev
-
-...
+dependency-group: lint-and-dev ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -97,7 +158,7 @@ dependency-group: lint-and-dev
 
 - dependency-name: mkdocs-material dependency-type: direct:production
 
-...
+dependency-group: lint-and-dev ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -115,9 +176,7 @@ Updates `torch` from 2.1.2+cpu to 2.5.1 - [Release
 
 update-type: version-update:semver-minor
 
-dependency-group: direct-dependencies
-
-...
+dependency-group: direct-dependencies ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -133,9 +192,7 @@ Updates `transformers` to 4.48.1 - [Release
 
 --- updated-dependencies: - dependency-name: transformers dependency-type: direct:production
 
-dependency-group: optional-dependencies
-
-...
+dependency-group: optional-dependencies ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -157,9 +214,7 @@ Updates `ruff` from 0.8.6 to 0.9.1 - [Release notes](https://github.com/astral-s
 
 update-type: version-update:semver-minor
 
-dependency-group: lint-and-dev
-
-...
+dependency-group: lint-and-dev ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -175,9 +230,7 @@ Updates `transformers` to 4.48.0 - [Release
 
 --- updated-dependencies: - dependency-name: transformers dependency-type: direct:production
 
-dependency-group: optional-dependencies
-
-...
+dependency-group: optional-dependencies ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -208,7 +261,7 @@ dependency-group: lint-and-dev
 
 - dependency-name: ruff dependency-type: direct:production
 
-...
+dependency-group: lint-and-dev ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -248,7 +301,7 @@ update-type: version-update:semver-patch
 
 - dependency-name: pyright dependency-type: direct:production
 
-...
+dependency-group: lint-and-dev ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -264,9 +317,7 @@ Updates `transformers` to 4.47.1 - [Release
 
 --- updated-dependencies: - dependency-name: transformers dependency-type: direct:production
 
-dependency-group: optional-dependencies
-
-...
+dependency-group: optional-dependencies ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -298,7 +349,7 @@ dependency-group: lint-and-dev
 
 - dependency-name: mkdocs-material dependency-type: direct:production
 
-...
+dependency-group: lint-and-dev ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -337,7 +388,7 @@ dependency-group: lint-and-dev
 
 - dependency-name: mkdocs-material dependency-type: direct:production
 
-...
+dependency-group: lint-and-dev ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -353,9 +404,7 @@ Updates `transformers` to 4.47.0 - [Release
 
 --- updated-dependencies: - dependency-name: transformers dependency-type: direct:production
 
-dependency-group: optional-dependencies
-
-...
+dependency-group: optional-dependencies ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -374,9 +423,7 @@ Bumps [dawidd6/action-download-artifact](https://github.com/dawidd6/action-downl
 --- updated-dependencies: - dependency-name: dawidd6/action-download-artifact dependency-type:
   direct:production
 
-update-type: version-update:semver-major
-
-...
+update-type: version-update:semver-major ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -413,7 +460,7 @@ update-type: version-update:semver-patch
 
 - dependency-name: mkdocs-material dependency-type: direct:production
 
-...
+dependency-group: lint-and-dev ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -429,9 +476,7 @@ Updates `transformers` to 4.46.3 - [Release
 
 --- updated-dependencies: - dependency-name: transformers dependency-type: direct:production
 
-dependency-group: optional-dependencies
-
-...
+dependency-group: optional-dependencies ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -462,7 +507,7 @@ dependency-group: lint-and-dev
 
 - dependency-name: pyright dependency-type: direct:production
 
-...
+dependency-group: lint-and-dev ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -511,7 +556,7 @@ update-type: version-update:semver-minor
 
 - dependency-name: mkdocs-material dependency-type: direct:production
 
-...
+dependency-group: lint-and-dev ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -529,9 +574,7 @@ Updates `torch` from 2.1.2+cpu to 2.5.1 - [Release
 
 update-type: version-update:semver-minor
 
-dependency-group: direct-dependencies
-
-...
+dependency-group: direct-dependencies ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -547,9 +590,7 @@ Updates `transformers` to 4.46.2 - [Release
 
 --- updated-dependencies: - dependency-name: transformers dependency-type: direct:production
 
-dependency-group: optional-dependencies
-
-...
+dependency-group: optional-dependencies ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -582,7 +623,7 @@ dependency-group: lint-and-dev
 
 - dependency-name: mkdocs-material dependency-type: direct:production
 
-...
+dependency-group: lint-and-dev ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -603,9 +644,7 @@ Updates `transformers` to 4.46.1 - [Release
 
 --- updated-dependencies: - dependency-name: transformers dependency-type: direct:production
 
-dependency-group: optional-dependencies
-
-...
+dependency-group: optional-dependencies ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -675,7 +714,7 @@ update-type: version-update:semver-major
 
 - dependency-name: mkdocs-material dependency-type: direct:production
 
-...
+dependency-group: lint-and-dev ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -740,7 +779,7 @@ update-type: version-update:semver-patch
 
 - dependency-name: mkdocs-material dependency-type: direct:production
 
-...
+dependency-group: lint-and-dev ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -771,7 +810,7 @@ dependency-group: lint-and-dev
 
 - dependency-name: pyright dependency-type: direct:production
 
-...
+dependency-group: lint-and-dev ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -810,7 +849,7 @@ dependency-group: lint-and-dev
 
 - dependency-name: mkdocs-material dependency-type: direct:production
 
-...
+dependency-group: lint-and-dev ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -858,7 +897,7 @@ dependency-group: lint-and-dev
 
 - dependency-name: mkdocs-material dependency-type: direct:production
 
-...
+dependency-group: lint-and-dev ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -973,7 +1012,7 @@ update-type: version-update:semver-minor
 
 - dependency-name: mkdocs-material dependency-type: direct:production
 
-...
+dependency-group: lint-and-dev ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -1100,7 +1139,7 @@ update-type: version-update:semver-patch
 
 - dependency-name: mkdocs-material dependency-type: direct:production
 
-...
+dependency-group: lint-and-dev ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -1122,9 +1161,7 @@ Updates `ruff` from 0.5.0 to 0.5.1 - [Release notes](https://github.com/astral-s
 
 update-type: version-update:semver-patch
 
-dependency-group: lint-and-dev
-
-...
+dependency-group: lint-and-dev ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -1178,7 +1215,7 @@ update-type: version-update:semver-minor
 
 - dependency-name: mkdocs-material dependency-type: direct:production
 
-...
+dependency-group: lint-and-dev ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -1211,7 +1248,7 @@ dependency-group: lint-and-dev
 
 - dependency-name: mkdocs-material dependency-type: direct:production
 
-...
+dependency-group: lint-and-dev ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -1230,9 +1267,7 @@ Bumps [dawidd6/action-download-artifact](https://github.com/dawidd6/action-downl
 --- updated-dependencies: - dependency-name: dawidd6/action-download-artifact dependency-type:
   direct:production
 
-update-type: version-update:semver-major
-
-...
+update-type: version-update:semver-major ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -1251,9 +1286,7 @@ Bumps [ruff](https://github.com/astral-sh/ruff) from 0.4.7 to 0.4.9. - [Release
 
 --- updated-dependencies: - dependency-name: ruff dependency-type: direct:production
 
-update-type: version-update:semver-patch
-
-...
+update-type: version-update:semver-patch ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -1277,9 +1310,7 @@ Bumps [dawidd6/action-download-artifact](https://github.com/dawidd6/action-downl
 --- updated-dependencies: - dependency-name: dawidd6/action-download-artifact dependency-type:
   direct:production
 
-update-type: version-update:semver-major
-
-...
+update-type: version-update:semver-major ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -1293,9 +1324,7 @@ Bumps [pytest](https://github.com/pytest-dev/pytest) from 8.2.1 to 8.2.2. - [Rel
 
 --- updated-dependencies: - dependency-name: pytest dependency-type: direct:production
 
-update-type: version-update:semver-patch
-
-...
+update-type: version-update:semver-patch ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -1335,9 +1364,7 @@ Bumps [pyright](https://github.com/RobertCraigie/pyright-python) from 1.1.364 to
 
 --- updated-dependencies: - dependency-name: pyright dependency-type: direct:production
 
-update-type: version-update:semver-patch
-
-...
+update-type: version-update:semver-patch ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -1356,9 +1383,7 @@ Bumps [ruff](https://github.com/astral-sh/ruff) from 0.4.5 to 0.4.7. - [Release
 
 --- updated-dependencies: - dependency-name: ruff dependency-type: direct:production
 
-update-type: version-update:semver-patch
-
-...
+update-type: version-update:semver-patch ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -1369,9 +1394,7 @@ Updates the requirements on [transformers](https://github.com/huggingface/transf
   the latest version. - [Release notes](https://github.com/huggingface/transformers/releases) -
   [Commits](https://github.com/huggingface/transformers/compare/v4.0.0...v4.41.2)
 
---- updated-dependencies: - dependency-name: transformers dependency-type: direct:production
-
-...
+--- updated-dependencies: - dependency-name: transformers dependency-type: direct:production ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -1390,9 +1413,7 @@ Bumps [mkdocs-material](https://github.com/squidfunk/mkdocs-material) from 9.5.2
 
 --- updated-dependencies: - dependency-name: mkdocs-material dependency-type: direct:production
 
-update-type: version-update:semver-patch
-
-...
+update-type: version-update:semver-patch ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -1411,9 +1432,7 @@ Bumps [ruff](https://github.com/astral-sh/ruff) from 0.4.4 to 0.4.5. - [Release
 
 --- updated-dependencies: - dependency-name: ruff dependency-type: direct:production
 
-update-type: version-update:semver-patch
-
-...
+update-type: version-update:semver-patch ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -1424,9 +1443,7 @@ Updates the requirements on [transformers](https://github.com/huggingface/transf
   the latest version. - [Release notes](https://github.com/huggingface/transformers/releases) -
   [Commits](https://github.com/huggingface/transformers/compare/v4.0.0...v4.41.1)
 
---- updated-dependencies: - dependency-name: transformers dependency-type: direct:production
-
-...
+--- updated-dependencies: - dependency-name: transformers dependency-type: direct:production ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -1442,9 +1459,7 @@ Bumps [mkdocs-material](https://github.com/squidfunk/mkdocs-material) from 9.5.2
 
 --- updated-dependencies: - dependency-name: mkdocs-material dependency-type: direct:production
 
-update-type: version-update:semver-patch
-
-...
+update-type: version-update:semver-patch ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -1458,9 +1473,7 @@ Bumps [mkdocs-material](https://github.com/squidfunk/mkdocs-material) from 9.5.2
 
 --- updated-dependencies: - dependency-name: mkdocs-material dependency-type: direct:production
 
-update-type: version-update:semver-patch
-
-...
+update-type: version-update:semver-patch ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -1473,9 +1486,7 @@ Bumps [pyright](https://github.com/RobertCraigie/pyright-python) from 1.1.359 to
 
 --- updated-dependencies: - dependency-name: pyright dependency-type: direct:production
 
-update-type: version-update:semver-patch
-
-...
+update-type: version-update:semver-patch ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -1489,9 +1500,7 @@ Bumps [pytest](https://github.com/pytest-dev/pytest) from 8.2.0 to 8.2.1. - [Rel
 
 --- updated-dependencies: - dependency-name: pytest dependency-type: direct:production
 
-update-type: version-update:semver-patch
-
-...
+update-type: version-update:semver-patch ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -1502,9 +1511,7 @@ Updates the requirements on [transformers](https://github.com/huggingface/transf
   the latest version. - [Release notes](https://github.com/huggingface/transformers/releases) -
   [Commits](https://github.com/huggingface/transformers/compare/v4.0.0...v4.41.0)
 
---- updated-dependencies: - dependency-name: transformers dependency-type: direct:production
-
-...
+--- updated-dependencies: - dependency-name: transformers dependency-type: direct:production ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -1617,9 +1624,7 @@ Bumps [dawidd6/action-download-artifact](https://github.com/dawidd6/action-downl
 --- updated-dependencies: - dependency-name: dawidd6/action-download-artifact dependency-type:
   direct:production
 
-update-type: version-update:semver-major
-
-...
+update-type: version-update:semver-major ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -1633,9 +1638,7 @@ Bumps [mkdocs-material](https://github.com/squidfunk/mkdocs-material) from 9.4.6
 
 --- updated-dependencies: - dependency-name: mkdocs-material dependency-type: direct:production
 
-update-type: version-update:semver-minor
-
-...
+update-type: version-update:semver-minor ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -1649,9 +1652,7 @@ Bumps [ruff](https://github.com/astral-sh/ruff) from 0.4.3 to 0.4.4. - [Release
 
 --- updated-dependencies: - dependency-name: ruff dependency-type: direct:production
 
-update-type: version-update:semver-patch
-
-...
+update-type: version-update:semver-patch ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -1662,9 +1663,7 @@ Updates the requirements on [transformers](https://github.com/huggingface/transf
   the latest version. - [Release notes](https://github.com/huggingface/transformers/releases) -
   [Commits](https://github.com/huggingface/transformers/compare/v4.0.0...v4.40.2)
 
---- updated-dependencies: - dependency-name: transformers dependency-type: direct:production
-
-...
+--- updated-dependencies: - dependency-name: transformers dependency-type: direct:production ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -1819,9 +1818,7 @@ Bumps [pytest](https://github.com/pytest-dev/pytest) from 8.1.1 to 8.2.0. - [Rel
 
 --- updated-dependencies: - dependency-name: pytest dependency-type: direct:production
 
-update-type: version-update:semver-minor
-
-...
+update-type: version-update:semver-minor ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -1835,9 +1832,7 @@ Bumps [ruff](https://github.com/astral-sh/ruff) from 0.4.1 to 0.4.3. - [Release
 
 --- updated-dependencies: - dependency-name: ruff dependency-type: direct:production
 
-update-type: version-update:semver-patch
-
-...
+update-type: version-update:semver-patch ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -2023,9 +2018,7 @@ Bumps [actions/setup-python](https://github.com/actions/setup-python) from 2 to 
 
 --- updated-dependencies: - dependency-name: actions/setup-python dependency-type: direct:production
 
-update-type: version-update:semver-major
-
-...
+update-type: version-update:semver-major ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -2054,9 +2047,7 @@ Bumps [actions/checkout](https://github.com/actions/checkout) from 3 to 4. - [Re
 
 --- updated-dependencies: - dependency-name: actions/checkout dependency-type: direct:production
 
-update-type: version-update:semver-major
-
-...
+update-type: version-update:semver-major ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
@@ -2072,9 +2063,7 @@ Bumps
 --- updated-dependencies: - dependency-name: stefanzweifel/git-auto-commit-action dependency-type:
   direct:production
 
-update-type: version-update:semver-major
-
-...
+update-type: version-update:semver-major ...
 
 Signed-off-by: dependabot[bot] <support@github.com>
 
