@@ -1,6 +1,63 @@
 # CHANGELOG
 
 
+## v0.8.16 (2025-02-10)
+
+### Build System
+
+- **deps**: Bump the lint-and-dev group with 3 updates
+  ([`f2a9815`](https://github.com/qthequartermasterman/hypothesis-torch/commit/f2a981562632644b45511b0c86f570d2cdf835d9))
+
+Bumps the lint-and-dev group with 3 updates: [mypy](https://github.com/python/mypy),
+  [ruff](https://github.com/astral-sh/ruff) and
+  [mkdocs-material](https://github.com/squidfunk/mkdocs-material).
+
+Updates `mypy` from 1.14.1 to 1.15.0 -
+  [Changelog](https://github.com/python/mypy/blob/master/CHANGELOG.md) -
+  [Commits](https://github.com/python/mypy/compare/v1.14.1...v1.15.0)
+
+Updates `ruff` from 0.9.4 to 0.9.6 - [Release notes](https://github.com/astral-sh/ruff/releases) -
+  [Changelog](https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md) -
+  [Commits](https://github.com/astral-sh/ruff/compare/0.9.4...0.9.6)
+
+Updates `mkdocs-material` from 9.6.2 to 9.6.3 - [Release
+  notes](https://github.com/squidfunk/mkdocs-material/releases) -
+  [Changelog](https://github.com/squidfunk/mkdocs-material/blob/master/CHANGELOG) -
+  [Commits](https://github.com/squidfunk/mkdocs-material/compare/9.6.2...9.6.3)
+
+--- updated-dependencies: - dependency-name: mypy dependency-type: direct:production
+
+update-type: version-update:semver-minor
+
+dependency-group: lint-and-dev
+
+- dependency-name: ruff dependency-type: direct:production
+
+update-type: version-update:semver-patch
+
+- dependency-name: mkdocs-material dependency-type: direct:production
+
+dependency-group: lint-and-dev ...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+
+- **deps**: Update transformers requirement
+  ([`e86b72a`](https://github.com/qthequartermasterman/hypothesis-torch/commit/e86b72a61405ddc99d97c04e2cd2de6e1d82de74))
+
+Updates the requirements on [transformers](https://github.com/huggingface/transformers) to permit
+  the latest version.
+
+Updates `transformers` to 4.48.3 - [Release
+  notes](https://github.com/huggingface/transformers/releases) -
+  [Commits](https://github.com/huggingface/transformers/compare/v4.42.3...v4.48.3)
+
+--- updated-dependencies: - dependency-name: transformers dependency-type: direct:production
+
+dependency-group: optional-dependencies ...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+
+
 ## v0.8.15 (2025-02-06)
 
 ### Build System
