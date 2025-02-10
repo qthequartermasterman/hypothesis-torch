@@ -47,8 +47,8 @@ huggingface = [
   "transformers>=4.42.3,<=4.48.2",
 ]
 dev = [
-  "mypy==1.14.1",
-  "ruff==0.9.4",
+  "mypy==1.15.0",
+  "ruff==0.9.6",
   "pyright==1.1.393",
   "pytest==8.3.4",
   "pytest-cov==6.0.0"
@@ -57,7 +57,7 @@ docs = [
   "mkdocs==1.6.1",
   "mkdocstrings[python]==0.28.0",
   "mkdocs-autolinks-plugin==0.7.1",
-  "mkdocs-material==9.6.2",
+  "mkdocs-material==9.6.3",
   "mkdocs-snippets==1.3.0",
   "mkdocs-exclude==1.0.2",
 ]
