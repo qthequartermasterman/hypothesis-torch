@@ -405,3 +405,40 @@ class TestTensor(unittest.TestCase):
         )
 
         assert tensor.dim_order() == tuple(range(tensor.dim()))
+
+    @hypothesis.given(st.data())
+    def test_names_false_has_no_named_dimensions(self, data: st.DataObject) -> None:
+        """Test that if the names parameter is False, no dimensions have names."""
+        tensor = data.draw(
+            hypothesis_torch.tensor_strategy(
+                dtype=torch.float32,
+                shape=(1, 2, 3),
+                names=False,
+            )
+        )
+
+        assert all(name is None for name in tensor.names)
+
+    @hypothesis.given(st.data())
+    def test_names_true_has_named_dimension(self, data: st.DataObject) -> None:
+        """Test that if the names parameter is True, at least one dimension has a name."""
+        tensor = data.draw(
+            hypothesis_torch.tensor_strategy(
+                dtype=torch.float32,
+                shape=(1, 2, 3),
+                names=True,
+            )
+        )
+
+        assert any(name is not None for name in tensor.names)
+
+    @hypothesis.given(st.data())
+    def test_names_strategy_is_valid(self, data: st.DataObject) -> None:
+        """Test that if the names parameter is a strategy, only valid combinations are found."""
+        _ = data.draw(
+            hypothesis_torch.tensor_strategy(
+                dtype=torch.float32,
+                shape=(1, 2, 3),
+                names=st.booleans(),
+            )
+        )

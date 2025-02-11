@@ -51,6 +51,7 @@ def tensor_strategy(
     pin_memory: bool | st.SearchStrategy[bool] | None = None,
     layout: torch.layout | st.SearchStrategy[torch.layout] | None = None,
     memory_format: torch.memory_format | st.SearchStrategy[torch.memory_format] | None = None,
+    names: bool | st.SearchStrategy[bool] = False,
 ) -> torch.Tensor:
     """A strategy for generating PyTorch tensors.
 
@@ -76,6 +77,8 @@ def tensor_strategy(
         memory_format: The memory format of the tensor. If None, a suitable default will be inferred based on the other
             arguments. Note that channel_last memory formats are only supported for 4D tensors and channel_last_3d
             memory formats are only supported for 5D tensors.
+        names: Whether to give explicit names to the tensor's dimensions, using the "Named Tensors" API. `names` will
+            default to False until the Named Tensors API is no longer experimental.
 
     Returns:
         A strategy for generating PyTorch tensors.
@@ -182,6 +185,22 @@ def tensor_strategy(
     hypothesis.assume(memory_format != torch.channels_last_3d or len(tensor.shape) == 5)
     # Pyright/mypy falsely reports an error here on py3.9 torch 2.1.2.
     tensor = tensor.to(memory_format=memory_format)  # type: ignore
+
+    if isinstance(names, st.SearchStrategy):
+        names = draw(names)
+    if names:
+        # Named tensors only supported on CPU/CUDA.
+        hypothesis.assume(tensor.device.type in {"cpu", "cuda"})
+        # Named tensors only support strided tensors
+        hypothesis.assume(layout == torch.strided)
+        num_dimensions = tensor.ndim
+        individual_dimensions_should_have_name = draw(st.tuples(*[st.booleans() for _ in range(num_dimensions)]))
+        # At least one dimension needs to be named, but not all of them have to be.
+        hypothesis.assume(any(individual_dimensions_should_have_name))
+        individual_dimensions_names = [
+            f"dim{i}" if should_name else None for i, should_name in enumerate(individual_dimensions_should_have_name)
+        ]
+        tensor = tensor.rename(*individual_dimensions_names)
 
     return tensor
 
