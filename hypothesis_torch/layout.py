@@ -10,6 +10,10 @@ from hypothesis import strategies as st
 SUPPORTED_LAYOUTS: list[torch.layout] = [
     torch.strided,
     torch.sparse_coo,
+    torch.sparse_csc,
+    torch.sparse_csr,
+    torch.sparse_bsc,
+    torch.sparse_bsr,
 ]
 
 
