@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.9.0 (2025-02-11)
+
+### Features
+
+- Support named tensors in tensor strategy
+  ([`41710a8`](https://github.com/qthequartermasterman/hypothesis-torch/commit/41710a89e45d26ac66ff7f3ee992bb915899eacc))
+
+
 ## v0.8.16 (2025-02-10)
 
 ### Build System
