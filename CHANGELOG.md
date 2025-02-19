@@ -1,6 +1,27 @@
 # CHANGELOG
 
 
+## v0.9.1 (2025-02-19)
+
+### Build System
+
+- **deps**: Update transformers requirement
+  ([`f11f2f7`](https://github.com/qthequartermasterman/hypothesis-torch/commit/f11f2f7cc436ef706fd059d2795e19b43682629d))
+
+Updates the requirements on [transformers](https://github.com/huggingface/transformers) to permit
+  the latest version.
+
+Updates `transformers` to 4.49.0 - [Release
+  notes](https://github.com/huggingface/transformers/releases) -
+  [Commits](https://github.com/huggingface/transformers/compare/v4.42.3...v4.49.0)
+
+--- updated-dependencies: - dependency-name: transformers dependency-type: direct:production
+
+dependency-group: optional-dependencies ...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+
+
 ## v0.9.0 (2025-02-11)
 
 ### Features
@@ -1664,7 +1685,7 @@ BREAKING-CHANGE: Removed support for `Mapping[str, Any]` as `elements` argument 
 - :label: improve type hints for internal TorchRandomWrapper object.
   ([`af953ce`](https://github.com/qthequartermasterman/hypothesis-torch/commit/af953ced15294b8023078436e2b304f3eef55c46))
 
-### BREAKING CHANGES
+### Breaking Changes
 
 - Hypothesis will no longer (incorrectly) generate a arbitrary CUDA torch.devices when using builds
   on `torch.cuda.device`.
