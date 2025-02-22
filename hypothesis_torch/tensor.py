@@ -100,9 +100,13 @@ def tensor_strategy(
     if layout is None:
         layout = st.from_type(torch.layout)
     if isinstance(layout, st.SearchStrategy):
-        layout = draw(layout)
+        if device is not None and device.type == "mps":
+            # MPS devices do not support sparse tensors
+            layout = torch.strided
+        else:
+            layout = draw(layout)
     # MPS devices do not support sparse tensors
-    hypothesis.assume(device is None or device.type != "mps" or layout != torch.sparse_coo)
+    hypothesis.assume((device is None or device.type != "mps") and layout == torch.strided)
 
     # If the dtype is an integer, we need to make sure that the elements are integers within the dtype's range
     if dtype in dtype_module.INT_DTYPES and isinstance(elements, st.SearchStrategy):
@@ -164,11 +168,31 @@ def tensor_strategy(
         requires_grad = draw(requires_grad)
     tensor.requires_grad_(requires_grad)
 
+    if layout != torch.strided and tensor.ndim < 1:
+        layout = torch.strided
+        dense_dimension = None
+        block_size = (0, 0)
+    else:
+        dense_dimension = draw(st.integers(min_value=0, max_value=tensor.ndim).map(lambda x: x or None) | st.none())
+        block_size = (0, 0)
+        if tensor.ndim == 2:
+            # TODO: Generalize block_size to any valid value. This is sufficient to catch a lot of edge cases right now.
+            block_size = (1, 1)
     if layout == torch.strided:
         tensor = tensor.contiguous()
     elif layout == torch.sparse_coo:
         # TODO: Implement coalesced handling
         tensor = tensor.to_sparse_coo()
+    elif layout == torch.sparse_csc:
+        tensor = tensor.to_sparse_csc(dense_dim=dense_dimension)
+    elif layout == torch.sparse_csr:
+        tensor = tensor.to_sparse_csr(dense_dim=dense_dimension)
+    elif layout == torch.sparse_bsc:
+        hypothesis.assume(tensor.ndim == 2)
+        tensor = tensor.to_sparse_bsc(blocksize=block_size, dense_dim=dense_dimension)
+    elif layout == torch.sparse_bsr:
+        hypothesis.assume(tensor.ndim == 2)
+        tensor = tensor.to_sparse_bsr(blocksize=block_size, dense_dim=dense_dimension)
     else:  # pragma: no cover
         raise ValueError(f"Unsupported layout: {layout}")
 
