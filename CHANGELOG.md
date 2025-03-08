@@ -1,6 +1,25 @@
 # CHANGELOG
 
 
+## v0.9.2 (2025-03-08)
+
+### Build System
+
+- **deps**: Bump dawidd6/action-download-artifact from 8 to 9
+  ([`871fbcf`](https://github.com/qthequartermasterman/hypothesis-torch/commit/871fbcf464b73bea14a6bb0871b1885fb1336ccb))
+
+Bumps [dawidd6/action-download-artifact](https://github.com/dawidd6/action-download-artifact) from 8
+  to 9. - [Release notes](https://github.com/dawidd6/action-download-artifact/releases) -
+  [Commits](https://github.com/dawidd6/action-download-artifact/compare/v8...v9)
+
+--- updated-dependencies: - dependency-name: dawidd6/action-download-artifact dependency-type:
+  direct:production
+
+update-type: version-update:semver-major ...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+
+
 ## v0.9.1 (2025-02-19)
 
 ### Build System
