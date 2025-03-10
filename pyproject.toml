@@ -91,7 +91,7 @@ torch = [
   "hypothesis_torch[numpy]"
 ]
 "torch2.6.0"=[
-  "torch==2.6.0",
+  "torch==2.3.1",
   "hypothesis_torch[numpy]"
 ]
 
