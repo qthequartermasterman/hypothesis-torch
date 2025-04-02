@@ -22,14 +22,8 @@ jobs:
       fail-fast: false
       matrix:
         python-version: ['3.9', '3.10', '3.11', '3.12', '3.13']
-        torch-version: ['2.1.2', '2.2.2', '2.3.1', '2.4.0', '2.5.1', '2.6.0', '']
+        torch-version: ['2.3.1', '2.4.0', '2.5.1', '2.6.0', '']
         exclude:
-          - python-version: '3.12'
-            torch-version: '2.1.2'
-          - python-version: '3.13'
-            torch-version: '2.1.2'
-          - python-version: '3.13'
-            torch-version: '2.2.2'
           - python-version: '3.13'
             torch-version: '2.3.1'
     uses: ./.github/workflows/build-reusable.yml
