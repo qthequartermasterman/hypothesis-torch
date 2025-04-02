@@ -1,6 +1,20 @@
 # CHANGELOG
 
 
+## v1.0.0 (2025-04-02)
+
+### Features
+
+- V1.0.0 release.
+  ([`24895d3`](https://github.com/qthequartermasterman/hypothesis-torch/commit/24895d3c85661c901331b399ef04b0bec8bf3104))
+
+BREAKING CHANGE: Mark for v1.0.0 release.
+
+### Breaking Changes
+
+- Mark for v1.0.0 release.
+
+
 ## v0.11.0 (2025-04-02)
 
 ### Build System
