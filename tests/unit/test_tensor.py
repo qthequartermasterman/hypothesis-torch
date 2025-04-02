@@ -222,6 +222,7 @@ class TestTensor(unittest.TestCase):
         """Test that specifying integer elements within the range of an uint8 tensor is of the correct dtype."""
         self.assertEqual(tensor.dtype, torch.uint8)
 
+    @hypothesis.settings(supress_health_check=[hypothesis.HealthCheck.filter_too_much])
     @hypothesis.given(
         tensor=hypothesis_torch.tensor_strategy(
             dtype=torch.uint8,
