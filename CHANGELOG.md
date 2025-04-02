@@ -1,6 +1,26 @@
 # CHANGELOG
 
 
+## v0.10.0 (2025-04-02)
+
+### Features
+
+- Support non-COO Sparse tensors in tensor strategy and layout strategy
+  ([`02c0494`](https://github.com/qthequartermasterman/hypothesis-torch/commit/02c049453a3f26a7d9428bd1040cda23853f2028))
+
+### Testing
+
+- Fix incorrect parameter
+  ([`77a4914`](https://github.com/qthequartermasterman/hypothesis-torch/commit/77a4914fddddc8dcd4a6bb51a883a8ec111c7dc9))
+
+- Fix incorrect type hint for meta strategy
+  ([`a20df33`](https://github.com/qthequartermasterman/hypothesis-torch/commit/a20df33586120702778761bef0f7c5603182bc67))
+
+- Ignore excessive filtering health check for uint8 without range (this test is checking that
+  filtering happens approproiately)
+  ([`41a14b7`](https://github.com/qthequartermasterman/hypothesis-torch/commit/41a14b70faad722ea18aaaf219a3763aade02e72))
+
+
 ## v0.9.2 (2025-03-08)
 
 ### Build System
