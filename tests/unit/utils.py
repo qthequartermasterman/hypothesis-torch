@@ -14,7 +14,7 @@ T = TypeVar("T")
 def meta_strategy_constraints(
     draw: st.DrawFn,
     strategy_func: Callable[..., st.SearchStrategy[T]],
-    **kwargs: dict[str, Any | st.SearchStrategy[Any]],
+    **kwargs,  # noqa: ANN003
 ) -> tuple[T, dict[str, Any]]:
     """A strategy that takes another strategy, and allows specifying constraints on that strategy."""
     for key, value in kwargs.items():
