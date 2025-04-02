@@ -1,6 +1,19 @@
 # CHANGELOG
 
 
+## v0.11.0 (2025-04-02)
+
+### Build System
+
+- Drop support for torch 2.1 and 2.2
+  ([`6e87493`](https://github.com/qthequartermasterman/hypothesis-torch/commit/6e87493b4d69c22fc773a10a59e67a3fec58a707))
+
+### Features
+
+- Mark API as stable/production-ready. Ready for v1.0.0 release.
+  ([`8490ebc`](https://github.com/qthequartermasterman/hypothesis-torch/commit/8490ebc258487bceecbde8bbf3539d39dd836d5b))
+
+
 ## v0.10.1 (2025-04-02)
 
 ### Bug Fixes
