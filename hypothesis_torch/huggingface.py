@@ -174,6 +174,7 @@ def build_from_cls_init(
     # Flaubert requires pad_idx be less than n_words
     if "Flaubert" in cls.__name__:
         vocab_size = kwargs.get("vocab_size", kwargs.get("n_words"))
+        assert vocab_size is not None
         kwargs["pad_index"] = draw(st.integers(min_value=0, max_value=vocab_size - 1))
 
     if "Levit" in cls.__name__:
