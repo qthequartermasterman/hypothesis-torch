@@ -1,6 +1,27 @@
 # CHANGELOG
 
 
+## v1.0.1 (2025-04-02)
+
+### Build System
+
+- **deps**: Update transformers requirement
+  ([`2dafbba`](https://github.com/qthequartermasterman/hypothesis-torch/commit/2dafbba9163df95f5455fbb2a1cb757eec753dee))
+
+Updates the requirements on [transformers](https://github.com/huggingface/transformers) to permit
+  the latest version.
+
+Updates `transformers` to 4.50.0 - [Release
+  notes](https://github.com/huggingface/transformers/releases) -
+  [Commits](https://github.com/huggingface/transformers/compare/v4.42.3...v4.50.0)
+
+--- updated-dependencies: - dependency-name: transformers dependency-type: direct:production
+
+dependency-group: optional-dependencies ...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+
+
 ## v1.0.0 (2025-04-02)
 
 ### Features
