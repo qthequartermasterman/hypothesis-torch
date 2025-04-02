@@ -1,6 +1,85 @@
 # CHANGELOG
 
 
+## v0.10.1 (2025-04-02)
+
+### Bug Fixes
+
+- Fix typing issues
+  ([`8e4a65a`](https://github.com/qthequartermasterman/hypothesis-torch/commit/8e4a65a58f559a547bc2bfce1e89ab3aab4fbba9))
+
+### Build System
+
+- **deps**: Bump the lint-and-dev group across 1 directory with 7 updates
+  ([`ae65c76`](https://github.com/qthequartermasterman/hypothesis-torch/commit/ae65c761dc05f813c95b218bdb730c0c5393eace))
+
+Bumps the lint-and-dev group with 7 updates in the / directory:
+
+| Package | From | To | | --- | --- | --- | | [ruff](https://github.com/astral-sh/ruff) | `0.9.6` |
+  `0.11.2` | | [pyright](https://github.com/RobertCraigie/pyright-python) | `1.1.393` | `1.1.398` |
+  | [pytest](https://github.com/pytest-dev/pytest) | `8.3.4` | `8.3.5` | |
+  [pytest-cov](https://github.com/pytest-dev/pytest-cov) | `6.0.0` | `6.1.0` | |
+  [mkdocstrings[python]](https://github.com/mkdocstrings/mkdocstrings) | `0.28.0` | `0.29.1` | |
+  [mkdocs-material](https://github.com/squidfunk/mkdocs-material) | `9.6.3` | `9.6.11` | |
+  [mkdocs-snippets](https://github.com/BetonQuest/mkdocs-snippets) | `1.3.0` | `1.3.1` |
+
+Updates `ruff` from 0.9.6 to 0.11.2 - [Release notes](https://github.com/astral-sh/ruff/releases) -
+  [Changelog](https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md) -
+  [Commits](https://github.com/astral-sh/ruff/compare/0.9.6...0.11.2)
+
+Updates `pyright` from 1.1.393 to 1.1.398 - [Release
+  notes](https://github.com/RobertCraigie/pyright-python/releases) -
+  [Commits](https://github.com/RobertCraigie/pyright-python/compare/v1.1.393...v1.1.398)
+
+Updates `pytest` from 8.3.4 to 8.3.5 - [Release
+  notes](https://github.com/pytest-dev/pytest/releases) -
+  [Changelog](https://github.com/pytest-dev/pytest/blob/main/CHANGELOG.rst) -
+  [Commits](https://github.com/pytest-dev/pytest/compare/8.3.4...8.3.5)
+
+Updates `pytest-cov` from 6.0.0 to 6.1.0 -
+  [Changelog](https://github.com/pytest-dev/pytest-cov/blob/master/CHANGELOG.rst) -
+  [Commits](https://github.com/pytest-dev/pytest-cov/compare/v6.0.0...v6.1.0)
+
+Updates `mkdocstrings[python]` from 0.28.0 to 0.29.1 - [Release
+  notes](https://github.com/mkdocstrings/mkdocstrings/releases) -
+  [Changelog](https://github.com/mkdocstrings/mkdocstrings/blob/main/CHANGELOG.md) -
+  [Commits](https://github.com/mkdocstrings/mkdocstrings/compare/0.28.0...0.29.1)
+
+Updates `mkdocs-material` from 9.6.3 to 9.6.11 - [Release
+  notes](https://github.com/squidfunk/mkdocs-material/releases) -
+  [Changelog](https://github.com/squidfunk/mkdocs-material/blob/master/CHANGELOG) -
+  [Commits](https://github.com/squidfunk/mkdocs-material/compare/9.6.3...9.6.11)
+
+Updates `mkdocs-snippets` from 1.3.0 to 1.3.1 -
+  [Commits](https://github.com/BetonQuest/mkdocs-snippets/commits)
+
+--- updated-dependencies: - dependency-name: ruff dependency-version: 0.11.2
+
+dependency-type: direct:production
+
+update-type: version-update:semver-minor
+
+dependency-group: lint-and-dev
+
+- dependency-name: pyright dependency-version: 1.1.398
+
+update-type: version-update:semver-patch
+
+- dependency-name: pytest dependency-version: 8.3.5
+
+- dependency-name: pytest-cov dependency-version: 6.1.0
+
+- dependency-name: mkdocstrings[python] dependency-version: 0.29.1
+
+- dependency-name: mkdocs-material dependency-version: 9.6.11
+
+- dependency-name: mkdocs-snippets dependency-version: 1.3.1
+
+dependency-group: lint-and-dev ...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+
+
 ## v0.10.0 (2025-04-02)
 
 ### Features
