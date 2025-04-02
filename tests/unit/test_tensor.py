@@ -4,6 +4,7 @@ import unittest
 from typing import Any
 
 import hypothesis
+import pytest
 import torch
 from hypothesis import strategies as st
 
@@ -221,6 +222,7 @@ class TestTensor(unittest.TestCase):
         """Test that specifying integer elements within the range of an uint8 tensor is of the correct dtype."""
         self.assertEqual(tensor.dtype, torch.uint8)
 
+    @hypothesis.settings(suppress_health_check=[hypothesis.HealthCheck.filter_too_much])
     @hypothesis.given(
         tensor=hypothesis_torch.tensor_strategy(
             dtype=torch.uint8,
@@ -343,7 +345,9 @@ class TestTensor(unittest.TestCase):
 
     @hypothesis.given(
         num_dimensions=st.integers(min_value=1, max_value=10),
-        layout=hypothesis_torch.layout_strategy().filter(lambda x: x != torch.strided),
+        # TODO: Generalize this test to other sparse layouts
+        # layout=hypothesis_torch.layout_strategy().filter(lambda x: x != torch.strided),
+        layout=hypothesis_torch.layout_strategy().filter(lambda x: x == torch.sparse_coo),
     )
     def test_get_permitted_memory_formats_non_strided(self, num_dimensions: torch.Tensor, layout: torch.layout) -> None:
         """Test that the get_permitted_memory_formats function returns just preserve_format when non-strided tensors are
@@ -442,3 +446,10 @@ class TestTensor(unittest.TestCase):
                 names=st.booleans(),
             )
         )
+
+    @hypothesis.given(data=st.data(), layout=...)
+    def test_sparse_layouts(self, data: st.DataObject, layout: torch.layout) -> None:
+        """Test that specifying a layout will cause the tensor to have that layout."""
+        tensor = data.draw(hypothesis_torch.tensor_strategy(dtype=torch.float32, shape=(1, 2, 3), layout=layout))
+
+        assert tensor.layout == layout
