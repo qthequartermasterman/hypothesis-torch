@@ -17,7 +17,7 @@ readme="README.md"
 license={file="LICENSE"}
 keywords = ["hypothesis", "torch", "pytorch", "testing", "property-based testing", "deep learning", "tensor", "neural network", "artificial intelligence", "machine learning"]
 classifiers = [
-    "Development Status :: 2 - Pre-Alpha",
+    "Development Status :: 5 - Production/Stable",
 
     "Intended Audience :: Developers",
     "Framework :: Hypothesis",
@@ -30,6 +30,7 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
 
     "Topic :: Software Development :: Testing",
     "Topic :: Scientific/Engineering",
@@ -98,7 +99,7 @@ line-length = 120
 preview = true
 
 [tool.semantic_release]
-major_on_zero = false
+major_on_zero = true
 version_variables = [
     "hypothesis_torch/__init__.py:__version__",
 ]
