@@ -1,6 +1,39 @@
 # CHANGELOG
 
 
+## v1.0.2 (2025-04-07)
+
+### Build System
+
+- **deps**: Bump the lint-and-dev group with 2 updates
+  ([`97cd071`](https://github.com/qthequartermasterman/hypothesis-torch/commit/97cd0716b18c679db4540a9080077bc454f4895f))
+
+Bumps the lint-and-dev group with 2 updates: [ruff](https://github.com/astral-sh/ruff) and
+  [pytest-cov](https://github.com/pytest-dev/pytest-cov).
+
+Updates `ruff` from 0.11.2 to 0.11.4 - [Release notes](https://github.com/astral-sh/ruff/releases) -
+  [Changelog](https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md) -
+  [Commits](https://github.com/astral-sh/ruff/compare/0.11.2...0.11.4)
+
+Updates `pytest-cov` from 6.1.0 to 6.1.1 -
+  [Changelog](https://github.com/pytest-dev/pytest-cov/blob/master/CHANGELOG.rst) -
+  [Commits](https://github.com/pytest-dev/pytest-cov/compare/v6.1.0...v6.1.1)
+
+--- updated-dependencies: - dependency-name: ruff dependency-version: 0.11.4
+
+dependency-type: direct:production
+
+update-type: version-update:semver-patch
+
+dependency-group: lint-and-dev
+
+- dependency-name: pytest-cov dependency-version: 6.1.1
+
+dependency-group: lint-and-dev ...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+
+
 ## v1.0.1 (2025-04-02)
 
 ### Build System
