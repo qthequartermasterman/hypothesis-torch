@@ -1,6 +1,40 @@
 # CHANGELOG
 
 
+## v1.0.4 (2025-04-21)
+
+### Build System
+
+- **deps**: Bump the lint-and-dev group with 2 updates
+  ([`fca6da7`](https://github.com/qthequartermasterman/hypothesis-torch/commit/fca6da782ad56508c68407210a084172a1df38c9))
+
+Bumps the lint-and-dev group with 2 updates: [ruff](https://github.com/astral-sh/ruff) and
+  [mkdocs-material](https://github.com/squidfunk/mkdocs-material).
+
+Updates `ruff` from 0.11.5 to 0.11.6 - [Release notes](https://github.com/astral-sh/ruff/releases) -
+  [Changelog](https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md) -
+  [Commits](https://github.com/astral-sh/ruff/compare/0.11.5...0.11.6)
+
+Updates `mkdocs-material` from 9.6.11 to 9.6.12 - [Release
+  notes](https://github.com/squidfunk/mkdocs-material/releases) -
+  [Changelog](https://github.com/squidfunk/mkdocs-material/blob/master/CHANGELOG) -
+  [Commits](https://github.com/squidfunk/mkdocs-material/compare/9.6.11...9.6.12)
+
+--- updated-dependencies: - dependency-name: ruff dependency-version: 0.11.6
+
+dependency-type: direct:production
+
+update-type: version-update:semver-patch
+
+dependency-group: lint-and-dev
+
+- dependency-name: mkdocs-material dependency-version: 9.6.12
+
+dependency-group: lint-and-dev ...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+
+
 ## v1.0.3 (2025-04-15)
 
 ### Build System
