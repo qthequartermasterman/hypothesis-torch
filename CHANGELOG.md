@@ -1,6 +1,19 @@
 # CHANGELOG
 
 
+## v1.0.5 (2025-05-01)
+
+### Build System
+
+- Add torch 2.7.0 extra
+  ([`ac70387`](https://github.com/qthequartermasterman/hypothesis-torch/commit/ac70387f2fa08e49dda787276c6645d4b662ccb1))
+
+### Continuous Integration
+
+- Run tests on torch 2.7
+  ([`1b3249b`](https://github.com/qthequartermasterman/hypothesis-torch/commit/1b3249ba437d08e5c595f2b0f9e8d77981631140))
+
+
 ## v1.0.4 (2025-04-21)
 
 ### Build System
