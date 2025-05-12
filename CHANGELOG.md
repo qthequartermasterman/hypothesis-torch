@@ -1,6 +1,47 @@
 # CHANGELOG
 
 
+## v1.0.8 (2025-05-12)
+
+### Build System
+
+- **deps**: Bump the lint-and-dev group with 3 updates
+  ([`b4d16ac`](https://github.com/qthequartermasterman/hypothesis-torch/commit/b4d16acf245ca40930dea1394a93350801c17555))
+
+Bumps the lint-and-dev group with 3 updates: [ruff](https://github.com/astral-sh/ruff),
+  [mkdocs-material](https://github.com/squidfunk/mkdocs-material) and
+  [mkdocs-snippets](https://github.com/BetonQuest/mkdocs-snippets).
+
+Updates `ruff` from 0.11.8 to 0.11.9 - [Release notes](https://github.com/astral-sh/ruff/releases) -
+  [Changelog](https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md) -
+  [Commits](https://github.com/astral-sh/ruff/compare/0.11.8...0.11.9)
+
+Updates `mkdocs-material` from 9.6.12 to 9.6.13 - [Release
+  notes](https://github.com/squidfunk/mkdocs-material/releases) -
+  [Changelog](https://github.com/squidfunk/mkdocs-material/blob/master/CHANGELOG) -
+  [Commits](https://github.com/squidfunk/mkdocs-material/compare/9.6.12...9.6.13)
+
+Updates `mkdocs-snippets` from 1.3.1 to 1.3.2 -
+  [Changelog](https://github.com/BetonQuest/mkdocs-snippets/blob/main/CHANGELOG.md) -
+  [Commits](https://github.com/BetonQuest/mkdocs-snippets/commits/v1.3.2)
+
+--- updated-dependencies: - dependency-name: ruff dependency-version: 0.11.9
+
+dependency-type: direct:production
+
+update-type: version-update:semver-patch
+
+dependency-group: lint-and-dev
+
+- dependency-name: mkdocs-material dependency-version: 9.6.13
+
+- dependency-name: mkdocs-snippets dependency-version: 1.3.2
+
+dependency-group: lint-and-dev ...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+
+
 ## v1.0.7 (2025-05-09)
 
 ### Build System
