@@ -64,7 +64,7 @@ jobs:
       if: ${{ inputs.lint }}
       run: |
         mypy hypothesis_torch
-    - uses: stefanzweifel/git-auto-commit-action@v5
+    - uses: stefanzweifel/git-auto-commit-action@v6
       if: ${{ inputs.lint }}
       with:
         commit_message: 'style fixes by ruff'
