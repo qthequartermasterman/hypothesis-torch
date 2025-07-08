@@ -11,20 +11,21 @@ import torch
 import transformers
 import transformers.activations
 import transformers.models
+import transformers.modeling_utils
 from typing_extensions import ParamSpec
 
 from hypothesis_torch import inspection_util
 
 P = ParamSpec("P")
 T = TypeVar("T")
-TransformerT = TypeVar("TransformerT", bound=transformers.PreTrainedModel)
+TransformerT = TypeVar("TransformerT", bound=transformers.modeling_utils.PreTrainedModel)
 
 _PLEASE_REPORT_ERROR: Final[str] = """\
 Transformer {cls} is not officially supported.
 
 If you encounter issues, please report them at https://github.com/qthequartermasterman/hypothesis-torch/issues."""
 
-OFFICIALLY_SUPPORTED_TRANSFORMERS: Final[tuple[type[transformers.PreTrainedModel], ...]] = (
+OFFICIALLY_SUPPORTED_TRANSFORMERS: Final[tuple[type[transformers.modeling_utils.PreTrainedModel], ...]] = (
     transformers.LlamaPreTrainedModel,
     transformers.LlamaForCausalLM,
     transformers.MistralPreTrainedModel,
@@ -261,7 +262,7 @@ def transformer_strategy(
     if cls not in OFFICIALLY_SUPPORTED_TRANSFORMERS:
         hypothesis.note(_PLEASE_REPORT_ERROR.format(cls=cls))
 
-    assert issubclass(cls, transformers.PreTrainedModel)
+    assert issubclass(cls, transformers.modeling_utils.PreTrainedModel)
     hypothesis.note(f"Building transformer from {cls.__name__}")
     assert cls.config_class is not None
     config = draw(build_from_cls_init(cls.config_class, **kwargs))
