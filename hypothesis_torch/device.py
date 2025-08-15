@@ -78,6 +78,7 @@ def device_strategy(
             Returns:
                 New lazy list of devices, but with the meta device added.
             """
+
             def add_meta() -> list[torch.device]:
                 """Add the meta device to the lazy list.
 

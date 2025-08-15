@@ -7,6 +7,7 @@ In particular, this is necessary so that the vLLM Unit tests introduced in
 https://github.com/vllm-project/vllm/pull/22962 break the rest of the test suite by prematurely initializing CUDA in a
 parent process that is later forked.
 """
+
 import multiprocessing as mp
 
 
