@@ -173,7 +173,7 @@ def tensor_strategy(
         dense_dimension = None
         block_size = (0, 0)
     else:
-        dense_dimension = draw(st.integers(min_value=0, max_value=tensor.ndim).map(lambda x: x or None) | st.none())
+        dense_dimension = draw(st.integers(min_value=0, max_value=(tensor.ndim-1)).map(lambda x: x or None) | st.none())
         block_size = (0, 0)
         if tensor.ndim == 2:
             # TODO: Generalize block_size to any valid value. This is sufficient to catch a lot of edge cases right now.
