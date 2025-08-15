@@ -106,7 +106,7 @@ def tensor_strategy(
         else:
             layout = draw(layout)
     # MPS devices do not support sparse tensors
-    hypothesis.assume((device is None or device.type != "mps") and layout == torch.strided)
+    hypothesis.assume(device is None or (device.type != "mps" or layout != torch.strided))
 
     # If the dtype is an integer, we need to make sure that the elements are integers within the dtype's range
     if dtype in dtype_module.INT_DTYPES and isinstance(elements, st.SearchStrategy):
