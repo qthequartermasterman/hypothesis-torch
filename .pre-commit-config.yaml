@@ -32,3 +32,4 @@ repos:
       language: system
       types: [python]
       args: [hypothesis_torch/]
+      pass_filenames: false

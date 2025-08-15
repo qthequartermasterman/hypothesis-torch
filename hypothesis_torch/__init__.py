@@ -8,12 +8,11 @@ __version__ = "1.1.0"
 import importlib.util
 
 from hypothesis_torch.device import (
-    AVAILABLE_CPU_DEVICES,
-    AVAILABLE_CUDA_DEVICES,
-    AVAILABLE_META_DEVICES,
-    AVAILABLE_MPS_DEVICES,
-    AVAILABLE_PHYSICAL_DEVICES,
+    cuda_devices,
     device_strategy,
+    mps_devices,
+    not_mps_devices,
+    physical_devices,
 )
 from hypothesis_torch.dtype import (
     ALL_DTYPES,
@@ -34,11 +33,6 @@ from hypothesis_torch.tensor import tensor_strategy
 
 __all__ = [
     "ALL_DTYPES",
-    "AVAILABLE_CPU_DEVICES",
-    "AVAILABLE_CUDA_DEVICES",
-    "AVAILABLE_META_DEVICES",
-    "AVAILABLE_MPS_DEVICES",
-    "AVAILABLE_PHYSICAL_DEVICES",
     "BOOL_DTYPES",
     "COMPLEX_DTYPES",
     "FLOAT_DTYPES",
@@ -47,13 +41,17 @@ __all__ = [
     "TORCH_RANDOM_WRAPPER",
     "UNSIGNED_INT_DTYPES",
     "OptimizerConstructorWithOnlyParameters",
+    "cuda_devices",
     "device_strategy",
     "dtype_strategy",
     "layout_strategy",
     "linear_network_strategy",
     "memory_format_strategy",
+    "mps_devices",
+    "not_mps_devices",
     "optimizer_strategy",
     "optimizer_type_strategy",
+    "physical_devices",
     "same_shape_activation_strategy",
     "tensor_strategy",
 ]

@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping, Sequence
-from typing import Any, Final
+from typing import Any, Callable, Final
 
 import hypothesis
 import hypothesis.extra.numpy as numpy_st
@@ -14,25 +14,20 @@ from hypothesis import strategies as st
 import hypothesis_torch
 from hypothesis_torch import dtype as dtype_module
 
-_NOT_MPS_DEVICES: Final[Sequence[torch.device]] = (
-    hypothesis_torch.AVAILABLE_CPU_DEVICES + hypothesis_torch.AVAILABLE_CUDA_DEVICES
-)
-"""All devices that are not MPS devices (since MPS devices do not yet have full torch support)."""
-
-_ALLOWED_DEVICES_FROM_DTYPE: Final[Mapping[torch.dtype, Sequence[torch.device]]] = {
-    torch.bool: hypothesis_torch.AVAILABLE_PHYSICAL_DEVICES,
-    torch.uint8: hypothesis_torch.AVAILABLE_PHYSICAL_DEVICES,
-    torch.int8: hypothesis_torch.AVAILABLE_PHYSICAL_DEVICES,
-    torch.int16: hypothesis_torch.AVAILABLE_PHYSICAL_DEVICES,
-    torch.int32: hypothesis_torch.AVAILABLE_PHYSICAL_DEVICES,
-    torch.int64: hypothesis_torch.AVAILABLE_PHYSICAL_DEVICES,
-    torch.float16: hypothesis_torch.AVAILABLE_PHYSICAL_DEVICES,
-    torch.float32: hypothesis_torch.AVAILABLE_PHYSICAL_DEVICES,
+_ALLOWED_DEVICES_FROM_DTYPE: Final[Mapping[torch.dtype, Callable[[], Sequence[torch.device]]]] = {
+    torch.bool: hypothesis_torch.physical_devices,
+    torch.uint8: hypothesis_torch.physical_devices,
+    torch.int8: hypothesis_torch.physical_devices,
+    torch.int16: hypothesis_torch.physical_devices,
+    torch.int32: hypothesis_torch.physical_devices,
+    torch.int64: hypothesis_torch.physical_devices,
+    torch.float16: hypothesis_torch.physical_devices,
+    torch.float32: hypothesis_torch.physical_devices,
     # MPS devices do not support tensors with dtype torch.float64 and bfloat16
-    torch.float64: _NOT_MPS_DEVICES,
-    torch.bfloat16: _NOT_MPS_DEVICES,
-    torch.complex64: hypothesis_torch.AVAILABLE_PHYSICAL_DEVICES,
-    torch.complex128: hypothesis_torch.AVAILABLE_PHYSICAL_DEVICES,
+    torch.float64: hypothesis_torch.not_mps_devices,
+    torch.bfloat16: hypothesis_torch.not_mps_devices,
+    torch.complex64: hypothesis_torch.physical_devices,
+    torch.complex128: hypothesis_torch.physical_devices,
 }
 """A mapping from dtype to the devices that support that dtype."""
 
@@ -91,7 +86,7 @@ def tensor_strategy(
 
     # We will pre-sample the device so that we can cast it to a concrete torch device
     if device is None:
-        device = st.sampled_from(_ALLOWED_DEVICES_FROM_DTYPE[dtype])
+        device = st.sampled_from(_ALLOWED_DEVICES_FROM_DTYPE[dtype]())
     if isinstance(device, st.SearchStrategy):
         device = draw(device)
     # MPS devices do not support tensors with dtype torch.float64 and bfloat16
