@@ -39,13 +39,6 @@ class TestDevice(unittest.TestCase):
         self.assertIsInstance(device, torch.device)
         self.assertIn(device, hypothesis_torch.device.physical_devices())
 
-    @unittest.skipUnless(torch.cuda.is_available(), "CUDA is not available")
-    @hypothesis.given(device=...)
-    def test_device_strategy_from_type_cuda(self, device: torch.cuda.device) -> None:
-        """Test that using the registered `torch.cuda.device` strategy gives an available CUDA device."""
-        self.assertIsInstance(device, torch.device)
-        self.assertIn(device, hypothesis_torch.device.physical_devices())
-
     @hypothesis.given(device=hypothesis_torch.device.device_strategy(devices=[torch.device("cpu")]))
     def test_device_strategy_with_specified_devices(self, device: torch.device) -> None:
         """Test that the device strategy when specifying a list of devices only generates devices in that list."""

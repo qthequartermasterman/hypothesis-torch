@@ -3,10 +3,11 @@
 from __future__ import annotations
 
 from collections.abc import Sequence
-from typing import Callable, TypeAlias
+from typing import Callable
 
 import torch
 from hypothesis import strategies as st
+from typing_extensions import TypeAlias
 
 LAZY_LIST_OF_DEVICES: TypeAlias = Callable[[], list[torch.device]]
 
