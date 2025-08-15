@@ -106,7 +106,7 @@ def tensor_strategy(
         else:
             layout = draw(layout)
     # MPS devices do not support sparse tensors
-    hypothesis.assume((device is None or device.type != "mps") and layout == torch.strided)
+    hypothesis.assume(device is None or (device.type != "mps" or layout == torch.strided))
 
     # If the dtype is an integer, we need to make sure that the elements are integers within the dtype's range
     if dtype in dtype_module.INT_DTYPES and isinstance(elements, st.SearchStrategy):
@@ -168,12 +168,24 @@ def tensor_strategy(
         requires_grad = draw(requires_grad)
     tensor.requires_grad_(requires_grad)
 
-    if layout != torch.strided and tensor.ndim < 1:
+    # Sometimes we can accidentally trigger the batching logic in torch's C++ implementation of dense to sparse:
+    # https://github.com/pytorch/pytorch/blob/55061c96028bc9c0d01e7137d8c025d997cdf0c1/aten/src/ATen/native/TensorConversions.cpp#L104
+    if layout != torch.strided and tensor.ndim > 2:
+        hypothesis.assume((tensor != 0).sum(dim=(-2, -1)).unique().numel() == 1)
+
+    if layout != torch.strided and tensor.ndim < 2:
+        hypothesis.note("Tried to generate sparse tensor with fewer than two dimensions. Defaulting to strided.")
         layout = torch.strided
         dense_dimension = None
         block_size = (0, 0)
     else:
-        dense_dimension = draw(st.integers(min_value=0, max_value=tensor.ndim).map(lambda x: x or None) | st.none())
+        dense_dimension = draw(
+            st.integers(
+                min_value=0,
+                max_value=max(0, (tensor.ndim - 2)),
+            ).map(lambda x: x or None)
+            | st.none()
+        )
         block_size = (0, 0)
         if tensor.ndim == 2:
             # TODO: Generalize block_size to any valid value. This is sufficient to catch a lot of edge cases right now.
