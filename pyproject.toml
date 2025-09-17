@@ -142,9 +142,11 @@ ignore_missing_imports = true
 
 [tool.uv]
 conflicts = [
-  { extra = "torch2.4.1" },
-  { extra = "torch2.5.1" },
-  { extra = "torch2.6.0" },
-  { extra = "torch2.7.0" },
-  { extra = "torch2.8.0" },
+  [
+    { extra = "torch2.4.1" },
+    { extra = "torch2.5.1" },
+    { extra = "torch2.6.0" },
+    { extra = "torch2.7.0" },
+    { extra = "torch2.8.0" },
+  ]
 ]
