@@ -9,7 +9,7 @@ description = "Hypothesis strategies for various Pytorch structures, including t
 dynamic = ["version"]
 dependencies = [
     "hypothesis>=6.0.0",
-    "torch>=2.1.0,<3",
+    "torch>=2.4.0,<3",
 ]
 requires-python = ">=3.9,<3.14"
 authors=[{name="Andrew P. Sansom", email="andrew@euleriancircuit.com"}]
@@ -87,6 +87,10 @@ torch = [
   "torch==2.7.0",
   "hypothesis_torch[numpy]"
 ]
+"torch2.8.0"=[
+  "torch==2.8.0",
+  "hypothesis_torch[numpy]"
+]
 
 [project.urls]
 Homepage = "https://github.com/qthequartermasterman/hypothesis-torch"
@@ -135,3 +139,12 @@ convention = "google"
 [[tool.mypy.overrides]]
 module = ["transformers", "transformers.activations", "transformers.models", "annotated_types"]
 ignore_missing_imports = true
+
+[tool.uv]
+conflicts = [
+  { extra = "torch2.4.1" },
+  { extra = "torch2.5.1" },
+  { extra = "torch2.6.0" },
+  { extra = "torch2.7.0" },
+  { extra = "torch2.8.0" },
+]
