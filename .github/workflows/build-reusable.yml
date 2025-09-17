@@ -39,7 +39,7 @@ jobs:
         path: ~/.cache/uv
         key: ${{ runner.os }}-python-${{ inputs.python-version }}-uv
     - name: Set up Python ${{ inputs.python-version }}
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v6
       with:
         python-version: ${{ inputs.python-version }}
     - name: Install uv
