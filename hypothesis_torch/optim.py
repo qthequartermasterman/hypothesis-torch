@@ -28,6 +28,9 @@ _ZERO_TO_ONE_FLOATS: Final[st.SearchStrategy[float]] = st.floats(
     min_value=0.0, max_value=1.0, exclude_max=True, exclude_min=True
 )
 
+# Muon only supports 2D parameters; capture the class reference if available (PyTorch >= 2.5)
+_MUON_CLASS: Final[type[Optimizer] | None] = getattr(torch.optim, "Muon", None)
+
 
 @st.composite
 def betas(draw: st.DrawFn) -> tuple[float, float]:
@@ -114,7 +117,7 @@ def optimizer_strategy(
             kwargs[param.name] = draw(_ZERO_TO_ONE_FLOATS)
         else:
             kwargs[param.name] = draw(st.from_type(param.annotation))
-    if "nesterov" in kwargs and kwargs["nesterov"] and "momentum" in kwargs:
+    if "nesterov" in kwargs and kwargs["nesterov"] and "momentum" in kwargs and "dampening" in sig.parameters:
         kwargs["dampening"] = 0
     kwargs.pop("self", None)  # Remove self if a type was inferred
     kwargs.pop("params", None)  # Remove params if a type was inferred
@@ -132,6 +135,10 @@ def optimizer_strategy(
     hypothesis.note(f"Chosen optimizer hyperparameters: {kwargs}")
 
     def optimizer_factory(params: Iterable[torch.nn.Parameter]) -> Optimizer:
-        return optimizer_type(params, **kwargs)
+        params_list = list(params)
+        # Muon only supports 2D parameters (weight matrices, not bias vectors)
+        if _MUON_CLASS is not None and issubclass(optimizer_type, _MUON_CLASS):  # type: ignore
+            params_list = [p for p in params_list if p.ndim == 2]
+        return optimizer_type(params_list, **kwargs)
 
     return optimizer_factory
