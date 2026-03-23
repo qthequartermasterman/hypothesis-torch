@@ -56,7 +56,7 @@ __all__ = [
     "tensor_strategy",
 ]
 
-if importlib.util.find_spec("transformers") is not None:  # noqa: RUF067
+if importlib.util.find_spec("transformers") is not None:
     # Import Hugging Face strategies if transformers is installed
     from hypothesis_torch.huggingface import OFFICIALLY_SUPPORTED_TRANSFORMERS, transformer_strategy
 
