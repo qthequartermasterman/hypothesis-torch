@@ -424,8 +424,10 @@ class TestTensor(unittest.TestCase):
             )
         )
 
-        assert all(name is None for name in tensor.names)
+        if hypothesis_torch.tensor.NAMED_TENSORS_SUPPORTED:
+            assert all(name is None for name in tensor.names)
 
+    @unittest.skipUnless(hypothesis_torch.tensor.NAMED_TENSORS_SUPPORTED, "Named tensors are not supported")
     @hypothesis.given(st.data())
     def test_names_true_has_named_dimension(self, data: st.DataObject) -> None:
         """Test that if the names parameter is True, at least one dimension has a name."""
@@ -450,6 +452,12 @@ class TestTensor(unittest.TestCase):
                 names=st.booleans(),
             )
         )
+
+    @unittest.skipIf(hypothesis_torch.tensor.NAMED_TENSORS_SUPPORTED, "Named tensors are supported")
+    def test_names_true_raises_when_named_tensors_unsupported(self) -> None:
+        """Test that requesting named dimensions raises a clear error when torch lacks the Named Tensors API."""
+        with self.assertRaises(hypothesis.errors.InvalidArgument):
+            hypothesis_torch.tensor_strategy(dtype=torch.float32, shape=(1, 2, 3), names=True).example()
 
     @hypothesis.given(data=st.data(), layout=...)
     def test_sparse_layouts(self, data: st.DataObject, layout: torch.layout) -> None:
