@@ -6,8 +6,9 @@ import sys
 import time
 import unittest
 from collections.abc import Callable, Iterator
-from types import FrameType
+from types import FrameType, SimpleNamespace
 from typing import Any
+from unittest import mock
 
 import hypothesis
 import hypothesis.internal.entropy
@@ -63,16 +64,15 @@ class TestRegisterRandomTorchState(unittest.TestCase):
         torch.testing.assert_close(before, torch.random.get_rng_state())
 
     @unittest.skipUnless(torch.cuda.is_available(), "CUDA is not available")
-    def test_cuda_state_seeded_and_restored_after_given(self) -> None:
-        """Test that an initialized CUDA generator is both seeded per example and restored after a Hypothesis test."""
+    def test_cuda_state_restored_after_given(self) -> None:
+        """Test that an initialized CUDA generator is restored after a Hypothesis test that consumes CUDA randomness."""
         torch.cuda.init()
         before = torch.cuda.get_rng_state_all()
-        draws: list[torch.Tensor] = []
 
         @hypothesis.given(st.integers())
         @hypothesis.settings(max_examples=3, database=None)
         def consumes_cuda_randomness(_: int) -> None:
-            draws.append(torch.rand(4, device="cuda").cpu())
+            torch.rand(4, device="cuda")
 
         consumes_cuda_randomness()
         after = torch.cuda.get_rng_state_all()
@@ -80,10 +80,44 @@ class TestRegisterRandomTorchState(unittest.TestCase):
         for state_before, state_after in zip(before, after):
             torch.testing.assert_close(state_before, state_after)
 
-        # Hypothesis seeds every example identically, so the CUDA draws should match.
-        self.assertGreaterEqual(len(draws), 1)
-        for draw in draws[1:]:
-            torch.testing.assert_close(draws[0], draw)
+    @unittest.skipUnless(torch.cuda.is_available(), "CUDA is not available")
+    def test_cuda_seed_is_deterministic(self) -> None:
+        """Test that seeding the wrapper seeds every CUDA device's generator once CUDA is initialized.
+
+        Draws are compared across repeated calls to `seed`, with randomness consumed in between, so this fails if the
+        wrapper stops seeding CUDA (unlike comparing draws across Hypothesis examples, which restoring state alone would
+        make equal).
+        """
+        torch.cuda.init()
+        devices = [torch.device("cuda", index) for index in range(torch.cuda.device_count())]
+        wrapper = hypothesis_torch.TORCH_RANDOM_WRAPPER
+        state = wrapper.getstate()
+        try:
+            wrapper.seed(1234)
+            first = [torch.rand(8, device=device).cpu() for device in devices]
+            consumed = [torch.rand(8, device=device).cpu() for device in devices]
+            wrapper.seed(1234)
+            second = [torch.rand(8, device=device).cpu() for device in devices]
+        finally:
+            wrapper.setstate(state)
+
+        for device, first_draw, consumed_draw, second_draw in zip(devices, first, consumed, second):
+            self.assertFalse(torch.equal(first_draw, consumed_draw), f"{device} generator did not advance")
+            torch.testing.assert_close(first_draw, second_draw, msg=f"{device} generator was not reseeded")
+
+    def test_initialized_backend_without_rng_methods_is_skipped(self) -> None:
+        """Test that an initialized backend lacking the RNG methods is ignored instead of raising AttributeError.
+
+        Older PyTorch releases expose `torch.mtia.is_initialized` without `manual_seed_all`, `get_rng_state_all` or
+        `set_rng_state_all`.
+        """
+        wrapper = hypothesis_torch.TORCH_RANDOM_WRAPPER
+        incomplete_mtia = SimpleNamespace(is_initialized=lambda: True)
+        with mock.patch.object(torch, "mtia", incomplete_mtia):
+            state = wrapper.getstate()
+            wrapper.seed(1234)
+            wrapper.setstate(state)
+        self.assertNotIn("mtia", state.devices)
 
     def test_seed_is_fast_and_independent_of_stack_depth(self) -> None:
         """Regression test for slow per-example seeding (issue #266).

@@ -26,12 +26,23 @@ class TorchRandomState(NamedTuple):
     devices: dict[str, Any]
 
 
+# Methods a lazy backend module must provide for its generators to be seeded, saved and restored. Some torch builds
+# expose `is_initialized` on a backend without these (e.g. `torch.mtia` before PyTorch 2.11).
+_LAZY_BACKEND_RNG_METHODS = ("manual_seed_all", "get_rng_state_all", "set_rng_state_all")
+
+
 def _active_lazy_backends() -> list[str]:
-    """Return the names of the lazily-initialized accelerator backends that are already initialized."""
+    """Return the names of the lazily-initialized accelerator backends whose generators should be managed.
+
+    A backend is managed only if it is already initialized and provides every method in `_LAZY_BACKEND_RNG_METHODS`.
+    """
     active = []
     for name in _LAZY_BACKENDS:
-        is_initialized = getattr(getattr(torch, name, None), "is_initialized", None)
-        if is_initialized is not None and is_initialized():
+        module = getattr(torch, name, None)
+        is_initialized = getattr(module, "is_initialized", None)
+        if is_initialized is None or not all(hasattr(module, method) for method in _LAZY_BACKEND_RNG_METHODS):
+            continue
+        if is_initialized():
             active.append(name)
     return active
 
