@@ -30,8 +30,7 @@ permissions:
 
 jobs:
   build:
-    # actions/setup-python has no Python 3.9 build for ubuntu-latest (Ubuntu 26.04), so 3.9 stays on Ubuntu 24.04.
-    runs-on: ${{ inputs.python-version == '3.9' && 'ubuntu-24.04' || 'ubuntu-latest' }}
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v6
     - uses: actions/cache@v5

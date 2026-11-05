@@ -6,7 +6,6 @@ from collections.abc import Mapping, Sequence
 from typing import Any, Callable, Final
 
 import hypothesis
-import hypothesis.errors
 import hypothesis.extra.numpy as numpy_st
 import hypothesis.internal.floats
 import torch
@@ -31,9 +30,6 @@ _ALLOWED_DEVICES_FROM_DTYPE: Final[Mapping[torch.dtype, Callable[[], Sequence[to
     torch.complex128: hypothesis_torch.physical_devices,
 }
 """A mapping from dtype to the devices that support that dtype."""
-
-NAMED_TENSORS_SUPPORTED: Final[bool] = hasattr(torch.Tensor, "rename")
-"""Whether the installed PyTorch supports the (experimental) Named Tensors API, which recent versions removed."""
 
 
 @st.composite
@@ -77,9 +73,7 @@ def tensor_strategy(
             arguments. Note that channel_last memory formats are only supported for 4D tensors and channel_last_3d
             memory formats are only supported for 5D tensors.
         names: Whether to give explicit names to the tensor's dimensions, using the "Named Tensors" API. `names` will
-            default to False until the Named Tensors API is no longer experimental. On PyTorch versions that no longer
-            provide the Named Tensors API, `names=True` raises `hypothesis.errors.InvalidArgument`, and a strategy for
-            `names` only generates tensors without named dimensions.
+            default to False until the Named Tensors API is no longer experimental.
 
     Returns:
         A strategy for generating PyTorch tensors.
@@ -223,14 +217,8 @@ def tensor_strategy(
     # Pyright/mypy falsely reports an error here on py3.9 torch 2.1.2.
     tensor = tensor.to(memory_format=memory_format)  # type: ignore
 
-    if names is True and not NAMED_TENSORS_SUPPORTED:
-        raise hypothesis.errors.InvalidArgument(
-            f"names=True requires the Named Tensors API, which is not available in torch {torch.__version__}."
-        )
     if isinstance(names, st.SearchStrategy):
         names = draw(names)
-        # Named tensors are unavailable in this version of torch, so only unnamed tensors are valid.
-        hypothesis.assume(NAMED_TENSORS_SUPPORTED or not names)
     if names:
         # Named tensors only supported on CPU/CUDA.
         hypothesis.assume(tensor.device.type in {"cpu", "cuda"})
@@ -243,8 +231,7 @@ def tensor_strategy(
         individual_dimensions_names = [
             f"dim{i}" if should_name else None for i, should_name in enumerate(individual_dimensions_should_have_name)
         ]
-        # Accessed via getattr because type stubs for versions of torch without named tensors lack `rename`.
-        tensor = getattr(tensor, "rename")(*individual_dimensions_names)
+        tensor = tensor.rename(*individual_dimensions_names)
 
     return tensor
 
