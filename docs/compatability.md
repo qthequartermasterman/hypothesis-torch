@@ -21,16 +21,16 @@ considered public and stable.
 
 ## `hypothesis` and `torch` Versions
 
-In theory, `hypothesis-torch` should work with `hypothesis>=6.0.0` and `torch>=2.0.0`. However, because neither 
-`hypothesis` nor `torch` support older versions, we do not currently test against old versions. In our CI, we test 
-against the latest versions of `hypothesis` and `torch`. 
+`hypothesis-torch` requires `hypothesis>=6.0.0` and `torch>=2.11.0`. Because `hypothesis` does not support older
+versions, we do not test against old versions of it. In our CI, we test against the latest version of `hypothesis` and
+against every minor release of `torch` since 2.11.
 
 ## Python Versions
 
-`hypothesis-torch` is regularly tested in CI on CPython 3.9+.
+`hypothesis-torch` is regularly tested in CI on CPython 3.12+.
 
 Generally, we only officially support the latest patch version of each minor release of Python, but `hypothesis-torch`
-should work on any version of Python 3.9 or later.
+should work on any version of Python 3.12 or later.
 
 ## Operating systems
 

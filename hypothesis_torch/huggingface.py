@@ -3,7 +3,8 @@
 from __future__ import annotations
 
 import inspect
-from typing import Any, Callable, Final, TypeVar, cast
+from collections.abc import Callable
+from typing import Any, Final, TypeVar, cast
 
 import hypothesis
 import hypothesis.strategies as st
