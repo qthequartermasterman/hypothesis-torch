@@ -69,26 +69,6 @@ torch = [
   "torch",
   "numpy"
 ]
-"torch2.6.0"=[
-  "torch==2.6.0",
-  "hypothesis_torch[numpy]"
-]
-"torch2.7.1"=[
-  "torch==2.7.1",
-  "hypothesis_torch[numpy]"
-]
-"torch2.8.0"=[
-  "torch==2.8.0",
-  "hypothesis_torch[numpy]"
-]
-"torch2.9.1"=[
-  "torch==2.9.1",
-  "hypothesis_torch[numpy]"
-]
-"torch2.10.0"=[
-  "torch==2.10.0",
-  "hypothesis_torch[numpy]"
-]
 "torch2.11.0"=[
   "torch==2.11.0",
   "hypothesis_torch[numpy]"
@@ -162,11 +142,6 @@ ignore_missing_imports = true
 [tool.uv]
 conflicts = [
   [
-    { extra = "torch2.6.0" },
-    { extra = "torch2.7.1" },
-    { extra = "torch2.8.0" },
-    { extra = "torch2.9.1" },
-    { extra = "torch2.10.0" },
     { extra = "torch2.11.0" },
     { extra = "torch2.12.1" },
     { extra = "torch2.13.0" },
