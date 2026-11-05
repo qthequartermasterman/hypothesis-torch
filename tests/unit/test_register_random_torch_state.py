@@ -5,9 +5,9 @@ import multiprocessing as mp
 import sys
 import time
 import unittest
-from collections.abc import Iterator
+from collections.abc import Callable, Iterator
 from types import FrameType
-from typing import Any, Callable, Optional
+from typing import Any
 
 import hypothesis
 import hypothesis.internal.entropy
@@ -186,7 +186,7 @@ def _record_torch_stack_captures() -> Iterator[list[str]]:
     captures: list[str] = []
     real_format_stack = traceback.format_stack
 
-    def spy(f: Optional[FrameType] = None, limit: Optional[int] = None) -> list[str]:
+    def spy(f: FrameType | None = None, limit: int | None = None) -> list[str]:
         caller = sys._getframe(1).f_globals.get("__name__", "")
         if caller.split(".")[0] == "torch":
             captures.append(caller)
