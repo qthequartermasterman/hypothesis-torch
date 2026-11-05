@@ -3,13 +3,12 @@
 from __future__ import annotations
 
 import inspect
-from collections.abc import Iterable, Sequence
-from typing import Any, Callable, Final
+from collections.abc import Callable, Iterable, Sequence
+from typing import Any, Final, TypeAlias
 
 import hypothesis
 import torch.optim
 from hypothesis import strategies as st
-from typing_extensions import TypeAlias
 
 from hypothesis_torch import inspection_util
 
