@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from collections.abc import Mapping, Sequence
-from typing import Any, Callable, Final
+from collections.abc import Callable, Mapping, Sequence
+from typing import Any, Final
 
 import hypothesis
+import hypothesis.errors
 import hypothesis.extra.numpy as numpy_st
 import hypothesis.internal.floats
 import torch
@@ -13,6 +14,9 @@ from hypothesis import strategies as st
 
 import hypothesis_torch
 from hypothesis_torch import dtype as dtype_module
+
+SUPPORTS_NAMED_TENSORS: Final[bool] = hasattr(torch.Tensor, "rename")
+"""Whether the installed version of PyTorch supports the (now removed) Named Tensors API."""
 
 _ALLOWED_DEVICES_FROM_DTYPE: Final[Mapping[torch.dtype, Callable[[], Sequence[torch.device]]]] = {
     torch.bool: hypothesis_torch.physical_devices,
@@ -73,7 +77,9 @@ def tensor_strategy(
             arguments. Note that channel_last memory formats are only supported for 4D tensors and channel_last_3d
             memory formats are only supported for 5D tensors.
         names: Whether to give explicit names to the tensor's dimensions, using the "Named Tensors" API. `names` will
-            default to False until the Named Tensors API is no longer experimental.
+            default to False until the Named Tensors API is no longer experimental. Named Tensors were removed in
+            PyTorch 2.15, so on those versions passing `names=True` raises an `InvalidArgument` error, and a strategy
+            for `names` will only generate tensors without named dimensions.
 
     Returns:
         A strategy for generating PyTorch tensors.
@@ -217,8 +223,14 @@ def tensor_strategy(
     # Pyright/mypy falsely reports an error here on py3.9 torch 2.1.2.
     tensor = tensor.to(memory_format=memory_format)  # type: ignore
 
+    if names is True and not SUPPORTS_NAMED_TENSORS:
+        raise hypothesis.errors.InvalidArgument(
+            f"Named tensors are not supported in the installed version of PyTorch ({torch.__version__})."
+        )
     if isinstance(names, st.SearchStrategy):
         names = draw(names)
+        # Named tensors were removed in PyTorch 2.15, so discard examples that request them.
+        hypothesis.assume(not names or SUPPORTS_NAMED_TENSORS)
     if names:
         # Named tensors only supported on CPU/CUDA.
         hypothesis.assume(tensor.device.type in {"cpu", "cuda"})
@@ -231,7 +243,7 @@ def tensor_strategy(
         individual_dimensions_names = [
             f"dim{i}" if should_name else None for i, should_name in enumerate(individual_dimensions_should_have_name)
         ]
-        tensor = tensor.rename(*individual_dimensions_names)
+        tensor = tensor.rename(*individual_dimensions_names)  # type: ignore[attr-defined,unused-ignore]
 
     return tensor
 

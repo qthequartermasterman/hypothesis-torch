@@ -1,6 +1,7 @@
 """Register a random.Random-compatible shim for `torch.random` with Hypothesis."""
 
-from typing import Any, Callable
+from collections.abc import Callable
+from typing import Any
 
 import hypothesis
 import hypothesis.internal.entropy

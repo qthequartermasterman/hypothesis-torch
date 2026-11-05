@@ -9,9 +9,9 @@ description = "Hypothesis strategies for various Pytorch structures, including t
 dynamic = ["version"]
 dependencies = [
     "hypothesis>=6.0.0",
-    "torch>=2.4.0,<3",
+    "torch>=2.11.0,<3",
 ]
-requires-python = ">=3.9,<3.14"
+requires-python = ">=3.12,<3.16"
 authors=[{name="Andrew P. Sansom", email="andrew@euleriancircuit.com"}]
 readme="README.md"
 license={file="LICENSE"}
@@ -26,11 +26,10 @@ classifiers = [
 
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: 3.15",
 
     "Topic :: Software Development :: Testing",
     "Topic :: Scientific/Engineering",
@@ -63,32 +62,31 @@ docs = [
   "mkdocs-exclude==1.0.2",
 ]
 numpy=[
-    "numpy==2.0.1 ; python_version=='3.9'",
-    "numpy==2.1.2 ; python_version>='3.10'",
+    "numpy==2.5.4",
 ]
 old-numpy=["numpy==1.26.4",]
 torch = [
   "torch",
   "numpy"
 ]
-"torch2.4.1"=[
-  "torch==2.4.1",
+"torch2.11.0"=[
+  "torch==2.11.0",
   "hypothesis_torch[numpy]"
 ]
-"torch2.5.1"=[
-  "torch==2.5.1",
+"torch2.12.1"=[
+  "torch==2.12.1",
   "hypothesis_torch[numpy]"
 ]
-"torch2.6.0"=[
-  "torch==2.6.0",
+"torch2.13.0"=[
+  "torch==2.13.0",
   "hypothesis_torch[numpy]"
 ]
-"torch2.7.0"=[
-  "torch==2.7.0",
+"torch2.14.1"=[
+  "torch==2.14.1",
   "hypothesis_torch[numpy]"
 ]
-"torch2.8.0"=[
-  "torch==2.8.0",
+"torch2.15.0"=[
+  "torch==2.15.0",
   "hypothesis_torch[numpy]"
 ]
 
@@ -131,7 +129,8 @@ version = {attr = "hypothesis_torch.__version__"}
 
 [tool.ruff.lint]
 select = ["ANN", "D", "E", "F", "FURB", "I", "N", "PERF", "PTH", "RUF", "YTT", "UP", "W"]
-ignore = ["D205", "F401", "PT009", "S101"]
+# UP040/UP047 would rewrite public TypeAliases/generics to PEP 695 syntax, which changes runtime semantics.
+ignore = ["D205", "F401", "PT009", "S101", "UP040", "UP047"]
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"
@@ -143,10 +142,10 @@ ignore_missing_imports = true
 [tool.uv]
 conflicts = [
   [
-    { extra = "torch2.4.1" },
-    { extra = "torch2.5.1" },
-    { extra = "torch2.6.0" },
-    { extra = "torch2.7.0" },
-    { extra = "torch2.8.0" },
+    { extra = "torch2.11.0" },
+    { extra = "torch2.12.1" },
+    { extra = "torch2.13.0" },
+    { extra = "torch2.14.1" },
+    { extra = "torch2.15.0" },
   ]
 ]
