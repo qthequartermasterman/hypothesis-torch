@@ -70,23 +70,23 @@ torch = [
   "numpy"
 ]
 "torch2.11.0"=[
-  "torch==2.13.0",
+  "torch==2.15.0",
   "hypothesis_torch[numpy]"
 ]
 "torch2.12.1"=[
-  "torch==2.13.0",
+  "torch==2.15.0",
   "hypothesis_torch[numpy]"
 ]
 "torch2.13.0"=[
-  "torch==2.13.0",
+  "torch==2.15.0",
   "hypothesis_torch[numpy]"
 ]
 "torch2.14.1"=[
-  "torch==2.13.0",
+  "torch==2.15.0",
   "hypothesis_torch[numpy]"
 ]
 "torch2.15.0"=[
-  "torch==2.13.0",
+  "torch==2.15.0",
   "hypothesis_torch[numpy]"
 ]
 
